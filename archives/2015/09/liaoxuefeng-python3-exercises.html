@@ -1,0 +1,1214 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.6.0" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.6.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.6.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.6.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.6.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '6.6.0',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="随着学习的深入，才知道 Python 的厉害之处，居然可以写得这么简洁。">
+<meta name="keywords" content="python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="廖雪峰 Python3 练习">
+<meta property="og:url" content="https://nuomi1.github.io/archives/2015/09/liaoxuefeng-python3-exercises.html">
+<meta property="og:site_name" content="nuomi1&#39;s blog">
+<meta property="og:description" content="随着学习的深入，才知道 Python 的厉害之处，居然可以写得这么简洁。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2016-02-08T16:00:00.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="廖雪峰 Python3 练习">
+<meta name="twitter:description" content="随着学习的深入，才知道 Python 的厉害之处，居然可以写得这么简洁。">
+
+
+
+
+
+
+  <link rel="canonical" href="https://nuomi1.github.io/archives/2015/09/liaoxuefeng-python3-exercises.html">
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>廖雪峰 Python3 练习 | nuomi1's blog</title>
+  
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=69846247-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', '69846247-2');
+</script>
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?e9c5b894b94da4954f8cc9ee9f6adcb8";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">nuomi1's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">nuomi1's blog</p>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives menu-item-active">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+    <div class="reading-progress-bar"></div>
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://nuomi1.github.io/archives/2015/09/liaoxuefeng-python3-exercises.html">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="nuomi1">
+      <meta itemprop="description" content="nuomi1's blog">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="nuomi1's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">廖雪峰 Python3 练习
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2015-09-07 00:00:00" itemprop="dateCreated datePublished" datetime="2015-09-07T00:00:00+08:00">2015-09-07</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2016-02-09 00:00:00" itemprop="dateModified" datetime="2016-02-09T00:00:00+08:00">2016-02-09</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/program/" itemprop="url" rel="index"><span itemprop="name">program</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/archives/2015/09/liaoxuefeng-python3-exercises.html#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/archives/2015/09/liaoxuefeng-python3-exercises.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/archives/2015/09/liaoxuefeng-python3-exercises.html" class="leancloud_visitors" data-flag-title="廖雪峰 Python3 练习">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>随着学习的深入，才知道 Python 的厉害之处，居然可以写得这么简洁。<br><a id="more"></a></p>
+<hr>
+<h1 id="第一个Python程序"><a href="#第一个Python程序" class="headerlink" title="第一个Python程序"></a>第一个Python程序</h1><p><a href="http://www.liaoxuefeng.com/wikipage/001432523496782e0946b0f454549c0888d05959b99860f000" target="_blank" rel="noopener">Python 代码运行助手</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line">print(<span class="string">'Hello, world!'</span>)</span><br></pre></td></tr></table></figure>
+<p><a href="http://www.liaoxuefeng.com/wikipage/001431643484137e38b44e5925440ec8b1e4c70f800b4e2000" target="_blank" rel="noopener">输入和输出</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line">print(<span class="string">'1024 * 768 ='</span>, <span class="number">1024</span> * <span class="number">78</span>)</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="Python-基础"><a href="#Python-基础" class="headerlink" title="Python 基础"></a>Python 基础</h1><p><a href="http://www.liaoxuefeng.com/wikipage/001431658624177ea4f8fcb06bc4d0e8aab2fd7aa65dd95000" target="_blank" rel="noopener">数据类型和变量</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line">n = <span class="number">123</span></span><br><span class="line">f = <span class="number">456.789</span></span><br><span class="line">s1 = <span class="string">'Hello, world'</span></span><br><span class="line">s2 = <span class="string">'Hello, \'Adam\''</span></span><br><span class="line">s3 = <span class="string">r'Hello, "Bart"'</span></span><br><span class="line">s4 = <span class="string">r'''Hello,</span></span><br><span class="line"><span class="string">Lisa!'''</span></span><br><span class="line"></span><br><span class="line">print(<span class="string">'n ='</span>, n)</span><br><span class="line">print(<span class="string">'f ='</span>, f)</span><br><span class="line">print(<span class="string">'s1 ='</span>, s1)</span><br><span class="line">print(<span class="string">'s2 ='</span>, s2)</span><br><span class="line">print(<span class="string">'s3 ='</span>, s3)</span><br><span class="line">print(<span class="string">'s4 ='</span>, s4)</span><br></pre></td></tr></table></figure>
+<p><a href="http://www.liaoxuefeng.com/wikipage/001431664106267f12e9bef7ee14cf6a8776a479bdec9b9000" target="_blank" rel="noopener">字符串和编码</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line">s1 = <span class="number">72</span></span><br><span class="line">s2 = <span class="number">85</span></span><br><span class="line"></span><br><span class="line">r = (s2 - s1) / s1 * <span class="number">100</span></span><br><span class="line"></span><br><span class="line">print(<span class="string">'小明成绩提升的百分点：%.1f%%'</span> % r)</span><br></pre></td></tr></table></figure>
+<p><a href="http://www.liaoxuefeng.com/wikipage/0014316724772904521142196b74a3f8abf93d8e97c6ee6000" target="_blank" rel="noopener">使用 list 和 tuple</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line">L = [</span><br><span class="line">    [<span class="string">'Apple'</span>, <span class="string">'Google'</span>, <span class="string">'Microsoft'</span>],</span><br><span class="line">    [<span class="string">'Java'</span>, <span class="string">'Python'</span>, <span class="string">'Ruby'</span>, <span class="string">'PHP'</span>],</span><br><span class="line">    [<span class="string">'Adam'</span>, <span class="string">'Bart'</span>, <span class="string">'Lisa'</span>]</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">print(L[<span class="number">0</span>][<span class="number">0</span>])</span><br><span class="line">print(L[<span class="number">1</span>][<span class="number">1</span>])</span><br><span class="line">print(L[<span class="number">2</span>][<span class="number">2</span>])</span><br></pre></td></tr></table></figure>
+<p><a href="http://www.liaoxuefeng.com/wikipage/001431675624710bb20e9734ef343bbb4bd64bcd37d4b52000" target="_blank" rel="noopener">条件判断</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line">height = <span class="number">1.75</span></span><br><span class="line">weight = <span class="number">80.5</span></span><br><span class="line"></span><br><span class="line">bmi = weight / (height * height)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> bmi &lt;= <span class="number">18.5</span>:</span><br><span class="line">    print(<span class="string">'过轻'</span>)</span><br><span class="line"><span class="keyword">elif</span> bmi &lt;= <span class="number">25</span>:</span><br><span class="line">    print(<span class="string">'正常'</span>)</span><br><span class="line"><span class="keyword">elif</span> bmi &lt;= <span class="number">28</span>:</span><br><span class="line">    print(<span class="string">'过重'</span>)</span><br><span class="line"><span class="keyword">elif</span> bmi &lt;= <span class="number">32</span>:</span><br><span class="line">    print(<span class="string">'肥胖'</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    print(<span class="string">'严重肥胖'</span>)</span><br></pre></td></tr></table></figure>
+<p><a href="http://www.liaoxuefeng.com/wikipage/001431676242561226b32a9ec624505bb8f723d0027b3e7000" target="_blank" rel="noopener">循环</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line">L = [<span class="string">'Bart'</span>, <span class="string">'Lisa'</span>, <span class="string">'Adam'</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> name <span class="keyword">in</span> L:</span><br><span class="line">    print(<span class="string">'Hello, %s!'</span> % name)</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h1><p><a href="http://www.liaoxuefeng.com/wikipage/0014316784721058975e02b46cc45cb836bb0827607738d000" target="_blank" rel="noopener">调用函数</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line">n1 = <span class="number">255</span></span><br><span class="line">n2 = <span class="number">1000</span></span><br><span class="line"></span><br><span class="line">print(<span class="string">'hex(%d) = %s, hex(%d) = %s'</span> % (n1, hex(n1), n2, hex(n2)))</span><br></pre></td></tr></table></figure>
+<p><a href="http://www.liaoxuefeng.com/wikipage/001431679203477b5b364aeba8c4e05a9bd4ec1b32911e2000" target="_blank" rel="noopener">定义函数</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> cmath, math</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">quadratic</span><span class="params">(a, b, c)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> a == <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="string">'A cannot be zero!'</span></span><br><span class="line">    Δ = b * b - <span class="number">4</span> * a * c</span><br><span class="line">    <span class="keyword">if</span> Δ &gt; <span class="number">0</span>:</span><br><span class="line">        x1 = (-b + math.sqrt(Δ)) / (<span class="number">2</span> * a)</span><br><span class="line">        x2 = (-b - math.sqrt(Δ)) / (<span class="number">2</span> * a)</span><br><span class="line">        <span class="keyword">return</span> x1, x2</span><br><span class="line">    <span class="keyword">elif</span> Δ == <span class="number">0</span>:</span><br><span class="line">        x1 = -b / (<span class="number">2</span> * a)</span><br><span class="line">        <span class="keyword">return</span> x1</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        x1 = (-b + cmath.sqrt(Δ)) / (<span class="number">2</span> * a)</span><br><span class="line">        x2 = (-b - cmath.sqrt(Δ)) / (<span class="number">2</span> * a)</span><br><span class="line">        <span class="keyword">return</span> x1, x2</span><br><span class="line"></span><br><span class="line">print(quadratic(<span class="number">2</span>, <span class="number">3</span>, <span class="number">1</span>))</span><br><span class="line">print(quadratic(<span class="number">1</span>, <span class="number">3</span>, <span class="number">-4</span>))</span><br></pre></td></tr></table></figure>
+<p><a href="http://www.liaoxuefeng.com/wikipage/001431756044276a15558a759ec43de8e30eb0ed169fb11000" target="_blank" rel="noopener">递归函数</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">move</span><span class="params">(n, a, b, c)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> n &lt;= <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    move(n - <span class="number">1</span>, a, c, b)</span><br><span class="line">    print(a, <span class="string">'--&gt;'</span>, c)</span><br><span class="line">    move(n - <span class="number">1</span>, b, a, c)</span><br><span class="line"></span><br><span class="line">move(<span class="number">3</span>, <span class="string">'A'</span>, <span class="string">'B'</span>, <span class="string">'C'</span>)</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="高级特性"><a href="#高级特性" class="headerlink" title="高级特性"></a>高级特性</h1><p><a href="http://www.liaoxuefeng.com/wikipage/001431779637539089fd627094a43a8a7c77e6102e3a811000" target="_blank" rel="noopener">列表生成式</a></p>
+<p>第一版</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line">L1 = [<span class="string">'Hello'</span>, <span class="string">'World'</span>, <span class="number">18</span>, <span class="string">'Apple'</span>, <span class="keyword">None</span>]</span><br><span class="line">L2 = []</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> L1:</span><br><span class="line">    <span class="keyword">if</span> isinstance(x, str):</span><br><span class="line">        L2.append(x)</span><br><span class="line"></span><br><span class="line">L2 = [x.lower() <span class="keyword">for</span> x <span class="keyword">in</span> L2]</span><br><span class="line"></span><br><span class="line">print(L2)</span><br></pre></td></tr></table></figure>
+<p>第二版</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line">L1 = [<span class="string">'Hello'</span>, <span class="string">'World'</span>, <span class="number">18</span>, <span class="string">'Apple'</span>, <span class="keyword">None</span>]</span><br><span class="line">L2 = []</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> L1:</span><br><span class="line">    <span class="keyword">if</span> isinstance(x, str):</span><br><span class="line">        L2.append(x.lower())</span><br><span class="line"></span><br><span class="line">print(L2)</span><br></pre></td></tr></table></figure>
+<p>第三版</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line">L1 = [<span class="string">'Hello'</span>, <span class="string">'World'</span>, <span class="number">18</span>, <span class="string">'Apple'</span>, <span class="keyword">None</span>]</span><br><span class="line">L2 = [x.lower() <span class="keyword">for</span> x <span class="keyword">in</span> L1 <span class="keyword">if</span> isinstance(x, str)]</span><br><span class="line"></span><br><span class="line">print(L2)</span><br></pre></td></tr></table></figure>
+<p><a href="http://www.liaoxuefeng.com/wikipage/0014317799226173f45ce40636141b6abc8424e12b5fb27000" target="_blank" rel="noopener">生成器</a></p>
+<p>第一版</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">triangles</span><span class="params">()</span>:</span></span><br><span class="line">    L = [<span class="number">1</span>]</span><br><span class="line">    <span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">        <span class="keyword">yield</span> L</span><br><span class="line">        L.append(<span class="number">0</span>)</span><br><span class="line">        L = [L[x] + L[x - <span class="number">1</span>] <span class="keyword">for</span> x <span class="keyword">in</span> range(len(L))]</span><br><span class="line"></span><br><span class="line">n = <span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> t <span class="keyword">in</span> triangles():</span><br><span class="line">    print(t)</span><br><span class="line">    n = n + <span class="number">1</span></span><br><span class="line">    <span class="keyword">if</span> n == <span class="number">10</span>:</span><br><span class="line">        <span class="keyword">break</span></span><br></pre></td></tr></table></figure>
+<p>第二版</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">triangles</span><span class="params">()</span>:</span></span><br><span class="line">    L = [<span class="number">1</span>]</span><br><span class="line">    <span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">        <span class="keyword">yield</span> L</span><br><span class="line">        L = [<span class="number">1</span>] + [L[x] + L[x + <span class="number">1</span>] <span class="keyword">for</span> x <span class="keyword">in</span> range(len(L) - <span class="number">1</span>)] + [<span class="number">1</span>]</span><br><span class="line"></span><br><span class="line">n = <span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> t <span class="keyword">in</span> triangles():</span><br><span class="line">    print(t)</span><br><span class="line">    n = n + <span class="number">1</span></span><br><span class="line">    <span class="keyword">if</span> n == <span class="number">10</span>:</span><br><span class="line">        <span class="keyword">break</span></span><br></pre></td></tr></table></figure>
+<p>第三版</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">triangles</span><span class="params">(s)</span>:</span></span><br><span class="line">    L = [<span class="number">1</span>]</span><br><span class="line">    <span class="keyword">while</span> len(L) &lt;= s:</span><br><span class="line">        <span class="keyword">yield</span> L</span><br><span class="line">        L.append(<span class="number">0</span>)</span><br><span class="line">        L = [L[x] + L[x - <span class="number">1</span>] <span class="keyword">for</span> x <span class="keyword">in</span> range(len(L))]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> t <span class="keyword">in</span> triangles(<span class="number">10</span>):</span><br><span class="line">    print(t)</span><br></pre></td></tr></table></figure>
+<p>第四版</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">triangles</span><span class="params">(s)</span>:</span></span><br><span class="line">    L = [<span class="number">1</span>]</span><br><span class="line">    <span class="keyword">while</span> len(L) &lt;= s:</span><br><span class="line">        <span class="keyword">yield</span> L</span><br><span class="line">        L = [<span class="number">1</span>] + [L[x] + L[x + <span class="number">1</span>] <span class="keyword">for</span> x <span class="keyword">in</span> range(len(L) - <span class="number">1</span>)] + [<span class="number">1</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> t <span class="keyword">in</span> triangles(<span class="number">10</span>):</span><br><span class="line">    print(t)</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="函数式编程"><a href="#函数式编程" class="headerlink" title="函数式编程"></a>函数式编程</h1><p><a href="http://www.liaoxuefeng.com/wikipage/0014317852443934a86aa5bb5ea47fbbd5f35282b331335000" target="_blank" rel="noopener">map / reduce</a></p>
+<p>第一题</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">normalize</span><span class="params">(name)</span>:</span></span><br><span class="line">    name = name[<span class="number">0</span>].upper() + name[<span class="number">1</span>:].lower()</span><br><span class="line">    <span class="keyword">return</span> name</span><br><span class="line"></span><br><span class="line">L1 = [<span class="string">'adam'</span>, <span class="string">'LISA'</span>, <span class="string">'barT'</span>]</span><br><span class="line">L2 = list(map(normalize, L1))</span><br><span class="line"></span><br><span class="line">print(L2)</span><br></pre></td></tr></table></figure>
+<p>第二题第一版</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> functools <span class="keyword">import</span> reduce</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">prod</span><span class="params">(L)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> reduce(<span class="keyword">lambda</span> x, y: x * y, L)</span><br><span class="line"></span><br><span class="line">print(<span class="string">'3 * 5 * 7 * 9 ='</span>, prod([<span class="number">3</span>, <span class="number">5</span>, <span class="number">7</span>, <span class="number">9</span>]))</span><br></pre></td></tr></table></figure>
+<p>第二题第二版</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> functools <span class="keyword">import</span> reduce</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">prod</span><span class="params">(x, y)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> x * y</span><br><span class="line"></span><br><span class="line">print(<span class="string">'3 * 5 * 7 * 9 ='</span>, reduce(prod, [<span class="number">3</span>, <span class="number">5</span>, <span class="number">7</span>, <span class="number">9</span>]))</span><br></pre></td></tr></table></figure>
+<p>第三题第一版</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> functools <span class="keyword">import</span> reduce</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">char2num</span><span class="params">(s)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> &#123;<span class="string">'0'</span>: <span class="number">0</span>, <span class="string">'1'</span>: <span class="number">1</span>, <span class="string">'2'</span>: <span class="number">2</span>, <span class="string">'3'</span>: <span class="number">3</span>, <span class="string">'4'</span>: <span class="number">4</span>, <span class="string">'5'</span>: <span class="number">5</span>, <span class="string">'6'</span>: <span class="number">6</span>, <span class="string">'7'</span>: <span class="number">7</span>, <span class="string">'8'</span>: <span class="number">8</span>, <span class="string">'9'</span>: <span class="number">9</span>&#125;[s]</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">str2float</span><span class="params">(s)</span>:</span></span><br><span class="line">    L = s.split(<span class="string">'.'</span>)</span><br><span class="line">    integer = reduce(<span class="keyword">lambda</span> x, y: x * <span class="number">10</span> + y, map(char2num, L[<span class="number">0</span>]))</span><br><span class="line">    decimal = reduce(<span class="keyword">lambda</span> x, y: x * <span class="number">0.1</span> + y, map(char2num, reversed(L[<span class="number">1</span>])))</span><br><span class="line">    <span class="keyword">return</span> integer + decimal * <span class="number">0.1</span></span><br><span class="line"></span><br><span class="line">print(<span class="string">'str2float(\'123.456\') ='</span>, str2float(<span class="string">'123.456'</span>))</span><br></pre></td></tr></table></figure>
+<p>第三题第二版</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> functools <span class="keyword">import</span> reduce</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">char2num</span><span class="params">(s)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> &#123;<span class="string">'0'</span>: <span class="number">0</span>, <span class="string">'1'</span>: <span class="number">1</span>, <span class="string">'2'</span>: <span class="number">2</span>, <span class="string">'3'</span>: <span class="number">3</span>, <span class="string">'4'</span>: <span class="number">4</span>, <span class="string">'5'</span>: <span class="number">5</span>, <span class="string">'6'</span>: <span class="number">6</span>, <span class="string">'7'</span>: <span class="number">7</span>, <span class="string">'8'</span>: <span class="number">8</span>, <span class="string">'9'</span>: <span class="number">9</span>&#125;[s]</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">str2int</span><span class="params">(s)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> reduce(<span class="keyword">lambda</span> x, y: x * <span class="number">10</span> + y, map(char2num, s))</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">str2float</span><span class="params">(s)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> reduce(<span class="keyword">lambda</span> x, y: str2int(x) + str2int(y) / <span class="number">10</span> ** len(y), s.split(<span class="string">'.'</span>))</span><br><span class="line"></span><br><span class="line">print(<span class="string">'str2float(\'123.456\') ='</span>, str2float(<span class="string">'123.456'</span>))</span><br></pre></td></tr></table></figure>
+<p>第三题第三版</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> functools <span class="keyword">import</span> reduce</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">char2num</span><span class="params">(s)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> &#123;<span class="string">'0'</span>: <span class="number">0</span>, <span class="string">'1'</span>: <span class="number">1</span>, <span class="string">'2'</span>: <span class="number">2</span>, <span class="string">'3'</span>: <span class="number">3</span>, <span class="string">'4'</span>: <span class="number">4</span>, <span class="string">'5'</span>: <span class="number">5</span>, <span class="string">'6'</span>: <span class="number">6</span>, <span class="string">'7'</span>: <span class="number">7</span>, <span class="string">'8'</span>: <span class="number">8</span>, <span class="string">'9'</span>: <span class="number">9</span>&#125;[s]</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">str2float</span><span class="params">(s)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> reduce(<span class="keyword">lambda</span> x, y: x * <span class="number">10</span> + y, map(char2num, s.replace(<span class="string">'.'</span>, <span class="string">''</span>))) / <span class="number">10</span> ** len(s[s.find(<span class="string">'.'</span>) + <span class="number">1</span>:])</span><br><span class="line"></span><br><span class="line">print(<span class="string">'str2float(\'123.456\') ='</span>, str2float(<span class="string">'123.456'</span>))</span><br></pre></td></tr></table></figure>
+<p><a href="http://www.liaoxuefeng.com/wikipage/001431821084171d2e0f22e7cc24305ae03aa0214d0ef29000" target="_blank" rel="noopener">filter</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">is_palindrome</span><span class="params">(n)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> n == int(str(n)[::<span class="number">-1</span>])</span><br><span class="line"></span><br><span class="line">output = filter(is_palindrome, range(<span class="number">1</span>, <span class="number">1000</span>))</span><br><span class="line"></span><br><span class="line">print(list(output))</span><br></pre></td></tr></table></figure>
+<p><a href="http://www.liaoxuefeng.com/wikipage/0014318230588782cac105d0d8a40c6b450a232748dc854000" target="_blank" rel="noopener">sorted</a></p>
+<p>第一题第一版</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line">L = [(<span class="string">'Bob'</span>, <span class="number">75</span>), (<span class="string">'Adam'</span>, <span class="number">92</span>), (<span class="string">'Bart'</span>, <span class="number">66</span>), (<span class="string">'Lisa'</span>, <span class="number">88</span>)]</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">by_name</span><span class="params">(t)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> t[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line">L2 = sorted(L, key = by_name)</span><br><span class="line"></span><br><span class="line">print(L2)</span><br></pre></td></tr></table></figure>
+<p>第一题第二版</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line">L = [(<span class="string">'Bob'</span>, <span class="number">75</span>), (<span class="string">'Adam'</span>, <span class="number">92</span>), (<span class="string">'Bart'</span>, <span class="number">66</span>), (<span class="string">'Lisa'</span>, <span class="number">88</span>)]</span><br><span class="line">L2 = sorted(L, key = <span class="keyword">lambda</span> x: x[<span class="number">0</span>])</span><br><span class="line"></span><br><span class="line">print(L2)</span><br></pre></td></tr></table></figure>
+<p>第二题第一版</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line">L = [(<span class="string">'Bob'</span>, <span class="number">75</span>), (<span class="string">'Adam'</span>, <span class="number">92</span>), (<span class="string">'Bart'</span>, <span class="number">66</span>), (<span class="string">'Lisa'</span>, <span class="number">88</span>)]</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">by_score</span><span class="params">(t)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> t[<span class="number">1</span>]</span><br><span class="line"></span><br><span class="line">L2 = sorted(L, key = by_score, reverse = <span class="keyword">True</span>)</span><br><span class="line"></span><br><span class="line">print(L2)</span><br></pre></td></tr></table></figure>
+<p>第二题第二版</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line">L = [(<span class="string">'Bob'</span>, <span class="number">75</span>), (<span class="string">'Adam'</span>, <span class="number">92</span>), (<span class="string">'Bart'</span>, <span class="number">66</span>), (<span class="string">'Lisa'</span>, <span class="number">88</span>)]</span><br><span class="line">L2 = sorted(L, key = <span class="keyword">lambda</span> x: x[<span class="number">1</span>], reverse = <span class="keyword">True</span>)</span><br><span class="line"></span><br><span class="line">print(L2)</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="面向对象高级编程"><a href="#面向对象高级编程" class="headerlink" title="面向对象高级编程"></a>面向对象高级编程</h1><p><a href="http://www.liaoxuefeng.com/wikipage/00143186781871161bc8d6497004764b398401a401d4cce000" target="_blank" rel="noopener">使用 @property</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Screen</span><span class="params">(object)</span>:</span></span><br><span class="line"><span class="meta">    @property</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">width</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self._width</span><br><span class="line"></span><br><span class="line"><span class="meta">    @width.setter</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">width</span><span class="params">(self, value)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> isinstance(value, int):</span><br><span class="line">            <span class="keyword">raise</span> ValueError(<span class="string">'width must be an integer!'</span>)</span><br><span class="line">        <span class="keyword">if</span> value &lt;= <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">raise</span> ValueError(<span class="string">'width must be greater than 0!'</span>)</span><br><span class="line">        self._width = value</span><br><span class="line"></span><br><span class="line"><span class="meta">    @property</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">height</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self._height</span><br><span class="line"></span><br><span class="line"><span class="meta">    @height.setter</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">height</span><span class="params">(self, value)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> isinstance(value, int):</span><br><span class="line">            <span class="keyword">raise</span> ValueError(<span class="string">'height must be an integer!'</span>)</span><br><span class="line">        <span class="keyword">if</span> value &lt;= <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">raise</span> ValueError(<span class="string">'height must be greater than 0!'</span>)</span><br><span class="line">        self._height = value</span><br><span class="line"></span><br><span class="line"><span class="meta">    @property</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">resolution</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self._width * self._height</span><br><span class="line"></span><br><span class="line">s = Screen()</span><br><span class="line">s.width = <span class="number">1024</span></span><br><span class="line">s.height = <span class="number">768</span></span><br><span class="line"></span><br><span class="line">print(s.resolution)</span><br><span class="line"><span class="keyword">assert</span> s.resolution == <span class="number">786432</span>, <span class="string">'1024 * 768 = %d ?'</span> % s.resolution</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="错误、调试和测试"><a href="#错误、调试和测试" class="headerlink" title="错误、调试和测试"></a>错误、调试和测试</h1><p><a href="http://www.liaoxuefeng.com/wikipage/0014319170285543a4d04751f8846908770660de849f285000" target="_blank" rel="noopener">文档测试</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fact</span><span class="params">(n)</span>:</span></span><br><span class="line">    <span class="string">'''</span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; fact('1')</span></span><br><span class="line"><span class="string">    Traceback (most recent call last):</span></span><br><span class="line"><span class="string">    ...</span></span><br><span class="line"><span class="string">    TypeError: unorderable types: str() &lt; int()</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; fact(-1)</span></span><br><span class="line"><span class="string">    Traceback (most recent call last):</span></span><br><span class="line"><span class="string">    ...</span></span><br><span class="line"><span class="string">    ValueError</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; fact(0)</span></span><br><span class="line"><span class="string">    Traceback (most recent call last):</span></span><br><span class="line"><span class="string">    ···</span></span><br><span class="line"><span class="string">    ValueError</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; fact(1)</span></span><br><span class="line"><span class="string">    1</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; fact(10)</span></span><br><span class="line"><span class="string">    3628800</span></span><br><span class="line"><span class="string">    '''</span></span><br><span class="line">    <span class="keyword">if</span> n &lt; <span class="number">1</span>:</span><br><span class="line">        <span class="keyword">raise</span> ValueError()</span><br><span class="line">    <span class="keyword">if</span> n == <span class="number">1</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> n * fact(n - <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    <span class="keyword">import</span> doctest</span><br><span class="line">    doctest.testmod()</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="IO-编程"><a href="#IO-编程" class="headerlink" title="IO 编程"></a>IO 编程</h1><p><a href="http://www.liaoxuefeng.com/wikipage/001431925324119bac1bc7979664b4fa9843c0e5fcdcf1e000" target="_blank" rel="noopener">操作文件和目录</a></p>
+<p>第一题</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> datetime</span><br><span class="line"></span><br><span class="line">print(<span class="string">'LastWriteTime          Length  Name'</span>)</span><br><span class="line">print(<span class="string">'-----------------------------------------------'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> f <span class="keyword">in</span> os.listdir():</span><br><span class="line">    mtime = datetime.fromtimestamp(os.path.getmtime(f))</span><br><span class="line">    fsize = os.path.getsize(f)</span><br><span class="line">    flag = <span class="string">'/'</span> <span class="keyword">if</span> os.path.isdir(f) <span class="keyword">else</span> <span class="string">''</span></span><br><span class="line">    print(<span class="string">'%s  %8s  %s%s'</span> % (mtime, fsize, f, flag))</span><br></pre></td></tr></table></figure>
+<p>第二题第一版</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line">key = input(<span class="string">'Please enter what you want to search:\n'</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">find_files</span><span class="params">(path, key)</span>:</span></span><br><span class="line">    abspath = os.path.abspath(path)</span><br><span class="line">    <span class="keyword">for</span> x <span class="keyword">in</span> os.listdir(path):</span><br><span class="line">        absfile = os.path.join(path, x)</span><br><span class="line">        <span class="keyword">if</span> os.path.isfile(absfile):</span><br><span class="line">            <span class="keyword">if</span> key <span class="keyword">in</span> os.path.split(x)[<span class="number">1</span>]:</span><br><span class="line">                print(os.path.abspath(absfile))</span><br><span class="line">        <span class="keyword">if</span> os.path.isdir(absfile):</span><br><span class="line">            find_files(absfile, key)</span><br><span class="line"></span><br><span class="line">find_files(<span class="string">'.'</span>, key)</span><br></pre></td></tr></table></figure>
+<p>第二题第二版</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line">key = input(<span class="string">'Please enter what you want to search:\n'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> os.walk(<span class="string">'.'</span>):</span><br><span class="line">    <span class="keyword">for</span> y <span class="keyword">in</span> x[<span class="number">2</span>]:</span><br><span class="line">        <span class="keyword">if</span> key <span class="keyword">in</span> os.path.split(y)[<span class="number">1</span>]:</span><br><span class="line">            print(os.path.join(os.path.abspath(x[<span class="number">0</span>]), y))</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a><a href="http://www.liaoxuefeng.com/wikipage/00143193331387014ccd1040c814dee8b2164bb4f064cff000" target="_blank" rel="noopener">正则表达式</a></h1><p>第一题</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line">text = <span class="string">'''someone@gmail.com</span></span><br><span class="line"><span class="string">bill.gates@microsoft.com'''</span></span><br><span class="line">re_email = <span class="string">'([a-zA-Z][\w.-]+@[\w.]+[a-zA-Z])'</span></span><br><span class="line"></span><br><span class="line">re.match(re_email, text)</span><br><span class="line"></span><br><span class="line">print(<span class="string">'Pass.'</span>)</span><br></pre></td></tr></table></figure>
+<p>第二题</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line">text = <span class="string">'&lt;Tom Paris&gt; tom@voyager.org'</span></span><br><span class="line">re_email = <span class="string">'(&lt;[a-zA-Z\s]+&gt;) ([a-zA-Z][\w.-]+@[\w.]+[a-zA-Z])'</span></span><br><span class="line"></span><br><span class="line">re.match(re_email, text).group(<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line">print(<span class="string">'Pass.'</span>)</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="常用内建模块"><a href="#常用内建模块" class="headerlink" title="常用内建模块"></a>常用内建模块</h1><p><a href="http://www.liaoxuefeng.com/wikipage/001431937554888869fb52b812243dda6103214cd61d0c2000" target="_blank" rel="noopener">datetime</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> datetime, timezone, timedelta</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">to_timestamp</span><span class="params">(dt_str, tz_str)</span>:</span></span><br><span class="line">    tz = re.match(<span class="string">'UTC([+-]\d+)'</span>, tz_str).group(<span class="number">1</span>)</span><br><span class="line">    tz = timezone(timedelta(hours = int(tz)))</span><br><span class="line">    dt = datetime.strptime(dt_str, <span class="string">'%Y-%m-%d %H:%M:%S'</span>)</span><br><span class="line">    dt = dt.replace(tzinfo = tz).timestamp()</span><br><span class="line">    <span class="keyword">return</span> dt</span><br><span class="line"></span><br><span class="line">t1 = to_timestamp(<span class="string">'2015-6-1 08:10:30'</span>, <span class="string">'UTC+7:00'</span>)</span><br><span class="line"><span class="keyword">assert</span> t1 == <span class="number">1433121030.0</span>, t1</span><br><span class="line"></span><br><span class="line">t2 = to_timestamp(<span class="string">'2015-5-31 16:10:30'</span>, <span class="string">'UTC-09:00'</span>)</span><br><span class="line"><span class="keyword">assert</span> t2 == <span class="number">1433121030.0</span>, t2</span><br><span class="line"></span><br><span class="line">print(<span class="string">'Pass.'</span>)</span><br></pre></td></tr></table></figure>
+<p><a href="http://www.liaoxuefeng.com/wikipage/001431954588961d6b6f51000ca4279a3415ce14ed9d709000" target="_blank" rel="noopener">base64</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">safe_base64_decode</span><span class="params">(s)</span>:</span></span><br><span class="line">    s += <span class="string">b'='</span> * (len(s) % <span class="number">4</span>)</span><br><span class="line">    <span class="keyword">return</span> base64.b64decode(s)</span><br><span class="line"></span><br><span class="line"><span class="keyword">assert</span> <span class="string">b'abcd'</span> == safe_base64_decode(<span class="string">b'YWJjZA=='</span>), safe_base64_decode(<span class="string">'YWJjZA=='</span>)</span><br><span class="line"><span class="keyword">assert</span> <span class="string">b'abcd'</span> == safe_base64_decode(<span class="string">b'YWJjZA'</span>), safe_base64_decode(<span class="string">'YWJjZA'</span>)</span><br><span class="line"></span><br><span class="line">print(<span class="string">'Pass.'</span>)</span><br></pre></td></tr></table></figure>
+<p><a href="http://www.liaoxuefeng.com/wikipage/001431955007656a66f831e208e4c189b8a9e9f3f25ba53000" target="_blank" rel="noopener">struct</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> struct</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'test.bmp'</span>, <span class="string">'rb'</span>) <span class="keyword">as</span> file:</span><br><span class="line">    info = struct.unpack(<span class="string">'&lt;ccIIIIIIHH'</span>, file.read(<span class="number">30</span>))</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> info[<span class="number">0</span>] == <span class="string">b'B'</span> <span class="keyword">and</span> info[<span class="number">1</span>] == <span class="string">b'M'</span>:</span><br><span class="line">    print(<span class="string">'Size: %d * %d, Color: %d'</span> % (info[<span class="number">6</span>], info[<span class="number">7</span>], info[<span class="number">9</span>]))</span><br></pre></td></tr></table></figure>
+<p><a href="http://www.liaoxuefeng.com/wikipage/0014319556588648dd1fb0047a34d0c945ee33e8f4c90cc000" target="_blank" rel="noopener">hashlib</a></p>
+<p>第一题</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> hashlib</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">calc_md5</span><span class="params">(password)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> hashlib.md5(password.encode(<span class="string">'utf-8'</span>)).hexdigest()</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">login</span><span class="params">(user, password)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> user <span class="keyword">in</span> db:</span><br><span class="line">        <span class="keyword">if</span> calc_md5(password) == db[user]:</span><br><span class="line">            print(<span class="string">'Username and password are true.'</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            print(<span class="string">'Password is not true.'</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        print(<span class="string">'%s is not registered.'</span> % user)</span><br><span class="line"></span><br><span class="line">db = &#123;<span class="string">'michael'</span>: <span class="string">'e10adc3949ba59abbe56e057f20f883e'</span>,</span><br><span class="line">      <span class="string">'bob'</span>: <span class="string">'878ef96e86145580c38c87f0410ad153'</span>,</span><br><span class="line">      <span class="string">'alice'</span>: <span class="string">'99b1c2188db85afee403b1536010c2c9'</span>&#125;</span><br><span class="line"></span><br><span class="line">user = input(<span class="string">'Please enter your username:\n'</span>)</span><br><span class="line">password = input(<span class="string">'Please enter your password:\n'</span>)</span><br><span class="line"></span><br><span class="line">login(user, password)</span><br></pre></td></tr></table></figure>
+<p>第二题</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> hashlib</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">ask</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">global</span> choice</span><br><span class="line">    choice = input(<span class="string">'Do you want to login(l) or to register(r)?\n'</span>)</span><br><span class="line">    <span class="keyword">if</span> choice == <span class="string">'l'</span>:</span><br><span class="line">        user_input()</span><br><span class="line">        login(username, password)</span><br><span class="line">    <span class="keyword">elif</span> choice == <span class="string">'r'</span>:</span><br><span class="line">        user_input()</span><br><span class="line">        register(username, password)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        print(<span class="string">'Error!'</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">user_input</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">global</span> username, password</span><br><span class="line">    username = input(<span class="string">'Please enter your username:\n'</span>)</span><br><span class="line">    password = input(<span class="string">'Please enter your password:\n'</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_md5</span><span class="params">(pw)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> hashlib.md5(pw.encode(<span class="string">'utf-8'</span>)).hexdigest()</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">login</span><span class="params">(username, password)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> username <span class="keyword">in</span> db:</span><br><span class="line">        <span class="keyword">if</span> get_md5(password + username + <span class="string">'the-Salt'</span>) == db[username]:</span><br><span class="line">            print(<span class="string">'Username and password are true.'</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            print(<span class="string">'Password is not true.'</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        print(<span class="string">'%s is not registered.'</span> % username)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">register</span><span class="params">(username, password)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> username <span class="keyword">not</span> <span class="keyword">in</span> db:</span><br><span class="line">        db[username] = get_md5(password + username + <span class="string">'the-Salt'</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        print(<span class="string">'%s is registered.'</span> % username)</span><br><span class="line"></span><br><span class="line">db = &#123;&#125;</span><br><span class="line"></span><br><span class="line">ask()</span><br><span class="line">ask() <span class="keyword">if</span> choice == <span class="string">'r'</span> <span class="keyword">else</span> <span class="keyword">None</span></span><br></pre></td></tr></table></figure>
+<p><a href="http://www.liaoxuefeng.com/wikipage/001432002075057b594f70ecb58445da6ef6071aca880af000" target="_blank" rel="noopener">XML</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> xml.parsers.expat <span class="keyword">import</span> ParserCreate</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">WeatherSaxHandler</span><span class="params">(object)</span>:</span></span><br><span class="line">    info = &#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">start_element</span><span class="params">(self, name, attrs)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> name == <span class="string">'yweather:location'</span>:</span><br><span class="line">            self.info[<span class="string">'city'</span>] = attrs[<span class="string">'city'</span>]</span><br><span class="line">            self.info[<span class="string">'country'</span>] = attrs[<span class="string">'country'</span>]</span><br><span class="line">        <span class="keyword">if</span> name == <span class="string">'yweather:forecast'</span>:</span><br><span class="line">            <span class="keyword">if</span> <span class="string">'today'</span> <span class="keyword">not</span> <span class="keyword">in</span> self.info:</span><br><span class="line">                self.info[<span class="string">'today'</span>] = &#123;&#125;</span><br><span class="line">                self.info[<span class="string">'today'</span>][<span class="string">'low'</span>] = int(attrs[<span class="string">'low'</span>])</span><br><span class="line">                self.info[<span class="string">'today'</span>][<span class="string">'high'</span>] = int(attrs[<span class="string">'high'</span>])</span><br><span class="line">                self.info[<span class="string">'today'</span>][<span class="string">'text'</span>] = attrs[<span class="string">'text'</span>]</span><br><span class="line">            <span class="keyword">elif</span> <span class="string">'tomorrow'</span> <span class="keyword">not</span> <span class="keyword">in</span> self.info:</span><br><span class="line">                self.info[<span class="string">'tomorrow'</span>] = &#123;&#125;</span><br><span class="line">                self.info[<span class="string">'tomorrow'</span>][<span class="string">'low'</span>] = int(attrs[<span class="string">'low'</span>])</span><br><span class="line">                self.info[<span class="string">'tomorrow'</span>][<span class="string">'high'</span>] = int(attrs[<span class="string">'high'</span>])</span><br><span class="line">                self.info[<span class="string">'tomorrow'</span>][<span class="string">'text'</span>] = attrs[<span class="string">'text'</span>]</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">parse_weather</span><span class="params">(xml)</span>:</span></span><br><span class="line">    handler = WeatherSaxHandler()</span><br><span class="line">    parser = ParserCreate()</span><br><span class="line">    parser.StartElementHandler = handler.start_element</span><br><span class="line">    parser.Parse(xml)</span><br><span class="line">    <span class="keyword">return</span> handler.info</span><br><span class="line"></span><br><span class="line">data = <span class="string">r'''&lt;?xml version="1.0" encoding="UTF-8" standalone="yes" ?&gt;</span></span><br><span class="line"><span class="string">            &lt;rss version="2.0" xmlns:yweather="http://xml.weather.yahoo.com/ns/rss/1.0" xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"&gt;</span></span><br><span class="line"><span class="string">                &lt;channel&gt;</span></span><br><span class="line"><span class="string">                    &lt;title&gt;Yahoo! Weather - Beijing, CN&lt;/title&gt;</span></span><br><span class="line"><span class="string">                    &lt;lastBuildDate&gt;Wed, 27 May 2015 11:00 am CST&lt;/lastBuildDate&gt;</span></span><br><span class="line"><span class="string">                    &lt;yweather:location city="Beijing" region="" country="China"/&gt;</span></span><br><span class="line"><span class="string">                    &lt;yweather:units temperature="C" distance="km" pressure="mb" speed="km/h"/&gt;</span></span><br><span class="line"><span class="string">                    &lt;yweather:wind chill="28" direction="180" speed="14.48" /&gt;</span></span><br><span class="line"><span class="string">                    &lt;yweather:atmosphere humidity="53" visibility="2.61" pressure="1006.1" rising="0" /&gt;</span></span><br><span class="line"><span class="string">                    &lt;yweather:astronomy sunrise="4:51 am" sunset="7:32 pm"/&gt;</span></span><br><span class="line"><span class="string">                    &lt;item&gt;</span></span><br><span class="line"><span class="string">                        &lt;geo:lat&gt;39.91&lt;/geo:lat&gt;</span></span><br><span class="line"><span class="string">                        &lt;geo:long&gt;116.39&lt;/geo:long&gt;</span></span><br><span class="line"><span class="string">                        &lt;pubDate&gt;Wed, 27 May 2015 11:00 am CST&lt;/pubDate&gt;</span></span><br><span class="line"><span class="string">                        &lt;yweather:condition text="Haze" code="21" temp="28" date="Wed, 27 May 2015 11:00 am CST" /&gt;</span></span><br><span class="line"><span class="string">                        &lt;yweather:forecast day="Wed" date="27 May 2015" low="20" high="33" text="Partly Cloudy" code="30" /&gt;</span></span><br><span class="line"><span class="string">                        &lt;yweather:forecast day="Thu" date="28 May 2015" low="21" high="34" text="Sunny" code="32" /&gt;</span></span><br><span class="line"><span class="string">                        &lt;yweather:forecast day="Fri" date="29 May 2015" low="18" high="25" text="AM Showers" code="39" /&gt;</span></span><br><span class="line"><span class="string">                        &lt;yweather:forecast day="Sat" date="30 May 2015" low="18" high="32" text="Sunny" code="32" /&gt;</span></span><br><span class="line"><span class="string">                        &lt;yweather:forecast day="Sun" date="31 May 2015" low="20" high="37" text="Sunny" code="32" /&gt;</span></span><br><span class="line"><span class="string">                    &lt;/item&gt;</span></span><br><span class="line"><span class="string">                &lt;/channel&gt;</span></span><br><span class="line"><span class="string">            &lt;/rss&gt;</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"></span><br><span class="line">weather = parse_weather(data)</span><br><span class="line"></span><br><span class="line"><span class="keyword">assert</span> weather[<span class="string">'city'</span>] == <span class="string">'Beijing'</span>, weather[<span class="string">'city'</span>]</span><br><span class="line"><span class="keyword">assert</span> weather[<span class="string">'country'</span>] == <span class="string">'China'</span>, weather[<span class="string">'country'</span>]</span><br><span class="line"><span class="keyword">assert</span> weather[<span class="string">'today'</span>][<span class="string">'text'</span>] == <span class="string">'Partly Cloudy'</span>, weather[<span class="string">'today'</span>][<span class="string">'text'</span>]</span><br><span class="line"><span class="keyword">assert</span> weather[<span class="string">'today'</span>][<span class="string">'low'</span>] == <span class="number">20</span>, weather[<span class="string">'today'</span>][<span class="string">'low'</span>]</span><br><span class="line"><span class="keyword">assert</span> weather[<span class="string">'today'</span>][<span class="string">'high'</span>] == <span class="number">33</span>, weather[<span class="string">'today'</span>][<span class="string">'high'</span>]</span><br><span class="line"><span class="keyword">assert</span> weather[<span class="string">'tomorrow'</span>][<span class="string">'text'</span>] == <span class="string">'Sunny'</span>, weather[<span class="string">'tomorrow'</span>][<span class="string">'text'</span>]</span><br><span class="line"><span class="keyword">assert</span> weather[<span class="string">'tomorrow'</span>][<span class="string">'low'</span>] == <span class="number">21</span>, weather[<span class="string">'tomorrow'</span>][<span class="string">'low'</span>]</span><br><span class="line"><span class="keyword">assert</span> weather[<span class="string">'tomorrow'</span>][<span class="string">'high'</span>] == <span class="number">34</span>, weather[<span class="string">'tomorrow'</span>][<span class="string">'high'</span>]</span><br><span class="line"></span><br><span class="line">print(<span class="string">'Weather:'</span>, str(weather))</span><br></pre></td></tr></table></figure>
+<p><a href="http://www.liaoxuefeng.com/wikipage/0014320023122880232500da9dc4a4486ad00426f081c15000" target="_blank" rel="noopener">HTMLParser</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> urllib <span class="keyword">import</span> request</span><br><span class="line"><span class="keyword">from</span> html.parser <span class="keyword">import</span> HTMLParser</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyHTMLParser</span><span class="params">(HTMLParser)</span>:</span></span><br><span class="line">    _title = <span class="keyword">False</span></span><br><span class="line">    _time = <span class="keyword">False</span></span><br><span class="line">    _location = <span class="keyword">False</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">handle_starttag</span><span class="params">(self, tag, attrs)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="string">'class'</span>, <span class="string">'event-title'</span>) <span class="keyword">in</span> attrs:</span><br><span class="line">            self._title = <span class="keyword">True</span></span><br><span class="line">        <span class="keyword">if</span> tag == <span class="string">'time'</span>:</span><br><span class="line">            self._time = <span class="keyword">True</span></span><br><span class="line">            self.time = <span class="string">''</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="string">'class'</span>, <span class="string">'event-location'</span>) <span class="keyword">in</span> attrs:</span><br><span class="line">            self._location = <span class="keyword">True</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">handle_data</span><span class="params">(self, data)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> self._title:</span><br><span class="line">            print(data)</span><br><span class="line">        <span class="keyword">if</span> self._time:</span><br><span class="line">            self.time += data</span><br><span class="line">        <span class="keyword">if</span> self._location:</span><br><span class="line">            print(data + <span class="string">'\n'</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">handle_endtag</span><span class="params">(self, tag)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> tag == <span class="string">'h3'</span>:</span><br><span class="line">            self._title = <span class="keyword">False</span></span><br><span class="line">        <span class="keyword">if</span> tag == <span class="string">'time'</span>:</span><br><span class="line">            print(self.time)</span><br><span class="line">            self._time = <span class="keyword">False</span></span><br><span class="line">        <span class="keyword">if</span> tag == <span class="string">'span'</span>:</span><br><span class="line">            self._location = <span class="keyword">False</span></span><br><span class="line"></span><br><span class="line">html = request.urlopen(<span class="string">'https://www.python.org/events/python-events/'</span>).read()</span><br><span class="line"></span><br><span class="line">parser = MyHTMLParser()</span><br><span class="line">parser.feed(str(html))</span><br></pre></td></tr></table></figure>
+<p><a href="http://www.liaoxuefeng.com/wikipage/001432688314740a0aed473a39f47b09c8c7274c9ab6aee000" target="_blank" rel="noopener">urllib</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> urllib <span class="keyword">import</span> request</span><br><span class="line"><span class="keyword">from</span> xml.parsers.expat <span class="keyword">import</span> ParserCreate</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">WeatherSaxHandler</span><span class="params">(object)</span>:</span></span><br><span class="line">    info = &#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">start_element</span><span class="params">(self, name, attrs)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> name == <span class="string">'yweather:location'</span>:</span><br><span class="line">            self.info[<span class="string">'city'</span>] = attrs[<span class="string">'city'</span>]</span><br><span class="line">            self.info[<span class="string">'country'</span>] = attrs[<span class="string">'country'</span>]</span><br><span class="line">        <span class="keyword">if</span> name == <span class="string">'yweather:forecast'</span>:</span><br><span class="line">            <span class="keyword">if</span> <span class="string">'today'</span> <span class="keyword">not</span> <span class="keyword">in</span> self.info:</span><br><span class="line">                self.info[<span class="string">'today'</span>] = &#123;&#125;</span><br><span class="line">                self.info[<span class="string">'today'</span>][<span class="string">'low'</span>] = int(attrs[<span class="string">'low'</span>])</span><br><span class="line">                self.info[<span class="string">'today'</span>][<span class="string">'high'</span>] = int(attrs[<span class="string">'high'</span>])</span><br><span class="line">                self.info[<span class="string">'today'</span>][<span class="string">'text'</span>] = attrs[<span class="string">'text'</span>]</span><br><span class="line">            <span class="keyword">elif</span> <span class="string">'tomorrow'</span> <span class="keyword">not</span> <span class="keyword">in</span> self.info:</span><br><span class="line">                self.info[<span class="string">'tomorrow'</span>] = &#123;&#125;</span><br><span class="line">                self.info[<span class="string">'tomorrow'</span>][<span class="string">'low'</span>] = int(attrs[<span class="string">'low'</span>])</span><br><span class="line">                self.info[<span class="string">'tomorrow'</span>][<span class="string">'high'</span>] = int(attrs[<span class="string">'high'</span>])</span><br><span class="line">                self.info[<span class="string">'tomorrow'</span>][<span class="string">'text'</span>] = attrs[<span class="string">'text'</span>]</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fetch_xml</span><span class="params">(url)</span>:</span></span><br><span class="line">    handler = WeatherSaxHandler()</span><br><span class="line">    parser = ParserCreate()</span><br><span class="line">    parser.StartElementHandler = handler.start_element</span><br><span class="line">    parser.Parse(request.urlopen(url).read())</span><br><span class="line">    <span class="keyword">return</span> handler.info</span><br><span class="line"></span><br><span class="line">print(fetch_xml(<span class="string">'http://xml.weather.yahoo.com/forecastrss?u=c&amp;w=2151330'</span>))</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="访问数据库"><a href="#访问数据库" class="headerlink" title="访问数据库"></a>访问数据库</h1><p><a href="http://www.liaoxuefeng.com/wikipage/001432010494717e1db78cd172e4d52b853e7fd38d6985c000" target="_blank" rel="noopener">使用 SQLite</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> os, sqlite3</span><br><span class="line"></span><br><span class="line">db_file = os.path.join(os.path.dirname(__file__), <span class="string">'test.db'</span>)</span><br><span class="line"><span class="keyword">if</span> os.path.isfile(db_file):</span><br><span class="line">    os.remove(db_file)</span><br><span class="line"></span><br><span class="line">conn = sqlite3.connect(db_file)</span><br><span class="line">cursor = conn.cursor()</span><br><span class="line">cursor.execute(<span class="string">'create table user(id varchar(20) primary key, name varchar(20), score int)'</span>)</span><br><span class="line">cursor.execute(<span class="string">r"insert into user values ('A-001', 'Adam', 95)"</span>)</span><br><span class="line">cursor.execute(<span class="string">r"insert into user values ('A-002', 'Bart', 62)"</span>)</span><br><span class="line">cursor.execute(<span class="string">r"insert into user values ('A-003', 'Lisa', 78)"</span>)</span><br><span class="line">cursor.close()</span><br><span class="line">conn.commit()</span><br><span class="line">conn.close()</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_score_in</span><span class="params">(low, high)</span>:</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        conn = sqlite3.connect(db_file)</span><br><span class="line">        cursor = conn.cursor()</span><br><span class="line">        cursor.execute(<span class="string">'select * from user where score between ? and ?'</span>, (low, high))</span><br><span class="line">        values = cursor.fetchall()</span><br><span class="line">    <span class="keyword">finally</span>:</span><br><span class="line">        cursor.close()</span><br><span class="line">        conn.close()</span><br><span class="line">    <span class="keyword">return</span> list(map(<span class="keyword">lambda</span> x: x[<span class="number">1</span>], sorted(values, key = <span class="keyword">lambda</span> x: x[<span class="number">2</span>])))</span><br><span class="line"></span><br><span class="line"><span class="keyword">assert</span> get_score_in(<span class="number">80</span>, <span class="number">95</span>) == [<span class="string">'Adam'</span>], get_score_in(<span class="number">80</span>, <span class="number">95</span>)</span><br><span class="line"><span class="keyword">assert</span> get_score_in(<span class="number">60</span>, <span class="number">80</span>) == [<span class="string">'Bart'</span>, <span class="string">'Lisa'</span>], get_score_in(<span class="number">60</span>, <span class="number">80</span>)</span><br><span class="line"><span class="keyword">assert</span> get_score_in(<span class="number">60</span>, <span class="number">100</span>) == [<span class="string">'Bart'</span>, <span class="string">'Lisa'</span>, <span class="string">'Adam'</span>], get_score_in(<span class="number">60</span>, <span class="number">100</span>)</span><br><span class="line"></span><br><span class="line">print(<span class="string">'Pass.'</span>)</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="异步-IO"><a href="#异步-IO" class="headerlink" title="异步 IO"></a>异步 IO</h1><p><a href="http://www.liaoxuefeng.com/wikipage/00144661533005329786387b5684be385062a121e834ac7000" target="_blank" rel="noopener">async / await</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> asyncio</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">def</span> <span class="title">wget</span><span class="params">(host)</span>:</span></span><br><span class="line">    print(<span class="string">'wget %s...'</span> % host)</span><br><span class="line">    connect = asyncio.open_connection(host, <span class="number">80</span>)</span><br><span class="line">    reader, writer = <span class="keyword">await</span> connect</span><br><span class="line">    header = <span class="string">'GET / HTTP/1.0\r\nHost: %s\r\n\r\n'</span> % host</span><br><span class="line">    writer.write(header.encode(<span class="string">'utf-8'</span>))</span><br><span class="line">    <span class="keyword">await</span> writer.drain()</span><br><span class="line">    <span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">        line = <span class="keyword">await</span> reader.readline()</span><br><span class="line">        <span class="keyword">if</span> line == <span class="string">b'\r\n'</span>:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        print(<span class="string">'%s header &gt; %s'</span> % (host, line.decode(<span class="string">'utf-8'</span>).rstrip()))</span><br><span class="line">    writer.close()</span><br><span class="line"></span><br><span class="line">loop = asyncio.get_event_loop()</span><br><span class="line">tasks = [wget(host) <span class="keyword">for</span> host <span class="keyword">in</span> [<span class="string">'www.sina.com.cn'</span>, <span class="string">'www.sohu.com'</span>, <span class="string">'www.163.com'</span>]]</span><br><span class="line">loop.run_until_complete(asyncio.wait(tasks))</span><br><span class="line">loop.close()</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+
+    
+      <div>
+        
+
+
+
+  
+
+
+
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>nuomi1</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    
+    <a href="https://nuomi1.github.io/archives/2015/09/liaoxuefeng-python3-exercises.html" title="廖雪峰 Python3 练习">https://nuomi1.github.io/archives/2015/09/liaoxuefeng-python3-exercises.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC</a> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/python/" rel="tag"># python</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/archives/2015/11/university-c-exercises.html" rel="prev" title="大学 C 练习">
+                大学 C 练习 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="nuomi1">
+            
+              <p class="site-author-name" itemprop="name">nuomi1</p>
+              <p class="site-description motion-element" itemprop="description">nuomi1's blog</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">8</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">5</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">9</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/nuomi1/" title="GitHub &rarr; https://github.com/nuomi1/" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://twitter.com/nuomi1/" title="Twitter &rarr; https://twitter.com/nuomi1/" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://weibo.com/nuomi1/" title="Weibo &rarr; https://weibo.com/nuomi1/" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:nuomi1@qq.com" title="E-Mail &rarr; mailto:nuomi1@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#第一个Python程序"><span class="nav-number">1.</span> <span class="nav-text">第一个Python程序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Python-基础"><span class="nav-number">2.</span> <span class="nav-text">Python 基础</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#函数"><span class="nav-number">3.</span> <span class="nav-text">函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#高级特性"><span class="nav-number">4.</span> <span class="nav-text">高级特性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#函数式编程"><span class="nav-number">5.</span> <span class="nav-text">函数式编程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#面向对象高级编程"><span class="nav-number">6.</span> <span class="nav-text">面向对象高级编程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#错误、调试和测试"><span class="nav-number">7.</span> <span class="nav-text">错误、调试和测试</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#IO-编程"><span class="nav-number">8.</span> <span class="nav-text">IO 编程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#正则表达式"><span class="nav-number">9.</span> <span class="nav-text">正则表达式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#常用内建模块"><span class="nav-number">10.</span> <span class="nav-text">常用内建模块</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#访问数据库"><span class="nav-number">11.</span> <span class="nav-text">访问数据库</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#异步-IO"><span class="nav-number">12.</span> <span class="nav-text">异步 IO</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2015 – <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">nuomi1</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v6.6.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="//s95.cnzz.com/z_stat.php?id=1259937120&web_id=1259937120" language="JavaScript"></script>
+  </div>
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/reading_progress/reading_progress.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.6.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.6.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.6.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.6.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.6.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+  
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(function (item) {
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: true,
+        notify: false,
+        appId: 'ehvmFwB3BLTvYf4JORInQRRn-gzGzoHsz',
+        appKey: '6zj1q563yNhGInbB9zQHlJIs',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        meta:guest,
+        pageSize:'10' || 10,
+        visitor: false
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script>
+    
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+
+      Counter('get', '/classes/Counter', { where: JSON.stringify({ url }) })
+        .done(function ({ results }) {
+          if (results.length > 0) {
+            var counter = results[0];
+            
+            Counter('put', `/classes/Counter/${counter.objectId}`, JSON.stringify({ time: { "__op":"Increment", "amount":1 } }))
+            
+            .done(function () {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(counter.time + 1);
+            })
+            
+            .fail(function ({ responseJSON }) {
+                console.log('Failed to save Visitor num, with error message: ' + responseJSON.error);
+            })
+          } else {
+            
+              Counter('post', '/classes/Counter', JSON.stringify({ title: title, url: url, time: 1}))
+                .done(function () {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(1);
+                })
+                .fail(function () {
+                  console.log('Failed to create');
+                });
+            
+          }
+        })
+      .fail(function ({ responseJSON }) {
+        console.log('LeanCloud Counter Error:' + responseJSON.code + " " + responseJSON.error);
+      });
+    }
+    
+
+    $(function() {
+      $.get('https://app-router.leancloud.cn/2/route?appId=' + "ehvmFwB3BLTvYf4JORInQRRn-gzGzoHsz")
+        .done(function ({ api_server }) {
+          var Counter = function (method, url, data) {
+            return $.ajax({
+              method: method,
+              url: `https://${api_server}/1.1${url}`,
+              headers: {
+                'X-LC-Id': "ehvmFwB3BLTvYf4JORInQRRn-gzGzoHsz",
+                'X-LC-Key': "6zj1q563yNhGInbB9zQHlJIs",
+                'Content-Type': 'application/json',
+              },
+              data: data,
+            });
+          };
+          
+          addCount(Counter);
+          
+        })
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
