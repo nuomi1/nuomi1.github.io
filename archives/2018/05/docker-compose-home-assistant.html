@@ -496,7 +496,8 @@
       
 
       
-        <p>今天写一下之前使用 docker-compose 搭建 <a href="https://www.home-assistant.io/" target="_blank" rel="noopener">Home Assistant</a> 并接入<a href="https://www.mi.com/mjsmartlamp/" target="_blank" rel="noopener">米家 LED 智能台灯</a>的步骤。<br><a id="more"></a></p>
+        <p>今天写一下之前使用 docker-compose 搭建 <a href="https://www.home-assistant.io/" target="_blank" rel="noopener">Home Assistant</a> 并接入<a href="https://www.mi.com/mjsmartlamp/" target="_blank" rel="noopener">米家 LED 智能台灯</a>的步骤。</p>
+<a id="more"></a>
 <hr>
 <h1 id="编写-docker-compose-yaml"><a href="#编写-docker-compose-yaml" class="headerlink" title="编写 docker-compose.yaml"></a>编写 docker-compose.yaml</h1><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">'3'</span></span><br><span class="line"></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line"><span class="attr">  HomeAssistant:</span></span><br><span class="line"><span class="attr">    image:</span> <span class="string">homeassistant/home-assistant</span></span><br><span class="line"><span class="attr">    restart:</span> <span class="string">always</span></span><br><span class="line"><span class="attr">    ports:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="number">8123</span><span class="string">:8123</span></span><br><span class="line"><span class="attr">    volumes:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">'./HomeAssistant:/config'</span></span><br></pre></td></tr></table></figure>
 <p>和昨天的差不多，甚至 <code>ENV</code> 等都不需要。</p>
@@ -662,7 +663,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">8</span>
+                    <span class="site-state-item-count">9</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -720,7 +721,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">9</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">11</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
