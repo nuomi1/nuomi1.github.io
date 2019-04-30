@@ -26,18 +26,9 @@
 
 
 
-
-
-
   
   
-  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
-
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
+  <link rel="stylesheet" href="/lib/Han/dist/han.min.css?v=3.3">
 
 
 
@@ -57,25 +48,21 @@
 
 
 
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.0">
 
 
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
-
-<link href="/css/main.css?v=6.6.0" rel="stylesheet" type="text/css">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.6.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.0">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.6.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.0">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.6.0">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=6.6.0" color="#222">
-
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
 
 
 
@@ -83,14 +70,15 @@
 
 
 
-
-<script type="text/javascript" id="hexo.configurations">
+<script id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
     scheme: 'Mist',
-    version: '6.6.0',
-    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"hide","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
     fancybox: false,
     fastclick: false,
     lazyload: false,
@@ -129,12 +117,13 @@
 
 
 
+  
+  
+  <link rel="canonical" href="https://nuomi1.github.io/archives/2016/08/docker-hexo">
 
-  <link rel="canonical" href="https://nuomi1.github.io/archives/2016/08/docker-hexo.html">
 
 
-
-<script type="text/javascript" id="page.configurations">
+<script id="page.configurations">
   CONFIG.page = {
     sidebar: "",
   };
@@ -146,18 +135,9 @@
 
 
 
-<script async src="https://www.googletagmanager.com/gtag/js?id=69846247-2"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', '69846247-2');
-</script>
 
 
-
-  <script type="text/javascript">
+  <script>
     var _hmt = _hmt || [];
     (function() {
       var hm = document.createElement("script");
@@ -172,36 +152,35 @@
 
 
 
+
   <noscript>
-  <style type="text/css">
-    .use-motion .motion-element,
-    .use-motion .brand,
-    .use-motion .menu-item,
-    .sidebar-inner,
-    .use-motion .post-block,
-    .use-motion .pagination,
-    .use-motion .comments,
-    .use-motion .post-header,
-    .use-motion .post-body,
-    .use-motion .collection-title { opacity: initial; }
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
 
-    .use-motion .logo,
-    .use-motion .site-title,
-    .use-motion .site-subtitle {
-      opacity: initial;
-      top: initial;
-    }
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
 
-    .use-motion {
-      .logo-line-before i { left: initial; }
-      .logo-line-after i { right: initial; }
-    }
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
   </style>
 </noscript>
 
 </head>
 
-<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
   
   
@@ -211,9 +190,9 @@
   <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
+  <div class="site-meta">
     
 
     <div class="custom-logo-site-title">
@@ -227,6 +206,7 @@
       
         <p class="site-subtitle">nuomi1's blog</p>
       
+    
     
   </div>
 
@@ -376,20 +356,20 @@
     <div class="reading-progress-bar"></div>
   
 
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://nuomi1.github.io/archives/2016/08/docker-hexo.html">
 
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="nuomi1">
       <meta itemprop="description" content="nuomi1's blog">
       <meta itemprop="image" content="/images/avatar.jpg">
     </span>
 
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="nuomi1's blog">
     </span>
 
@@ -399,6 +379,7 @@
         
         
           <h1 class="post-title" itemprop="name headline">在 Docker 中安装 Hexo
+
               
             
           </h1>
@@ -441,7 +422,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/blog/" itemprop="url" rel="index"><span itemprop="name">blog</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/blog/" itemprop="url" rel="index"><span itemprop="name">blog</span></a></span>
 
                 
                 
@@ -451,13 +432,17 @@
 
           
             
+            
+              
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
                 <a href="/archives/2016/08/docker-hexo.html#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/archives/2016/08/docker-hexo.html" itemprop="commentCount"></span>
+                  <span class="post-comments-count valine-comment-count" data-xid="/archives/2016/08/docker-hexo.html" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -465,16 +450,16 @@
 
           
           
-             <span id="/archives/2016/08/docker-hexo.html" class="leancloud_visitors" data-flag-title="在 Docker 中安装 Hexo">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数：</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
+            <span id="/archives/2016/08/docker-hexo.html" class="leancloud_visitors" data-flag-title="在 Docker 中安装 Hexo">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读次数：</span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
           
 
           
@@ -508,7 +493,7 @@
 <footer><strong>Docker —— 从入门到实践</strong><cite><a href="https://yeasy.gitbooks.io/docker_practice/content/introduction/what.html" target="_blank" rel="noopener">yeasy.gitbooks.io/docker_practice/content/introduction/what.html</a></cite></footer></blockquote>
 <h1 id="安装-Docker"><a href="#安装-Docker" class="headerlink" title="安装 Docker"></a>安装 Docker</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">brew cask install docker</span><br><span class="line">brew cask install kitematic</span><br></pre></td></tr></table></figure>
 <p><a href="https://kitematic.com/" target="_blank" rel="noopener">Kitematic</a> 非必须，是用于管理镜像（image）和容器（container）的 GUI。更推荐在 CLI 中进行操作。</p>
-<h1 id="编写-Dockerfile"><a href="#编写-Dockerfile" class="headerlink" title="编写 Dockerfile"></a>编写 Dockerfile</h1><figure class="highlight docker"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># https://docs.docker.com/engine/reference/builder/</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># The `FROM` instruction sets the Base Image for subsequent instructions.</span></span><br><span class="line"><span class="keyword">FROM</span> node</span><br><span class="line"></span><br><span class="line"><span class="comment"># The `MAINTAINER` instruction allows you to set the Author field of the generated images.</span></span><br><span class="line"><span class="keyword">MAINTAINER</span> nuomi1 &lt;nuomi1@gmail.com&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># The `WORKDIR` instruction sets the working directory for any `RUN`, `CMD`, `ENTRYPOINT`, `COPY` and `ADD` instructions that follow it in the Dockerfile.</span></span><br><span class="line"><span class="keyword">WORKDIR</span><span class="bash"> /blog</span></span><br><span class="line"><span class="bash"></span></span><br><span class="line"><span class="bash"><span class="comment"># The `RUN` instruction will execute any commands in a new layer on top of the current image and commit the results.</span></span></span><br><span class="line"><span class="bash">RUN npm install hexo-cli --global</span></span><br><span class="line"><span class="bash"></span></span><br><span class="line"><span class="bash"><span class="comment"># The `CMD` instruction is to provide defaults for an executing container.</span></span></span><br><span class="line"><span class="bash">CMD [<span class="string">"bash"</span>]</span></span><br><span class="line"><span class="bash"></span></span><br><span class="line"><span class="bash"><span class="comment"># The `EXPOSE` instruction informs Docker that the container listens on the specified network ports at runtime.</span></span></span><br><span class="line"><span class="bash">EXPOSE 4000</span></span><br><span class="line"><span class="bash"></span></span><br><span class="line"><span class="bash"><span class="comment"># The `VOLUME` instruction creates a mount point with the specified name and marks it as holding externally mounted volumes from native host or other containers.</span></span></span><br><span class="line"><span class="bash">VOLUME [<span class="string">"/blog"</span>]</span></span><br></pre></td></tr></table></figure>
+<h1 id="编写-Dockerfile"><a href="#编写-Dockerfile" class="headerlink" title="编写 Dockerfile"></a>编写 Dockerfile</h1><figure class="highlight docker"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># https://docs.docker.com/engine/reference/builder/</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># The `FROM` instruction sets the Base Image for subsequent instructions.</span></span><br><span class="line"><span class="keyword">FROM</span> node</span><br><span class="line"></span><br><span class="line"><span class="comment"># The `MAINTAINER` instruction allows you to set the Author field of the generated images.</span></span><br><span class="line"><span class="keyword">MAINTAINER</span> nuomi1 &lt;nuomi1@gmail.com&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># The `WORKDIR` instruction sets the working directory for any `RUN`, `CMD`, `ENTRYPOINT`, `COPY` and `ADD` instructions that follow it in the Dockerfile.</span></span><br><span class="line"><span class="keyword">WORKDIR</span><span class="bash"> /blog</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># The `RUN` instruction will execute any commands in a new layer on top of the current image and commit the results.</span></span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> npm install hexo-cli --global</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># The `CMD` instruction is to provide defaults for an executing container.</span></span><br><span class="line"><span class="keyword">CMD</span><span class="bash"> [<span class="string">"bash"</span>]</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># The `EXPOSE` instruction informs Docker that the container listens on the specified network ports at runtime.</span></span><br><span class="line"><span class="keyword">EXPOSE</span> <span class="number">4000</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># The `VOLUME` instruction creates a mount point with the specified name and marks it as holding externally mounted volumes from native host or other containers.</span></span><br><span class="line"><span class="keyword">VOLUME</span><span class="bash"> [<span class="string">"/blog"</span>]</span></span><br></pre></td></tr></table></figure>
 <p>基于 <a href="https://nodejs.org/" target="_blank" rel="noopener">Node.js</a> 镜像制作 Hexo 镜像。<code>EXPOSE</code> 监听容器端口，实现宿主机访问容器。<code>VOLUME</code> 把宿主机文件夹与容器绑定，实现数据交换。</p>
 <h1 id="制作-Hexo-镜像"><a href="#制作-Hexo-镜像" class="headerlink" title="制作 Hexo 镜像"></a>制作 Hexo 镜像</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">➜ ~ docker build -t hexo:3.2.2 .</span><br><span class="line">Sending build context to Docker daemon  2.56 kB</span><br><span class="line">Step 1 : FROM node</span><br><span class="line"> ---&gt; e3e7156ded1f</span><br><span class="line">Step 2 : MAINTAINER nuomi1 &lt;nuomi1@gmail.com&gt;</span><br><span class="line"> ---&gt; Running <span class="keyword">in</span> ec112a08d029</span><br><span class="line"> ---&gt; 8f879fde3b92</span><br><span class="line">Removing intermediate container ec112a08d029</span><br><span class="line">Step 3 : WORKDIR /blog</span><br><span class="line"> ---&gt; Running <span class="keyword">in</span> c38a1ed24e99</span><br><span class="line"> ---&gt; fc7af853de2d</span><br><span class="line">Removing intermediate container c38a1ed24e99</span><br><span class="line">Step 4 : RUN npm install hexo-cli --global</span><br><span class="line"> ---&gt; Running <span class="keyword">in</span> 443bc5a93f6f</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">npm WARN optional Skipping failed optional dependency /hexo-cli/chokidar/fsevents:</span><br><span class="line">npm WARN notsup Not compatible with your operating system or architecture: fsevents@1.0.14</span><br><span class="line">npm info ok</span><br><span class="line"> ---&gt; 822836fccda7</span><br><span class="line">Removing intermediate container 443bc5a93f6f</span><br><span class="line">Step 5 : CMD bash</span><br><span class="line"> ---&gt; Running <span class="keyword">in</span> 54aaa1b027cc</span><br><span class="line"> ---&gt; 16355691b010</span><br><span class="line">Removing intermediate container 54aaa1b027cc</span><br><span class="line">Step 6 : EXPOSE 4000</span><br><span class="line"> ---&gt; Running <span class="keyword">in</span> 63d3a94bbec8</span><br><span class="line"> ---&gt; 76e4bb5cb68c</span><br><span class="line">Removing intermediate container 63d3a94bbec8</span><br><span class="line">Step 7 : VOLUME /blog</span><br><span class="line"> ---&gt; Running <span class="keyword">in</span> 570626f0c9d3</span><br><span class="line"> ---&gt; 1665568a3712</span><br><span class="line">Removing intermediate container 570626f0c9d3</span><br><span class="line">Successfully built 1665568a3712</span><br></pre></td></tr></table></figure>
 <p><a href="https://www.npmjs.com/package/fsevents/" target="_blank" rel="noopener">fsevents</a> 用于 OS X，但 Node.js 镜像为 <a href="https://www.debian.org/" target="_blank" rel="noopener">Debian</a>，忽略即可。</p>
@@ -528,13 +513,14 @@
     
 
     
-       
+      
     
     
 
     
       <div>
         
+
 
 
 
@@ -551,7 +537,7 @@
     <a href="https://nuomi1.github.io/archives/2016/08/docker-hexo.html" title="在 Docker 中安装 Hexo">https://nuomi1.github.io/archives/2016/08/docker-hexo.html</a>
   </li>
   <li class="post-copyright-license">
-    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC</a> 许可协议。转载请注明出处！</li>
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc/4.0/deed.zh" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC</a> 许可协议。转载请注明出处！</li>
 </ul>
 
       </div>
@@ -631,7 +617,6 @@
   </div>
 
   <aside id="sidebar" class="sidebar">
-    
     <div class="sidebar-inner">
 
       
@@ -647,14 +632,14 @@
         </ul>
       
 
-      <section class="site-overview-wrap sidebar-panel">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
               <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="nuomi1">
             
               <p class="site-author-name" itemprop="name">nuomi1</p>
-              <p class="site-description motion-element" itemprop="description">nuomi1's blog</p>
+              <div class="site-description motion-element" itemprop="description">nuomi1's blog</div>
           </div>
 
           
@@ -674,7 +659,11 @@
                 
                 
                 <div class="site-state-item site-state-categories">
-                  <a href="/categories/index.html">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
                     
                     
                       
@@ -699,7 +688,11 @@
                 
                 
                 <div class="site-state-item site-state-tags">
-                  <a href="/tags/index.html">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
                     
                     
                       
@@ -745,6 +738,8 @@
           
 
           
+
+          
             <div class="links-of-author motion-element">
               
                 <span class="links-of-author-item">
@@ -767,6 +762,17 @@
                     
                   
                   <a href="https://twitter.com/nuomi1/" title="Twitter &rarr; https://twitter.com/nuomi1/" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://telegram.me/nuomi1/" title="Telegram &rarr; https://telegram.me/nuomi1/" rel="noopener" target="_blank"><i class="fa fa-fw fa-telegram"></i>Telegram</a>
                 </span>
               
                 <span class="links-of-author-item">
@@ -805,15 +811,16 @@
           
 
         </div>
-      </section>
+      </div>
 
       
       <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
           <div class="post-toc">
 
             
-              
+            
+            
             
 
             
@@ -821,7 +828,7 @@
             
 
           </div>
-        </section>
+        </div>
       <!--/noindex-->
       
 
@@ -829,6 +836,7 @@
 
     </div>
   </aside>
+  
 
 
         
@@ -857,7 +865,7 @@
 
 
 
-  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v6.6.0</div>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.1.0</div>
 
 
 
@@ -869,10 +877,8 @@
 
 
 
-
-
   <div style="display: none;">
-    <script src="//s95.cnzz.com/z_stat.php?id=1259937120&web_id=1259937120" language="JavaScript"></script>
+    <script src="//s95.cnzz.com/z_stat.php?id=1259937120&web_id=1259937120"></script>
   </div>
 
 
@@ -891,7 +897,7 @@
     
 
     
-	
+
     
 
     
@@ -899,7 +905,7 @@
 
   
 
-<script type="text/javascript">
+<script>
   if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
     window.Promise = null;
   }
@@ -933,160 +939,160 @@
 
 
   
-  
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
 
   
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
 
   
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
 
   
-  
-    <script type="text/javascript" src="/lib/reading_progress/reading_progress.js"></script>
-  
+  <script src="/lib/reading_progress/reading_progress.js"></script>
 
 
   
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=6.6.0"></script>
+  <script src="/js/utils.js?v=7.1.0"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=6.6.0"></script>
+  <script src="/js/motion.js?v=7.1.0"></script>
 
 
 
   
   
 
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.6.0"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=6.6.0"></script>
 
+  <script src="/js/schemes/muse.js?v=7.1.0"></script>
 
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.6.0"></script>
 
 
 
   
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
 
 
 
   
 
 
+  <script src="/js/next-boot.js?v=7.1.0"></script>
 
 
-
-
-
-
-  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
   
-  
-  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
-  
-  <script type="text/javascript">
-    var GUEST = ['nick','mail','link'];
-    var guest = 'nick,mail,link';
-    guest = guest.split(',').filter(function (item) {
-      return GUEST.indexOf(item)>-1;
-    });
-    new Valine({
-        el: '#comments' ,
-        verify: true,
-        notify: false,
-        appId: 'ehvmFwB3BLTvYf4JORInQRRn-gzGzoHsz',
-        appKey: '6zj1q563yNhGInbB9zQHlJIs',
-        placeholder: 'Just go go',
-        avatar:'mm',
-        meta:guest,
-        pageSize:'10' || 10,
-        visitor: false
-    });
-  </script>
-
+  <script src="/js/js.cookie.js?v=7.1.0"></script>
+  <script src="/js/scroll-cookie.js?v=7.1.0"></script>
 
 
   
 
+  
+
+  
+  
+
+<script src="//cdn1.lncld.net/static/js/3.11.1/av-min.js"></script>
+
+
+
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+<script>
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#comments',
+    verify: true,
+    notify: false,
+    appId: 'ehvmFwB3BLTvYf4JORInQRRn-gzGzoHsz',
+    appKey: '6zj1q563yNhGInbB9zQHlJIs',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: false,
+    lang: '' || 'zh-cn'
+  });
+</script>
 
 
 
 
   
 
+
+  
+
+
+
+
+  
   
   <script>
     
     function addCount(Counter) {
-      var $visitors = $(".leancloud_visitors");
+      var $visitors = $('.leancloud_visitors');
       var url = $visitors.attr('id').trim();
       var title = $visitors.attr('data-flag-title').trim();
 
       Counter('get', '/classes/Counter', { where: JSON.stringify({ url }) })
-        .done(function ({ results }) {
+        .done(function({ results }) {
           if (results.length > 0) {
             var counter = results[0];
             
-            Counter('put', `/classes/Counter/${counter.objectId}`, JSON.stringify({ time: { "__op":"Increment", "amount":1 } }))
+            Counter('put', '/classes/Counter/' + counter.objectId, JSON.stringify({ time: { '__op': 'Increment', 'amount': 1 } }))
             
-            .done(function () {
-                  var $element = $(document.getElementById(url));
-                  $element.find('.leancloud-visitors-count').text(counter.time + 1);
-            })
+              .done(function() {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.time + 1);
+              })
             
-            .fail(function ({ responseJSON }) {
+              .fail(function ({ responseJSON }) {
                 console.log('Failed to save Visitor num, with error message: ' + responseJSON.error);
-            })
+              })
           } else {
             
-              Counter('post', '/classes/Counter', JSON.stringify({ title: title, url: url, time: 1}))
-                .done(function () {
+              Counter('post', '/classes/Counter', JSON.stringify({ title: title, url: url, time: 1 }))
+                .done(function() {
                   var $element = $(document.getElementById(url));
                   $element.find('.leancloud-visitors-count').text(1);
                 })
-                .fail(function () {
+                .fail(function() {
                   console.log('Failed to create');
                 });
             
           }
         })
-      .fail(function ({ responseJSON }) {
-        console.log('LeanCloud Counter Error:' + responseJSON.code + " " + responseJSON.error);
-      });
+        .fail(function ({ responseJSON }) {
+          console.log('LeanCloud Counter Error: ' + responseJSON.code + ' ' + responseJSON.error);
+        });
     }
     
 
     $(function() {
-      $.get('https://app-router.leancloud.cn/2/route?appId=' + "ehvmFwB3BLTvYf4JORInQRRn-gzGzoHsz")
-        .done(function ({ api_server }) {
-          var Counter = function (method, url, data) {
+      $.get('https://app-router.leancloud.cn/2/route?appId=' + 'ehvmFwB3BLTvYf4JORInQRRn-gzGzoHsz')
+        .done(function({ api_server }) {
+          var Counter = function(method, url, data) {
             return $.ajax({
               method: method,
-              url: `https://${api_server}/1.1${url}`,
+              url: 'https://' + api_server + '/1.1' + url,
               headers: {
-                'X-LC-Id': "ehvmFwB3BLTvYf4JORInQRRn-gzGzoHsz",
-                'X-LC-Key': "6zj1q563yNhGInbB9zQHlJIs",
+                'X-LC-Id': 'ehvmFwB3BLTvYf4JORInQRRn-gzGzoHsz',
+                'X-LC-Key': '6zj1q563yNhGInbB9zQHlJIs',
                 'Content-Type': 'application/json',
               },
-              data: data,
+              data: data
             });
           };
           
-          addCount(Counter);
+            addCount(Counter);
           
-        })
+        });
     });
   </script>
 
@@ -1095,10 +1101,6 @@
   
 
   
-
-  
-
-  
   
 
   
@@ -1108,6 +1110,13 @@
 
 
   
+
+  
+
+  
+
+  
+
   
 
   
@@ -1117,6 +1126,41 @@
   
 
   
+<script>
+  $('.highlight').each(function(i, e) {
+    var $wrap = $('<div>').addClass('highlight-wrap');
+    $(e).after($wrap);
+    $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function(e) {
+      var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
+        return $(e).text();
+      }).toArray().join('\n');
+      var ta = document.createElement('textarea');
+      var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+      ta.style.top = yPosition + 'px'; // Prevent page scroll
+      ta.style.position = 'absolute';
+      ta.style.opacity = '0';
+      ta.readOnly = true;
+      ta.value = code;
+      document.body.appendChild(ta);
+      ta.select();
+      ta.setSelectionRange(0, code.length);
+      ta.readOnly = false;
+      var result = document.execCommand('copy');
+      
+        if (result) $(this).text('复制成功');
+        else $(this).text('复制失败');
+      
+      ta.blur(); // For iOS
+      $(this).blur();
+    })).on('mouseleave', function(e) {
+      var $b = $(this).find('.copy-btn');
+      setTimeout(function() {
+        $b.text('复制');
+      }, 300);
+    }).append(e);
+  })
+</script>
+
 
   
 

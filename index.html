@@ -26,18 +26,9 @@
 
 
 
-
-
-
   
   
-  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
-
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
+  <link rel="stylesheet" href="/lib/Han/dist/han.min.css?v=3.3">
 
 
 
@@ -57,25 +48,21 @@
 
 
 
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.0">
 
 
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
-
-<link href="/css/main.css?v=6.6.0" rel="stylesheet" type="text/css">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.6.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.0">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.6.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.0">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.6.0">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=6.6.0" color="#222">
-
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
 
 
 
@@ -83,14 +70,15 @@
 
 
 
-
-<script type="text/javascript" id="hexo.configurations">
+<script id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
     scheme: 'Mist',
-    version: '6.6.0',
-    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"hide","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
     fancybox: false,
     fastclick: false,
     lazyload: false,
@@ -128,12 +116,13 @@
 
 
 
-
+  
+  
   <link rel="canonical" href="https://nuomi1.github.io/">
 
 
 
-<script type="text/javascript" id="page.configurations">
+<script id="page.configurations">
   CONFIG.page = {
     sidebar: "",
   };
@@ -145,18 +134,9 @@
 
 
 
-<script async src="https://www.googletagmanager.com/gtag/js?id=69846247-2"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', '69846247-2');
-</script>
 
 
-
-  <script type="text/javascript">
+  <script>
     var _hmt = _hmt || [];
     (function() {
       var hm = document.createElement("script");
@@ -171,36 +151,35 @@
 
 
 
+
   <noscript>
-  <style type="text/css">
-    .use-motion .motion-element,
-    .use-motion .brand,
-    .use-motion .menu-item,
-    .sidebar-inner,
-    .use-motion .post-block,
-    .use-motion .pagination,
-    .use-motion .comments,
-    .use-motion .post-header,
-    .use-motion .post-body,
-    .use-motion .collection-title { opacity: initial; }
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
 
-    .use-motion .logo,
-    .use-motion .site-title,
-    .use-motion .site-subtitle {
-      opacity: initial;
-      top: initial;
-    }
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
 
-    .use-motion {
-      .logo-line-before i { left: initial; }
-      .logo-line-after i { right: initial; }
-    }
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
   </style>
 </noscript>
 
 </head>
 
-<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
   
   
@@ -211,9 +190,9 @@
   page-home">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
+  <div class="site-meta">
     
 
     <div class="custom-logo-site-title">
@@ -227,6 +206,7 @@
       
         <p class="site-subtitle">nuomi1's blog</p>
       
+    
     
   </div>
 
@@ -374,20 +354,20 @@
 
   
 
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://nuomi1.github.io/archives/2019/04/clashx-shadowsocksx-ng-r.html">
 
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="nuomi1">
       <meta itemprop="description" content="nuomi1's blog">
       <meta itemprop="image" content="/images/avatar.jpg">
     </span>
 
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="nuomi1's blog">
     </span>
 
@@ -399,7 +379,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/archives/2019/04/clashx-shadowsocksx-ng-r.html" class="post-title-link" itemprop="https://nuomi1.github.io/index.html">ClashX 搭配 ShadowsocksX-NG-R 支持 SSR 协议</a>
+                <a href="/archives/2019/04/clashx-shadowsocksx-ng-r.html" class="post-title-link" itemprop="url">ClashX 搭配 ShadowsocksX-NG-R 支持 SSR 协议</a>
               
             
           </h1>
@@ -442,7 +422,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/proxy/" itemprop="url" rel="index"><span itemprop="name">proxy</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/proxy/" itemprop="url" rel="index"><span itemprop="name">proxy</span></a></span>
 
                 
                 
@@ -452,13 +432,17 @@
 
           
             
+            
+              
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
                 <a href="/archives/2019/04/clashx-shadowsocksx-ng-r.html#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/archives/2019/04/clashx-shadowsocksx-ng-r.html" itemprop="commentCount"></span>
+                  <span class="post-comments-count valine-comment-count" data-xid="/archives/2019/04/clashx-shadowsocksx-ng-r.html" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -466,16 +450,16 @@
 
           
           
-             <span id="/archives/2019/04/clashx-shadowsocksx-ng-r.html" class="leancloud_visitors" data-flag-title="ClashX 搭配 ShadowsocksX-NG-R 支持 SSR 协议">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数：</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
+            <span id="/archives/2019/04/clashx-shadowsocksx-ng-r.html" class="leancloud_visitors" data-flag-title="ClashX 搭配 ShadowsocksX-NG-R 支持 SSR 协议">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读次数：</span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
           
 
           
@@ -506,7 +490,7 @@
                 阅读全文 &raquo;
               </a>
             </div>
-         
+          
           <!--/noindex-->
         
       
@@ -521,7 +505,7 @@
     
 
     
-       
+      
     
     
 
@@ -557,20 +541,20 @@
 
   
 
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://nuomi1.github.io/archives/2018/12/leetcode-top-interview-questions-easy-swift-exercises.html">
 
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="nuomi1">
       <meta itemprop="description" content="nuomi1's blog">
       <meta itemprop="image" content="/images/avatar.jpg">
     </span>
 
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="nuomi1's blog">
     </span>
 
@@ -582,7 +566,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/archives/2018/12/leetcode-top-interview-questions-easy-swift-exercises.html" class="post-title-link" itemprop="https://nuomi1.github.io/index.html">LeetCode 初级算法 Swift 练习</a>
+                <a href="/archives/2018/12/leetcode-top-interview-questions-easy-swift-exercises.html" class="post-title-link" itemprop="url">LeetCode 初级算法 Swift 练习</a>
               
             
           </h1>
@@ -641,7 +625,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/program/" itemprop="url" rel="index"><span itemprop="name">program</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/program/" itemprop="url" rel="index"><span itemprop="name">program</span></a></span>
 
                 
                 
@@ -651,13 +635,17 @@
 
           
             
+            
+              
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
                 <a href="/archives/2018/12/leetcode-top-interview-questions-easy-swift-exercises.html#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/archives/2018/12/leetcode-top-interview-questions-easy-swift-exercises.html" itemprop="commentCount"></span>
+                  <span class="post-comments-count valine-comment-count" data-xid="/archives/2018/12/leetcode-top-interview-questions-easy-swift-exercises.html" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -665,16 +653,16 @@
 
           
           
-             <span id="/archives/2018/12/leetcode-top-interview-questions-easy-swift-exercises.html" class="leancloud_visitors" data-flag-title="LeetCode 初级算法 Swift 练习">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数：</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
+            <span id="/archives/2018/12/leetcode-top-interview-questions-easy-swift-exercises.html" class="leancloud_visitors" data-flag-title="LeetCode 初级算法 Swift 练习">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读次数：</span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
           
 
           
@@ -705,7 +693,7 @@
                 阅读全文 &raquo;
               </a>
             </div>
-         
+          
           <!--/noindex-->
         
       
@@ -720,7 +708,7 @@
     
 
     
-       
+      
     
     
 
@@ -756,20 +744,20 @@
 
   
 
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://nuomi1.github.io/archives/2018/07/work-summary.html">
 
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="nuomi1">
       <meta itemprop="description" content="nuomi1's blog">
       <meta itemprop="image" content="/images/avatar.jpg">
     </span>
 
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="nuomi1's blog">
     </span>
 
@@ -781,7 +769,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/archives/2018/07/work-summary.html" class="post-title-link" itemprop="https://nuomi1.github.io/index.html">工作总结</a>
+                <a href="/archives/2018/07/work-summary.html" class="post-title-link" itemprop="url">工作总结</a>
               
             
           </h1>
@@ -824,7 +812,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/work/" itemprop="url" rel="index"><span itemprop="name">work</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/work/" itemprop="url" rel="index"><span itemprop="name">work</span></a></span>
 
                 
                 
@@ -834,13 +822,17 @@
 
           
             
+            
+              
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
                 <a href="/archives/2018/07/work-summary.html#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/archives/2018/07/work-summary.html" itemprop="commentCount"></span>
+                  <span class="post-comments-count valine-comment-count" data-xid="/archives/2018/07/work-summary.html" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -848,16 +840,16 @@
 
           
           
-             <span id="/archives/2018/07/work-summary.html" class="leancloud_visitors" data-flag-title="工作总结">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数：</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
+            <span id="/archives/2018/07/work-summary.html" class="leancloud_visitors" data-flag-title="工作总结">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读次数：</span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
           
 
           
@@ -888,7 +880,7 @@
                 阅读全文 &raquo;
               </a>
             </div>
-         
+          
           <!--/noindex-->
         
       
@@ -903,7 +895,7 @@
     
 
     
-       
+      
     
     
 
@@ -939,20 +931,20 @@
 
   
 
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://nuomi1.github.io/archives/2018/06/shenzhen-travel.html">
 
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="nuomi1">
       <meta itemprop="description" content="nuomi1's blog">
       <meta itemprop="image" content="/images/avatar.jpg">
     </span>
 
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="nuomi1's blog">
     </span>
 
@@ -964,7 +956,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/archives/2018/06/shenzhen-travel.html" class="post-title-link" itemprop="https://nuomi1.github.io/index.html">深圳游记</a>
+                <a href="/archives/2018/06/shenzhen-travel.html" class="post-title-link" itemprop="url">深圳游记</a>
               
             
           </h1>
@@ -1023,7 +1015,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/travel/" itemprop="url" rel="index"><span itemprop="name">travel</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/travel/" itemprop="url" rel="index"><span itemprop="name">travel</span></a></span>
 
                 
                 
@@ -1033,13 +1025,17 @@
 
           
             
+            
+              
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
                 <a href="/archives/2018/06/shenzhen-travel.html#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/archives/2018/06/shenzhen-travel.html" itemprop="commentCount"></span>
+                  <span class="post-comments-count valine-comment-count" data-xid="/archives/2018/06/shenzhen-travel.html" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1047,16 +1043,16 @@
 
           
           
-             <span id="/archives/2018/06/shenzhen-travel.html" class="leancloud_visitors" data-flag-title="深圳游记">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数：</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
+            <span id="/archives/2018/06/shenzhen-travel.html" class="leancloud_visitors" data-flag-title="深圳游记">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读次数：</span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
           
 
           
@@ -1089,7 +1085,7 @@
                 阅读全文 &raquo;
               </a>
             </div>
-         
+          
           <!--/noindex-->
         
       
@@ -1104,7 +1100,7 @@
     
 
     
-       
+      
     
     
 
@@ -1140,20 +1136,20 @@
 
   
 
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://nuomi1.github.io/archives/2018/05/tmall-genie-surge-experience.html">
 
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="nuomi1">
       <meta itemprop="description" content="nuomi1's blog">
       <meta itemprop="image" content="/images/avatar.jpg">
     </span>
 
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="nuomi1's blog">
     </span>
 
@@ -1165,7 +1161,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/archives/2018/05/tmall-genie-surge-experience.html" class="post-title-link" itemprop="https://nuomi1.github.io/index.html">天猫精灵方糖体验</a>
+                <a href="/archives/2018/05/tmall-genie-surge-experience.html" class="post-title-link" itemprop="url">天猫精灵方糖体验</a>
               
             
           </h1>
@@ -1208,7 +1204,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/iot/" itemprop="url" rel="index"><span itemprop="name">iot</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/iot/" itemprop="url" rel="index"><span itemprop="name">iot</span></a></span>
 
                 
                 
@@ -1218,13 +1214,17 @@
 
           
             
+            
+              
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
                 <a href="/archives/2018/05/tmall-genie-surge-experience.html#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/archives/2018/05/tmall-genie-surge-experience.html" itemprop="commentCount"></span>
+                  <span class="post-comments-count valine-comment-count" data-xid="/archives/2018/05/tmall-genie-surge-experience.html" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1232,16 +1232,16 @@
 
           
           
-             <span id="/archives/2018/05/tmall-genie-surge-experience.html" class="leancloud_visitors" data-flag-title="天猫精灵方糖体验">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数：</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
+            <span id="/archives/2018/05/tmall-genie-surge-experience.html" class="leancloud_visitors" data-flag-title="天猫精灵方糖体验">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读次数：</span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
           
 
           
@@ -1272,7 +1272,7 @@
                 阅读全文 &raquo;
               </a>
             </div>
-         
+          
           <!--/noindex-->
         
       
@@ -1287,7 +1287,7 @@
     
 
     
-       
+      
     
     
 
@@ -1323,20 +1323,20 @@
 
   
 
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://nuomi1.github.io/archives/2018/05/docker-compose-home-assistant.html">
 
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="nuomi1">
       <meta itemprop="description" content="nuomi1's blog">
       <meta itemprop="image" content="/images/avatar.jpg">
     </span>
 
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="nuomi1's blog">
     </span>
 
@@ -1348,7 +1348,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/archives/2018/05/docker-compose-home-assistant.html" class="post-title-link" itemprop="https://nuomi1.github.io/index.html">使用 docker-compose 搭建 Home Assistant</a>
+                <a href="/archives/2018/05/docker-compose-home-assistant.html" class="post-title-link" itemprop="url">使用 docker-compose 搭建 Home Assistant</a>
               
             
           </h1>
@@ -1391,7 +1391,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/iot/" itemprop="url" rel="index"><span itemprop="name">iot</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/iot/" itemprop="url" rel="index"><span itemprop="name">iot</span></a></span>
 
                 
                 
@@ -1401,13 +1401,17 @@
 
           
             
+            
+              
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
                 <a href="/archives/2018/05/docker-compose-home-assistant.html#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/archives/2018/05/docker-compose-home-assistant.html" itemprop="commentCount"></span>
+                  <span class="post-comments-count valine-comment-count" data-xid="/archives/2018/05/docker-compose-home-assistant.html" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1415,16 +1419,16 @@
 
           
           
-             <span id="/archives/2018/05/docker-compose-home-assistant.html" class="leancloud_visitors" data-flag-title="使用 docker-compose 搭建 Home Assistant">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数：</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
+            <span id="/archives/2018/05/docker-compose-home-assistant.html" class="leancloud_visitors" data-flag-title="使用 docker-compose 搭建 Home Assistant">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读次数：</span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
           
 
           
@@ -1455,7 +1459,7 @@
                 阅读全文 &raquo;
               </a>
             </div>
-         
+          
           <!--/noindex-->
         
       
@@ -1470,7 +1474,7 @@
     
 
     
-       
+      
     
     
 
@@ -1506,20 +1510,20 @@
 
   
 
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://nuomi1.github.io/archives/2018/05/docker-compose-hexo.html">
 
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="nuomi1">
       <meta itemprop="description" content="nuomi1's blog">
       <meta itemprop="image" content="/images/avatar.jpg">
     </span>
 
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="nuomi1's blog">
     </span>
 
@@ -1531,7 +1535,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/archives/2018/05/docker-compose-hexo.html" class="post-title-link" itemprop="https://nuomi1.github.io/index.html">使用 docker-compose 搭建 Hexo</a>
+                <a href="/archives/2018/05/docker-compose-hexo.html" class="post-title-link" itemprop="url">使用 docker-compose 搭建 Hexo</a>
               
             
           </h1>
@@ -1574,7 +1578,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/blog/" itemprop="url" rel="index"><span itemprop="name">blog</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/blog/" itemprop="url" rel="index"><span itemprop="name">blog</span></a></span>
 
                 
                 
@@ -1584,13 +1588,17 @@
 
           
             
+            
+              
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
                 <a href="/archives/2018/05/docker-compose-hexo.html#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/archives/2018/05/docker-compose-hexo.html" itemprop="commentCount"></span>
+                  <span class="post-comments-count valine-comment-count" data-xid="/archives/2018/05/docker-compose-hexo.html" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1598,16 +1606,16 @@
 
           
           
-             <span id="/archives/2018/05/docker-compose-hexo.html" class="leancloud_visitors" data-flag-title="使用 docker-compose 搭建 Hexo">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数：</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
+            <span id="/archives/2018/05/docker-compose-hexo.html" class="leancloud_visitors" data-flag-title="使用 docker-compose 搭建 Hexo">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读次数：</span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
           
 
           
@@ -1638,7 +1646,7 @@
                 阅读全文 &raquo;
               </a>
             </div>
-         
+          
           <!--/noindex-->
         
       
@@ -1653,7 +1661,7 @@
     
 
     
-       
+      
     
     
 
@@ -1689,20 +1697,20 @@
 
   
 
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://nuomi1.github.io/archives/2016/08/docker-hexo.html">
 
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="nuomi1">
       <meta itemprop="description" content="nuomi1's blog">
       <meta itemprop="image" content="/images/avatar.jpg">
     </span>
 
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="nuomi1's blog">
     </span>
 
@@ -1714,7 +1722,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/archives/2016/08/docker-hexo.html" class="post-title-link" itemprop="https://nuomi1.github.io/index.html">在 Docker 中安装 Hexo</a>
+                <a href="/archives/2016/08/docker-hexo.html" class="post-title-link" itemprop="url">在 Docker 中安装 Hexo</a>
               
             
           </h1>
@@ -1757,7 +1765,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/blog/" itemprop="url" rel="index"><span itemprop="name">blog</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/blog/" itemprop="url" rel="index"><span itemprop="name">blog</span></a></span>
 
                 
                 
@@ -1767,13 +1775,17 @@
 
           
             
+            
+              
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
                 <a href="/archives/2016/08/docker-hexo.html#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/archives/2016/08/docker-hexo.html" itemprop="commentCount"></span>
+                  <span class="post-comments-count valine-comment-count" data-xid="/archives/2016/08/docker-hexo.html" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1781,16 +1793,16 @@
 
           
           
-             <span id="/archives/2016/08/docker-hexo.html" class="leancloud_visitors" data-flag-title="在 Docker 中安装 Hexo">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数：</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
+            <span id="/archives/2016/08/docker-hexo.html" class="leancloud_visitors" data-flag-title="在 Docker 中安装 Hexo">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读次数：</span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
           
 
           
@@ -1821,7 +1833,7 @@
                 阅读全文 &raquo;
               </a>
             </div>
-         
+          
           <!--/noindex-->
         
       
@@ -1836,7 +1848,7 @@
     
 
     
-       
+      
     
     
 
@@ -1872,20 +1884,20 @@
 
   
 
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://nuomi1.github.io/archives/2015/09/liaoxuefeng-python3-exercises.html">
 
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="nuomi1">
       <meta itemprop="description" content="nuomi1's blog">
       <meta itemprop="image" content="/images/avatar.jpg">
     </span>
 
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="nuomi1's blog">
     </span>
 
@@ -1897,7 +1909,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/archives/2015/09/liaoxuefeng-python3-exercises.html" class="post-title-link" itemprop="https://nuomi1.github.io/index.html">廖雪峰 Python3 练习</a>
+                <a href="/archives/2015/09/liaoxuefeng-python3-exercises.html" class="post-title-link" itemprop="url">廖雪峰 Python3 练习</a>
               
             
           </h1>
@@ -1956,7 +1968,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/program/" itemprop="url" rel="index"><span itemprop="name">program</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/program/" itemprop="url" rel="index"><span itemprop="name">program</span></a></span>
 
                 
                 
@@ -1966,13 +1978,17 @@
 
           
             
+            
+              
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
                 <a href="/archives/2015/09/liaoxuefeng-python3-exercises.html#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/archives/2015/09/liaoxuefeng-python3-exercises.html" itemprop="commentCount"></span>
+                  <span class="post-comments-count valine-comment-count" data-xid="/archives/2015/09/liaoxuefeng-python3-exercises.html" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1980,16 +1996,16 @@
 
           
           
-             <span id="/archives/2015/09/liaoxuefeng-python3-exercises.html" class="leancloud_visitors" data-flag-title="廖雪峰 Python3 练习">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数：</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
+            <span id="/archives/2015/09/liaoxuefeng-python3-exercises.html" class="leancloud_visitors" data-flag-title="廖雪峰 Python3 练习">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读次数：</span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
           
 
           
@@ -2020,7 +2036,7 @@
                 阅读全文 &raquo;
               </a>
             </div>
-         
+          
           <!--/noindex-->
         
       
@@ -2035,7 +2051,7 @@
     
 
     
-       
+      
     
     
 
@@ -2071,20 +2087,20 @@
 
   
 
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://nuomi1.github.io/archives/2015/07/university-c-exercises.html">
 
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="nuomi1">
       <meta itemprop="description" content="nuomi1's blog">
       <meta itemprop="image" content="/images/avatar.jpg">
     </span>
 
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="nuomi1's blog">
     </span>
 
@@ -2096,7 +2112,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/archives/2015/07/university-c-exercises.html" class="post-title-link" itemprop="https://nuomi1.github.io/index.html">大学 C 练习</a>
+                <a href="/archives/2015/07/university-c-exercises.html" class="post-title-link" itemprop="url">大学 C 练习</a>
               
             
           </h1>
@@ -2155,7 +2171,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/program/" itemprop="url" rel="index"><span itemprop="name">program</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/program/" itemprop="url" rel="index"><span itemprop="name">program</span></a></span>
 
                 
                 
@@ -2165,13 +2181,17 @@
 
           
             
+            
+              
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
                 <a href="/archives/2015/07/university-c-exercises.html#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/archives/2015/07/university-c-exercises.html" itemprop="commentCount"></span>
+                  <span class="post-comments-count valine-comment-count" data-xid="/archives/2015/07/university-c-exercises.html" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -2179,16 +2199,16 @@
 
           
           
-             <span id="/archives/2015/07/university-c-exercises.html" class="leancloud_visitors" data-flag-title="大学 C 练习">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数：</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
+            <span id="/archives/2015/07/university-c-exercises.html" class="leancloud_visitors" data-flag-title="大学 C 练习">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读次数：</span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
           
 
           
@@ -2219,7 +2239,7 @@
                 阅读全文 &raquo;
               </a>
             </div>
-         
+          
           <!--/noindex-->
         
       
@@ -2234,7 +2254,7 @@
     
 
     
-       
+      
     
     
 
@@ -2281,21 +2301,20 @@
   </div>
 
   <aside id="sidebar" class="sidebar">
-    
     <div class="sidebar-inner">
 
       
 
       
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
               <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="nuomi1">
             
               <p class="site-author-name" itemprop="name">nuomi1</p>
-              <p class="site-description motion-element" itemprop="description">nuomi1's blog</p>
+              <div class="site-description motion-element" itemprop="description">nuomi1's blog</div>
           </div>
 
           
@@ -2315,7 +2334,11 @@
                 
                 
                 <div class="site-state-item site-state-categories">
-                  <a href="/categories/index.html">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
                     
                     
                       
@@ -2340,7 +2363,11 @@
                 
                 
                 <div class="site-state-item site-state-tags">
-                  <a href="/tags/index.html">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
                     
                     
                       
@@ -2386,6 +2413,8 @@
           
 
           
+
+          
             <div class="links-of-author motion-element">
               
                 <span class="links-of-author-item">
@@ -2408,6 +2437,17 @@
                     
                   
                   <a href="https://twitter.com/nuomi1/" title="Twitter &rarr; https://twitter.com/nuomi1/" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://telegram.me/nuomi1/" title="Telegram &rarr; https://telegram.me/nuomi1/" rel="noopener" target="_blank"><i class="fa fa-fw fa-telegram"></i>Telegram</a>
                 </span>
               
                 <span class="links-of-author-item">
@@ -2446,7 +2486,7 @@
           
 
         </div>
-      </section>
+      </div>
 
       
 
@@ -2454,6 +2494,7 @@
 
     </div>
   </aside>
+  
 
 
         
@@ -2482,7 +2523,7 @@
 
 
 
-  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v6.6.0</div>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.1.0</div>
 
 
 
@@ -2494,10 +2535,8 @@
 
 
 
-
-
   <div style="display: none;">
-    <script src="//s95.cnzz.com/z_stat.php?id=1259937120&web_id=1259937120" language="JavaScript"></script>
+    <script src="//s95.cnzz.com/z_stat.php?id=1259937120&web_id=1259937120"></script>
   </div>
 
 
@@ -2516,7 +2555,7 @@
     
 
     
-	
+
     
 
     
@@ -2524,7 +2563,7 @@
 
   
 
-<script type="text/javascript">
+<script>
   if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
     window.Promise = null;
   }
@@ -2558,88 +2597,82 @@
 
 
   
-  
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
 
   
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
 
   
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
 
   
-  
-    <script type="text/javascript" src="/lib/reading_progress/reading_progress.js"></script>
-  
+  <script src="/lib/reading_progress/reading_progress.js"></script>
 
 
   
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=6.6.0"></script>
+  <script src="/js/utils.js?v=7.1.0"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=6.6.0"></script>
+  <script src="/js/motion.js?v=7.1.0"></script>
 
 
 
   
   
 
+
+  <script src="/js/schemes/muse.js?v=7.1.0"></script>
+
+
+
+
   
 
   
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.6.0"></script>
+  <script src="/js/next-boot.js?v=7.1.0"></script>
 
+
+  
+  <script src="/js/js.cookie.js?v=7.1.0"></script>
+  <script src="/js/scroll-cookie.js?v=7.1.0"></script>
 
 
   
 
-
-
   
 
-
-
-
-
-
-
-
-  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
   
   
-  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
-  
-  <script type="text/javascript">
-    var GUEST = ['nick','mail','link'];
-    var guest = 'nick,mail,link';
-    guest = guest.split(',').filter(function (item) {
-      return GUEST.indexOf(item)>-1;
-    });
-    new Valine({
-        el: '#comments' ,
-        verify: true,
-        notify: false,
-        appId: 'ehvmFwB3BLTvYf4JORInQRRn-gzGzoHsz',
-        appKey: '6zj1q563yNhGInbB9zQHlJIs',
-        placeholder: 'Just go go',
-        avatar:'mm',
-        meta:guest,
-        pageSize:'10' || 10,
-        visitor: false
-    });
-  </script>
+
+<script src="//cdn1.lncld.net/static/js/3.11.1/av-min.js"></script>
 
 
 
-  
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+<script>
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#comments',
+    verify: true,
+    notify: false,
+    appId: 'ehvmFwB3BLTvYf4JORInQRRn-gzGzoHsz',
+    appKey: '6zj1q563yNhGInbB9zQHlJIs',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: false,
+    lang: '' || 'zh-cn'
+  });
+</script>
 
 
 
@@ -2647,19 +2680,23 @@
 
   
 
+
+
+
+  
   
   <script>
     
     function showTime(Counter) {
       var entries = [];
-      var $visitors = $(".leancloud_visitors");
+      var $visitors = $('.leancloud_visitors');
 
-      $visitors.each(function () {
-        entries.push( $(this).attr("id").trim() );
+      $visitors.each(function() {
+        entries.push( $(this).attr('id').trim() );
       });
 
-      Counter('get', '/classes/Counter', { where: JSON.stringify({ url: { "$in": entries } }) })
-        .done(function ({ results }) {
+      Counter('get', '/classes/Counter', { where: JSON.stringify({ url: { '$in': entries } }) })
+        .done(function({ results }) {
           var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
 
           if (results.length === 0) {
@@ -2675,50 +2712,46 @@
 
             $(element).find(COUNT_CONTAINER_REF).text(time);
           }
-          for(var i = 0; i < entries.length; i++) {
+          for (var i = 0; i < entries.length; i++) {
             var url = entries[i];
             var element = document.getElementById(url);
             var countSpan = $(element).find(COUNT_CONTAINER_REF);
-            if( countSpan.text() == '') {
+            if (countSpan.text() == '') {
               countSpan.text(0);
             }
           }
         })
         .fail(function ({ responseJSON }) {
-          console.log("LeanCloud Counter Error: " + responseJSON.code + " " + responseJSON.error);
+          console.log('LeanCloud Counter Error: ' + responseJSON.code + ' ' + responseJSON.error);
         });
     }
     
 
     $(function() {
-      $.get('https://app-router.leancloud.cn/2/route?appId=' + "ehvmFwB3BLTvYf4JORInQRRn-gzGzoHsz")
-        .done(function ({ api_server }) {
-          var Counter = function (method, url, data) {
+      $.get('https://app-router.leancloud.cn/2/route?appId=' + 'ehvmFwB3BLTvYf4JORInQRRn-gzGzoHsz')
+        .done(function({ api_server }) {
+          var Counter = function(method, url, data) {
             return $.ajax({
               method: method,
-              url: `https://${api_server}/1.1${url}`,
+              url: 'https://' + api_server + '/1.1' + url,
               headers: {
-                'X-LC-Id': "ehvmFwB3BLTvYf4JORInQRRn-gzGzoHsz",
-                'X-LC-Key': "6zj1q563yNhGInbB9zQHlJIs",
+                'X-LC-Id': 'ehvmFwB3BLTvYf4JORInQRRn-gzGzoHsz',
+                'X-LC-Key': '6zj1q563yNhGInbB9zQHlJIs',
                 'Content-Type': 'application/json',
               },
-              data: data,
+              data: data
             });
           };
           
-          if ($('.post-title-link').length >= 1) {
-            showTime(Counter);
-          }
+            if ($('.post-title-link').length >= 1) {
+              showTime(Counter);
+            }
           
-        })
+        });
     });
   </script>
 
 
-
-  
-
-  
 
   
 
@@ -2755,37 +2788,54 @@
   
     
       <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-      tex2jax: {
-        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-        processEscapes: true,
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-      },
-      TeX: {equationNumbers: { autoNumber: "AMS" }}
+  
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') { next = next.nextSibling }
+        if (next && next.nodeName.toLowerCase() === 'br') { next.parentNode.removeChild(next) }
+      }
     });
+  });
 </script>
 
 <script type="text/x-mathjax-config">
-    MathJax.Hub.Queue(function() {
-      var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-    });
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      document.getElementById(all[i].inputID + '-Frame').parentNode.className += ' has-jax';
+    }
+  });
 </script>
-<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-<style>
-.MathJax_Display {
-    overflow: auto hidden;
-}
-</style>
+<script src="//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
     
   
 
 
   
+
+  
+
+  
+
+  
+
   
 
   
@@ -2795,6 +2845,41 @@
   
 
   
+<script>
+  $('.highlight').each(function(i, e) {
+    var $wrap = $('<div>').addClass('highlight-wrap');
+    $(e).after($wrap);
+    $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function(e) {
+      var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
+        return $(e).text();
+      }).toArray().join('\n');
+      var ta = document.createElement('textarea');
+      var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+      ta.style.top = yPosition + 'px'; // Prevent page scroll
+      ta.style.position = 'absolute';
+      ta.style.opacity = '0';
+      ta.readOnly = true;
+      ta.value = code;
+      document.body.appendChild(ta);
+      ta.select();
+      ta.setSelectionRange(0, code.length);
+      ta.readOnly = false;
+      var result = document.execCommand('copy');
+      
+        if (result) $(this).text('复制成功');
+        else $(this).text('复制失败');
+      
+      ta.blur(); // For iOS
+      $(this).blur();
+    })).on('mouseleave', function(e) {
+      var $b = $(this).find('.copy-btn');
+      setTimeout(function() {
+        $b.text('复制');
+      }, 300);
+    }).append(e);
+  })
+</script>
+
 
   
 

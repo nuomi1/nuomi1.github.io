@@ -26,18 +26,9 @@
 
 
 
-
-
-
   
   
-  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
-
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
+  <link rel="stylesheet" href="/lib/Han/dist/han.min.css?v=3.3">
 
 
 
@@ -57,25 +48,21 @@
 
 
 
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.0">
 
 
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
-
-<link href="/css/main.css?v=6.6.0" rel="stylesheet" type="text/css">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.6.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.0">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.6.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.0">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.6.0">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=6.6.0" color="#222">
-
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
 
 
 
@@ -83,14 +70,15 @@
 
 
 
-
-<script type="text/javascript" id="hexo.configurations">
+<script id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
     scheme: 'Mist',
-    version: '6.6.0',
-    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"hide","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
     fancybox: false,
     fastclick: false,
     lazyload: false,
@@ -129,12 +117,13 @@
 
 
 
+  
+  
+  <link rel="canonical" href="https://nuomi1.github.io/archives/2018/12/leetcode-top-interview-questions-easy-swift-exercises">
 
-  <link rel="canonical" href="https://nuomi1.github.io/archives/2018/12/leetcode-top-interview-questions-easy-swift-exercises.html">
 
 
-
-<script type="text/javascript" id="page.configurations">
+<script id="page.configurations">
   CONFIG.page = {
     sidebar: "",
   };
@@ -146,18 +135,9 @@
 
 
 
-<script async src="https://www.googletagmanager.com/gtag/js?id=69846247-2"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', '69846247-2');
-</script>
 
 
-
-  <script type="text/javascript">
+  <script>
     var _hmt = _hmt || [];
     (function() {
       var hm = document.createElement("script");
@@ -172,36 +152,35 @@
 
 
 
+
   <noscript>
-  <style type="text/css">
-    .use-motion .motion-element,
-    .use-motion .brand,
-    .use-motion .menu-item,
-    .sidebar-inner,
-    .use-motion .post-block,
-    .use-motion .pagination,
-    .use-motion .comments,
-    .use-motion .post-header,
-    .use-motion .post-body,
-    .use-motion .collection-title { opacity: initial; }
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
 
-    .use-motion .logo,
-    .use-motion .site-title,
-    .use-motion .site-subtitle {
-      opacity: initial;
-      top: initial;
-    }
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
 
-    .use-motion {
-      .logo-line-before i { left: initial; }
-      .logo-line-after i { right: initial; }
-    }
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
   </style>
 </noscript>
 
 </head>
 
-<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
   
   
@@ -211,9 +190,9 @@
   <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
+  <div class="site-meta">
     
 
     <div class="custom-logo-site-title">
@@ -227,6 +206,7 @@
       
         <p class="site-subtitle">nuomi1's blog</p>
       
+    
     
   </div>
 
@@ -376,20 +356,20 @@
     <div class="reading-progress-bar"></div>
   
 
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://nuomi1.github.io/archives/2018/12/leetcode-top-interview-questions-easy-swift-exercises.html">
 
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="nuomi1">
       <meta itemprop="description" content="nuomi1's blog">
       <meta itemprop="image" content="/images/avatar.jpg">
     </span>
 
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="nuomi1's blog">
     </span>
 
@@ -399,6 +379,7 @@
         
         
           <h1 class="post-title" itemprop="name headline">LeetCode 初级算法 Swift 练习
+
               
             
           </h1>
@@ -457,7 +438,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/program/" itemprop="url" rel="index"><span itemprop="name">program</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/program/" itemprop="url" rel="index"><span itemprop="name">program</span></a></span>
 
                 
                 
@@ -467,13 +448,17 @@
 
           
             
+            
+              
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
                 <a href="/archives/2018/12/leetcode-top-interview-questions-easy-swift-exercises.html#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/archives/2018/12/leetcode-top-interview-questions-easy-swift-exercises.html" itemprop="commentCount"></span>
+                  <span class="post-comments-count valine-comment-count" data-xid="/archives/2018/12/leetcode-top-interview-questions-easy-swift-exercises.html" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -481,16 +466,16 @@
 
           
           
-             <span id="/archives/2018/12/leetcode-top-interview-questions-easy-swift-exercises.html" class="leancloud_visitors" data-flag-title="LeetCode 初级算法 Swift 练习">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数：</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
+            <span id="/archives/2018/12/leetcode-top-interview-questions-easy-swift-exercises.html" class="leancloud_visitors" data-flag-title="LeetCode 初级算法 Swift 练习">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读次数：</span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
           
 
           
@@ -551,11 +536,11 @@
 <h2 id="Implement-strStr"><a href="#Implement-strStr" class="headerlink" title="Implement strStr()"></a><a href="https://leetcode.com/explore/interview/card/top-interview-questions-easy/127/strings/885/" target="_blank" rel="noopener">Implement strStr()</a></h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">strStr</span><span class="params">(<span class="number">_</span> haystack: String, <span class="number">_</span> needle: String)</span></span> -&gt; <span class="type">Int</span> &#123;</span><br><span class="line">    <span class="keyword">guard</span> !needle.isEmpty <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 只处理 haystack 前面，完整遍历会越界</span></span><br><span class="line">    <span class="keyword">for</span> index <span class="keyword">in</span> haystack.<span class="built_in">indices</span>.<span class="built_in">dropLast</span>(needle.<span class="built_in">count</span> - <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="comment">// subscript[...] 转换为包含所有元素的 Substring</span></span><br><span class="line">        <span class="keyword">if</span> haystack[index ..&lt; haystack.index(index, offsetBy: needle.<span class="built_in">count</span>)] == needle[...] &#123;</span><br><span class="line">            <span class="keyword">return</span> index.encodedOffset</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> -<span class="number">1</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="Count-and-Say"><a href="#Count-and-Say" class="headerlink" title="Count and Say"></a><a href="https://leetcode.com/explore/interview/card/top-interview-questions-easy/127/strings/886/" target="_blank" rel="noopener">Count and Say</a></h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">countAndSay</span><span class="params">(<span class="number">_</span> n: Int)</span></span> -&gt; <span class="type">String</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> result = <span class="string">"1"</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// result 存在默认值，遍历 n - 1 次</span></span><br><span class="line">    <span class="keyword">for</span> <span class="number">_</span> <span class="keyword">in</span> <span class="number">1</span> ..&lt; n &#123;</span><br><span class="line">        <span class="keyword">var</span> <span class="built_in">count</span> = <span class="number">0</span></span><br><span class="line">        <span class="keyword">var</span> current = result.first!</span><br><span class="line">        <span class="keyword">var</span> _result = <span class="string">""</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> num <span class="keyword">in</span> result &#123;</span><br><span class="line">            <span class="keyword">if</span> num == current &#123;</span><br><span class="line">                <span class="built_in">count</span> += <span class="number">1</span></span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                _result.append(contentsOf: <span class="string">"\(count)\(current)"</span>)</span><br><span class="line">                <span class="built_in">count</span> = <span class="number">1</span></span><br><span class="line">                current = num</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 处理 result 最后一个元素</span></span><br><span class="line">        _result.append(contentsOf: <span class="string">"\(count)\(current)"</span>)</span><br><span class="line"></span><br><span class="line">        result = _result</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="Longest-Common-Prefix"><a href="#Longest-Common-Prefix" class="headerlink" title="Longest Common Prefix"></a><a href="https://leetcode.com/explore/interview/card/top-interview-questions-easy/127/strings/887/" target="_blank" rel="noopener">Longest Common Prefix</a></h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">longestCommonPrefix</span><span class="params">(<span class="number">_</span> strs: [String])</span></span> -&gt; <span class="type">String</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> <span class="keyword">prefix</span> = <span class="string">""</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">guard</span> !strs.isEmpty <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">prefix</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 第一个字符串与剩下所有字符串逐一对比前缀，前缀逐渐加一</span></span><br><span class="line">    <span class="keyword">for</span> index <span class="keyword">in</span> strs.first!.<span class="built_in">indices</span> &#123;</span><br><span class="line">        <span class="keyword">let</span> _prefix = strs.first![...index]</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> str <span class="keyword">in</span> strs.<span class="built_in">dropFirst</span>() &#123;</span><br><span class="line">            <span class="keyword">if</span> !str.hasPrefix(_prefix) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">prefix</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">prefix</span> = <span class="type">String</span>(_prefix)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">prefix</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="Linked-List"><a href="#Linked-List" class="headerlink" title="Linked List"></a><a href="https://leetcode.com/explore/interview/card/top-interview-questions-easy/93/linked-list/" target="_blank" rel="noopener">Linked List</a></h1><h2 id="Delete-Node-in-a-Linked-List"><a href="#Delete-Node-in-a-Linked-List" class="headerlink" title="Delete Node in a Linked List"></a><a href="https://leetcode.com/explore/interview/card/top-interview-questions-easy/93/linked-list/553/" target="_blank" rel="noopener">Delete Node in a Linked List</a></h2><h2 id="Remove-Nth-Node-From-End-of-List"><a href="#Remove-Nth-Node-From-End-of-List" class="headerlink" title="Remove Nth Node From End of List"></a><a href="https://leetcode.com/explore/interview/card/top-interview-questions-easy/93/linked-list/603/" target="_blank" rel="noopener">Remove Nth Node From End of List</a></h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">removeNthFromEnd</span><span class="params">(<span class="number">_</span> head: ListNode?, <span class="number">_</span> n: Int)</span></span> -&gt; <span class="type">ListNode</span>? &#123;</span><br><span class="line">    <span class="keyword">var</span> i = head</span><br><span class="line">    <span class="keyword">var</span> j = head</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> <span class="number">_</span> <span class="keyword">in</span> <span class="number">0</span> ..&lt; n &#123;</span><br><span class="line">        i = i?.next</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">guard</span> i != <span class="literal">nil</span> <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> head?.next</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> i?.next != <span class="literal">nil</span> &#123;</span><br><span class="line">        i = i?.next</span><br><span class="line">        j = j?.next</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    j?.next = j?.next?.next</span><br><span class="line">    <span class="keyword">return</span> head</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">removeNthFromEnd</span><span class="params">(<span class="number">_</span> head: ListNode?, <span class="number">_</span> n: Int)</span></span> -&gt; <span class="type">ListNode</span>? &#123;</span><br><span class="line">    <span class="keyword">var</span> i = head</span><br><span class="line">    <span class="keyword">var</span> j: <span class="type">ListNode</span>?</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> <span class="built_in">count</span> = n</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> i != <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">count</span> &lt;= <span class="number">0</span> &#123;</span><br><span class="line">            j = j == <span class="literal">nil</span> ? head : j?.next</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        i = i?.next</span><br><span class="line"></span><br><span class="line">        <span class="built_in">count</span> -= <span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">guard</span> j != <span class="literal">nil</span> <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> head?.next</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    j?.next = j?.next?.next</span><br><span class="line">    <span class="keyword">return</span> head</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="Reverse-Linked-List"><a href="#Reverse-Linked-List" class="headerlink" title="Reverse Linked List"></a><a href="https://leetcode.com/explore/interview/card/top-interview-questions-easy/93/linked-list/560/" target="_blank" rel="noopener">Reverse Linked List</a></h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">reverseList</span><span class="params">(<span class="number">_</span> head: ListNode?)</span></span> -&gt; <span class="type">ListNode</span>? &#123;</span><br><span class="line">    <span class="keyword">var</span> newHead: <span class="type">ListNode</span>?</span><br><span class="line">    <span class="keyword">var</span> p = head</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> p != <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">let</span> temp = p?.next</span><br><span class="line">        p?.next = newHead</span><br><span class="line">        newHead = p</span><br><span class="line">        p = temp</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> newHead</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="Merge-Two-Sorted-Lists"><a href="#Merge-Two-Sorted-Lists" class="headerlink" title="Merge Two Sorted Lists"></a><a href="https://leetcode.com/explore/interview/card/top-interview-questions-easy/93/linked-list/771/" target="_blank" rel="noopener">Merge Two Sorted Lists</a></h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">mergeTwoLists</span><span class="params">(<span class="number">_</span> l1: ListNode?, <span class="number">_</span> l2: ListNode?)</span></span> -&gt; <span class="type">ListNode</span>? &#123;</span><br><span class="line">    <span class="keyword">guard</span> l1 != <span class="literal">nil</span>, l2 != <span class="literal">nil</span> <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> l1 ?? l2</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> l3: <span class="type">ListNode</span>?</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> p1: <span class="type">ListNode</span>? = l1</span><br><span class="line">    <span class="keyword">var</span> p2: <span class="type">ListNode</span>? = l2</span><br><span class="line">    <span class="keyword">var</span> p3: <span class="type">ListNode</span>? = <span class="type">ListNode</span>(<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> p1 != <span class="literal">nil</span>, p2 != <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> p1!.val &gt; p2!.val &#123;</span><br><span class="line">            p3?.next = p2</span><br><span class="line">            p2 = p2?.next</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            p3?.next = p1</span><br><span class="line">            p1 = p1?.next</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 跳过第一个无用结点</span></span><br><span class="line">        <span class="keyword">if</span> l3 == <span class="literal">nil</span> &#123;</span><br><span class="line">            l3 = p3?.next</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        p3 = p3?.next</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> p1 != <span class="literal">nil</span> &#123;</span><br><span class="line">        p3?.next = p1</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> p2 != <span class="literal">nil</span> &#123;</span><br><span class="line">        p3?.next = p2</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> l3</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">mergeTwoLists</span><span class="params">(<span class="number">_</span> l1: ListNode?, <span class="number">_</span> l2: ListNode?)</span></span> -&gt; <span class="type">ListNode</span>? &#123;</span><br><span class="line">    <span class="keyword">guard</span> <span class="keyword">let</span> l1 = l1, <span class="keyword">let</span> l2 = l2 <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> l1 ?? l2</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> l3: <span class="type">ListNode</span>?</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> l1.val &gt; l2.val &#123;</span><br><span class="line">        l3 = l2</span><br><span class="line">        l3?.next = mergeTwoLists(l1, l2.next)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        l3 = l1</span><br><span class="line">        l3?.next = mergeTwoLists(l1.next, l2)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> l3</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="Linked-List"><a href="#Linked-List" class="headerlink" title="Linked List"></a><a href="https://leetcode.com/explore/interview/card/top-interview-questions-easy/93/linked-list/" target="_blank" rel="noopener">Linked List</a></h1><h2 id="Delete-Node-in-a-Linked-List"><a href="#Delete-Node-in-a-Linked-List" class="headerlink" title="Delete Node in a Linked List"></a><a href="https://leetcode.com/explore/interview/card/top-interview-questions-easy/93/linked-list/553/" target="_blank" rel="noopener">Delete Node in a Linked List</a></h2><h2 id="Remove-Nth-Node-From-End-of-List"><a href="#Remove-Nth-Node-From-End-of-List" class="headerlink" title="Remove Nth Node From End of List"></a><a href="https://leetcode.com/explore/interview/card/top-interview-questions-easy/93/linked-list/603/" target="_blank" rel="noopener">Remove Nth Node From End of List</a></h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">removeNthFromEnd</span><span class="params">(<span class="number">_</span> head: ListNode?, <span class="number">_</span> n: Int)</span></span> -&gt; <span class="type">ListNode?</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> i = head</span><br><span class="line">    <span class="keyword">var</span> j = head</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> <span class="number">_</span> <span class="keyword">in</span> <span class="number">0</span> ..&lt; n &#123;</span><br><span class="line">        i = i?.next</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">guard</span> i != <span class="literal">nil</span> <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> head?.next</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> i?.next != <span class="literal">nil</span> &#123;</span><br><span class="line">        i = i?.next</span><br><span class="line">        j = j?.next</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    j?.next = j?.next?.next</span><br><span class="line">    <span class="keyword">return</span> head</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">removeNthFromEnd</span><span class="params">(<span class="number">_</span> head: ListNode?, <span class="number">_</span> n: Int)</span></span> -&gt; <span class="type">ListNode?</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> i = head</span><br><span class="line">    <span class="keyword">var</span> j: <span class="type">ListNode?</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> <span class="built_in">count</span> = n</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> i != <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">count</span> &lt;= <span class="number">0</span> &#123;</span><br><span class="line">            j = j == <span class="literal">nil</span> ? head : j?.next</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        i = i?.next</span><br><span class="line"></span><br><span class="line">        <span class="built_in">count</span> -= <span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">guard</span> j != <span class="literal">nil</span> <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> head?.next</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    j?.next = j?.next?.next</span><br><span class="line">    <span class="keyword">return</span> head</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Reverse-Linked-List"><a href="#Reverse-Linked-List" class="headerlink" title="Reverse Linked List"></a><a href="https://leetcode.com/explore/interview/card/top-interview-questions-easy/93/linked-list/560/" target="_blank" rel="noopener">Reverse Linked List</a></h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">reverseList</span><span class="params">(<span class="number">_</span> head: ListNode?)</span></span> -&gt; <span class="type">ListNode?</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> newHead: <span class="type">ListNode?</span></span><br><span class="line">    <span class="keyword">var</span> p = head</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> p != <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">let</span> temp = p?.next</span><br><span class="line">        p?.next = newHead</span><br><span class="line">        newHead = p</span><br><span class="line">        p = temp</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> newHead</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Merge-Two-Sorted-Lists"><a href="#Merge-Two-Sorted-Lists" class="headerlink" title="Merge Two Sorted Lists"></a><a href="https://leetcode.com/explore/interview/card/top-interview-questions-easy/93/linked-list/771/" target="_blank" rel="noopener">Merge Two Sorted Lists</a></h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">mergeTwoLists</span><span class="params">(<span class="number">_</span> l1: ListNode?, <span class="number">_</span> l2: ListNode?)</span></span> -&gt; <span class="type">ListNode?</span> &#123;</span><br><span class="line">    <span class="keyword">guard</span> l1 != <span class="literal">nil</span>, l2 != <span class="literal">nil</span> <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> l1 ?? l2</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> l3: <span class="type">ListNode?</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> p1: <span class="type">ListNode?</span> = l1</span><br><span class="line">    <span class="keyword">var</span> p2: <span class="type">ListNode?</span> = l2</span><br><span class="line">    <span class="keyword">var</span> p3: <span class="type">ListNode?</span> = <span class="type">ListNode</span>(<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> p1 != <span class="literal">nil</span>, p2 != <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> p1!.val &gt; p2!.val &#123;</span><br><span class="line">            p3?.next = p2</span><br><span class="line">            p2 = p2?.next</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            p3?.next = p1</span><br><span class="line">            p1 = p1?.next</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 跳过第一个无用结点</span></span><br><span class="line">        <span class="keyword">if</span> l3 == <span class="literal">nil</span> &#123;</span><br><span class="line">            l3 = p3?.next</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        p3 = p3?.next</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> p1 != <span class="literal">nil</span> &#123;</span><br><span class="line">        p3?.next = p1</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> p2 != <span class="literal">nil</span> &#123;</span><br><span class="line">        p3?.next = p2</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> l3</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">mergeTwoLists</span><span class="params">(<span class="number">_</span> l1: ListNode?, <span class="number">_</span> l2: ListNode?)</span></span> -&gt; <span class="type">ListNode?</span> &#123;</span><br><span class="line">    <span class="keyword">guard</span> <span class="keyword">let</span> l1 = l1, <span class="keyword">let</span> l2 = l2 <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> l1 ?? l2</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> l3: <span class="type">ListNode?</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> l1.val &gt; l2.val &#123;</span><br><span class="line">        l3 = l2</span><br><span class="line">        l3?.next = mergeTwoLists(l1, l2.next)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        l3 = l1</span><br><span class="line">        l3?.next = mergeTwoLists(l1.next, l2)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> l3</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="Palindrome-Linked-List"><a href="#Palindrome-Linked-List" class="headerlink" title="Palindrome Linked List"></a><a href="https://leetcode.com/explore/interview/card/top-interview-questions-easy/93/linked-list/772/" target="_blank" rel="noopener">Palindrome Linked List</a></h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// MARK: BAD (not in-place)</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">isPalindrome</span><span class="params">(<span class="number">_</span> head: ListNode?)</span></span> -&gt; <span class="type">Bool</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> p = head</span><br><span class="line">    <span class="keyword">var</span> list = [<span class="type">ListNode</span>]()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> p != <span class="literal">nil</span> &#123;</span><br><span class="line">        list.append(p!)</span><br><span class="line">        p = p?.next</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">guard</span> !list.isEmpty <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> i = list.<span class="built_in">indices</span>.first!</span><br><span class="line">    <span class="keyword">var</span> j = list.<span class="built_in">indices</span>.last!</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> i &lt; j &#123;</span><br><span class="line">        <span class="keyword">guard</span> list[i].val == list[j].val <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        i += <span class="number">1</span></span><br><span class="line">        j -= <span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="Linked-List-Cycle"><a href="#Linked-List-Cycle" class="headerlink" title="Linked List Cycle"></a><a href="https://leetcode.com/explore/interview/card/top-interview-questions-easy/93/linked-list/773/" target="_blank" rel="noopener">Linked List Cycle</a></h2><hr>
 <h1 id="Trees"><a href="#Trees" class="headerlink" title="Trees"></a><a href="https://leetcode.com/explore/interview/card/top-interview-questions-easy/94/trees/" target="_blank" rel="noopener">Trees</a></h1><h2 id="Maximum-Depth-of-Binary-Tree"><a href="#Maximum-Depth-of-Binary-Tree" class="headerlink" title="Maximum Depth of Binary Tree"></a><a href="https://leetcode.com/explore/interview/card/top-interview-questions-easy/94/trees/555/" target="_blank" rel="noopener">Maximum Depth of Binary Tree</a></h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">maxDepth</span><span class="params">(<span class="number">_</span> root: TreeNode?)</span></span> -&gt; <span class="type">Int</span> &#123;</span><br><span class="line">    <span class="keyword">guard</span> <span class="keyword">let</span> root = root <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 递归获取左右子树的最大深度</span></span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">max</span>(maxDepth(root.<span class="keyword">left</span>), maxDepth(root.<span class="keyword">right</span>)) + <span class="number">1</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -563,7 +548,7 @@
 <h2 id="Symmetric-Tree"><a href="#Symmetric-Tree" class="headerlink" title="Symmetric Tree"></a><a href="https://leetcode.com/explore/interview/card/top-interview-questions-easy/94/trees/627/" target="_blank" rel="noopener">Symmetric Tree</a></h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">isSymmetric</span><span class="params">(<span class="number">_</span> root: TreeNode?)</span></span> -&gt; <span class="type">Bool</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> isSymmetricHelper(root?.<span class="keyword">left</span>, root?.<span class="keyword">right</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="function"><span class="keyword">func</span> <span class="title">isSymmetricHelper</span><span class="params">(<span class="number">_</span> <span class="keyword">left</span>: TreeNode?, <span class="number">_</span> <span class="keyword">right</span>: TreeNode?)</span></span> -&gt; <span class="type">Bool</span> &#123;</span><br><span class="line">    <span class="keyword">switch</span> (<span class="keyword">left</span>, <span class="keyword">right</span>) &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="keyword">let</span> (.some(lhs), .some(rhs)) <span class="keyword">where</span> lhs.val == rhs.val: <span class="comment">// 左右结点同时存在且值相等</span></span><br><span class="line">        <span class="keyword">return</span> isSymmetricHelper(lhs.<span class="keyword">left</span>, rhs.<span class="keyword">right</span>) &amp;&amp; isSymmetricHelper(rhs.<span class="keyword">left</span>, lhs.<span class="keyword">right</span>)</span><br><span class="line">    <span class="keyword">case</span> (<span class="literal">nil</span>, <span class="literal">nil</span>): <span class="comment">// 左右结点同时不存在</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">    <span class="keyword">default</span>: <span class="comment">// 左右结点只存在一个 或 同时存在但值不相等</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="Binary-Tree-Level-Order-Traversal"><a href="#Binary-Tree-Level-Order-Traversal" class="headerlink" title="Binary Tree Level Order Traversal"></a><a href="https://leetcode.com/explore/interview/card/top-interview-questions-easy/94/trees/628/" target="_blank" rel="noopener">Binary Tree Level Order Traversal</a></h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">levelOrder</span><span class="params">(<span class="number">_</span> root: TreeNode?)</span></span> -&gt; [[<span class="type">Int</span>]] &#123;</span><br><span class="line">    <span class="keyword">var</span> result = [[<span class="type">Int</span>]]()</span><br><span class="line"></span><br><span class="line">    levelOrderHelper(root, <span class="number">0</span>, &amp;result)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="function"><span class="keyword">func</span> <span class="title">levelOrderHelper</span><span class="params">(<span class="number">_</span> root: TreeNode?, <span class="number">_</span> depth: Int, <span class="number">_</span> result: <span class="keyword">inout</span> [[Int]])</span></span> &#123;</span><br><span class="line">    <span class="keyword">guard</span> <span class="keyword">let</span> root = root <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 里层数组不存在时插入空数组</span></span><br><span class="line">    <span class="keyword">if</span> !result.<span class="built_in">indices</span>.<span class="built_in">contains</span>(depth) &#123;</span><br><span class="line">        result.insert([], at: depth)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    result[depth].append(root.val)</span><br><span class="line">    levelOrderHelper(root.<span class="keyword">left</span>, depth + <span class="number">1</span>, &amp;result)</span><br><span class="line">    levelOrderHelper(root.<span class="keyword">right</span>, depth + <span class="number">1</span>, &amp;result)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">levelOrder</span><span class="params">(<span class="number">_</span> root: TreeNode?)</span></span> -&gt; [[<span class="type">Int</span>]] &#123;</span><br><span class="line">    <span class="keyword">guard</span> <span class="keyword">let</span> root = root <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> []</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> queue = [root]</span><br><span class="line">    <span class="keyword">var</span> result = [[<span class="type">Int</span>]]()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> !queue.isEmpty &#123;</span><br><span class="line">        <span class="keyword">var</span> level = [<span class="type">Int</span>]()</span><br><span class="line">        <span class="keyword">let</span> <span class="built_in">count</span> = queue.<span class="built_in">count</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 不能使用 queue.indices 因为 queue 被修改</span></span><br><span class="line">        <span class="keyword">for</span> <span class="number">_</span> <span class="keyword">in</span> <span class="number">0</span> ..&lt; <span class="built_in">count</span> &#123;</span><br><span class="line">            <span class="keyword">let</span> node = queue.removeFirst()</span><br><span class="line">            level.append(node.val)</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">let</span> <span class="keyword">left</span> = node.<span class="keyword">left</span> &#123;</span><br><span class="line">                queue.append(<span class="keyword">left</span>)</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">let</span> <span class="keyword">right</span> = node.<span class="keyword">right</span> &#123;</span><br><span class="line">                queue.append(<span class="keyword">right</span>)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        result.append(level)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="Convert-Sorted-Array-to-Binary-Search-Tree"><a href="#Convert-Sorted-Array-to-Binary-Search-Tree" class="headerlink" title="Convert Sorted Array to Binary Search Tree"></a><a href="https://leetcode.com/explore/interview/card/top-interview-questions-easy/94/trees/631/" target="_blank" rel="noopener">Convert Sorted Array to Binary Search Tree</a></h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">sortedArrayToBST</span><span class="params">(<span class="number">_</span> nums: [Int])</span></span> -&gt; <span class="type">TreeNode</span>? &#123;</span><br><span class="line">    <span class="keyword">return</span> sortedArrayToBSTHelper(nums, nums.<span class="built_in">indices</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="function"><span class="keyword">func</span> <span class="title">sortedArrayToBSTHelper</span><span class="params">(<span class="number">_</span> nums: [Int], <span class="number">_</span> range: Range&lt;Int&gt;)</span></span> -&gt; <span class="type">TreeNode</span>? &#123;</span><br><span class="line">    <span class="keyword">guard</span> range.lowerBound &lt; range.upperBound <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 防止溢出</span></span><br><span class="line">    <span class="keyword">let</span> middleIndex = range.lowerBound + (range.upperBound - range.lowerBound) / <span class="number">2</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> node = <span class="type">TreeNode</span>(nums[middleIndex])</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 跳过 middleIndex</span></span><br><span class="line">    node.<span class="keyword">left</span> = sortedArrayToBSTHelper(nums, range.lowerBound ..&lt; middleIndex)</span><br><span class="line">    node.<span class="keyword">right</span> = sortedArrayToBSTHelper(nums, middleIndex + <span class="number">1</span> ..&lt; range.upperBound)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> node</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Convert-Sorted-Array-to-Binary-Search-Tree"><a href="#Convert-Sorted-Array-to-Binary-Search-Tree" class="headerlink" title="Convert Sorted Array to Binary Search Tree"></a><a href="https://leetcode.com/explore/interview/card/top-interview-questions-easy/94/trees/631/" target="_blank" rel="noopener">Convert Sorted Array to Binary Search Tree</a></h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">sortedArrayToBST</span><span class="params">(<span class="number">_</span> nums: [Int])</span></span> -&gt; <span class="type">TreeNode?</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> sortedArrayToBSTHelper(nums, nums.<span class="built_in">indices</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="function"><span class="keyword">func</span> <span class="title">sortedArrayToBSTHelper</span><span class="params">(<span class="number">_</span> nums: [Int], <span class="number">_</span> range: Range&lt;Int&gt;)</span></span> -&gt; <span class="type">TreeNode?</span> &#123;</span><br><span class="line">    <span class="keyword">guard</span> range.lowerBound &lt; range.upperBound <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 防止溢出</span></span><br><span class="line">    <span class="keyword">let</span> middleIndex = range.lowerBound + (range.upperBound - range.lowerBound) / <span class="number">2</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> node = <span class="type">TreeNode</span>(nums[middleIndex])</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 跳过 middleIndex</span></span><br><span class="line">    node.<span class="keyword">left</span> = sortedArrayToBSTHelper(nums, range.lowerBound ..&lt; middleIndex)</span><br><span class="line">    node.<span class="keyword">right</span> = sortedArrayToBSTHelper(nums, middleIndex + <span class="number">1</span> ..&lt; range.upperBound)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> node</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h1 id="Sorting-and-Searching"><a href="#Sorting-and-Searching" class="headerlink" title="Sorting and Searching"></a><a href="https://leetcode.com/explore/interview/card/top-interview-questions-easy/96/sorting-and-searching/" target="_blank" rel="noopener">Sorting and Searching</a></h1><h2 id="Merge-Sorted-Array"><a href="#Merge-Sorted-Array" class="headerlink" title="Merge Sorted Array"></a><a href="https://leetcode.com/explore/interview/card/top-interview-questions-easy/96/sorting-and-searching/587/" target="_blank" rel="noopener">Merge Sorted Array</a></h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">merge</span><span class="params">(<span class="number">_</span> nums1: <span class="keyword">inout</span> [Int], <span class="number">_</span> m: Int, <span class="number">_</span> nums2: [Int], <span class="number">_</span> n: Int)</span></span> &#123;</span><br><span class="line">    <span class="comment">// nums1 扫描下标</span></span><br><span class="line">    <span class="keyword">var</span> i = m - <span class="number">1</span></span><br><span class="line">    <span class="comment">// nums2 扫描下标</span></span><br><span class="line">    <span class="keyword">var</span> j = n - <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> i &gt;= <span class="number">0</span> || j &gt;= <span class="number">0</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> j &lt; <span class="number">0</span> || (i &gt;= <span class="number">0</span> &amp;&amp; nums1[i] &gt; nums2[j]) &#123;</span><br><span class="line">            nums1[i + j + <span class="number">1</span>] = nums1[i]</span><br><span class="line">            i -= <span class="number">1</span></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            nums1[i + j + <span class="number">1</span>] = nums2[j]</span><br><span class="line">            j -= <span class="number">1</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
@@ -578,13 +563,14 @@
     
 
     
-       
+      
     
     
 
     
       <div>
         
+
 
 
 
@@ -601,7 +587,7 @@
     <a href="https://nuomi1.github.io/archives/2018/12/leetcode-top-interview-questions-easy-swift-exercises.html" title="LeetCode 初级算法 Swift 练习">https://nuomi1.github.io/archives/2018/12/leetcode-top-interview-questions-easy-swift-exercises.html</a>
   </li>
   <li class="post-copyright-license">
-    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC</a> 许可协议。转载请注明出处！</li>
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc/4.0/deed.zh" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC</a> 许可协议。转载请注明出处！</li>
 </ul>
 
       </div>
@@ -681,7 +667,6 @@
   </div>
 
   <aside id="sidebar" class="sidebar">
-    
     <div class="sidebar-inner">
 
       
@@ -697,14 +682,14 @@
         </ul>
       
 
-      <section class="site-overview-wrap sidebar-panel">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
               <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="nuomi1">
             
               <p class="site-author-name" itemprop="name">nuomi1</p>
-              <p class="site-description motion-element" itemprop="description">nuomi1's blog</p>
+              <div class="site-description motion-element" itemprop="description">nuomi1's blog</div>
           </div>
 
           
@@ -724,7 +709,11 @@
                 
                 
                 <div class="site-state-item site-state-categories">
-                  <a href="/categories/index.html">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
                     
                     
                       
@@ -749,7 +738,11 @@
                 
                 
                 <div class="site-state-item site-state-tags">
-                  <a href="/tags/index.html">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
                     
                     
                       
@@ -795,6 +788,8 @@
           
 
           
+
+          
             <div class="links-of-author motion-element">
               
                 <span class="links-of-author-item">
@@ -817,6 +812,17 @@
                     
                   
                   <a href="https://twitter.com/nuomi1/" title="Twitter &rarr; https://twitter.com/nuomi1/" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://telegram.me/nuomi1/" title="Telegram &rarr; https://telegram.me/nuomi1/" rel="noopener" target="_blank"><i class="fa fa-fw fa-telegram"></i>Telegram</a>
                 </span>
               
                 <span class="links-of-author-item">
@@ -855,15 +861,16 @@
           
 
         </div>
-      </section>
+      </div>
 
       
       <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
           <div class="post-toc">
 
             
-              
+            
+            
             
 
             
@@ -871,7 +878,7 @@
             
 
           </div>
-        </section>
+        </div>
       <!--/noindex-->
       
 
@@ -879,6 +886,7 @@
 
     </div>
   </aside>
+  
 
 
         
@@ -907,7 +915,7 @@
 
 
 
-  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v6.6.0</div>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.1.0</div>
 
 
 
@@ -919,10 +927,8 @@
 
 
 
-
-
   <div style="display: none;">
-    <script src="//s95.cnzz.com/z_stat.php?id=1259937120&web_id=1259937120" language="JavaScript"></script>
+    <script src="//s95.cnzz.com/z_stat.php?id=1259937120&web_id=1259937120"></script>
   </div>
 
 
@@ -941,7 +947,7 @@
     
 
     
-	
+
     
 
     
@@ -949,7 +955,7 @@
 
   
 
-<script type="text/javascript">
+<script>
   if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
     window.Promise = null;
   }
@@ -983,160 +989,160 @@
 
 
   
-  
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
 
   
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
 
   
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
 
   
-  
-    <script type="text/javascript" src="/lib/reading_progress/reading_progress.js"></script>
-  
+  <script src="/lib/reading_progress/reading_progress.js"></script>
 
 
   
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=6.6.0"></script>
+  <script src="/js/utils.js?v=7.1.0"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=6.6.0"></script>
+  <script src="/js/motion.js?v=7.1.0"></script>
 
 
 
   
   
 
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.6.0"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=6.6.0"></script>
 
+  <script src="/js/schemes/muse.js?v=7.1.0"></script>
 
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.6.0"></script>
 
 
 
   
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
 
 
 
   
 
 
+  <script src="/js/next-boot.js?v=7.1.0"></script>
 
 
-
-
-
-
-  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
   
-  
-  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
-  
-  <script type="text/javascript">
-    var GUEST = ['nick','mail','link'];
-    var guest = 'nick,mail,link';
-    guest = guest.split(',').filter(function (item) {
-      return GUEST.indexOf(item)>-1;
-    });
-    new Valine({
-        el: '#comments' ,
-        verify: true,
-        notify: false,
-        appId: 'ehvmFwB3BLTvYf4JORInQRRn-gzGzoHsz',
-        appKey: '6zj1q563yNhGInbB9zQHlJIs',
-        placeholder: 'Just go go',
-        avatar:'mm',
-        meta:guest,
-        pageSize:'10' || 10,
-        visitor: false
-    });
-  </script>
-
+  <script src="/js/js.cookie.js?v=7.1.0"></script>
+  <script src="/js/scroll-cookie.js?v=7.1.0"></script>
 
 
   
 
+  
+
+  
+  
+
+<script src="//cdn1.lncld.net/static/js/3.11.1/av-min.js"></script>
+
+
+
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+<script>
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#comments',
+    verify: true,
+    notify: false,
+    appId: 'ehvmFwB3BLTvYf4JORInQRRn-gzGzoHsz',
+    appKey: '6zj1q563yNhGInbB9zQHlJIs',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: false,
+    lang: '' || 'zh-cn'
+  });
+</script>
 
 
 
 
   
 
+
+  
+
+
+
+
+  
   
   <script>
     
     function addCount(Counter) {
-      var $visitors = $(".leancloud_visitors");
+      var $visitors = $('.leancloud_visitors');
       var url = $visitors.attr('id').trim();
       var title = $visitors.attr('data-flag-title').trim();
 
       Counter('get', '/classes/Counter', { where: JSON.stringify({ url }) })
-        .done(function ({ results }) {
+        .done(function({ results }) {
           if (results.length > 0) {
             var counter = results[0];
             
-            Counter('put', `/classes/Counter/${counter.objectId}`, JSON.stringify({ time: { "__op":"Increment", "amount":1 } }))
+            Counter('put', '/classes/Counter/' + counter.objectId, JSON.stringify({ time: { '__op': 'Increment', 'amount': 1 } }))
             
-            .done(function () {
-                  var $element = $(document.getElementById(url));
-                  $element.find('.leancloud-visitors-count').text(counter.time + 1);
-            })
+              .done(function() {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.time + 1);
+              })
             
-            .fail(function ({ responseJSON }) {
+              .fail(function ({ responseJSON }) {
                 console.log('Failed to save Visitor num, with error message: ' + responseJSON.error);
-            })
+              })
           } else {
             
-              Counter('post', '/classes/Counter', JSON.stringify({ title: title, url: url, time: 1}))
-                .done(function () {
+              Counter('post', '/classes/Counter', JSON.stringify({ title: title, url: url, time: 1 }))
+                .done(function() {
                   var $element = $(document.getElementById(url));
                   $element.find('.leancloud-visitors-count').text(1);
                 })
-                .fail(function () {
+                .fail(function() {
                   console.log('Failed to create');
                 });
             
           }
         })
-      .fail(function ({ responseJSON }) {
-        console.log('LeanCloud Counter Error:' + responseJSON.code + " " + responseJSON.error);
-      });
+        .fail(function ({ responseJSON }) {
+          console.log('LeanCloud Counter Error: ' + responseJSON.code + ' ' + responseJSON.error);
+        });
     }
     
 
     $(function() {
-      $.get('https://app-router.leancloud.cn/2/route?appId=' + "ehvmFwB3BLTvYf4JORInQRRn-gzGzoHsz")
-        .done(function ({ api_server }) {
-          var Counter = function (method, url, data) {
+      $.get('https://app-router.leancloud.cn/2/route?appId=' + 'ehvmFwB3BLTvYf4JORInQRRn-gzGzoHsz')
+        .done(function({ api_server }) {
+          var Counter = function(method, url, data) {
             return $.ajax({
               method: method,
-              url: `https://${api_server}/1.1${url}`,
+              url: 'https://' + api_server + '/1.1' + url,
               headers: {
-                'X-LC-Id': "ehvmFwB3BLTvYf4JORInQRRn-gzGzoHsz",
-                'X-LC-Key': "6zj1q563yNhGInbB9zQHlJIs",
+                'X-LC-Id': 'ehvmFwB3BLTvYf4JORInQRRn-gzGzoHsz',
+                'X-LC-Key': '6zj1q563yNhGInbB9zQHlJIs',
                 'Content-Type': 'application/json',
               },
-              data: data,
+              data: data
             });
           };
           
-          addCount(Counter);
+            addCount(Counter);
           
-        })
+        });
     });
   </script>
 
@@ -1145,10 +1151,6 @@
   
 
   
-
-  
-
-  
   
 
   
@@ -1158,6 +1160,13 @@
 
 
   
+
+  
+
+  
+
+  
+
   
 
   
@@ -1167,6 +1176,41 @@
   
 
   
+<script>
+  $('.highlight').each(function(i, e) {
+    var $wrap = $('<div>').addClass('highlight-wrap');
+    $(e).after($wrap);
+    $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function(e) {
+      var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
+        return $(e).text();
+      }).toArray().join('\n');
+      var ta = document.createElement('textarea');
+      var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+      ta.style.top = yPosition + 'px'; // Prevent page scroll
+      ta.style.position = 'absolute';
+      ta.style.opacity = '0';
+      ta.readOnly = true;
+      ta.value = code;
+      document.body.appendChild(ta);
+      ta.select();
+      ta.setSelectionRange(0, code.length);
+      ta.readOnly = false;
+      var result = document.execCommand('copy');
+      
+        if (result) $(this).text('复制成功');
+        else $(this).text('复制失败');
+      
+      ta.blur(); // For iOS
+      $(this).blur();
+    })).on('mouseleave', function(e) {
+      var $b = $(this).find('.copy-btn');
+      setTimeout(function() {
+        $b.text('复制');
+      }, 300);
+    }).append(e);
+  })
+</script>
+
 
   
 
