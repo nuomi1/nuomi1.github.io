@@ -101,7 +101,7 @@
 
 
   <meta name="description" content="今天写一下之前使用 docker-compose 搭建 Home Assistant 并接入米家 LED 智能台灯的步骤。">
-<meta name="keywords" content="docker,home-assistant">
+<meta name="keywords" content="Docker,Home-Assistant">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用 docker-compose 搭建 Home Assistant">
 <meta property="og:url" content="https://nuomi1.github.io/archives/2018/05/docker-compose-home-assistant.html">
@@ -484,21 +484,21 @@
         <p>今天写一下之前使用 docker-compose 搭建 <a href="https://www.home-assistant.io/" target="_blank" rel="noopener">Home Assistant</a> 并接入<a href="https://www.mi.com/mjsmartlamp/" target="_blank" rel="noopener">米家 LED 智能台灯</a>的步骤。</p>
 <a id="more"></a>
 <hr>
-<h1 id="编写-docker-compose-yaml"><a href="#编写-docker-compose-yaml" class="headerlink" title="编写 docker-compose.yaml"></a>编写 docker-compose.yaml</h1><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">'3'</span></span><br><span class="line"></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line"><span class="attr">  HomeAssistant:</span></span><br><span class="line"><span class="attr">    image:</span> <span class="string">homeassistant/home-assistant</span></span><br><span class="line"><span class="attr">    restart:</span> <span class="string">always</span></span><br><span class="line"><span class="attr">    ports:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="number">8123</span><span class="string">:8123</span></span><br><span class="line"><span class="attr">    volumes:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">'./HomeAssistant:/config'</span></span><br></pre></td></tr></table></figure>
+<h2 id="编写-docker-compose-yaml"><a href="#编写-docker-compose-yaml" class="headerlink" title="编写 docker-compose.yaml"></a>编写 docker-compose.yaml</h2><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">'3'</span></span><br><span class="line"></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line"><span class="attr">  HomeAssistant:</span></span><br><span class="line"><span class="attr">    image:</span> <span class="string">homeassistant/home-assistant</span></span><br><span class="line"><span class="attr">    restart:</span> <span class="string">always</span></span><br><span class="line"><span class="attr">    ports:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="number">8123</span><span class="string">:8123</span></span><br><span class="line"><span class="attr">    volumes:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">'./HomeAssistant:/config'</span></span><br></pre></td></tr></table></figure>
 <p>和昨天的差不多，甚至 <code>ENV</code> 等都不需要。</p>
-<h1 id="接入米家-LED-智能台灯"><a href="#接入米家-LED-智能台灯" class="headerlink" title="接入米家 LED 智能台灯"></a>接入米家 LED 智能台灯</h1><p><a href="https://www.yeelight.com/" target="_blank" rel="noopener">YeeLight</a> 的其他灯具产品支持<a href="https://www.home-assistant.io/components/light.yeelight/" target="_blank" rel="noopener">自动发现</a>，但是米家这款由于内存过低，不支持 <a href="https://en.wikipedia.org/wiki/Multicast_DNS" target="_blank" rel="noopener">mDNS</a> 查询，必须手动添加配置。</p>
+<h2 id="接入米家-LED-智能台灯"><a href="#接入米家-LED-智能台灯" class="headerlink" title="接入米家 LED 智能台灯"></a>接入米家 LED 智能台灯</h2><p><a href="https://www.yeelight.com/" target="_blank" rel="noopener">YeeLight</a> 的其他灯具产品支持<a href="https://www.home-assistant.io/components/light.yeelight/" target="_blank" rel="noopener">自动发现</a>，但是米家这款由于内存过低，不支持 <a href="https://en.wikipedia.org/wiki/Multicast_DNS" target="_blank" rel="noopener">mDNS</a> 查询，必须手动添加配置。</p>
 <p>首先在 <a href="https://itunes.apple.com/cn/app/id977125608" target="_blank" rel="noopener">YeeLight iOS App</a> 或 <a href="https://play.google.com/store/apps/details?id=com.yeelight.cherry" target="_blank" rel="noopener">YeeLight Android App</a> 开启「局域网控制」。步骤：设备 -&gt; 具体设备 -&gt; 更多选项（右下角三角形） -&gt; 局域网控制。</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">light:</span></span><br><span class="line"><span class="attr">  - platform:</span> <span class="string">yeelight</span></span><br><span class="line"><span class="attr">    devices:</span></span><br><span class="line">      <span class="number">192.168</span><span class="number">.1</span><span class="number">.105</span><span class="string">:</span></span><br><span class="line"><span class="attr">        name:</span> <span class="string">MI-LED-Desk-Lamp</span></span><br></pre></td></tr></table></figure>
 <p>然后在 <code>configuration.yaml</code> 中添加以上配置即可，<code>name</code> 可以随意改。</p>
 <p>最后打开 Home Assistant 即可看到「概览」中已经出现「灯光」卡片，点击 <code>MI-LED-Desk-Lamp</code> 的开关，即可开启台灯。</p>
-<h1 id="接入-HomeKit（失败）"><a href="#接入-HomeKit（失败）" class="headerlink" title="接入 HomeKit（失败）"></a>接入 HomeKit（失败）</h1><p>Home Assistant 0.64 后支持默认支持 <a href="https://www.apple.com/cn/ios/home/" target="_blank" rel="noopener">HomeKit</a>。</p>
+<h2 id="接入-HomeKit（失败）"><a href="#接入-HomeKit（失败）" class="headerlink" title="接入 HomeKit（失败）"></a>接入 HomeKit（失败）</h2><p>Home Assistant 0.64 后支持默认支持 <a href="https://www.apple.com/cn/ios/home/" target="_blank" rel="noopener">HomeKit</a>。</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">homekit:</span></span><br><span class="line"><span class="attr">  filter:</span></span><br><span class="line"><span class="attr">    include_domains:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">light</span></span><br></pre></td></tr></table></figure>
 <p>在 <code>configuration.yaml</code> 中添加以上配置，Home Assistant 的「概览」中出现「HomeKit Setup」卡片。</p>
 <p>在 iOS 的 家庭 -&gt; 添加配件 -&gt; 没有找到代码或无法扫描？ -&gt; 输入代码… -&gt; 代码，填写在「HomeKit Setup」卡片中出现的八位纯数字代码。</p>
 <p>但是不知为何，填完代码之后，App 右上角一直转圈，死活进不了下一步……</p>
-<h1 id="接下来"><a href="#接下来" class="headerlink" title="接下来"></a>接下来</h1><p>今天刚刚到手了<a href="https://detail.tmall.com/item.htm?id=567925396518" target="_blank" rel="noopener">天猫精灵方糖</a>，明天出个简单评测。</p>
+<h2 id="接下来"><a href="#接下来" class="headerlink" title="接下来"></a>接下来</h2><p>今天刚刚到手了<a href="https://detail.tmall.com/item.htm?id=567925396518" target="_blank" rel="noopener">天猫精灵方糖</a>，明天出个简单评测。</p>
 <p>下一步准备买个树莓派，把 Home Assistant 丢进去，稳定运行，毕竟笔记本也不是全天在线。</p>
-<h1 id="尾巴"><a href="#尾巴" class="headerlink" title="尾巴"></a>尾巴</h1><p><a href="https://home-assistant.cc/" target="_blank" rel="noopener">Home Assistant 中文文档</a> 介绍了不同方式搭建 Home Assistant。</p>
+<h2 id="尾巴"><a href="#尾巴" class="headerlink" title="尾巴"></a>尾巴</h2><p><a href="https://home-assistant.cc/" target="_blank" rel="noopener">Home Assistant 中文文档</a> 介绍了不同方式搭建 Home Assistant。</p>
 
       
     </div>
@@ -546,9 +546,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/docker/" rel="tag"># docker</a>
+            <a href="/tags/Docker/" rel="tag"># Docker</a>
           
-            <a href="/tags/home-assistant/" rel="tag"># home-assistant</a>
+            <a href="/tags/Home-Assistant/" rel="tag"># Home-Assistant</a>
           
         </div>
       
@@ -734,7 +734,25 @@
                     
                       
                     
-                    <span class="site-state-item-count">17</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">16</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -831,7 +849,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#编写-docker-compose-yaml"><span class="nav-number">1.</span> <span class="nav-text">编写 docker-compose.yaml</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#接入米家-LED-智能台灯"><span class="nav-number">2.</span> <span class="nav-text">接入米家 LED 智能台灯</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#接入-HomeKit（失败）"><span class="nav-number">3.</span> <span class="nav-text">接入 HomeKit（失败）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#接下来"><span class="nav-number">4.</span> <span class="nav-text">接下来</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#尾巴"><span class="nav-number">5.</span> <span class="nav-text">尾巴</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#编写-docker-compose-yaml"><span class="nav-number">1.</span> <span class="nav-text">编写 docker-compose.yaml</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#接入米家-LED-智能台灯"><span class="nav-number">2.</span> <span class="nav-text">接入米家 LED 智能台灯</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#接入-HomeKit（失败）"><span class="nav-number">3.</span> <span class="nav-text">接入 HomeKit（失败）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#接下来"><span class="nav-number">4.</span> <span class="nav-text">接下来</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#尾巴"><span class="nav-number">5.</span> <span class="nav-text">尾巴</span></a></li></ol></div>
             
 
           </div>

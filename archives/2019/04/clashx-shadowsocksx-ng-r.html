@@ -101,7 +101,7 @@
 
 
   <meta name="description" content="ClashX 客户端默认不支持 SSR 协议，但可以配搭 ShadowsocksX-NG-R 通过本地转发 socks5 的方式实现。">
-<meta name="keywords" content="clashx,shadowsocksx-ng-r,ssr">
+<meta name="keywords" content="ClashX,ShadowsocksX-NG-R,SSR">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ClashX 搭配 ShadowsocksX-NG-R 支持 SSR 协议">
 <meta property="og:url" content="https://nuomi1.github.io/archives/2019/04/clashx-shadowsocksx-ng-r.html">
@@ -484,9 +484,9 @@
         <p>ClashX 客户端默认不支持 SSR 协议，但可以配搭 ShadowsocksX-NG-R 通过本地转发 socks5 的方式实现。</p>
 <a id="more"></a>
 <hr>
-<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">brew cask install clashx</span><br><span class="line">brew cask install shadowsocksx-ng-r</span><br></pre></td></tr></table></figure>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">brew cask install clashx</span><br><span class="line">brew cask install shadowsocksx-ng-r</span><br></pre></td></tr></table></figure>
 <p>安装 ClashX 与 ShadowsocksX-NG-R。</p>
-<h1 id="ShadowsocksX-NG-R"><a href="#ShadowsocksX-NG-R" class="headerlink" title="ShadowsocksX-NG-R"></a>ShadowsocksX-NG-R</h1><p>启动 ShadowsocksX-NG-R.app。</p>
+<h2 id="ShadowsocksX-NG-R"><a href="#ShadowsocksX-NG-R" class="headerlink" title="ShadowsocksX-NG-R"></a>ShadowsocksX-NG-R</h2><p>启动 ShadowsocksX-NG-R.app。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> <span class="string">"<span class="variable">$HOME</span>/Library/Application Support/ShadowsocksX-NG/"</span></span><br></pre></td></tr></table></figure>
 <p>进入 ShadowsocksX-NG-R 存放 <code>ss-local</code> 的目录。</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"local_address"</span> : <span class="string">"127.0.0.1"</span>,</span><br><span class="line">  <span class="attr">"server_port"</span> : #server_port,</span><br><span class="line">  <span class="attr">"local_port"</span> : #<span class="number">5500</span>,</span><br><span class="line">  <span class="attr">"obfs"</span> : <span class="string">"#obfs"</span>,</span><br><span class="line">  <span class="attr">"protocol_param"</span> : <span class="string">"#protocol_param"</span>,</span><br><span class="line">  <span class="attr">"obfs_param"</span> : <span class="string">"#obfs_param"</span>,</span><br><span class="line">  <span class="attr">"password"</span> : <span class="string">"#password"</span>,</span><br><span class="line">  <span class="attr">"timeout"</span> : #timeout,</span><br><span class="line">  <span class="attr">"method"</span> : <span class="string">"#method"</span>,</span><br><span class="line">  <span class="attr">"protocol"</span> : <span class="string">"#protocol"</span>,</span><br><span class="line">  <span class="attr">"server"</span> : <span class="string">"#server"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -495,7 +495,7 @@
 <p>以上脚本保存为 <code>ss.sh</code>，目录随意。<br><code>COUNTRY</code> 按需填写，使用空格分割。<br><code>{0..3}</code> 按需填写，此时表示 <code>COUNTRY</code> 有四个元素。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chmod +x ./ss.sh</span><br><span class="line">./ss.sh</span><br></pre></td></tr></table></figure>
 <p>给予脚本执行权限，以后只需运行 <code>ss.sh</code>。</p>
-<h1 id="ClashX"><a href="#ClashX" class="headerlink" title="ClashX"></a>ClashX</h1><p>启动 ClashX。</p>
+<h2 id="ClashX"><a href="#ClashX" class="headerlink" title="ClashX"></a>ClashX</h2><p>启动 ClashX。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> <span class="string">"<span class="variable">$HOME</span>/.config/clash"</span></span><br></pre></td></tr></table></figure>
 <p>进入 ClashX 存放 <code>config.yml</code> 的目录。</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">Proxy:</span></span><br><span class="line"></span><br><span class="line"><span class="attr">- name:</span> <span class="string">"jp1"</span></span><br><span class="line"><span class="attr">  type:</span> <span class="string">socks5</span></span><br><span class="line"><span class="attr">  server:</span> <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span></span><br><span class="line"><span class="attr">  port:</span> <span class="number">5500</span></span><br><span class="line"></span><br><span class="line"><span class="attr">- name:</span> <span class="string">"jp2"</span></span><br><span class="line"><span class="attr">  type:</span> <span class="string">socks5</span></span><br><span class="line"><span class="attr">  server:</span> <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span></span><br><span class="line"><span class="attr">  port:</span> <span class="number">5501</span></span><br><span class="line"></span><br><span class="line"><span class="attr">- name:</span> <span class="string">"jp3"</span></span><br><span class="line"><span class="attr">  type:</span> <span class="string">socks5</span></span><br><span class="line"><span class="attr">  server:</span> <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span></span><br><span class="line"><span class="attr">  port:</span> <span class="number">5502</span></span><br></pre></td></tr></table></figure>
@@ -551,11 +551,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/clashx/" rel="tag"># clashx</a>
+            <a href="/tags/ClashX/" rel="tag"># ClashX</a>
           
-            <a href="/tags/shadowsocksx-ng-r/" rel="tag"># shadowsocksx-ng-r</a>
+            <a href="/tags/ShadowsocksX-NG-R/" rel="tag"># ShadowsocksX-NG-R</a>
           
-            <a href="/tags/ssr/" rel="tag"># ssr</a>
+            <a href="/tags/SSR/" rel="tag"># SSR</a>
           
         </div>
       
@@ -741,7 +741,25 @@
                     
                       
                     
-                    <span class="site-state-item-count">17</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">16</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -838,7 +856,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#安装"><span class="nav-number">1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ShadowsocksX-NG-R"><span class="nav-number">2.</span> <span class="nav-text">ShadowsocksX-NG-R</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ClashX"><span class="nav-number">3.</span> <span class="nav-text">ClashX</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装"><span class="nav-number">1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ShadowsocksX-NG-R"><span class="nav-number">2.</span> <span class="nav-text">ShadowsocksX-NG-R</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ClashX"><span class="nav-number">3.</span> <span class="nav-text">ClashX</span></a></li></ol></div>
             
 
           </div>
