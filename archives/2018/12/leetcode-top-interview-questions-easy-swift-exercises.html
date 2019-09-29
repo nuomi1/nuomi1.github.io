@@ -4,101 +4,62 @@
 
 
 
-
-
-
-
-
-
-
-  
-
-
-<html class="theme-next mist use-motion" lang="zh-CN">
-<head><meta name="generator" content="Hexo 3.9.0">
+<html lang="zh-CN">
+<head>
   <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.4.0">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.4.0" color="#222">
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<link rel="stylesheet" href="/css/main.css?v=7.4.0">
 
 
 <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
 
-<link rel="stylesheet" href="/css/main.css?v=7.2.0">
 
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.2.0">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.2.0">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.2.0">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=7.2.0" color="#222">
-
-
-
-
-
-
-
-<script id="hexo.configurations">
+<script id="hexo-configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
     scheme: 'Mist',
-    version: '7.2.0',
-    sidebar: {"position":"left","display":"hide","offset":12,"onmobile":false,"dimmer":false},
-    back2top: true,
-    back2top_sidebar: false,
+    version: '7.4.0',
+    exturl: false,
+    sidebar: {"position":"right","display":"hide","offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
     fancybox: false,
-    fastclick: false,
+    mediumzoom: false,
     lazyload: false,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    pangu: false,
     algolia: {
-      applicationID: '',
+      appID: '',
       apiKey: '',
       indexName: '',
       hits: {"per_page":10},
       labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
   };
 </script>
 
-
-  
-
-
-
-
   <meta name="description" content="五个月的实习告一段落了，学习还是要继续的。接触不到业务，刷一下 LeetCode 的初级算法吧。顺便好像欠了几篇博文……">
-<meta name="keywords" content="LeetCode,Swift">
+<meta name="keywords" content="Swift,LeetCode">
 <meta property="og:type" content="article">
 <meta property="og:title" content="LeetCode 初级算法 Swift 练习">
-<meta property="og:url" content="Asia/Shanghai/archives/2018/12/leetcode-top-interview-questions-easy-swift-exercises.html">
+<meta property="og:url" content="https://nuomi1.github.io/archives/2018/12/leetcode-top-interview-questions-easy-swift-exercises.html">
 <meta property="og:site_name" content="nuomi1&#39;s blog">
 <meta property="og:description" content="五个月的实习告一段落了，学习还是要继续的。接触不到业务，刷一下 LeetCode 的初级算法吧。顺便好像欠了几篇博文……">
 <meta property="og:locale" content="zh-CN">
@@ -106,29 +67,33 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LeetCode 初级算法 Swift 练习">
 <meta name="twitter:description" content="五个月的实习告一段落了，学习还是要继续的。接触不到业务，刷一下 LeetCode 的初级算法吧。顺便好像欠了几篇博文……">
+  <link rel="canonical" href="https://nuomi1.github.io/archives/2018/12/leetcode-top-interview-questions-easy-swift-exercises">
 
 
-
-
-
-  
-  
-  <link rel="canonical" href="Asia/Shanghai/archives/2018/12/leetcode-top-interview-questions-easy-swift-exercises">
-
-
-
-<script id="page.configurations">
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
   };
 </script>
 
   <title>LeetCode 初级算法 Swift 练习 | nuomi1's blog</title>
+  <meta name="generator" content="Hexo 3.9.0">
   
-
-
-
-
+  <script async src="https://www.googletagmanager.com/gtag/js?id=69846247-2"></script>
+  <script>
+    var host = window.location.hostname;
+    if (host !== "localhost" || !true) {
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', '69846247-2');
+    }
+  </script>
 
 
   <script>
@@ -146,10 +111,8 @@
 
 
 
-
   <noscript>
   <style>
-  .use-motion .motion-element,
   .use-motion .brand,
   .use-motion .menu-item,
   .sidebar-inner,
@@ -158,7 +121,7 @@
   .use-motion .comments,
   .use-motion .post-header,
   .use-motion .post-body,
-  .use-motion .collection-title { opacity: initial; }
+  .use-motion .collection-header { opacity: initial; }
 
   .use-motion .logo,
   .use-motion .site-title,
@@ -175,33 +138,22 @@
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
-
-  
-  
-    
-  
-
-  <div class="container sidebar-position-left page-post-detail">
+  <div class="container use-motion">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
+      <div class="header-inner"><div class="site-brand-container">
   <div class="site-meta">
-    
 
-    <div class="custom-logo-site-title">
+    <div>
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">nuomi1's blog</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
-    
-      
         <p class="site-subtitle">nuomi1's blog</p>
       
-    
-    
   </div>
 
   <div class="site-nav-toggle">
@@ -214,143 +166,93 @@
 </div>
 
 
-
 <nav class="site-nav">
   
-    <ul id="menu" class="menu">
+  <ul id="menu" class="menu">
+      
+      
       
         
-        
-        
-          
-          <li class="menu-item menu-item-home">
-
-    
-    
+        <li class="menu-item menu-item-home">
       
-    
-
     
 
     <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-archives menu-item-active">
-
-    
-    
       
-    
-
+      
+      
+        
+        <li class="menu-item menu-item-archives">
+      
     
 
     <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-categories">
-
-    
-    
       
-    
-
+      
+      
+        
+        <li class="menu-item menu-item-categories">
+      
     
 
     <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-tags">
-
-    
-    
       
-    
-
+      
+      
+        
+        <li class="menu-item menu-item-tags">
+      
     
 
     <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-about">
-
-    
-    
       
-    
-
+      
+      
+        
+        <li class="menu-item menu-item-about">
+      
     
 
     <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
 
   </li>
+  </ul>
 
-      
-      
-    </ul>
-  
-
-  
     
 
-  
-
-  
 </nav>
-
-
-
-  
-
-
-
 </div>
     </header>
 
     
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
 
 
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
-          
           <div id="content" class="content">
             
 
   <div id="posts" class="posts-expand">
-    
-
-  
-
+      <article itemscope itemtype="http://schema.org/Article">
   
   
   
-
-  
-    <div class="reading-progress-bar"></div>
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="Asia/Shanghai/archives/2018/12/leetcode-top-interview-questions-easy-swift-exercises.html">
+  <div class="post-block post">
+    <link itemprop="mainEntityOfPage" href="https://nuomi1.github.io/archives/2018/12/leetcode-top-interview-questions-easy-swift-exercises.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="nuomi1">
@@ -361,33 +263,18 @@
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="nuomi1's blog">
     </span>
-
-    
       <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">LeetCode 初级算法 Swift 练习
 
-        
-        
-          <h1 class="post-title" itemprop="name headline">LeetCode 初级算法 Swift 练习
-
-              
-            
-          </h1>
-        
+          
+        </h1>
 
         <div class="post-meta">
-
-          
-          
-          
-
-          
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
+              <span class="post-meta-item-text">发表于</span>
 
               
                 
@@ -396,8 +283,6 @@
               <time title="创建时间：2018-12-17 00:00:00" itemprop="dateCreated datePublished" datetime="2018-12-17T00:00:00+08:00">2018-12-17</time>
             </span>
           
-
-          
             
 
             
@@ -405,22 +290,16 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
+                <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2019-01-16 00:00:00" itemprop="dateModified" datetime="2019-01-16T00:00:00+08:00">2019-01-16</time>
               </span>
             
-          
-
           
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
+              <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/program/" itemprop="url" rel="index"><span itemprop="name">program</span></a></span>
 
@@ -431,55 +310,36 @@
           
 
           
-            
-            
-              
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">评论数：</span>
-                <a href="/archives/2018/12/leetcode-top-interview-questions-easy-swift-exercises.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/archives/2018/12/leetcode-top-interview-questions-easy-swift-exercises.html" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-            <span id="/archives/2018/12/leetcode-top-interview-questions-easy-swift-exercises.html" class="post-meta-item leancloud_visitors" data-flag-title="LeetCode 初级算法 Swift 练习">
+            <span id="/archives/2018/12/leetcode-top-interview-questions-easy-swift-exercises.html" class="post-meta-item leancloud_visitors" data-flag-title="LeetCode 初级算法 Swift 练习" title="阅读次数">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
-              
-                <span class="post-meta-item-text">阅读次数：</span>
-              
-                <span class="leancloud-visitors-count"></span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
             </span>
           
-
-          
-
-          <br>
-          
-
-          
-
-          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/archives/2018/12/leetcode-top-interview-questions-easy-swift-exercises.html#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/archives/2018/12/leetcode-top-interview-questions-easy-swift-exercises.html" itemprop="commentCount"></span></a>
+  </span>
+  
+  
 
         </div>
       </header>
-    
 
     
     
     
     <div class="post-body" itemprop="articleBody">
-
-      
-      
 
       
         <p>五个月的实习告一段落了，学习还是要继续的。接触不到业务，刷一下 <a href="https://leetcode.com/explore/interview/card/top-interview-questions-easy/" target="_blank" rel="noopener">LeetCode 的初级算法</a>吧。顺便好像欠了几篇博文……</p>
@@ -585,114 +445,83 @@
 <h2 id="Sorting-and-Searching"><a href="#Sorting-and-Searching" class="headerlink" title="Sorting and Searching"></a><a href="https://leetcode.com/explore/interview/card/top-interview-questions-easy/96/sorting-and-searching/" target="_blank" rel="noopener">Sorting and Searching</a></h2><h3 id="Merge-Sorted-Array"><a href="#Merge-Sorted-Array" class="headerlink" title="Merge Sorted Array"></a><a href="https://leetcode.com/explore/interview/card/top-interview-questions-easy/96/sorting-and-searching/587/" target="_blank" rel="noopener">Merge Sorted Array</a></h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">merge</span><span class="params">(<span class="number">_</span> nums1: <span class="keyword">inout</span> [Int], <span class="number">_</span> m: Int, <span class="number">_</span> nums2: [Int], <span class="number">_</span> n: Int)</span></span> &#123;</span><br><span class="line">    <span class="comment">// nums1 扫描下标</span></span><br><span class="line">    <span class="keyword">var</span> i = m - <span class="number">1</span></span><br><span class="line">    <span class="comment">// nums2 扫描下标</span></span><br><span class="line">    <span class="keyword">var</span> j = n - <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> i &gt;= <span class="number">0</span> || j &gt;= <span class="number">0</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> j &lt; <span class="number">0</span> || (i &gt;= <span class="number">0</span> &amp;&amp; nums1[i] &gt; nums2[j]) &#123;</span><br><span class="line">            nums1[i + j + <span class="number">1</span>] = nums1[i]</span><br><span class="line">            i -= <span class="number">1</span></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            nums1[i + j + <span class="number">1</span>] = nums2[j]</span><br><span class="line">            j -= <span class="number">1</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
-      
     </div>
 
     
-
     
     
-    
-
-    
-
-    
+        
       
-    
-    
-
-    
-      <div>
         
 
-
-
-
-  
-
-
-
+<div>
 <ul class="post-copyright">
   <li class="post-copyright-author">
     <strong>本文作者： </strong>nuomi1</li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    
-    <a href="/Asia/Shanghai/archives/2018/12/leetcode-top-interview-questions-easy-swift-exercises.html" title="LeetCode 初级算法 Swift 练习">Asia/Shanghai/archives/2018/12/leetcode-top-interview-questions-easy-swift-exercises.html</a>
+    <a href="https://nuomi1.github.io/archives/2018/12/leetcode-top-interview-questions-easy-swift-exercises.html" title="LeetCode 初级算法 Swift 练习">https://nuomi1.github.io/archives/2018/12/leetcode-top-interview-questions-easy-swift-exercises.html</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc/4.0/deed.zh" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC</a> 许可协议。转载请注明出处！</li>
 </ul>
+</div>
 
-      </div>
+      
+
+      <footer class="post-footer">
+          
+            
+          
+          <div class="post-tags">
+            
+              <a href="/tags/Swift/" rel="tag"># Swift</a>
+            
+              <a href="/tags/LeetCode/" rel="tag"># LeetCode</a>
+            
+          </div>
+        
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/archives/2018/07/work-summary.html" rel="next" title="工作总结">
+                  <i class="fa fa-chevron-left"></i> 工作总结
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+                <a href="/archives/2019/04/clashx-shadowsocksx-ng-r.html" rel="prev" title="ClashX 搭配 ShadowsocksX-NG-R 支持 SSR 协议">
+                  ClashX 搭配 ShadowsocksX-NG-R 支持 SSR 协议 <i class="fa fa-chevron-right"></i>
+                </a>
+              
+            </div>
+          </div>
+        
+      </footer>
     
-
-    <footer class="post-footer">
-      
-        
-          
-        
-        <div class="post-tags">
-          
-            <a href="/tags/LeetCode/" rel="tag"># LeetCode</a>
-          
-            <a href="/tags/Swift/" rel="tag"># Swift</a>
-          
-        </div>
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/archives/2018/07/work-summary.html" rel="next" title="工作总结">
-                <i class="fa fa-chevron-left"></i> 工作总结
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/archives/2019/04/clashx-shadowsocksx-ng-r.html" rel="prev" title="ClashX 搭配 ShadowsocksX-NG-R 支持 SSR 协议">
-                ClashX 搭配 ShadowsocksX-NG-R 支持 SSR 协议 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
   </div>
   
   
   
   </article>
 
-
   </div>
 
 
           </div>
           
-
+    
+    <div class="comments" id="comments"></div>
   
-    <div class="comments" id="comments">
-    </div>
-
-  
-
-
 
         </div>
-        
           
   
   <div class="sidebar-toggle">
@@ -703,252 +532,212 @@
     </div>
   </div>
 
-  <aside id="sidebar" class="sidebar">
+  <aside class="sidebar">
     <div class="sidebar-inner">
-
+        
+        
+        
+        
       
 
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Array"><span class="nav-number">1.</span> <span class="nav-text">Array</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Remove-Duplicates-from-Sorted-Array"><span class="nav-number">1.1.</span> <span class="nav-text">Remove Duplicates from Sorted Array</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Best-Time-to-Buy-and-Sell-Stock-II"><span class="nav-number">1.2.</span> <span class="nav-text">Best Time to Buy and Sell Stock II</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Rotate-Array"><span class="nav-number">1.3.</span> <span class="nav-text">Rotate Array</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Contains-Duplicate"><span class="nav-number">1.4.</span> <span class="nav-text">Contains Duplicate</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Single-Number"><span class="nav-number">1.5.</span> <span class="nav-text">Single Number</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Intersection-of-Two-Arrays-II"><span class="nav-number">1.6.</span> <span class="nav-text">Intersection of Two Arrays II</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Plus-One"><span class="nav-number">1.7.</span> <span class="nav-text">Plus One</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Move-Zeroes"><span class="nav-number">1.8.</span> <span class="nav-text">Move Zeroes</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Two-Sum"><span class="nav-number">1.9.</span> <span class="nav-text">Two Sum</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Valid-Sudoku"><span class="nav-number">1.10.</span> <span class="nav-text">Valid Sudoku</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Rotate-Image"><span class="nav-number">1.11.</span> <span class="nav-text">Rotate Image</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Strings"><span class="nav-number">2.</span> <span class="nav-text">Strings</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Reverse-String"><span class="nav-number">2.1.</span> <span class="nav-text">Reverse String</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Reverse-Integer"><span class="nav-number">2.2.</span> <span class="nav-text">Reverse Integer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#First-Unique-Character-in-a-String"><span class="nav-number">2.3.</span> <span class="nav-text">First Unique Character in a String</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Valid-Anagram"><span class="nav-number">2.4.</span> <span class="nav-text">Valid Anagram</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Valid-Palindrome"><span class="nav-number">2.5.</span> <span class="nav-text">Valid Palindrome</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#String-to-Integer-atoi"><span class="nav-number">2.6.</span> <span class="nav-text">String to Integer (atoi)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Implement-strStr"><span class="nav-number">2.7.</span> <span class="nav-text">Implement strStr()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Count-and-Say"><span class="nav-number">2.8.</span> <span class="nav-text">Count and Say</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Longest-Common-Prefix"><span class="nav-number">2.9.</span> <span class="nav-text">Longest Common Prefix</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Linked-List"><span class="nav-number">3.</span> <span class="nav-text">Linked List</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Delete-Node-in-a-Linked-List"><span class="nav-number">3.1.</span> <span class="nav-text">Delete Node in a Linked List</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Remove-Nth-Node-From-End-of-List"><span class="nav-number">3.2.</span> <span class="nav-text">Remove Nth Node From End of List</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Reverse-Linked-List"><span class="nav-number">3.3.</span> <span class="nav-text">Reverse Linked List</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Merge-Two-Sorted-Lists"><span class="nav-number">3.4.</span> <span class="nav-text">Merge Two Sorted Lists</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Palindrome-Linked-List"><span class="nav-number">3.5.</span> <span class="nav-text">Palindrome Linked List</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linked-List-Cycle"><span class="nav-number">3.6.</span> <span class="nav-text">Linked List Cycle</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Trees"><span class="nav-number">4.</span> <span class="nav-text">Trees</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Maximum-Depth-of-Binary-Tree"><span class="nav-number">4.1.</span> <span class="nav-text">Maximum Depth of Binary Tree</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Validate-Binary-Search-Tree"><span class="nav-number">4.2.</span> <span class="nav-text">Validate Binary Search Tree</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Symmetric-Tree"><span class="nav-number">4.3.</span> <span class="nav-text">Symmetric Tree</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Binary-Tree-Level-Order-Traversal"><span class="nav-number">4.4.</span> <span class="nav-text">Binary Tree Level Order Traversal</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Convert-Sorted-Array-to-Binary-Search-Tree"><span class="nav-number">4.5.</span> <span class="nav-text">Convert Sorted Array to Binary Search Tree</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sorting-and-Searching"><span class="nav-number">5.</span> <span class="nav-text">Sorting and Searching</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Merge-Sorted-Array"><span class="nav-number">5.1.</span> <span class="nav-text">Merge Sorted Array</span></a></li></ol></li></ol></div>
+        
+      </div>
+      <!--/noindex-->
 
       <div class="site-overview-wrap sidebar-panel">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            
-              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="nuomi1">
-            
-              <p class="site-author-name" itemprop="name">nuomi1</p>
-              <div class="site-description motion-element" itemprop="description">nuomi1's blog</div>
-          </div>
-
-          
-            <nav class="site-state motion-element">
-              
-                <div class="site-state-item site-state-posts">
-                
-                  <a href="/archives/">
-                
-                    <span class="site-state-item-count">11</span>
-                    <span class="site-state-item-name">日志</span>
-                  </a>
-                </div>
-              
-
-              
-                
-                
-                <div class="site-state-item site-state-categories">
-                  
-                    
-                      <a href="/categories/">
-                    
-                  
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">6</span>
-                    <span class="site-state-item-name">分类</span>
-                  </a>
-                </div>
-              
-
-              
-                
-                
-                <div class="site-state-item site-state-tags">
-                  
-                    
-                      <a href="/tags/">
-                    
-                  
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">16</span>
-                    <span class="site-state-item-name">标签</span>
-                  </a>
-                </div>
-              
-            </nav>
-          
-
-          
-
-          
-
-          
-            <div class="links-of-author motion-element">
-              
-                <span class="links-of-author-item">
-                  
-                  
-                    
-                  
-                  
-                    
-                  
-                  <a href="https://github.com/nuomi1/" title="GitHub &rarr; https://github.com/nuomi1/" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
-                </span>
-              
-                <span class="links-of-author-item">
-                  
-                  
-                    
-                  
-                  
-                    
-                  
-                  <a href="https://twitter.com/nuomi1/" title="Twitter &rarr; https://twitter.com/nuomi1/" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
-                </span>
-              
-                <span class="links-of-author-item">
-                  
-                  
-                    
-                  
-                  
-                    
-                  
-                  <a href="https://telegram.me/nuomi1/" title="Telegram &rarr; https://telegram.me/nuomi1/" rel="noopener" target="_blank"><i class="fa fa-fw fa-telegram"></i>Telegram</a>
-                </span>
-              
-                <span class="links-of-author-item">
-                  
-                  
-                    
-                  
-                  
-                    
-                  
-                  <a href="https://weibo.com/nuomi1/" title="Weibo &rarr; https://weibo.com/nuomi1/" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
-                </span>
-              
-                <span class="links-of-author-item">
-                  
-                  
-                    
-                  
-                  
-                    
-                  
-                  <a href="mailto:nuomi1@qq.com" title="E-Mail &rarr; mailto:nuomi1@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
-                </span>
-              
-            </div>
-          
-
-          
-
-          
-          
-            <div class="links-of-blogroll motion-element links-of-blogroll-block">
-              <div class="links-of-blogroll-title">
-                <i class="fa  fa-fw fa-link"></i>
-                Links
-              </div>
-              <ul class="links-of-blogroll-list">
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="https://www.tuccuay.com/" title="https://www.tuccuay.com/" rel="noopener" target="_blank">Tuccuay</a>
-                  </li>
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="https://kemchenj.github.io/" title="https://kemchenj.github.io/" rel="noopener" target="_blank">四娘</a>
-                  </li>
-                
-              </ul>
-            </div>
-          
-
-          
-            
-          
-          
-
-        </div>
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image"
+      src="/images/avatar.jpg"
+      alt="nuomi1">
+  <p class="site-author-name" itemprop="name">nuomi1</p>
+  <div class="site-description" itemprop="description">nuomi1's blog</div>
+</div>
+  <nav class="site-state motion-element">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
       </div>
-
+    
       
-      <!--noindex-->
-        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-            
-            
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Array"><span class="nav-number">1.</span> <span class="nav-text">Array</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Remove-Duplicates-from-Sorted-Array"><span class="nav-number">1.1.</span> <span class="nav-text">Remove Duplicates from Sorted Array</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Best-Time-to-Buy-and-Sell-Stock-II"><span class="nav-number">1.2.</span> <span class="nav-text">Best Time to Buy and Sell Stock II</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Rotate-Array"><span class="nav-number">1.3.</span> <span class="nav-text">Rotate Array</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Contains-Duplicate"><span class="nav-number">1.4.</span> <span class="nav-text">Contains Duplicate</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Single-Number"><span class="nav-number">1.5.</span> <span class="nav-text">Single Number</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Intersection-of-Two-Arrays-II"><span class="nav-number">1.6.</span> <span class="nav-text">Intersection of Two Arrays II</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Plus-One"><span class="nav-number">1.7.</span> <span class="nav-text">Plus One</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Move-Zeroes"><span class="nav-number">1.8.</span> <span class="nav-text">Move Zeroes</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Two-Sum"><span class="nav-number">1.9.</span> <span class="nav-text">Two Sum</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Valid-Sudoku"><span class="nav-number">1.10.</span> <span class="nav-text">Valid Sudoku</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Rotate-Image"><span class="nav-number">1.11.</span> <span class="nav-text">Rotate Image</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Strings"><span class="nav-number">2.</span> <span class="nav-text">Strings</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Reverse-String"><span class="nav-number">2.1.</span> <span class="nav-text">Reverse String</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Reverse-Integer"><span class="nav-number">2.2.</span> <span class="nav-text">Reverse Integer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#First-Unique-Character-in-a-String"><span class="nav-number">2.3.</span> <span class="nav-text">First Unique Character in a String</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Valid-Anagram"><span class="nav-number">2.4.</span> <span class="nav-text">Valid Anagram</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Valid-Palindrome"><span class="nav-number">2.5.</span> <span class="nav-text">Valid Palindrome</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#String-to-Integer-atoi"><span class="nav-number">2.6.</span> <span class="nav-text">String to Integer (atoi)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Implement-strStr"><span class="nav-number">2.7.</span> <span class="nav-text">Implement strStr()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Count-and-Say"><span class="nav-number">2.8.</span> <span class="nav-text">Count and Say</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Longest-Common-Prefix"><span class="nav-number">2.9.</span> <span class="nav-text">Longest Common Prefix</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Linked-List"><span class="nav-number">3.</span> <span class="nav-text">Linked List</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Delete-Node-in-a-Linked-List"><span class="nav-number">3.1.</span> <span class="nav-text">Delete Node in a Linked List</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Remove-Nth-Node-From-End-of-List"><span class="nav-number">3.2.</span> <span class="nav-text">Remove Nth Node From End of List</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Reverse-Linked-List"><span class="nav-number">3.3.</span> <span class="nav-text">Reverse Linked List</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Merge-Two-Sorted-Lists"><span class="nav-number">3.4.</span> <span class="nav-text">Merge Two Sorted Lists</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Palindrome-Linked-List"><span class="nav-number">3.5.</span> <span class="nav-text">Palindrome Linked List</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linked-List-Cycle"><span class="nav-number">3.6.</span> <span class="nav-text">Linked List Cycle</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Trees"><span class="nav-number">4.</span> <span class="nav-text">Trees</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Maximum-Depth-of-Binary-Tree"><span class="nav-number">4.1.</span> <span class="nav-text">Maximum Depth of Binary Tree</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Validate-Binary-Search-Tree"><span class="nav-number">4.2.</span> <span class="nav-text">Validate Binary Search Tree</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Symmetric-Tree"><span class="nav-number">4.3.</span> <span class="nav-text">Symmetric Tree</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Binary-Tree-Level-Order-Traversal"><span class="nav-number">4.4.</span> <span class="nav-text">Binary Tree Level Order Traversal</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Convert-Sorted-Array-to-Binary-Search-Tree"><span class="nav-number">4.5.</span> <span class="nav-text">Convert Sorted Array to Binary Search Tree</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sorting-and-Searching"><span class="nav-number">5.</span> <span class="nav-text">Sorting and Searching</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Merge-Sorted-Array"><span class="nav-number">5.1.</span> <span class="nav-text">Merge Sorted Array</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </div>
-      <!--/noindex-->
       
-
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span>
+        </a>
+      </div>
+    
       
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://github.com/nuomi1/" title="GitHub &rarr; https://github.com/nuomi1/" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://twitter.com/nuomi1/" title="Twitter &rarr; https://twitter.com/nuomi1/" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://telegram.me/nuomi1/" title="Telegram &rarr; https://telegram.me/nuomi1/" rel="noopener" target="_blank"><i class="fa fa-fw fa-telegram"></i>Telegram</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://weibo.com/nuomi1/" title="Weibo &rarr; https://weibo.com/nuomi1/" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="mailto:nuomi1@qq.com" title="E-Mail &rarr; mailto:nuomi1@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+    
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title">
+      <i class="fa fa-fw fa-link"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://www.tuccuay.com/" title="https://www.tuccuay.com/" rel="noopener" target="_blank">Tuccuay</a>
+        </li>
+      
+        <li class="links-of-blogroll-item">
+          <a href="https://kemchenj.github.io/" title="https://kemchenj.github.io/" rel="noopener" target="_blank">四娘</a>
+        </li>
+      
+    </ul>
+  </div>
+
+      </div>
 
     </div>
   </aside>
-  
+  <div id="sidebar-dimmer"></div>
 
 
-        
       </div>
     </main>
 
@@ -959,31 +748,12 @@
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">nuomi1</span>
-
-  
-
-  
 </div>
-
-
   <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
-
-
-
   <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.2.0</div>
-
-
-
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.4.0</div>
 
         
-
-
-
-
 
 
   <div style="display: none;">
@@ -992,107 +762,151 @@
 
 
 
+
+  
+  <script>
+  function leancloudSelector(url) {
+    return document.getElementById(url).querySelector('.leancloud-visitors-count');
+  }
+  if (CONFIG.page.isPost) {
+    function addCount(Counter) {
+      var visitors = document.querySelector('.leancloud_visitors');
+      var url = visitors.getAttribute('id').trim();
+      var title = visitors.getAttribute('data-flag-title').trim();
+
+      Counter('get', `/classes/Counter?where=${JSON.stringify({ url })}`)
+        .then(response => response.json())
+        .then(({ results }) => {
+          if (results.length > 0) {
+            var counter = results[0];
+            Counter('put', '/classes/Counter/' + counter.objectId, { time: { '__op': 'Increment', 'amount': 1 } })
+              .then(response => response.json())
+              .then(() => {
+                leancloudSelector(url).innerText = counter.time + 1;
+              })
+            
+              .catch(error => {
+                console.log('Failed to save visitor count', error);
+              })
+          } else {
+              Counter('post', '/classes/Counter', { title: title, url: url, time: 1 })
+                .then(response => response.json())
+                .then(() => {
+                  leancloudSelector(url).innerText = 1;
+                })
+                .catch(error => {
+                  console.log('Failed to create', error);
+                });
+            
+          }
+        })
+        .catch(error => {
+          console.log('LeanCloud Counter Error', error);
+        });
+    }
+  } else {
+    function showTime(Counter) {
+      var visitors = document.querySelectorAll('.leancloud_visitors');
+      var entries = [...visitors].map(element => {
+        return element.getAttribute('id').trim();
+      });
+
+      Counter('get', `/classes/Counter?where=${JSON.stringify({ url: { '$in': entries } })}`)
+        .then(response => response.json())
+        .then(({ results }) => {
+          if (results.length === 0) {
+            document.querySelectorAll('.leancloud_visitors .leancloud-visitors-count').forEach(element => {
+              element.innerText = 0;
+            });
+            return;
+          }
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.url;
+            var time = item.time;
+            leancloudSelector(url).innerText = time;
+          }
+          for (var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = leancloudSelector(url);
+            if (element.innerText == '') {
+              element.innerText = 0;
+            }
+          }
+        })
+        .catch(error => {
+          console.log('LeanCloud Counter Error', error);
+        });
+    }
+  }
+
+  fetch('https://app-router.leancloud.cn/2/route?appId=ehvmFwB3BLTvYf4JORInQRRn-gzGzoHsz')
+    .then(response => response.json())
+    .then(({ api_server }) => {
+      var Counter = (method, url, data) => {
+        return fetch(`https://${api_server}/1.1${url}`, {
+          method: method,
+          headers: {
+            'X-LC-Id': 'ehvmFwB3BLTvYf4JORInQRRn-gzGzoHsz',
+            'X-LC-Key': '6zj1q563yNhGInbB9zQHlJIs',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        });
+      };
+      if (CONFIG.page.isPost) {
+        const localhost = /http:\/\/(localhost|127.0.0.1|0.0.0.0)/;
+        if (localhost.test(document.URL)) return;
+        addCount(Counter);
+      } else if (document.querySelectorAll('.post-title-link').length >= 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+
+
+
         
       </div>
     </footer>
-
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-          <span id="scrollpercent"><span>0</span>%</span>
-        
-      </div>
-    
-
-    
-
-    
-
-    
   </div>
 
   
 
-<script>
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
-</script>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-  
-  <script src="/lib/jquery/index.js?v=3.4.1"></script>
-
-  
+  <script src="/lib/anime.min.js?v=3.1.0"></script>
   <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
   <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+<script src="/js/utils.js?v=7.4.0"></script><script src="/js/motion.js?v=7.4.0"></script>
+<script src="/js/schemes/muse.js?v=7.4.0"></script>
 
-  
-  <script src="/lib/reading_progress/reading_progress.js"></script>
-
-
-  
-
-
-  <script src="/js/utils.js?v=7.2.0"></script>
-
-  <script src="/js/motion.js?v=7.2.0"></script>
-
-
-
-  
-  
-
-
-  <script src="/js/schemes/muse.js?v=7.2.0"></script>
-
-
-
-
-  
-  <script src="/js/scrollspy.js?v=7.2.0"></script>
-<script src="/js/post-details.js?v=7.2.0"></script>
+<script src="/js/next-boot.js?v=7.4.0"></script>
 
 
 
   
 
 
-  <script src="/js/next-boot.js?v=7.2.0"></script>
 
 
-  
-  <script src="/js/js.cookie.js?v=7.2.0"></script>
-  <script src="/js/scroll-cookie.js?v=7.2.0"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
   
@@ -1100,14 +914,13 @@
   
 
   
-  
 
-<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
 
 <script>
+NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
   var GUEST = ['nick', 'mail', 'link'];
   var guest = 'nick,mail,link';
-  guest = guest.split(',').filter(function(item) {
+  guest = guest.split(',').filter(item => {
     return GUEST.indexOf(item) > -1;
   });
   new Valine({
@@ -1121,163 +934,11 @@
     meta: guest,
     pageSize: '10' || 10,
     visitor: false,
-    lang: '' || 'zh-cn'
+    lang: '' || 'zh-cn',
+    path: location.pathname
   });
+}, window.Valine);
 </script>
-
-
-
-
-  
-
-
-  
-
-
-
-
-  
-  
-  <script>
-    
-    function addCount(Counter) {
-      var $visitors = $('.leancloud_visitors');
-      var url = $visitors.attr('id').trim();
-      var title = $visitors.attr('data-flag-title').trim();
-
-      Counter('get', '/classes/Counter', { where: JSON.stringify({ url }) })
-        .done(function({ results }) {
-          if (results.length > 0) {
-            var counter = results[0];
-            
-            Counter('put', '/classes/Counter/' + counter.objectId, JSON.stringify({ time: { '__op': 'Increment', 'amount': 1 } }))
-            
-              .done(function() {
-                var $element = $(document.getElementById(url));
-                $element.find('.leancloud-visitors-count').text(counter.time + 1);
-              })
-            
-              .fail(function ({ responseJSON }) {
-                console.log('Failed to save Visitor num, with error message: ' + responseJSON.error);
-              })
-          } else {
-            
-              Counter('post', '/classes/Counter', JSON.stringify({ title: title, url: url, time: 1 }))
-                .done(function() {
-                  var $element = $(document.getElementById(url));
-                  $element.find('.leancloud-visitors-count').text(1);
-                })
-                .fail(function() {
-                  console.log('Failed to create');
-                });
-            
-          }
-        })
-        .fail(function ({ responseJSON }) {
-          console.log('LeanCloud Counter Error: ' + responseJSON.code + ' ' + responseJSON.error);
-        });
-    }
-    
-
-    $(function() {
-      $.get('https://app-router.leancloud.cn/2/route?appId=' + 'ehvmFwB3BLTvYf4JORInQRRn-gzGzoHsz')
-        .done(function({ api_server }) {
-          var Counter = function(method, url, data) {
-            return $.ajax({
-              method: method,
-              url: 'https://' + api_server + '/1.1' + url,
-              headers: {
-                'X-LC-Id': 'ehvmFwB3BLTvYf4JORInQRRn-gzGzoHsz',
-                'X-LC-Key': '6zj1q563yNhGInbB9zQHlJIs',
-                'Content-Type': 'application/json',
-              },
-              data: data
-            });
-          };
-          
-            const localhost = /http:\/\/(localhost|127.0.0.1|0.0.0.0)/;
-            if (localhost.test(document.URL)) return;
-            addCount(Counter);
-          
-        });
-    });
-  </script>
-
-
-
-  
-
-  
-  
-
-  
-  
-
-  
-
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-<script>
-  $('.highlight').not('.gist .highlight').each(function(i, e) {
-    var $wrap = $('<div>').addClass('highlight-wrap');
-    $(e).after($wrap);
-    $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function(e) {
-      var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
-        return $(e).text();
-      }).toArray().join('\n');
-      var ta = document.createElement('textarea');
-      var yPosition = window.pageYOffset || document.documentElement.scrollTop;
-      ta.style.top = yPosition + 'px'; // Prevent page scroll
-      ta.style.position = 'absolute';
-      ta.style.opacity = '0';
-      ta.readOnly = true;
-      ta.value = code;
-      document.body.appendChild(ta);
-      const selection = document.getSelection();
-      const selected = selection.rangeCount > 0 ? selection.getRangeAt(0) : false;
-      ta.select();
-      ta.setSelectionRange(0, code.length);
-      ta.readOnly = false;
-      var result = document.execCommand('copy');
-      
-        if (result) $(this).text('复制成功');
-        else $(this).text('复制失败');
-      
-      ta.blur(); // For iOS
-      $(this).blur();
-      if (selected) {
-        selection.removeAllRanges();
-        selection.addRange(selected);
-      }
-    })).on('mouseleave', function(e) {
-      var $b = $(this).find('.copy-btn');
-      setTimeout(function() {
-        $b.text('复制');
-      }, 300);
-    }).append(e);
-  })
-</script>
-
-
-  
-
-  
 
 </body>
 </html>
