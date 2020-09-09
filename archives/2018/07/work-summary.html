@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.2.1">
+<meta name="generator" content="Hexo 5.1.1">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -258,14 +258,14 @@
 <a id="more"></a>
 
 <hr>
-<p>七月初的面试总算过了，现在在<a href="https://www.gelonghui.com/" target="_blank" rel="noopener">格隆汇</a>做 iOS 开发实习生。7 月 18 日入职，截至 7 月 27 日，工作了 8 天。</p>
+<p>七月初的面试总算过了，现在在<a target="_blank" rel="noopener" href="https://www.gelonghui.com/">格隆汇</a>做 iOS 开发实习生。7 月 18 日入职，截至 7 月 27 日，工作了 8 天。</p>
 <p>说来惭愧，同事们说的很多开发上的组件 / 步骤，只是知道而没有使用过，所以这几天都在磕磕碰碰地学。</p>
 <h2 id="处理-WebView-内无法拨打电话"><a href="#处理-WebView-内无法拨打电话" class="headerlink" title="处理 WebView 内无法拨打电话"></a>处理 WebView 内无法拨打电话</h2><p>一个 Web 活动页面内有一个联系客服的按钮，内部的超链接是 <code>tel:</code>，但之前的路由没有写这个 scheme 的判断，导致点击后进度条一闪而过，没有响应拨打电话的请求。</p>
 <p>这个问题很容易解决，在问题描述中其实已经提供了解决的方法。不过测试时稍微麻烦一点，模拟器没有电话 App，所以只能在真机上进行测试。</p>
 <h2 id="重构分页控制器"><a href="#重构分页控制器" class="headerlink" title="重构分页控制器"></a>重构分页控制器</h2><p>App 前三代都是使用 Objective-C，第四代开始使用 Swift。由于历史遗留问题和时间问题，没办法全部转到 Swift，现阶段是逐步重构代码。</p>
 <p>这段时间我负责一个分页控制器的重构。</p>
 <p>一开始时没有梳理业务逻辑，想着先把 Objective-C 翻译到 Swift，写了一天最后发现源代码里有几个变量和函数只有定义却没有调用，白白浪费了时间。</p>
-<p>分页控制器（主控制器）用了 <a href="https://github.com/xmartlabs/XLPagerTabStrip" target="_blank" rel="noopener">XLPagerTabStrip</a>，其需要子控制器遵循 IndicatorInfoProvider 协议。五个子控制器中只有一个使用了 Swift，另外四个还是使用 Objective-C。</p>
+<p>分页控制器（主控制器）用了 <a target="_blank" rel="noopener" href="https://github.com/xmartlabs/XLPagerTabStrip">XLPagerTabStrip</a>，其需要子控制器遵循 IndicatorInfoProvider 协议。五个子控制器中只有一个使用了 Swift，另外四个还是使用 Objective-C。</p>
 <p>在直接 extension 和子类继承再 extension 之间，我选择了后者。主要的考量是，重构的分页控制器和五个子控制器密切相关，这次梳理好代码文件的层次与关系，以后重构剩下的四个子控制器时可以直接编写代码。</p>
 <p>测试时一直停留在重构的分页控制器和用户中心两个页面，发现用户退出后页面不会即时刷新，之后通过订阅用户登录状态改变的通知进行修复。</p>
 <h2 id="Fabric-崩溃日志监测"><a href="#Fabric-崩溃日志监测" class="headerlink" title="Fabric 崩溃日志监测"></a>Fabric 崩溃日志监测</h2><p>Fabric 监测到在 WKWebView 中进行字符串的选择和处理时会 crash，但是模拟器和真机都没办法复现。看崩溃信息像是挂在了 Apple 的私有函数，现在只能加个 Log 等待下次报错定位到具体文章，再排查了了。</p>
@@ -373,7 +373,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#处理-WebView-内无法拨打电话"><span class="nav-number">1.</span> <span class="nav-text">处理 WebView 内无法拨打电话</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#重构分页控制器"><span class="nav-number">2.</span> <span class="nav-text">重构分页控制器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Fabric-崩溃日志监测"><span class="nav-number">3.</span> <span class="nav-text">Fabric 崩溃日志监测</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%84%E7%90%86-WebView-%E5%86%85%E6%97%A0%E6%B3%95%E6%8B%A8%E6%89%93%E7%94%B5%E8%AF%9D"><span class="nav-number">1.</span> <span class="nav-text">处理 WebView 内无法拨打电话</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%87%8D%E6%9E%84%E5%88%86%E9%A1%B5%E6%8E%A7%E5%88%B6%E5%99%A8"><span class="nav-number">2.</span> <span class="nav-text">重构分页控制器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Fabric-%E5%B4%A9%E6%BA%83%E6%97%A5%E5%BF%97%E7%9B%91%E6%B5%8B"><span class="nav-number">3.</span> <span class="nav-text">Fabric 崩溃日志监测</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -536,7 +536,7 @@
         });
     }
 
-    let { app_id, app_key, server_url } = {"enable":true,"app_id":"ehvmFwB3BLTvYf4JORInQRRn-gzGzoHsz","app_key":"6zj1q563yNhGInbB9zQHlJIs","security":false,"server_url":null};
+    let { app_id, app_key, server_url } = {"enable":true,"app_id":"ehvmFwB3BLTvYf4JORInQRRn-gzGzoHsz","app_key":"6zj1q563yNhGInbB9zQHlJIs","server_url":null,"security":false};
     function fetchData(api_server) {
       var Counter = (method, url, data) => {
         return fetch(`${api_server}/1.1${url}`, {
