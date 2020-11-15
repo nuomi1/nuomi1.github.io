@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.1.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"nuomi1.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"hide","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="以更 Swift 的方式使用 UserDefaults。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="UserDefaults 与 Codable">
+<meta property="og:url" content="https://nuomi1.github.io/archives/2020/10/userdefaults-codable.html">
+<meta property="og:site_name" content="nuomi1&#39;s blog">
+<meta property="og:description" content="以更 Swift 的方式使用 UserDefaults。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-10-30T16:00:00.000Z">
+<meta property="article:modified_time" content="2020-11-14T16:00:00.000Z">
+<meta property="article:author" content="nuomi1">
+<meta property="article:tag" content="Swift">
+<meta property="article:tag" content="Codable">
+<meta property="article:tag" content="UserDefaults">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://nuomi1.github.io/archives/2020/10/userdefaults-codable.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>UserDefaults 与 Codable | nuomi1's blog</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=69846247-2"></script>
+    <script>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', '69846247-2');
+      }
+    </script>
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?e9c5b894b94da4954f8cc9ee9f6adcb8";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">nuomi1's blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">nuomi1's blog</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://nuomi1.github.io/archives/2020/10/userdefaults-codable.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="nuomi1">
+      <meta itemprop="description" content="nuomi1's blog">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="nuomi1's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          UserDefaults 与 Codable
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-10-31 00:00:00" itemprop="dateCreated datePublished" datetime="2020-10-31T00:00:00+08:00">2020-10-31</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-11-15 00:00:00" itemprop="dateModified" datetime="2020-11-15T00:00:00+08:00">2020-11-15</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/program/" itemprop="url" rel="index"><span itemprop="name">program</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/archives/2020/10/userdefaults-codable.html" class="post-meta-item leancloud_visitors" data-flag-title="UserDefaults 与 Codable" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/archives/2020/10/userdefaults-codable.html#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/archives/2020/10/userdefaults-codable.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>以更 Swift 的方式使用 UserDefaults。</p>
+<a id="more"></a>
+
+<hr>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>从文档简介来看，<code>UserDefaults</code> 为 <code>Float</code> / <code>Double</code> / <code>Int</code> / <code>Bool</code> / <code>URL?</code> 类型提供了具体的 <code>set</code> 方法，其他类型则调用 <code>Any?</code> 的 <code>set</code> 方法，实际上接受的是 <code>NSData</code> / <code>NSString</code> / <code>NSNumber</code> / <code>NSDate</code> / <code>NSArray</code> / <code>NSDictionary</code>。如果非以上类型，Apple 建议转为 <code>Data</code> 再保存。</p>
+<p>从 API 设计来看，<code>set</code> 方法相对友好，除了 <code>Any?</code> / <code>URL?</code> 使用了 <code>Optional</code>，其他的都是具体类型。而 <code>get</code> 方法则较为混乱，<code>bool(forKey:)</code> / <code>integer(forKey:)</code> / <code>float(forKey:)</code> / <code>double(forKey:)</code> 的返回值是具体类型，即找不到就返回 <code>false</code> / <code>0</code>；<code>array(forKey:)</code> / <code>dictionary(forKey:)</code> 的返回值是 <code>Any</code>，需要额外转换类型；<code>stringArray(forKey:)</code> 的返回值是 <code>[String]</code>，其他类型却没有便利方法。</p>
+<p><strong>以下内容基于 Xcode 12.1，iPhone 12 Pro Max Simulator with iOS 14.1。</strong></p>
+<h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Defaults</span>&lt;<span class="title">Value</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">typealias</span> <span class="type">Key</span> = <span class="type">String</span></span><br><span class="line">    <span class="keyword">typealias</span> <span class="type">Value</span> = <span class="type">Value</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> key: <span class="type">Key</span></span><br><span class="line">    <span class="keyword">let</span> value: <span class="type">Value</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>首先定义 <code>Defaults</code> 结构体，保存 <code>key</code> 和 <code>value</code> 变量。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> bool = <span class="type">Defaults</span>(key: <span class="string">&quot;u_bool&quot;</span>, value: <span class="type">Bool</span>(<span class="literal">true</span>))</span><br><span class="line"><span class="keyword">let</span> date = <span class="type">Defaults</span>(key: <span class="string">&quot;u_date&quot;</span>, value: <span class="type">Date</span>(timeIntervalSince1970: <span class="number">0</span>))</span><br><span class="line"><span class="keyword">let</span> double = <span class="type">Defaults</span>(key: <span class="string">&quot;u_double&quot;</span>, value: <span class="type">Double</span>(<span class="number">1000</span>))</span><br><span class="line"><span class="keyword">let</span> float = <span class="type">Defaults</span>(key: <span class="string">&quot;u_float&quot;</span>, value: <span class="type">Float</span>(<span class="number">100</span>))</span><br><span class="line"><span class="keyword">let</span> int = <span class="type">Defaults</span>(key: <span class="string">&quot;u_int&quot;</span>, value: <span class="type">Int</span>(<span class="number">10</span>))</span><br><span class="line"><span class="keyword">let</span> string = <span class="type">Defaults</span>(key: <span class="string">&quot;u_string&quot;</span>, value: <span class="type">String</span>(<span class="string">&quot;@Nuomi1&quot;</span>))</span><br><span class="line"><span class="keyword">let</span> url = <span class="type">Defaults</span>(key: <span class="string">&quot;u_url&quot;</span>, value: <span class="type">URL</span>(string: <span class="string">&quot;https://nuomi1.github.io/&quot;</span>)!)</span><br><span class="line"><span class="keyword">let</span> array = <span class="type">Defaults</span>(key: <span class="string">&quot;u_array&quot;</span>, value: [<span class="number">10</span>])</span><br><span class="line"><span class="keyword">let</span> dictionary = <span class="type">Defaults</span>(key: <span class="string">&quot;u_dictionary&quot;</span>, value: [<span class="string">&quot;int&quot;</span>: <span class="number">10</span>])</span><br></pre></td></tr></table></figure>
+
+<p>根据 <code>UserDefaults</code> 的默认支持类型，选择了 <code>Bool</code> / <code>Date</code> / <code>Double</code> / <code>Float</code>/ <code>Int</code> / <code>String</code> / <code>URL</code> / <code>Array&lt;Int&gt;</code> / <code>Dictionary&lt;String, Int&gt;</code> 进行测试，对应的桥接类型和自定义类型暂时忽略。</p>
+<h2 id="第一版"><a href="#第一版" class="headerlink" title="第一版"></a>第一版</h2><h3 id="get-set-1"><a href="#get-set-1" class="headerlink" title="get-set-1"></a>get-set-1</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">extension</span> <span class="title">UserDefaults</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">set1</span>&lt;Value&gt;<span class="params">(with defaults: Defaults&lt;Value&gt;)</span></span> &#123;</span><br><span class="line">        <span class="keyword">set</span>(defaults.value, forKey: defaults.key)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">value1</span>&lt;Value&gt;<span class="params">(with defaults: Defaults&lt;Value&gt;)</span></span> -&gt; <span class="type">Value?</span> &#123;</span><br><span class="line">        <span class="keyword">guard</span> <span class="keyword">let</span> object = value(forKey: defaults.key) <span class="keyword">else</span> &#123; <span class="keyword">return</span> <span class="literal">nil</span> &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> object <span class="keyword">as</span>? <span class="type">Value</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>直接调用 <code>UserDefaults</code> 的 <code>set</code> 和 <code>get</code> 方法。</p>
+<h3 id="test-1a"><a href="#test-1a" class="headerlink" title="test-1a"></a>test-1a</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">test1a</span>&lt;Value: Equatable&gt;<span class="params">(with defaults: Defaults&lt;Value&gt;)</span></span> &#123;</span><br><span class="line">    <span class="type">UserDefaults</span>.standard.set1(with: defaults)</span><br><span class="line">    <span class="keyword">let</span> value = <span class="type">UserDefaults</span>.standard.value1(with: defaults)</span><br><span class="line"></span><br><span class="line">    <span class="built_in">assert</span>(defaults.value == value)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test1a(with: bool)</span><br><span class="line">test1a(with: date)</span><br><span class="line">test1a(with: double)</span><br><span class="line">test1a(with: float)</span><br><span class="line">test1a(with: int)</span><br><span class="line">test1a(with: string)</span><br><span class="line">test1a(with: url)</span><br><span class="line">test1a(with: array)</span><br><span class="line">test1a(with: dictionary)</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>u_bool</td>
+<td>Number</td>
+<td>1</td>
+</tr>
+<tr>
+<td>u_date</td>
+<td>Date</td>
+<td>1970-01-01 08:00:00</td>
+</tr>
+<tr>
+<td>u_double</td>
+<td>Number</td>
+<td>1000</td>
+</tr>
+<tr>
+<td>u_float</td>
+<td>Number</td>
+<td>100</td>
+</tr>
+<tr>
+<td>u_int</td>
+<td>Number</td>
+<td>10</td>
+</tr>
+<tr>
+<td>u_string</td>
+<td>String</td>
+<td>@Nuomi1</td>
+</tr>
+<tr>
+<td>u_url</td>
+<td>ERROR</td>
+<td>Thread 1: “Attempt to insert non-property list object <a href="https://nuomi1.github.io/">https://nuomi1.github.io/</a> for key u_url”</td>
+</tr>
+<tr>
+<td>u_array</td>
+<td>Array&lt;Number&gt;</td>
+<td>[10]</td>
+</tr>
+<tr>
+<td>u_dictionary</td>
+<td>Dictionary&lt;String, Number&gt;</td>
+<td>[“int”: 10]</td>
+</tr>
+</tbody></table>
+<p>所有测试类型都是调用 <code>Any?</code> 的版本，而不是具体类型的版本。同时 <code>URL</code> 无法使用 <code>Any?</code> 的版本进行写入。</p>
+<h3 id="test-1b"><a href="#test-1b" class="headerlink" title="test-1b"></a>test-1b</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">test1b</span><span class="params">(with defaults: Defaults&lt;URL&gt;)</span></span> &#123;</span><br><span class="line">    <span class="type">UserDefaults</span>.standard.<span class="keyword">set</span>(defaults.value, forKey: defaults.key)</span><br><span class="line">    <span class="keyword">let</span> object = <span class="type">UserDefaults</span>.standard.value(forKey: defaults.key)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> url1 = object <span class="keyword">as</span>? <span class="type">URL</span></span><br><span class="line">    <span class="keyword">let</span> url2 = (object <span class="keyword">as</span>? <span class="type">Data</span>).flatMap &#123; <span class="type">String</span>(data: $<span class="number">0</span>, encoding: .utf8) &#125;</span><br><span class="line">    <span class="keyword">let</span> url3 = (object <span class="keyword">as</span>? <span class="type">Data</span>).flatMap &#123; <span class="type">NSKeyedUnarchiver</span>.unarchiveObject(with: $<span class="number">0</span>) <span class="keyword">as</span>? <span class="type">URL</span> &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">assert</span>(url1 == <span class="literal">nil</span>)</span><br><span class="line">    <span class="built_in">assert</span>(url2 == <span class="literal">nil</span>)</span><br><span class="line">    <span class="built_in">assert</span>(defaults.value == url3)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test1b(with: url)</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>u_url</td>
+<td>Data</td>
+<td>&lt;62706c69 73743030 d4010203 04050607 0a582476 65727369 6f6e5924 61726368 69766572 5424746f 7058246f 626a6563 74731200 0186a05f 100f4e53 4b657965 64417263 68697665 72d10809 54726f6f 748001a4 0b0c1314 55246e75 6c6cd30d 0e0f1011 12574e53 2e626173 65562463 6c617373 5b4e532e 72656c61 74697665 80008003 80025f10 19687474 70733a2f 2f6e756f 6d69312e 67697468 75622e69 6f2fd215 1617185a 24636c61 73736e61 6d655824 636c6173 73657355 4e535552 4ca21719 584e534f 626a6563 7408111a 24293237 494c5153 585e656d 74808284 86a2a7b2 bbc1c400 00000000 00010100 00000000 00001a00 00000000 00000000 00000000 0000cd&gt;</td>
+</tr>
+</tbody></table>
+<figure class="highlight plist"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">// u_url-1b.plist</span><br><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">plist</span> <span class="meta-keyword">PUBLIC</span> <span class="meta-string">&quot;-//Apple//DTD PLIST 1.0//EN&quot;</span> <span class="meta-string">&quot;http://www.apple.com/DTDs/PropertyList-1.0.dtd&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">plist</span> <span class="attr">version</span>=<span class="string">&quot;1.0&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dict</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">key</span>&gt;</span>$archiver<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">string</span>&gt;</span>NSKeyedArchiver<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">key</span>&gt;</span>$objects<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">array</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">string</span>&gt;</span>$null<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">dict</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">key</span>&gt;</span>$class<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">dict</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">key</span>&gt;</span>CF$UID<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">integer</span>&gt;</span>3<span class="tag">&lt;/<span class="name">integer</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;/<span class="name">dict</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">key</span>&gt;</span>NS.base<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">dict</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">key</span>&gt;</span>CF$UID<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">integer</span>&gt;</span>0<span class="tag">&lt;/<span class="name">integer</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;/<span class="name">dict</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">key</span>&gt;</span>NS.relative<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">dict</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">key</span>&gt;</span>CF$UID<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">integer</span>&gt;</span>2<span class="tag">&lt;/<span class="name">integer</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;/<span class="name">dict</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">dict</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">string</span>&gt;</span>https://nuomi1.github.io/<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">dict</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">key</span>&gt;</span>$classes<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">array</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">string</span>&gt;</span>NSURL<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">string</span>&gt;</span>NSObject<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;/<span class="name">array</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">key</span>&gt;</span>$classname<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">string</span>&gt;</span>NSURL<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">dict</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">array</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">key</span>&gt;</span>$top<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">dict</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">key</span>&gt;</span>root<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">dict</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">key</span>&gt;</span>CF$UID<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">integer</span>&gt;</span>1<span class="tag">&lt;/<span class="name">integer</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">dict</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">dict</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">key</span>&gt;</span>$version<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">integer</span>&gt;</span>100000<span class="tag">&lt;/<span class="name">integer</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dict</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">plist</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>不封装函数直接处理时，调用 <code>URL?</code> 的版本，但存储的类型是 <code>Data</code>。把 <code>object</code> 对象进行类型转换，前面两个是失败的，只有第三个是成功的。</p>
+<h3 id="疑问"><a href="#疑问" class="headerlink" title="疑问"></a>疑问</h3><p>在 <a target="_blank" rel="noopener" href="https://github.com/apple/swift-corelibs-foundation/blob/swift-5.3-RELEASE/Sources/Foundation/UserDefaults.swift#L123">UserDefaults.swift#LL123</a> 中，<code>URL</code> 可以被 <code>Any?</code> 的版本处理，且保存 <code>absoluteURL.path</code>，实际上只能被 <code>URL?</code> 的版本处理。这里的原因可能是私有实现与开源实现并不一致。</p>
+<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><p>自带的 <code>set</code> 方法无法在一个方法里处理多种类型，下面我们借助 <code>Codable</code> 来实现。</p>
+<h2 id="第二版"><a href="#第二版" class="headerlink" title="第二版"></a>第二版</h2><h3 id="get-set-2a"><a href="#get-set-2a" class="headerlink" title="get-set-2a"></a>get-set-2a</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">extension</span> <span class="title">UserDefaults</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">set2a</span>&lt;Value: Encodable&gt;<span class="params">(with defaults: Defaults&lt;Value&gt;)</span></span> &#123;</span><br><span class="line">        <span class="keyword">do</span> &#123;</span><br><span class="line">            <span class="keyword">let</span> encoder = <span class="type">JSONEncoder</span>()</span><br><span class="line">            <span class="keyword">let</span> data = <span class="keyword">try</span> encoder.encode(defaults.value)</span><br><span class="line"></span><br><span class="line">            <span class="keyword">set</span>(data, forKey: defaults.key)</span><br><span class="line">        &#125; <span class="keyword">catch</span> &#123;</span><br><span class="line">            <span class="built_in">assertionFailure</span>(<span class="string">&quot;\(error)&quot;</span>)</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">value2a</span>&lt;Value: Decodable&gt;<span class="params">(with defaults: Defaults&lt;Value&gt;)</span></span> -&gt; <span class="type">Value?</span> &#123;</span><br><span class="line">        <span class="keyword">guard</span> <span class="keyword">let</span> object = value(forKey: defaults.key) <span class="keyword">else</span> &#123; <span class="keyword">return</span> <span class="literal">nil</span> &#125;</span><br><span class="line">        <span class="keyword">guard</span> <span class="keyword">let</span> data = object <span class="keyword">as</span>? <span class="type">Data</span> <span class="keyword">else</span> &#123; <span class="built_in">assertionFailure</span>(); <span class="keyword">return</span> <span class="literal">nil</span> &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">do</span> &#123;</span><br><span class="line">            <span class="keyword">let</span> decoder = <span class="type">JSONDecoder</span>()</span><br><span class="line">            <span class="keyword">let</span> value = <span class="keyword">try</span> decoder.decode(<span class="type">Value</span>.<span class="keyword">self</span>, from: data)</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> value</span><br><span class="line">        &#125; <span class="keyword">catch</span> &#123;</span><br><span class="line">            <span class="built_in">assertionFailure</span>(<span class="string">&quot;\(error)&quot;</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>借助 <code>JSONEncoder</code> 和 <code>JSONDecoder</code> 让 <code>value</code> 以 <code>jsonData</code> 的形式进行写入与读取。</p>
+<h3 id="test-2a"><a href="#test-2a" class="headerlink" title="test-2a"></a>test-2a</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">test2a</span>&lt;Value: Codable &amp; Equatable&gt;<span class="params">(with defaults: Defaults&lt;Value&gt;)</span></span> &#123;</span><br><span class="line">    <span class="type">UserDefaults</span>.standard.set2a(with: defaults)</span><br><span class="line">    <span class="keyword">let</span> value = <span class="type">UserDefaults</span>.standard.value2a(with: defaults)</span><br><span class="line"></span><br><span class="line">    <span class="built_in">assert</span>(defaults.value == value)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test2a(with: bool)</span><br><span class="line">test2a(with: date)</span><br><span class="line">test2a(with: double)</span><br><span class="line">test2a(with: float)</span><br><span class="line">test2a(with: int)</span><br><span class="line">test2a(with: string)</span><br><span class="line">test2a(with: url)</span><br><span class="line">test2a(with: array)</span><br><span class="line">test2a(with: dictionary)</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>u_bool</td>
+<td>Data</td>
+<td>&lt;74727565&gt;</td>
+</tr>
+<tr>
+<td>u_date</td>
+<td>Data</td>
+<td>&lt;2d393738 33303732 3030&gt;</td>
+</tr>
+<tr>
+<td>u_double</td>
+<td>Data</td>
+<td>&lt;31303030&gt;</td>
+</tr>
+<tr>
+<td>u_float</td>
+<td>Data</td>
+<td>&lt;313030&gt;</td>
+</tr>
+<tr>
+<td>u_int</td>
+<td>Data</td>
+<td>&lt;3130&gt;</td>
+</tr>
+<tr>
+<td>u_string</td>
+<td>Data</td>
+<td>&lt;22404e75 6f6d6931 22&gt;</td>
+</tr>
+<tr>
+<td>u_url</td>
+<td>Data</td>
+<td>&lt;22687474 70733a5c 2f5c2f6e 756f6d69 312e6769 74687562 2e696f5c 2f22&gt;</td>
+</tr>
+<tr>
+<td>u_array</td>
+<td>Data</td>
+<td>&lt;5b31305d&gt;</td>
+</tr>
+<tr>
+<td>u_dictionary</td>
+<td>Data</td>
+<td>&lt;7b22696e 74223a31 307d&gt;</td>
+</tr>
+</tbody></table>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// u_bool-2a.json</span></span><br><span class="line">true</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// u_date-2a.json</span></span><br><span class="line"><span class="number">-978307200</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// u_double-2a.json</span></span><br><span class="line"><span class="number">1000</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// u_float-2a.json</span></span><br><span class="line"><span class="number">100</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// u_int-2a.json</span></span><br><span class="line"><span class="number">10</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// u_string-2a.json</span></span><br><span class="line"><span class="string">&quot;@Nuomi1&quot;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// u_url-2a.json</span></span><br><span class="line"><span class="string">&quot;https://nuomi1.github.io/&quot;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// u_array-2a.json</span></span><br><span class="line">[<span class="number">10</span>]</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// u_dictionary-2a.json</span><br><span class="line">&#123;&quot;int&quot;: 10&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>jsonData</code> 的内容实际上是 <code>String</code>，可以看到 <code>Double</code> / <code>Float</code> / <code>Int</code> 的前半段是一样的值，都是 <code>10</code>，<code>Array&lt;Int&gt;</code> / <code>Dictionary&lt;String, Int&gt;</code> 的中间也有一样的值，都是 <code>10</code>。</p>
+<h3 id="get-set-2b"><a href="#get-set-2b" class="headerlink" title="get-set-2b"></a>get-set-2b</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">extension</span> <span class="title">UserDefaults</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">set2b</span>&lt;Value: Encodable&gt;<span class="params">(with defaults: Defaults&lt;Value&gt;)</span></span> &#123;</span><br><span class="line">        <span class="keyword">do</span> &#123;</span><br><span class="line">            <span class="keyword">let</span> encoder = <span class="type">PropertyListEncoder</span>()</span><br><span class="line">            <span class="keyword">let</span> data = <span class="keyword">try</span> encoder.encode(defaults.value)</span><br><span class="line"></span><br><span class="line">            <span class="keyword">set</span>(data, forKey: defaults.key)</span><br><span class="line">        &#125; <span class="keyword">catch</span> &#123;</span><br><span class="line">            <span class="built_in">assertionFailure</span>(<span class="string">&quot;\(error)&quot;</span>)</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">value2b</span>&lt;Value: Decodable&gt;<span class="params">(with defaults: Defaults&lt;Value&gt;)</span></span> -&gt; <span class="type">Value?</span> &#123;</span><br><span class="line">        <span class="keyword">guard</span> <span class="keyword">let</span> object = value(forKey: defaults.key) <span class="keyword">else</span> &#123; <span class="keyword">return</span> <span class="literal">nil</span> &#125;</span><br><span class="line">        <span class="keyword">guard</span> <span class="keyword">let</span> data = object <span class="keyword">as</span>? <span class="type">Data</span> <span class="keyword">else</span> &#123; <span class="built_in">assertionFailure</span>(); <span class="keyword">return</span> <span class="literal">nil</span> &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">do</span> &#123;</span><br><span class="line">            <span class="keyword">let</span> decoder = <span class="type">PropertyListDecoder</span>()</span><br><span class="line">            <span class="keyword">let</span> value = <span class="keyword">try</span> decoder.decode(<span class="type">Value</span>.<span class="keyword">self</span>, from: data)</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> value</span><br><span class="line">        &#125; <span class="keyword">catch</span> &#123;</span><br><span class="line">            <span class="built_in">assertionFailure</span>(<span class="string">&quot;\(error)&quot;</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>改用 <code>PropertyListEncoder</code> 和 <code>PropertyListDecoder</code> 让 <code>value</code> 以 <code>plistData</code> 的形式进行写入与读取。</p>
+<h3 id="test-2b"><a href="#test-2b" class="headerlink" title="test-2b"></a>test-2b</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">test2b</span>&lt;Value: Codable &amp; Equatable&gt;<span class="params">(with defaults: Defaults&lt;Value&gt;)</span></span> &#123;</span><br><span class="line">    <span class="type">UserDefaults</span>.standard.set2b(with: defaults)</span><br><span class="line">    <span class="keyword">let</span> value = <span class="type">UserDefaults</span>.standard.value2b(with: defaults)</span><br><span class="line"></span><br><span class="line">    <span class="built_in">assert</span>(defaults.value == value)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test2b(with: bool)</span><br><span class="line">test2b(with: date)</span><br><span class="line">test2b(with: double)</span><br><span class="line">test2b(with: float)</span><br><span class="line">test2b(with: int)</span><br><span class="line">test2b(with: string)</span><br><span class="line">test2b(with: url)</span><br><span class="line">test2b(with: array)</span><br><span class="line">test2b(with: dictionary)</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>u_bool</td>
+<td>ERROR</td>
+<td>Thread 1: Fatal error: invalidValue(true, Swift.EncodingError.Context(codingPath: [], debugDescription: “Top-level Bool encoded as number property list fragment.”, underlyingError: nil))</td>
+</tr>
+<tr>
+<td>u_date</td>
+<td>ERROR</td>
+<td>Thread 1: Fatal error: invalidValue(1970-01-01 00:00:00 +0000, Swift.EncodingError.Context(codingPath: [], debugDescription: “Top-level Date encoded as date property list fragment.”, underlyingError: nil))</td>
+</tr>
+<tr>
+<td>u_double</td>
+<td>ERROR</td>
+<td>Thread 1: Fatal error: invalidValue(1000.0, Swift.EncodingError.Context(codingPath: [], debugDescription: “Top-level Double encoded as number property list fragment.”, underlyingError: nil))</td>
+</tr>
+<tr>
+<td>u_float</td>
+<td>ERROR</td>
+<td>Thread 1: Fatal error: invalidValue(100.0, Swift.EncodingError.Context(codingPath: [], debugDescription: “Top-level Float encoded as number property list fragment.”, underlyingError: nil))</td>
+</tr>
+<tr>
+<td>u_int</td>
+<td>ERROR</td>
+<td>Thread 1: Fatal error: invalidValue(10, Swift.EncodingError.Context(codingPath: [], debugDescription: “Top-level Int encoded as number property list fragment.”, underlyingError: nil))</td>
+</tr>
+<tr>
+<td>u_string</td>
+<td>ERROR</td>
+<td>Thread 1: Fatal error: invalidValue(“@Nuomi1”, Swift.EncodingError.Context(codingPath: [], debugDescription: “Top-level String encoded as string property list fragment.”, underlyingError: nil))</td>
+</tr>
+<tr>
+<td>u_url</td>
+<td>Data</td>
+<td>&lt;62706c69 73743030 d1010258 72656c61 74697665 5f101968 74747073 3a2f2f6e 756f6d69 312e6769 74687562 2e696f2f 080b1400 00000000 00010100 00000000 00000300 00000000 00000000 00000000 000030&gt;</td>
+</tr>
+<tr>
+<td>u_array</td>
+<td>Data</td>
+<td>&lt;62706c69 73743030 a101100a 080a0000 00000000 01010000 00000000 00020000 00000000 00000000 00000000 000c&gt;</td>
+</tr>
+<tr>
+<td>u_dictionary</td>
+<td>Data</td>
+<td>&lt;62706c69 73743030 d1010253 696e7410 0a080b0f 00000000 00000101 00000000 00000003 00000000 00000000 00000000 00000011&gt;</td>
+</tr>
+</tbody></table>
+<figure class="highlight plist"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">// u_url-2b.plist</span><br><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">plist</span> <span class="meta-keyword">PUBLIC</span> <span class="meta-string">&quot;-//Apple//DTD PLIST 1.0//EN&quot;</span> <span class="meta-string">&quot;http://www.apple.com/DTDs/PropertyList-1.0.dtd&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">plist</span> <span class="attr">version</span>=<span class="string">&quot;1.0&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dict</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">key</span>&gt;</span>relative<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">string</span>&gt;</span>https://nuomi1.github.io/<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dict</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">plist</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plist"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// u_array-2b.plist</span><br><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">plist</span> <span class="meta-keyword">PUBLIC</span> <span class="meta-string">&quot;-//Apple//DTD PLIST 1.0//EN&quot;</span> <span class="meta-string">&quot;http://www.apple.com/DTDs/PropertyList-1.0.dtd&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">plist</span> <span class="attr">version</span>=<span class="string">&quot;1.0&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">array</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">integer</span>&gt;</span>10<span class="tag">&lt;/<span class="name">integer</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">array</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">plist</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plist"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">// u_dictionary-2b.plist</span><br><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">plist</span> <span class="meta-keyword">PUBLIC</span> <span class="meta-string">&quot;-//Apple//DTD PLIST 1.0//EN&quot;</span> <span class="meta-string">&quot;http://www.apple.com/DTDs/PropertyList-1.0.dtd&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">plist</span> <span class="attr">version</span>=<span class="string">&quot;1.0&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dict</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">key</span>&gt;</span>int<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">integer</span>&gt;</span>10<span class="tag">&lt;/<span class="name">integer</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dict</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">plist</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>除了 <code>URL</code> / <code>Array&lt;Int&gt;</code> / <code>Dictionary&lt;String, Int&gt;</code> 可以被编码，其余的都失败了。</p>
+<h3 id="疑问-1"><a href="#疑问-1" class="headerlink" title="疑问"></a>疑问</h3><p><code>JSONEncoder</code> 和 <code>PropertyListEncoder</code> 都是借助 <code>Codable</code> 进行编码，但是行为并不相同。</p>
+<p>以 <code>URL</code> 为例，在 <a target="_blank" rel="noopener" href="https://github.com/apple/swift/blob/swift-5.3-RELEASE/stdlib/public/Darwin/Foundation/URL.swift#L1220">URL.swift#L1220</a> 中，<code>encode</code> 时使用了 <code>KeyedEncodingContainer&lt;Key&gt;</code> 容器，这么看来 <code>PropertyListEncoder</code> 的行为是符合预期的，但是 <code>JSONEncoder</code> 直接编码 <code>absoluteString</code> 不符合预期。具体细节在 <a target="_blank" rel="noopener" href="https://github.com/apple/swift/blob/swift-5.3-RELEASE/stdlib/public/Darwin/Foundation/JSONEncoder.swift#L909">JSONEncoder.swift#L909</a> 中。这里的猜想是，在 Swift 中 <code>URL</code> 是一个比较复杂的结构体，从其 <code>encode</code> 方法可以看到内部分为 <code>base</code> 和 <code>relative</code>，拆分两部分可以更为完整地描述 <code>URL</code>。但是在 <code>JSON</code> 中习惯使用 <code>String</code>，而且没有单独的 <code>URL</code> 类型，所以 <code>JSONEncoder</code> 沿用了这一习惯直接编码 <code>absoluteString</code>。</p>
+<p>在 <code>JSON</code> 和 <code>PropertyList</code> 中，顶层的数据结构必须为数组或者字典，即 <code>UnkeyedEncodingContainer</code> / <code>KeyedEncodingContainer&lt;Key&gt;</code> 容器，<code>PropertyListEncoder</code> 的行为是符合预期的，但是 <code>JSONEncoder</code> 可以直接编码 <code>Bool</code> / <code>Date</code> / <code>Double</code> / <code>Float</code> / <code>Int</code> / <code>String</code>，不符合 <code>JSON</code> 的规范。具体的原因想不明白。</p>
+<h3 id="小结-1"><a href="#小结-1" class="headerlink" title="小结"></a>小结</h3><p>在 <code>JSON</code> 中所有测试类型都可以成功编码，但在 <code>PropertyList</code> 中只有部分类型可以成功编码，下面我们借助 <code>Wrapper</code> 来实现。</p>
+<h2 id="第三版"><a href="#第三版" class="headerlink" title="第三版"></a>第三版</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">extension</span> <span class="title">UserDefaults</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Wrapper</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">let</span> wrapped: <span class="type">T</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">extension</span> <span class="title">UserDefaults</span>.<span class="title">Wrapper</span>: <span class="title">Encodable</span> <span class="title">where</span> <span class="title">T</span>: <span class="title">Encodable</span> </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">extension</span> <span class="title">UserDefaults</span>.<span class="title">Wrapper</span>: <span class="title">Decodable</span> <span class="title">where</span> <span class="title">T</span>: <span class="title">Decodable</span> </span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>先在 <code>UserDefaults</code> 里面定义一个 <code>Wrapper&lt;T&gt;</code> 结构体，把 <code>UserDefaults</code> 当做一个命名空间。然后声明当 <code>T</code> 遵循 <code>Encodable</code> / <code>Decodable</code> 时自身也遵循，更容易进行类型推导。</p>
+<h3 id="get-set-3a"><a href="#get-set-3a" class="headerlink" title="get-set-3a"></a>get-set-3a</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">extension</span> <span class="title">UserDefaults</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">set3a</span>&lt;Value: Encodable&gt;<span class="params">(with defaults: Defaults&lt;Value&gt;)</span></span> &#123;</span><br><span class="line">        <span class="keyword">do</span> &#123;</span><br><span class="line">            <span class="keyword">let</span> wrapper = <span class="type">Wrapper</span>(wrapped: defaults.value)</span><br><span class="line"></span><br><span class="line">            <span class="keyword">let</span> encoder = <span class="type">JSONEncoder</span>()</span><br><span class="line">            <span class="keyword">let</span> data = <span class="keyword">try</span> encoder.encode(wrapper)</span><br><span class="line"></span><br><span class="line">            <span class="keyword">set</span>(data, forKey: defaults.key)</span><br><span class="line">        &#125; <span class="keyword">catch</span> &#123;</span><br><span class="line">            <span class="built_in">assertionFailure</span>(<span class="string">&quot;\(error)&quot;</span>)</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">value3a</span>&lt;Value: Decodable&gt;<span class="params">(with defaults: Defaults&lt;Value&gt;)</span></span> -&gt; <span class="type">Value?</span> &#123;</span><br><span class="line">        <span class="keyword">guard</span> <span class="keyword">let</span> object = value(forKey: defaults.key) <span class="keyword">else</span> &#123; <span class="keyword">return</span> <span class="literal">nil</span> &#125;</span><br><span class="line">        <span class="keyword">guard</span> <span class="keyword">let</span> data = object <span class="keyword">as</span>? <span class="type">Data</span> <span class="keyword">else</span> &#123; <span class="built_in">assertionFailure</span>(); <span class="keyword">return</span> <span class="literal">nil</span> &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">do</span> &#123;</span><br><span class="line">            <span class="keyword">let</span> decoder = <span class="type">JSONDecoder</span>()</span><br><span class="line">            <span class="keyword">let</span> wrapper = <span class="keyword">try</span> decoder.decode(<span class="type">Wrapper</span>&lt;<span class="type">Value</span>&gt;.<span class="keyword">self</span>, from: data)</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> wrapper.wrapped</span><br><span class="line">        &#125; <span class="keyword">catch</span> &#123;</span><br><span class="line">            <span class="built_in">assertionFailure</span>(<span class="string">&quot;\(error)&quot;</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>把 <code>value</code> 放进 <code>Wrapper</code>，再使用 <code>JSONEncoder</code> 和 <code>JSONDecoder</code> 进行写入与读取。</p>
+<h3 id="test-3a"><a href="#test-3a" class="headerlink" title="test-3a"></a>test-3a</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">test3a</span>&lt;Value: Codable &amp; Equatable&gt;<span class="params">(with defaults: Defaults&lt;Value&gt;)</span></span> &#123;</span><br><span class="line">    <span class="type">UserDefaults</span>.standard.set3a(with: defaults)</span><br><span class="line">    <span class="keyword">let</span> value = <span class="type">UserDefaults</span>.standard.value3a(with: defaults)</span><br><span class="line"></span><br><span class="line">    <span class="built_in">assert</span>(defaults.value == value)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test3a(with: bool)</span><br><span class="line">test3a(with: date)</span><br><span class="line">test3a(with: double)</span><br><span class="line">test3a(with: float)</span><br><span class="line">test3a(with: int)</span><br><span class="line">test3a(with: string)</span><br><span class="line">test3a(with: url)</span><br><span class="line">test3a(with: array)</span><br><span class="line">test3a(with: dictionary)</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Value</th>
+<th>Count</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>u_bool</td>
+<td>Data</td>
+<td>&lt;7b227772 61707065 64223a74 7275657d&gt;</td>
+<td>16</td>
+</tr>
+<tr>
+<td>u_date</td>
+<td>Data</td>
+<td>&lt;7b227772 61707065 64223a2d 39373833 30373230 307d&gt;</td>
+<td>22</td>
+</tr>
+<tr>
+<td>u_double</td>
+<td>Data</td>
+<td>&lt;7b227772 61707065 64223a31 3030307d&gt;</td>
+<td>16</td>
+</tr>
+<tr>
+<td>u_float</td>
+<td>Data</td>
+<td>&lt;7b227772 61707065 64223a31 30307d&gt;</td>
+<td>15</td>
+</tr>
+<tr>
+<td>u_int</td>
+<td>Data</td>
+<td>&lt;7b227772 61707065 64223a31 307d&gt;</td>
+<td>14</td>
+</tr>
+<tr>
+<td>u_string</td>
+<td>Data</td>
+<td>&lt;7b227772 61707065 64223a22 404e756f 6d693122 7d&gt;</td>
+<td>21</td>
+</tr>
+<tr>
+<td>u_url</td>
+<td>Data</td>
+<td>&lt;7b227772 61707065 64223a22 68747470 733a5c2f 5c2f6e75 6f6d6931 2e676974 6875622e 696f5c2f 227d&gt;</td>
+<td>42</td>
+</tr>
+<tr>
+<td>u_array</td>
+<td>Data</td>
+<td>&lt;7b227772 61707065 64223a5b 31305d7d&gt;</td>
+<td>16</td>
+</tr>
+<tr>
+<td>u_dictionary</td>
+<td>Data</td>
+<td>&lt;7b227772 61707065 64223a7b 22696e74 223a3130 7d7d&gt;</td>
+<td>22</td>
+</tr>
+</tbody></table>
+<p>所有测试类型全部通过，但是数据长度相比 test-2a 明显变大。</p>
+<h3 id="get-set-3b"><a href="#get-set-3b" class="headerlink" title="get-set-3b"></a>get-set-3b</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">extension</span> <span class="title">UserDefaults</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">set3b</span>&lt;Value: Encodable&gt;<span class="params">(with defaults: Defaults&lt;Value&gt;)</span></span> &#123;</span><br><span class="line">        <span class="keyword">do</span> &#123;</span><br><span class="line">            <span class="keyword">let</span> wrapper = <span class="type">Wrapper</span>(wrapped: defaults.value)</span><br><span class="line"></span><br><span class="line">            <span class="keyword">let</span> encoder = <span class="type">PropertyListEncoder</span>()</span><br><span class="line">            <span class="keyword">let</span> data = <span class="keyword">try</span> encoder.encode(wrapper)</span><br><span class="line"></span><br><span class="line">            <span class="keyword">set</span>(data, forKey: defaults.key)</span><br><span class="line">        &#125; <span class="keyword">catch</span> &#123;</span><br><span class="line">            <span class="built_in">assertionFailure</span>(<span class="string">&quot;\(error)&quot;</span>)</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">value3b</span>&lt;Value: Decodable&gt;<span class="params">(with defaults: Defaults&lt;Value&gt;)</span></span> -&gt; <span class="type">Value?</span> &#123;</span><br><span class="line">        <span class="keyword">guard</span> <span class="keyword">let</span> object = value(forKey: defaults.key) <span class="keyword">else</span> &#123; <span class="keyword">return</span> <span class="literal">nil</span> &#125;</span><br><span class="line">        <span class="keyword">guard</span> <span class="keyword">let</span> data = object <span class="keyword">as</span>? <span class="type">Data</span> <span class="keyword">else</span> &#123; <span class="built_in">assertionFailure</span>(); <span class="keyword">return</span> <span class="literal">nil</span> &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">do</span> &#123;</span><br><span class="line">            <span class="keyword">let</span> decoder = <span class="type">PropertyListDecoder</span>()</span><br><span class="line">            <span class="keyword">let</span> wrapper = <span class="keyword">try</span> decoder.decode(<span class="type">Wrapper</span>&lt;<span class="type">Value</span>&gt;.<span class="keyword">self</span>, from: data)</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> wrapper.wrapped</span><br><span class="line">        &#125; <span class="keyword">catch</span> &#123;</span><br><span class="line">            <span class="built_in">assertionFailure</span>(<span class="string">&quot;\(error)&quot;</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>把 <code>value</code> 放进 <code>Wrapper</code>，再使用 <code>PropertyListEncoder</code> 和 <code>PropertyListDecoder</code> 进行写入与读取。</p>
+<h3 id="test-3b"><a href="#test-3b" class="headerlink" title="test-3b"></a>test-3b</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">test3b</span>&lt;Value: Codable &amp; Equatable&gt;<span class="params">(with defaults: Defaults&lt;Value&gt;)</span></span> &#123;</span><br><span class="line">    <span class="type">UserDefaults</span>.standard.set3b(with: defaults)</span><br><span class="line">    <span class="keyword">let</span> value = <span class="type">UserDefaults</span>.standard.value3b(with: defaults)</span><br><span class="line"></span><br><span class="line">    <span class="built_in">assert</span>(defaults.value == value)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test3b(with: bool)</span><br><span class="line">test3b(with: date)</span><br><span class="line">test3b(with: double)</span><br><span class="line">test3b(with: float)</span><br><span class="line">test3b(with: int)</span><br><span class="line">test3b(with: string)</span><br><span class="line">test3b(with: url)</span><br><span class="line">test3b(with: array)</span><br><span class="line">test3b(with: dictionary)</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Value</th>
+<th>Count</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>u_bool</td>
+<td>Data</td>
+<td>&lt;62706c69 73743030 d1010257 77726170 70656409 080b1300 00000000 00010100 00000000 00000300 00000000 00000000 00000000 000014&gt;</td>
+<td>55</td>
+</tr>
+<tr>
+<td>u_date</td>
+<td>Data</td>
+<td>&lt;62706c69 73743030 d1010257 77726170 70656433 c1cd27e4 40000000 080b1300 00000000 00010100 00000000 00000300 00000000 00000000 00000000 00001c&gt;</td>
+<td>63</td>
+</tr>
+<tr>
+<td>u_double</td>
+<td>Data</td>
+<td>&lt;62706c69 73743030 d1010257 77726170 70656423 408f4000 00000000 080b1300 00000000 00010100 00000000 00000300 00000000 00000000 00000000 00001c&gt;</td>
+<td>63</td>
+</tr>
+<tr>
+<td>u_float</td>
+<td>Data</td>
+<td>&lt;62706c69 73743030 d1010257 77726170 70656422 42c80000 080b1300 00000000 00010100 00000000 00000300 00000000 00000000 00000000 000018&gt;</td>
+<td>59</td>
+</tr>
+<tr>
+<td>u_int</td>
+<td>Data</td>
+<td>&lt;62706c69 73743030 d1010257 77726170 70656410 0a080b13 00000000 00000101 00000000 00000003 00000000 00000000 00000000 00000015&gt;</td>
+<td>56</td>
+</tr>
+<tr>
+<td>u_string</td>
+<td>Data</td>
+<td>&lt;62706c69 73743030 d1010257 77726170 70656457 404e756f 6d693108 0b130000 00000000 01010000 00000000 00030000 00000000 00000000 00000000 001b&gt;</td>
+<td>62</td>
+</tr>
+<tr>
+<td>u_url</td>
+<td>Data</td>
+<td>&lt;62706c69 73743030 d1010257 77726170 706564d1 03045872 656c6174 6976655f 10196874 7470733a 2f2f6e75 6f6d6931 2e676974 6875622e 696f2f08 0b13161f 00000000 00000101 00000000 00000005 00000000 00000000 00000000 0000003b&gt;</td>
+<td>96</td>
+</tr>
+<tr>
+<td>u_array</td>
+<td>Data</td>
+<td>&lt;62706c69 73743030 d1010257 77726170 706564a1 03100a08 0b131500 00000000 00010100 00000000 00000400 00000000 00000000 00000000 000017&gt;</td>
+<td>59</td>
+</tr>
+<tr>
+<td>u_dictionary</td>
+<td>Data</td>
+<td>&lt;62706c69 73743030 d1010257 77726170 706564d1 03045369 6e74100a 080b1316 1a000000 00000001 01000000 00000000 05000000 00000000 00000000 00000000 1c&gt;</td>
+<td>65</td>
+</tr>
+</tbody></table>
+<p>相比 test-2b，所有测试类型全部通过，但是数据长度相比 test-3a 变得更大。</p>
+<h3 id="小结-2"><a href="#小结-2" class="headerlink" title="小结"></a>小结</h3><p>通过增加 <code>wrapped</code> 顶层，把数据全部转为字典，在 <code>JSON</code> 和 <code>PropertyList</code> 中都可以正常处理。同时可以看到，<code>PropertyList</code> 的数据长度比 <code>JSON</code> 大得多。准确性已经处理好了，但是 <code>Data</code> 没有可读性，接下来我们处理可读性。</p>
+<h2 id="第四版"><a href="#第四版" class="headerlink" title="第四版"></a>第四版</h2><h3 id="get-set-4a"><a href="#get-set-4a" class="headerlink" title="get-set-4a"></a>get-set-4a</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">extension</span> <span class="title">UserDefaults</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">set4a</span>&lt;Value: Encodable&gt;<span class="params">(with defaults: Defaults&lt;Value&gt;)</span></span> &#123;</span><br><span class="line">        <span class="keyword">do</span> &#123;</span><br><span class="line">            <span class="keyword">let</span> wrapper = <span class="type">Wrapper</span>(wrapped: defaults.value)</span><br><span class="line"></span><br><span class="line">            <span class="keyword">let</span> encoder = <span class="type">JSONEncoder</span>()</span><br><span class="line">            <span class="keyword">let</span> data = <span class="keyword">try</span> encoder.encode(wrapper)</span><br><span class="line"></span><br><span class="line">            <span class="keyword">let</span> object = <span class="keyword">try</span> <span class="type">JSONSerialization</span>.jsonObject(</span><br><span class="line">                with: data</span><br><span class="line">            )</span><br><span class="line"></span><br><span class="line">            <span class="keyword">set</span>(object, forKey: defaults.key)</span><br><span class="line">        &#125; <span class="keyword">catch</span> &#123;</span><br><span class="line">            <span class="built_in">assertionFailure</span>(<span class="string">&quot;\(error)&quot;</span>)</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">value4a</span>&lt;Value: Decodable&gt;<span class="params">(with defaults: Defaults&lt;Value&gt;)</span></span> -&gt; <span class="type">Value?</span> &#123;</span><br><span class="line">        <span class="keyword">guard</span> <span class="keyword">let</span> object = value(forKey: defaults.key) <span class="keyword">else</span> &#123; <span class="keyword">return</span> <span class="literal">nil</span> &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">do</span> &#123;</span><br><span class="line">            <span class="keyword">let</span> data = <span class="keyword">try</span> <span class="type">JSONSerialization</span>.data(</span><br><span class="line">                withJSONObject: object</span><br><span class="line">            )</span><br><span class="line"></span><br><span class="line">            <span class="keyword">let</span> decoder = <span class="type">JSONDecoder</span>()</span><br><span class="line">            <span class="keyword">let</span> wrapper = <span class="keyword">try</span> decoder.decode(<span class="type">Wrapper</span>&lt;<span class="type">Value</span>&gt;.<span class="keyword">self</span>, from: data)</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> wrapper.wrapped</span><br><span class="line">        &#125; <span class="keyword">catch</span> &#123;</span><br><span class="line">            <span class="built_in">assertionFailure</span>(<span class="string">&quot;\(error)&quot;</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>借助 <code>JSONSerialization</code> 让 <code>data</code> 与 <code>object</code> 互转。</p>
+<h3 id="test-4a"><a href="#test-4a" class="headerlink" title="test-4a"></a>test-4a</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">test4a</span>&lt;Value: Codable &amp; Equatable&gt;<span class="params">(with defaults: Defaults&lt;Value&gt;)</span></span> &#123;</span><br><span class="line">    <span class="type">UserDefaults</span>.standard.set4a(with: defaults)</span><br><span class="line">    <span class="keyword">let</span> value = <span class="type">UserDefaults</span>.standard.value4a(with: defaults)</span><br><span class="line"></span><br><span class="line">    <span class="built_in">assert</span>(defaults.value == value)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test4a(with: bool)</span><br><span class="line">test4a(with: date)</span><br><span class="line">test4a(with: double)</span><br><span class="line">test4a(with: float)</span><br><span class="line">test4a(with: int)</span><br><span class="line">test4a(with: string)</span><br><span class="line">test4a(with: url)</span><br><span class="line">test4a(with: array)</span><br><span class="line">test4a(with: dictionary)</span><br></pre></td></tr></table></figure>
+
+<p>所有测试类型全部通过。</p>
+<h3 id="get-set-4b"><a href="#get-set-4b" class="headerlink" title="get-set-4b"></a>get-set-4b</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">extension</span> <span class="title">UserDefaults</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">set4b</span>&lt;Value: Encodable&gt;<span class="params">(with defaults: Defaults&lt;Value&gt;)</span></span> &#123;</span><br><span class="line">        <span class="keyword">do</span> &#123;</span><br><span class="line">            <span class="keyword">let</span> wrapper = <span class="type">Wrapper</span>(wrapped: defaults.value)</span><br><span class="line"></span><br><span class="line">            <span class="keyword">let</span> encoder = <span class="type">PropertyListEncoder</span>()</span><br><span class="line">            <span class="keyword">let</span> data = <span class="keyword">try</span> encoder.encode(wrapper)</span><br><span class="line"></span><br><span class="line">            <span class="keyword">let</span> object = <span class="keyword">try</span> <span class="type">PropertyListSerialization</span>.propertyList(</span><br><span class="line">                from: data,</span><br><span class="line">                format: <span class="literal">nil</span></span><br><span class="line">            )</span><br><span class="line"></span><br><span class="line">            <span class="keyword">set</span>(object, forKey: defaults.key)</span><br><span class="line">        &#125; <span class="keyword">catch</span> &#123;</span><br><span class="line">            <span class="built_in">assertionFailure</span>(<span class="string">&quot;\(error)&quot;</span>)</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">value4b</span>&lt;Value: Decodable&gt;<span class="params">(with defaults: Defaults&lt;Value&gt;)</span></span> -&gt; <span class="type">Value?</span> &#123;</span><br><span class="line">        <span class="keyword">guard</span> <span class="keyword">let</span> object = value(forKey: defaults.key) <span class="keyword">else</span> &#123; <span class="keyword">return</span> <span class="literal">nil</span> &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">do</span> &#123;</span><br><span class="line">            <span class="keyword">let</span> data = <span class="keyword">try</span> <span class="type">PropertyListSerialization</span>.data(</span><br><span class="line">                fromPropertyList: object,</span><br><span class="line">                format: .binary,</span><br><span class="line">                options: <span class="number">0</span></span><br><span class="line">            )</span><br><span class="line"></span><br><span class="line">            <span class="keyword">let</span> decoder = <span class="type">PropertyListDecoder</span>()</span><br><span class="line">            <span class="keyword">let</span> wrapper = <span class="keyword">try</span> decoder.decode(<span class="type">Wrapper</span>&lt;<span class="type">Value</span>&gt;.<span class="keyword">self</span>, from: data)</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> wrapper.wrapped</span><br><span class="line">        &#125; <span class="keyword">catch</span> &#123;</span><br><span class="line">            <span class="built_in">assertionFailure</span>(<span class="string">&quot;\(error)&quot;</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>借助 <code>PropertyListSerialization</code> 让 <code>data</code> 与 <code>object</code> 互转。</p>
+<h3 id="test-4b"><a href="#test-4b" class="headerlink" title="test-4b"></a>test-4b</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">test4b</span>&lt;Value: Codable &amp; Equatable&gt;<span class="params">(with defaults: Defaults&lt;Value&gt;)</span></span> &#123;</span><br><span class="line">    <span class="type">UserDefaults</span>.standard.set4b(with: defaults)</span><br><span class="line">    <span class="keyword">let</span> value = <span class="type">UserDefaults</span>.standard.value4b(with: defaults)</span><br><span class="line"></span><br><span class="line">    <span class="built_in">assert</span>(defaults.value == value)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test4b(with: bool)</span><br><span class="line">test4b(with: date)</span><br><span class="line">test4b(with: double)</span><br><span class="line">test4b(with: float)</span><br><span class="line">test4b(with: int)</span><br><span class="line">test4b(with: string)</span><br><span class="line">test4b(with: url)</span><br><span class="line">test4b(with: array)</span><br><span class="line">test4b(with: dictionary)</span><br></pre></td></tr></table></figure>
+
+<p>所有测试类型全部通过。</p>
+<h3 id="小结-3"><a href="#小结-3" class="headerlink" title="小结"></a>小结</h3><p>借助 <code>JSONSerialization</code> 和 <code>PropertyListSerialization</code>，把 <code>data</code> 转为 <code>object</code> 直接保存。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>借助 <code>Codable</code> / <code>Wrapper</code> / <code>JSONSerialization</code> / <code>PropertyListSerialization</code>，我们成功地把 <code>model</code> 转为 <code>object</code> 进行保存，但是问题还是不少。</p>
+<ol>
+<li><code>Wrapper</code> 只是为了防止 <code>PropertyListEncoder</code> 出错而做的折中处理，多了一层嵌套实际上浪费了处理时间和保存容量。</li>
+<li><code>JSONEncoder</code> 和 <code>PropertyListEncoder</code> 内部已经调用了各自的 <code>Serialization</code> 把 <code>model</code> -&gt; <code>object</code> -&gt; <code>data</code>，再把 <code>data</code> 转为 <code>object</code> 也是一种浪费。</li>
+<li><code>JSONEncoder</code> 和 <code>PropertyListEncoder</code> 不一致的处理会带来困惑，可以通过增加更多的 <code>option</code> 进行定制处理。</li>
+</ol>
+<p>实际上可以参考 <code>JSONEncoder</code> / <code>JSONDecoder</code> / <code>PropertyListEncoder</code> / <code>PropertyListDecoder</code>，实现 <code>UserDefaultsEncoder</code> 和 <code>UserDefaultsDecoder</code>，直接把 <code>model</code> 转为 <code>object</code> 进行保存，同时根据自己的需要单独处理（例如 <code>URL</code>）。</p>
+<p>当然这又是另一个完整的解决方案了，以后可以尝试。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a target="_blank" rel="noopener" href="http://dscoder.com/defaults.html">What is NSUserDefaults?</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.json.org/json-en.html">Introducing JSON</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.apple.com/DTDs/PropertyList-1.0.dtd">PropertyList</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/apple/swift/blob/swift-5.3-RELEASE/stdlib/public/Darwin/Foundation/JSONEncoder.swift">JSONEncoder.swift - Apple</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/apple/swift/blob/swift-5.3-RELEASE/stdlib/public/Darwin/Foundation/PlistEncoder.swift">PlistEncoder.swift - Apple</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/apple/swift/blob/swift-5.3-RELEASE/stdlib/public/Darwin/Foundation/URL.swift">URL.swift - Apple</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/apple/swift-corelibs-foundation/blob/swift-5.3-RELEASE/Sources/Foundation/UserDefaults.swift">UserDefaults.swift - Apple</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div>如果文章对你有用，可以打赏小钱钱哦~</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.png" alt="nuomi1 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.png" alt="nuomi1 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>nuomi1
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://nuomi1.github.io/archives/2020/10/userdefaults-codable.html" title="UserDefaults 与 Codable">https://nuomi1.github.io/archives/2020/10/userdefaults-codable.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc/4.0/deed.zh" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Swift/" rel="tag"># Swift</a>
+              <a href="/tags/Codable/" rel="tag"># Codable</a>
+              <a href="/tags/UserDefaults/" rel="tag"># UserDefaults</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/archives/2020/10/enum-decodable.html" rel="prev" title="Enum 与 Decodable">
+      <i class="fa fa-chevron-left"></i> Enum 与 Decodable
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%87%86%E5%A4%87"><span class="nav-number">2.</span> <span class="nav-text">准备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E7%89%88"><span class="nav-number">3.</span> <span class="nav-text">第一版</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#get-set-1"><span class="nav-number">3.1.</span> <span class="nav-text">get-set-1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#test-1a"><span class="nav-number">3.2.</span> <span class="nav-text">test-1a</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#test-1b"><span class="nav-number">3.3.</span> <span class="nav-text">test-1b</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%96%91%E9%97%AE"><span class="nav-number">3.4.</span> <span class="nav-text">疑问</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93"><span class="nav-number">3.5.</span> <span class="nav-text">小结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E7%89%88"><span class="nav-number">4.</span> <span class="nav-text">第二版</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#get-set-2a"><span class="nav-number">4.1.</span> <span class="nav-text">get-set-2a</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#test-2a"><span class="nav-number">4.2.</span> <span class="nav-text">test-2a</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#get-set-2b"><span class="nav-number">4.3.</span> <span class="nav-text">get-set-2b</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#test-2b"><span class="nav-number">4.4.</span> <span class="nav-text">test-2b</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%96%91%E9%97%AE-1"><span class="nav-number">4.5.</span> <span class="nav-text">疑问</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93-1"><span class="nav-number">4.6.</span> <span class="nav-text">小结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E7%89%88"><span class="nav-number">5.</span> <span class="nav-text">第三版</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#get-set-3a"><span class="nav-number">5.1.</span> <span class="nav-text">get-set-3a</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#test-3a"><span class="nav-number">5.2.</span> <span class="nav-text">test-3a</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#get-set-3b"><span class="nav-number">5.3.</span> <span class="nav-text">get-set-3b</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#test-3b"><span class="nav-number">5.4.</span> <span class="nav-text">test-3b</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93-2"><span class="nav-number">5.5.</span> <span class="nav-text">小结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E5%9B%9B%E7%89%88"><span class="nav-number">6.</span> <span class="nav-text">第四版</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#get-set-4a"><span class="nav-number">6.1.</span> <span class="nav-text">get-set-4a</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#test-4a"><span class="nav-number">6.2.</span> <span class="nav-text">test-4a</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#get-set-4b"><span class="nav-number">6.3.</span> <span class="nav-text">get-set-4b</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#test-4b"><span class="nav-number">6.4.</span> <span class="nav-text">test-4b</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93-3"><span class="nav-number">6.5.</span> <span class="nav-text">小结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">7.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">8.</span> <span class="nav-text">参考</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="nuomi1"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">nuomi1</p>
+  <div class="site-description" itemprop="description">nuomi1's blog</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">15</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/nuomi1/" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;nuomi1&#x2F;" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/nuomi1/" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;nuomi1&#x2F;" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://telegram.me/nuomi1/" title="Telegram → https:&#x2F;&#x2F;telegram.me&#x2F;nuomi1&#x2F;" rel="noopener" target="_blank"><i class="fa fa-fw fa-telegram"></i>Telegram</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/nuomi1/" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;nuomi1&#x2F;" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:nuomi1@qq.com" title="E-Mail → mailto:nuomi1@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title">
+      <i class="fa fa-fw fa-link"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://www.tuccuay.com/" title="https:&#x2F;&#x2F;www.tuccuay.com&#x2F;" rel="noopener" target="_blank">Tuccuay</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://kemchenj.github.io/" title="https:&#x2F;&#x2F;kemchenj.github.io&#x2F;" rel="noopener" target="_blank">四娘</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://happysooner.com/" title="https:&#x2F;&#x2F;happysooner.com&#x2F;" rel="noopener" target="_blank">远浅</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2015 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">nuomi1</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+        
+
+
+  <div style="display: none;">
+    <script src="//s95.cnzz.com/z_stat.php?id=1259937120&web_id=1259937120"></script>
+  </div>
+
+
+
+
+<script>
+  (function() {
+    function leancloudSelector(url) {
+      url = encodeURI(url);
+      return document.getElementById(url).querySelector('.leancloud-visitors-count');
+    }
+
+    function addCount(Counter) {
+      var visitors = document.querySelector('.leancloud_visitors');
+      var url = decodeURI(visitors.id);
+      var title = visitors.dataset.flagTitle;
+
+      Counter('get', '/classes/Counter?where=' + encodeURIComponent(JSON.stringify({ url })))
+        .then(response => response.json())
+        .then(({ results }) => {
+          if (results.length > 0) {
+            var counter = results[0];
+            leancloudSelector(url).innerText = counter.time + 1;
+            Counter('put', '/classes/Counter/' + counter.objectId, { time: { '__op': 'Increment', 'amount': 1 } })
+              .catch(error => {
+                console.error('Failed to save visitor count', error);
+              });
+          } else {
+              Counter('post', '/classes/Counter', { title, url, time: 1 })
+                .then(response => response.json())
+                .then(() => {
+                  leancloudSelector(url).innerText = 1;
+                })
+                .catch(error => {
+                  console.error('Failed to create', error);
+                });
+          }
+        })
+        .catch(error => {
+          console.error('LeanCloud Counter Error', error);
+        });
+    }
+
+    function showTime(Counter) {
+      var visitors = document.querySelectorAll('.leancloud_visitors');
+      var entries = [...visitors].map(element => {
+        return decodeURI(element.id);
+      });
+
+      Counter('get', '/classes/Counter?where=' + encodeURIComponent(JSON.stringify({ url: { '$in': entries } })))
+        .then(response => response.json())
+        .then(({ results }) => {
+          for (let url of entries) {
+            let target = results.find(item => item.url === url);
+            leancloudSelector(url).innerText = target ? target.time : 0;
+          }
+        })
+        .catch(error => {
+          console.error('LeanCloud Counter Error', error);
+        });
+    }
+
+    let { app_id, app_key, server_url } = {"enable":true,"app_id":"ehvmFwB3BLTvYf4JORInQRRn-gzGzoHsz","app_key":"6zj1q563yNhGInbB9zQHlJIs","server_url":null,"security":false};
+    function fetchData(api_server) {
+      var Counter = (method, url, data) => {
+        return fetch(`${api_server}/1.1${url}`, {
+          method,
+          headers: {
+            'X-LC-Id'     : app_id,
+            'X-LC-Key'    : app_key,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        });
+      };
+      if (CONFIG.page.isPost) {
+        if (CONFIG.hostname !== location.hostname) return;
+        addCount(Counter);
+      } else if (document.querySelectorAll('.post-title-link').length >= 1) {
+        showTime(Counter);
+      }
+    }
+
+    let api_server = app_id.slice(-9) !== '-MdYXbMMI' ? server_url : `https://${app_id.slice(0, 8).toLowerCase()}.api.lncldglobal.com`;
+
+    if (api_server) {
+      fetchData(api_server);
+    } else {
+      fetch('https://app-router.leancloud.cn/2/route?appId=' + app_id)
+        .then(response => response.json())
+        .then(({ api_server }) => {
+          fetchData('https://' + api_server);
+        });
+    }
+  })();
+</script>
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : true,
+      notify     : false,
+      appId      : 'ehvmFwB3BLTvYf4JORInQRRn-gzGzoHsz',
+      appKey     : '6zj1q563yNhGInbB9zQHlJIs',
+      placeholder: "Just go go",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : false,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>
