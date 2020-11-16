@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>nuomi1&#39;s blog</title>
+  <icon>https://nuomi1.github.io/icon.png</icon>
+  <subtitle>nuomi1&#39;s blog</subtitle>
+  <link href="https://nuomi1.github.io/atom.xml" rel="self"/>
+  
+  <link href="https://nuomi1.github.io/"/>
+  <updated>2020-11-14T16:00:00.000Z</updated>
+  <id>https://nuomi1.github.io/</id>
+  
+  <author>
+    <name>nuomi1</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>UserDefaults 与 Codable</title>
+    <link href="https://nuomi1.github.io/archives/2020/10/userdefaults-codable.html"/>
+    <id>https://nuomi1.github.io/archives/2020/10/userdefaults-codable.html</id>
+    <published>2020-10-30T16:00:00.000Z</published>
+    <updated>2020-11-14T16:00:00.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;以更 Swift 的方式使用 UserDefaults。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="program" scheme="https://nuomi1.github.io/categories/program/"/>
+    
+    
+    <category term="Swift" scheme="https://nuomi1.github.io/tags/Swift/"/>
+    
+    <category term="Codable" scheme="https://nuomi1.github.io/tags/Codable/"/>
+    
+    <category term="UserDefaults" scheme="https://nuomi1.github.io/tags/UserDefaults/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Enum 与 Decodable</title>
+    <link href="https://nuomi1.github.io/archives/2020/10/enum-decodable.html"/>
+    <id>https://nuomi1.github.io/archives/2020/10/enum-decodable.html</id>
+    <published>2020-10-24T16:00:00.000Z</published>
+    <updated>2020-10-24T16:00:00.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;上回提到 Enum with RawValue 的 Decodable 处理，最近发现了更方便的处理方式，这里总结一下。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="program" scheme="https://nuomi1.github.io/categories/program/"/>
+    
+    
+    <category term="Swift" scheme="https://nuomi1.github.io/tags/Swift/"/>
+    
+    <category term="Decodable" scheme="https://nuomi1.github.io/tags/Decodable/"/>
+    
+    <category term="Enum" scheme="https://nuomi1.github.io/tags/Enum/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>NBus 的由来</title>
+    <link href="https://nuomi1.github.io/archives/2020/09/nbus-comes-from.html"/>
+    <id>https://nuomi1.github.io/archives/2020/09/nbus-comes-from.html</id>
+    <published>2020-09-19T16:00:00.000Z</published>
+    <updated>2020-10-17T16:00:00.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;一直使用 &lt;a href=&quot;https://github.com/nixzhu/MonkeyKing&quot;&gt;MonkeyKing&lt;/a&gt; 作为分享模块的底层实现，但 &lt;a href=&quot;https://developers.weixin.qq.com/doc/oplatform/Downloads/iOS_Resource.html&quot;&gt;微信 SDK 1.8.6.1&lt;/a&gt; 和 &lt;a href=&quot;https://wiki.connect.qq.com/ios_sdk%E5%8E%86%E5%8F%B2%E5%8F%98%E6%9B%B4&quot;&gt;QQ SDK 3.3.6&lt;/a&gt; 开始改用 &lt;a href=&quot;https://developer.apple.com/ios/universal-links/&quot;&gt;Universal Links&lt;/a&gt; 进行处理且校验请求合法性，而 MonkeyKing 在较晚的时候才提供&lt;a href=&quot;https://github.com/nixzhu/MonkeyKing/pull/171&quot;&gt;支持&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;当时急着上线，微信和 QQ 直接改用官方 SDK，微博还是保留 MonkeyKing 的处理。从那之后我就在想，官方闭源也好，三方开源也罢，能快速接入上线才是最重要的。如果分享组件能提供一键切换的能力，那就方便了。除此之外，也受 nixzhu 的&lt;a href=&quot;https://twitter.com/nixzhu/status/1240230984802381825&quot;&gt;鼓励&lt;/a&gt;，萌生了写 &lt;a href=&quot;https://github.com/nuomi1/NBus&quot;&gt;NBus&lt;/a&gt; 的想法。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="program" scheme="https://nuomi1.github.io/categories/program/"/>
+    
+    
+    <category term="NBus" scheme="https://nuomi1.github.io/tags/NBus/"/>
+    
+    <category term="iOS" scheme="https://nuomi1.github.io/tags/iOS/"/>
+    
+    <category term="Swift" scheme="https://nuomi1.github.io/tags/Swift/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>WebAPI 与 Codable</title>
+    <link href="https://nuomi1.github.io/archives/2019/09/webapi-codable.html"/>
+    <id>https://nuomi1.github.io/archives/2019/09/webapi-codable.html</id>
+    <published>2019-09-28T16:00:00.000Z</published>
+    <updated>2019-09-28T16:00:00.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;在编程中，类型准确是一件必要的事情，一方面保证了大家的理解，另一方面能方便地使用 API。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="program" scheme="https://nuomi1.github.io/categories/program/"/>
+    
+    
+    <category term="Swift" scheme="https://nuomi1.github.io/tags/Swift/"/>
+    
+    <category term="Codable" scheme="https://nuomi1.github.io/tags/Codable/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>时间格式化</title>
+    <link href="https://nuomi1.github.io/archives/2019/07/dateformatter.html"/>
+    <id>https://nuomi1.github.io/archives/2019/07/dateformatter.html</id>
+    <published>2019-07-06T16:00:00.000Z</published>
+    <updated>2019-07-13T16:00:00.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;方便快捷地格式化时间。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="program" scheme="https://nuomi1.github.io/categories/program/"/>
+    
+    
+    <category term="Swift" scheme="https://nuomi1.github.io/tags/Swift/"/>
+    
+    <category term="DateFormatter" scheme="https://nuomi1.github.io/tags/DateFormatter/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ClashX 搭配 ShadowsocksX-NG-R 支持 SSR 协议</title>
+    <link href="https://nuomi1.github.io/archives/2019/04/clashx-shadowsocksx-ng-r.html"/>
+    <id>https://nuomi1.github.io/archives/2019/04/clashx-shadowsocksx-ng-r.html</id>
+    <published>2019-04-28T16:00:00.000Z</published>
+    <updated>2019-04-28T16:00:00.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;ClashX 客户端默认不支持 SSR 协议，但可以配搭 ShadowsocksX-NG-R 通过本地转发 socks5 的方式实现。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="proxy" scheme="https://nuomi1.github.io/categories/proxy/"/>
+    
+    
+    <category term="ClashX" scheme="https://nuomi1.github.io/tags/ClashX/"/>
+    
+    <category term="ShadowsocksX-NG-R" scheme="https://nuomi1.github.io/tags/ShadowsocksX-NG-R/"/>
+    
+    <category term="SSR" scheme="https://nuomi1.github.io/tags/SSR/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode 初级算法 Swift 练习</title>
+    <link href="https://nuomi1.github.io/archives/2018/12/leetcode-top-interview-questions-easy-swift-exercises.html"/>
+    <id>https://nuomi1.github.io/archives/2018/12/leetcode-top-interview-questions-easy-swift-exercises.html</id>
+    <published>2018-12-16T16:00:00.000Z</published>
+    <updated>2019-01-15T16:00:00.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;五个月的实习告一段落了，学习还是要继续的。接触不到业务，刷一下 &lt;a href=&quot;https://leetcode.com/explore/interview/card/top-interview-questions-easy/&quot;&gt;LeetCode 的初级算法&lt;/a&gt;吧。顺便好像欠了几篇博文……&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="program" scheme="https://nuomi1.github.io/categories/program/"/>
+    
+    
+    <category term="Swift" scheme="https://nuomi1.github.io/tags/Swift/"/>
+    
+    <category term="LeetCode" scheme="https://nuomi1.github.io/tags/LeetCode/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>工作总结</title>
+    <link href="https://nuomi1.github.io/archives/2018/07/work-summary.html"/>
+    <id>https://nuomi1.github.io/archives/2018/07/work-summary.html</id>
+    <published>2018-07-28T16:00:00.000Z</published>
+    <updated>2018-07-28T16:00:00.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;距离上次发博文快两个月了，本想着七月初发一篇，结果还是鸽了……&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="work" scheme="https://nuomi1.github.io/categories/work/"/>
+    
+    
+    <category term="XLPagerTabStrip" scheme="https://nuomi1.github.io/tags/XLPagerTabStrip/"/>
+    
+    <category term="Fabric" scheme="https://nuomi1.github.io/tags/Fabric/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>深圳游记</title>
+    <link href="https://nuomi1.github.io/archives/2018/06/shenzhen-travel.html"/>
+    <id>https://nuomi1.github.io/archives/2018/06/shenzhen-travel.html</id>
+    <published>2018-06-02T16:00:00.000Z</published>
+    <updated>2018-06-18T16:00:00.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;&lt;a href=&quot;https://weibo.com/swiftguide&quot;&gt;SwiftGG 翻译组&lt;/a&gt; 发起了 &lt;a href=&quot;https://www.thoughtworks.com/cn/radar&quot;&gt;ThoughtWorks 技术雷达&lt;/a&gt;峰会的&lt;a href=&quot;https://weibo.com/1625897081/GfYMK4Ef5&quot;&gt;门票抽奖&lt;/a&gt;，虽然&lt;a href=&quot;https://weibo.com/5174822990/GgAcy6q3Q&quot;&gt;没中奖&lt;/a&gt;，但是 &lt;a href=&quot;https://weibo.com/u/1791223913&quot;&gt;FenngMr&lt;/a&gt; 赠送了门票，&lt;a href=&quot;https://weibo.com/1625897081/GhGqZ7V7s&quot;&gt;表示感谢&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;在&lt;a href=&quot;https://youpin.mi.com/&quot;&gt;小米有品&lt;/a&gt;的捉虫活动中，获得了&lt;a href=&quot;https://weibo.com/1771925961/Gi106eREZ&quot;&gt;小米年度旗舰发布会&lt;/a&gt;的抽奖资格，最后以 50% 的概率抽中了门票。&lt;/p&gt;
+&lt;p&gt;小米年度旗舰发布会在 5 月 31 日，ThoughtWorks 技术雷达峰会在 6 月 2 日，中间的 6 月 1 日也约了&lt;a href=&quot;https://www.zhihu.com/people/yang-jing-42-57/activities&quot;&gt;伊文哥&lt;/a&gt;参观迅雷，所以定了 5 月 30 日到 6 月 3 日为期五天的深圳行程。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="travel" scheme="https://nuomi1.github.io/categories/travel/"/>
+    
+    
+    <category term="深圳" scheme="https://nuomi1.github.io/tags/%E6%B7%B1%E5%9C%B3/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>天猫精灵方糖体验</title>
+    <link href="https://nuomi1.github.io/archives/2018/05/tmall-genie-surge-experience.html"/>
+    <id>https://nuomi1.github.io/archives/2018/05/tmall-genie-surge-experience.html</id>
+    <published>2018-05-19T16:00:00.000Z</published>
+    <updated>2018-05-19T16:00:00.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;昨天买了&lt;a href=&quot;https://detail.tmall.com/item.htm?id=567925396518&quot;&gt;天猫精灵方糖&lt;/a&gt;，来个体验。有些语音指令，会使用&lt;a href=&quot;https://www.mi.com/aispeaker/&quot;&gt;小爱同学&lt;/a&gt;进行比较。小爱同学使用红米手机 4 高配版 MIUI 9 8.4.26 内置版。为什么？没钱（抢不到）。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="iot" scheme="https://nuomi1.github.io/categories/iot/"/>
+    
+    
+    <category term="天猫精灵" scheme="https://nuomi1.github.io/tags/%E5%A4%A9%E7%8C%AB%E7%B2%BE%E7%81%B5/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>使用 docker-compose 搭建 Home Assistant</title>
+    <link href="https://nuomi1.github.io/archives/2018/05/docker-compose-home-assistant.html"/>
+    <id>https://nuomi1.github.io/archives/2018/05/docker-compose-home-assistant.html</id>
+    <published>2018-05-18T16:00:00.000Z</published>
+    <updated>2018-05-18T16:00:00.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;今天写一下之前使用 docker-compose 搭建 &lt;a href=&quot;https://www.home-assistant.io/&quot;&gt;Home Assistant&lt;/a&gt; 并接入&lt;a href=&quot;https://www.mi.com/mjsmartlamp/&quot;&gt;米家 LED 智能台灯&lt;/a&gt;的步骤。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="iot" scheme="https://nuomi1.github.io/categories/iot/"/>
+    
+    
+    <category term="Docker" scheme="https://nuomi1.github.io/tags/Docker/"/>
+    
+    <category term="Home-Assistant" scheme="https://nuomi1.github.io/tags/Home-Assistant/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>使用 docker-compose 搭建 Hexo</title>
+    <link href="https://nuomi1.github.io/archives/2018/05/docker-compose-hexo.html"/>
+    <id>https://nuomi1.github.io/archives/2018/05/docker-compose-hexo.html</id>
+    <published>2018-05-17T16:00:00.000Z</published>
+    <updated>2018-05-17T16:00:00.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;距离上次写博客差不多两年了。大三了，不仅要准备实习和秋招的事，也该考虑将来的事了。现在打算不定期更新博客，起码将来有个能拿得出手的技术博客。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="blog" scheme="https://nuomi1.github.io/categories/blog/"/>
+    
+    
+    <category term="Docker" scheme="https://nuomi1.github.io/tags/Docker/"/>
+    
+    <category term="Hexo" scheme="https://nuomi1.github.io/tags/Hexo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>在 Docker 中安装 Hexo</title>
+    <link href="https://nuomi1.github.io/archives/2016/08/docker-hexo.html"/>
+    <id>https://nuomi1.github.io/archives/2016/08/docker-hexo.html</id>
+    <published>2016-08-11T16:00:00.000Z</published>
+    <updated>2016-08-11T16:00:00.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;为了不污染本地环境，尝试在 &lt;a href=&quot;https://www.docker.com/&quot;&gt;Docker&lt;/a&gt; 中安装 &lt;a href=&quot;https://hexo.io/zh-cn/&quot;&gt;Hexo&lt;/a&gt;，结果遇到不少坑。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="blog" scheme="https://nuomi1.github.io/categories/blog/"/>
+    
+    
+    <category term="Docker" scheme="https://nuomi1.github.io/tags/Docker/"/>
+    
+    <category term="Hexo" scheme="https://nuomi1.github.io/tags/Hexo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>大学 C 练习</title>
+    <link href="https://nuomi1.github.io/archives/2015/11/university-c-exercises.html"/>
+    <id>https://nuomi1.github.io/archives/2015/11/university-c-exercises.html</id>
+    <published>2015-11-23T16:00:00.000Z</published>
+    <updated>2015-11-23T16:00:00.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;大一《程序设计基础（C 语言）》课后作业。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="program" scheme="https://nuomi1.github.io/categories/program/"/>
+    
+    
+    <category term="C" scheme="https://nuomi1.github.io/tags/C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>廖雪峰 Python3 练习</title>
+    <link href="https://nuomi1.github.io/archives/2015/09/liaoxuefeng-python3-exercises.html"/>
+    <id>https://nuomi1.github.io/archives/2015/09/liaoxuefeng-python3-exercises.html</id>
+    <published>2015-09-06T16:00:00.000Z</published>
+    <updated>2016-02-08T16:00:00.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;随着学习的深入，才知道 Python 的厉害之处，居然可以写得这么简洁。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="program" scheme="https://nuomi1.github.io/categories/program/"/>
+    
+    
+    <category term="Python" scheme="https://nuomi1.github.io/tags/Python/"/>
+    
+  </entry>
+  
+</feed>
