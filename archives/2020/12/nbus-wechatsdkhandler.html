@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.1.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"nuomi1.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"hide","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="微信 SDK 的接入是最简单的，本 Handler 基于微信 SDK 1.8.7.1 实现。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="NBus 之 WechatSDKHandler">
+<meta property="og:url" content="https://nuomi1.github.io/archives/2020/12/nbus-wechatsdkhandler.html">
+<meta property="og:site_name" content="nuomi1&#39;s blog">
+<meta property="og:description" content="微信 SDK 的接入是最简单的，本 Handler 基于微信 SDK 1.8.7.1 实现。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-12-04T16:00:00.000Z">
+<meta property="article:modified_time" content="2020-12-04T16:00:00.000Z">
+<meta property="article:author" content="nuomi1">
+<meta property="article:tag" content="Swift">
+<meta property="article:tag" content="NBus">
+<meta property="article:tag" content="iOS">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://nuomi1.github.io/archives/2020/12/nbus-wechatsdkhandler.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>NBus 之 WechatSDKHandler | nuomi1's blog</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=69846247-2"></script>
+    <script>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', '69846247-2');
+      }
+    </script>
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?e9c5b894b94da4954f8cc9ee9f6adcb8";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="nuomi1's blog" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">nuomi1's blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">nuomi1's blog</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://nuomi1.github.io/archives/2020/12/nbus-wechatsdkhandler.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="nuomi1">
+      <meta itemprop="description" content="nuomi1's blog">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="nuomi1's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          NBus 之 WechatSDKHandler
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-12-05 00:00:00" itemprop="dateCreated datePublished" datetime="2020-12-05T00:00:00+08:00">2020-12-05</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/program/" itemprop="url" rel="index"><span itemprop="name">program</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/archives/2020/12/nbus-wechatsdkhandler.html" class="post-meta-item leancloud_visitors" data-flag-title="NBus 之 WechatSDKHandler" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/archives/2020/12/nbus-wechatsdkhandler.html#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/archives/2020/12/nbus-wechatsdkhandler.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>微信 SDK 的接入是最简单的，本 Handler 基于微信 SDK 1.8.7.1 实现。</p>
+<a id="more"></a>
+
+<hr>
+<h2 id="General"><a href="#General" class="headerlink" title="General"></a>General</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WechatSDKHandler</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">let</span> endpoints: [<span class="type">Endpoint</span>] = [</span><br><span class="line">        <span class="type">Endpoints</span>.<span class="type">Wechat</span>.friend,</span><br><span class="line">        <span class="type">Endpoints</span>.<span class="type">Wechat</span>.timeline,</span><br><span class="line">        <span class="type">Endpoints</span>.<span class="type">Wechat</span>.favorite,</span><br><span class="line">    ]</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">let</span> platform: <span class="type">Platform</span> = <span class="type">Platforms</span>.wechat</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">var</span> isInstalled: <span class="type">Bool</span> &#123;</span><br><span class="line">        <span class="type">WXApi</span>.isWXAppInstalled()</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">var</span> shareCompletionHandler: <span class="type">Bus</span>.<span class="type">ShareCompletionHandler?</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">var</span> oauthCompletionHandler: <span class="type">Bus</span>.<span class="type">OauthCompletionHandler?</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">let</span> appID: <span class="type">String</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">let</span> universalLink: <span class="type">URL</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">var</span> logHandler: <span class="type">Bus</span>.<span class="type">LogHandler</span> = &#123; message, <span class="number">_</span>, <span class="number">_</span>, <span class="number">_</span> <span class="keyword">in</span></span><br><span class="line">        #<span class="keyword">if</span> <span class="type">DEBUG</span></span><br><span class="line">            <span class="built_in">print</span>(message)</span><br><span class="line">        #endif</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">var</span> helper: <span class="type">Helper!</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">init</span>(appID: <span class="type">String</span>, universalLink: <span class="type">URL</span>) &#123;</span><br><span class="line">        <span class="keyword">self</span>.appID = appID</span><br><span class="line">        <span class="keyword">self</span>.universalLink = universalLink</span><br><span class="line"></span><br><span class="line">        helper = <span class="type">Helper</span>(master: <span class="keyword">self</span>)</span><br><span class="line"></span><br><span class="line">        #<span class="keyword">if</span> <span class="type">DEBUG</span></span><br><span class="line">            <span class="type">WXApi</span>.startLog(by: .detail) &#123; [<span class="keyword">weak</span> <span class="keyword">self</span>] message <span class="keyword">in</span></span><br><span class="line">                <span class="keyword">self</span>?.log(message)</span><br><span class="line">            &#125;</span><br><span class="line">        #endif</span><br><span class="line"></span><br><span class="line">        <span class="type">WXApi</span>.registerApp(</span><br><span class="line">            appID,</span><br><span class="line">            universalLink: universalLink.absoluteString</span><br><span class="line">        )</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>调用 <code>WXApi.registerApp(_:universalLink:)</code> 注册微信 SDK，调用 <code>WXApi.startLog(by:logBlock:)</code> 记录日志。<code>Helper</code> 处理微信的回调，相关内容下文会进行说明。</p>
+<h2 id="LogHandlerProxyType"><a href="#LogHandlerProxyType" class="headerlink" title="LogHandlerProxyType"></a>LogHandlerProxyType</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">extension</span> <span class="title">WechatSDKHandler</span>: <span class="title">LogHandlerProxyType</span> </span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>声明 <code>WechatSDKHandler</code> 遵循 <code>LogHandlerProxyType</code> 协议。</p>
+<h2 id="ShareHandlerType"><a href="#ShareHandlerType" class="headerlink" title="ShareHandlerType"></a>ShareHandlerType</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">extension</span> <span class="title">WechatSDKHandler</span>: <span class="title">ShareHandlerType</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">func</span> <span class="title">share</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params">        message: MessageType,</span></span></span><br><span class="line"><span class="function"><span class="params">        to endpoint: Endpoint,</span></span></span><br><span class="line"><span class="function"><span class="params">        options: [Bus.ShareOptionKey: <span class="keyword">Any</span>] = [:],</span></span></span><br><span class="line"><span class="function"><span class="params">        completionHandler: @escaping Bus.ShareCompletionHandler</span></span></span><br><span class="line"><span class="function"><span class="params">    )</span></span> &#123;</span><br><span class="line">        <span class="keyword">guard</span> isInstalled <span class="keyword">else</span> &#123;</span><br><span class="line">            completionHandler(.failure(.missingApplication))</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">guard</span> canShare(message: message.identifier, to: endpoint) <span class="keyword">else</span> &#123;</span><br><span class="line">            completionHandler(.failure(.unsupportedMessage))</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        shareCompletionHandler = completionHandler</span><br><span class="line"></span><br><span class="line">        <span class="keyword">let</span> request = <span class="type">SendMessageToWXReq</span>()</span><br><span class="line">        request.scene = <span class="type">Int32</span>(scene(endpoint).rawValue)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">let</span> mediaMessage = <span class="type">WXMediaMessage</span>()</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">let</span> message = message <span class="keyword">as</span>? <span class="type">MediaMessageType</span> &#123;</span><br><span class="line">            mediaMessage.title = message.title ?? <span class="string">&quot;&quot;</span></span><br><span class="line">            mediaMessage.description = message.description ?? <span class="string">&quot;&quot;</span></span><br><span class="line">            mediaMessage.thumbData = message.thumbnail</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">switch</span> message &#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="keyword">let</span> message <span class="keyword">as</span> <span class="type">TextMessage</span>:</span><br><span class="line">            request.text = message.text</span><br><span class="line">            request.bText = <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">case</span> <span class="keyword">let</span> message <span class="keyword">as</span> <span class="type">ImageMessage</span>:</span><br><span class="line">            <span class="keyword">let</span> imageObject = <span class="type">WXImageObject</span>()</span><br><span class="line">            imageObject.imageData = message.data</span><br><span class="line"></span><br><span class="line">            mediaMessage.mediaObject = imageObject</span><br><span class="line"></span><br><span class="line">        <span class="keyword">case</span> <span class="keyword">let</span> message <span class="keyword">as</span> <span class="type">AudioMessage</span>:</span><br><span class="line">            <span class="keyword">let</span> audioObject = <span class="type">WXMusicObject</span>()</span><br><span class="line">            audioObject.musicUrl = message.link.absoluteString</span><br><span class="line">            audioObject.musicDataUrl = message.dataLink?.absoluteString ?? <span class="string">&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">            mediaMessage.mediaObject = audioObject</span><br><span class="line"></span><br><span class="line">        <span class="keyword">case</span> <span class="keyword">let</span> message <span class="keyword">as</span> <span class="type">VideoMessage</span>:</span><br><span class="line">            <span class="keyword">let</span> videoObject = <span class="type">WXVideoObject</span>()</span><br><span class="line">            videoObject.videoUrl = message.link.absoluteString</span><br><span class="line"></span><br><span class="line">            mediaMessage.mediaObject = videoObject</span><br><span class="line"></span><br><span class="line">        <span class="keyword">case</span> <span class="keyword">let</span> message <span class="keyword">as</span> <span class="type">WebPageMessage</span>:</span><br><span class="line">            <span class="keyword">let</span> webPageObject = <span class="type">WXWebpageObject</span>()</span><br><span class="line">            webPageObject.webpageUrl = message.link.absoluteString</span><br><span class="line"></span><br><span class="line">            mediaMessage.mediaObject = webPageObject</span><br><span class="line"></span><br><span class="line">        <span class="keyword">case</span> <span class="keyword">let</span> message <span class="keyword">as</span> <span class="type">FileMessage</span>:</span><br><span class="line">            <span class="keyword">let</span> fileObject = <span class="type">WXFileObject</span>()</span><br><span class="line">            fileObject.fileData = message.data</span><br><span class="line">            fileObject.fileExtension = message.fileExtension</span><br><span class="line"></span><br><span class="line">            mediaMessage.mediaObject = fileObject</span><br><span class="line"></span><br><span class="line">        <span class="keyword">case</span> <span class="keyword">let</span> message <span class="keyword">as</span> <span class="type">MiniProgramMessage</span>:</span><br><span class="line">            <span class="keyword">let</span> miniProgramObject = <span class="type">WXMiniProgramObject</span>()</span><br><span class="line">            miniProgramObject.webpageUrl = message.link.absoluteString</span><br><span class="line">            miniProgramObject.userName = message.miniProgramID</span><br><span class="line">            miniProgramObject.path = message.path</span><br><span class="line">            miniProgramObject.miniProgramType = miniProgramType(message.miniProgramType)</span><br><span class="line">            miniProgramObject.hdImageData = message.thumbnail</span><br><span class="line"></span><br><span class="line">            mediaMessage.mediaObject = miniProgramObject</span><br><span class="line"></span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">            <span class="built_in">assertionFailure</span>()</span><br><span class="line">            completionHandler(.failure(.unsupportedMessage))</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        request.message = mediaMessage</span><br><span class="line"></span><br><span class="line">        <span class="type">WXApi</span>.send(request) &#123; result <span class="keyword">in</span></span><br><span class="line">            <span class="keyword">if</span> !result &#123;</span><br><span class="line">                completionHandler(.failure(.invalidMessage))</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="function"><span class="keyword">func</span> <span class="title">canShare</span><span class="params">(message: Message, to endpoint: Endpoint)</span></span> -&gt; <span class="type">Bool</span> &#123;</span><br><span class="line">        <span class="keyword">switch</span> endpoint &#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="type">Endpoints</span>.<span class="type">Wechat</span>.friend:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">        <span class="keyword">case</span> <span class="type">Endpoints</span>.<span class="type">Wechat</span>.timeline:</span><br><span class="line">            <span class="keyword">return</span> ![<span class="type">Messages</span>.file, <span class="type">Messages</span>.miniProgram].<span class="built_in">contains</span>(message)</span><br><span class="line">        <span class="keyword">case</span> <span class="type">Endpoints</span>.<span class="type">Wechat</span>.favorite:</span><br><span class="line">            <span class="keyword">return</span> ![<span class="type">Messages</span>.miniProgram].<span class="built_in">contains</span>(message)</span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">            <span class="built_in">assertionFailure</span>()</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="function"><span class="keyword">func</span> <span class="title">scene</span><span class="params">(<span class="number">_</span> endpoint: Endpoint)</span></span> -&gt; <span class="type">WXScene</span> &#123;</span><br><span class="line">        <span class="keyword">switch</span> endpoint &#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="type">Endpoints</span>.<span class="type">Wechat</span>.friend:</span><br><span class="line">            <span class="keyword">return</span> <span class="type">WXSceneSession</span></span><br><span class="line">        <span class="keyword">case</span> <span class="type">Endpoints</span>.<span class="type">Wechat</span>.timeline:</span><br><span class="line">            <span class="keyword">return</span> <span class="type">WXSceneTimeline</span></span><br><span class="line">        <span class="keyword">case</span> <span class="type">Endpoints</span>.<span class="type">Wechat</span>.favorite:</span><br><span class="line">            <span class="keyword">return</span> <span class="type">WXSceneFavorite</span></span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">            <span class="built_in">assertionFailure</span>()</span><br><span class="line">            <span class="keyword">return</span> <span class="type">WXSceneSession</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="function"><span class="keyword">func</span> <span class="title">miniProgramType</span><span class="params">(<span class="number">_</span> miniProgramType: MiniProgramMessage.MiniProgramType)</span></span> -&gt; <span class="type">WXMiniProgramType</span> &#123;</span><br><span class="line">        <span class="keyword">switch</span> miniProgramType &#123;</span><br><span class="line">        <span class="keyword">case</span> .release:</span><br><span class="line">            <span class="keyword">return</span> .release</span><br><span class="line">        <span class="keyword">case</span> .test:</span><br><span class="line">            <span class="keyword">return</span> .test</span><br><span class="line">        <span class="keyword">case</span> .preview:</span><br><span class="line">            <span class="keyword">return</span> .preview</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在分享流程中：</p>
+<ol>
+<li>调用 <code>isInstalled</code> 判断是否安装微信，没有则提前退出。</li>
+<li>调用 <code>canShare(message:to:)</code> 判断 <code>Endpoint</code> 是否支持此类型 <code>Message</code>。例如 <code>Endpoints.Wechat.timeline</code> 朋友圈不支持 <code>Messages.file</code> 文件和 <code>Messages.miniProgram</code> 小程序。</li>
+<li>创建 <code>SendMessageToWXReq</code> 请求，调用 <code>scene(_:)</code> 根据 <code>Endpoint</code> 创建 <code>WXScene</code>。</li>
+<li>创建 <code>WXMediaMessage</code> 多媒体消息，如果 <code>message</code> 遵循 <code>MediaMessageType</code> 协议，设置 <code>title</code> / <code>description</code> / <code>thumbData</code>。</li>
+<li>判断 <code>message</code> 的具体类型，设置 <code>request</code> 和 <code>mediaMessage</code> 的相关属性。例如 <code>TextMessage</code> 需要设置 <code>request.bText = true</code>，<code>MiniProgramMessage</code> 需要调用 <code>miniProgramType(_:)</code> 根据 <code>MiniProgramMessage.MiniProgramType</code> 创建 <code>WXMiniProgramType</code>。</li>
+<li>调用 <code>WXApi.send(_:completion:)</code> 拉起微信分享。</li>
+</ol>
+<h2 id="OauthHandlerType"><a href="#OauthHandlerType" class="headerlink" title="OauthHandlerType"></a>OauthHandlerType</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">extension</span> <span class="title">WechatSDKHandler</span>: <span class="title">OauthHandlerType</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">func</span> <span class="title">oauth</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params">        options: [Bus.OauthOptionKey: <span class="keyword">Any</span>] = [:],</span></span></span><br><span class="line"><span class="function"><span class="params">        completionHandler: @escaping Bus.OauthCompletionHandler</span></span></span><br><span class="line"><span class="function"><span class="params">    )</span></span> &#123;</span><br><span class="line">        <span class="keyword">guard</span> isInstalled <span class="keyword">else</span> &#123;</span><br><span class="line">            completionHandler(.failure(.missingApplication))</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        oauthCompletionHandler = completionHandler</span><br><span class="line"></span><br><span class="line">        <span class="keyword">let</span> request = <span class="type">SendAuthReq</span>()</span><br><span class="line">        request.scope = <span class="string">&quot;snsapi_userinfo&quot;</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">let</span> viewController = (options[<span class="type">OauthOptionKeys</span>.viewController] <span class="keyword">as</span>? <span class="type">UIViewController</span>) ?? <span class="type">UIViewController</span>()</span><br><span class="line"></span><br><span class="line">        <span class="type">WXApi</span>.sendAuthReq(</span><br><span class="line">            request,</span><br><span class="line">            viewController: viewController,</span><br><span class="line">            delegate: helper</span><br><span class="line">        ) &#123; result <span class="keyword">in</span></span><br><span class="line">            <span class="keyword">if</span> !result &#123;</span><br><span class="line">                completionHandler(.failure(.unknown))</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">extension</span> <span class="title">WechatSDKHandler</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">enum</span> <span class="title">OauthOptionKeys</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">let</span> viewController = <span class="type">Bus</span>.<span class="type">OauthOptionKey</span>(rawValue: <span class="string">&quot;com.nuomi1.bus.wechatSDKHandler.viewController&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在登录流程中：</p>
+<ol>
+<li>调用 <code>isInstalled</code> 判断是否安装微信，没有则提前退出。</li>
+<li>创建 <code>SendAuthReq</code> 请求。<code>scope</code> 在微信 SDK 中没有对应的常量，使用 <code>snsapi_userinfo</code> 硬编码。</li>
+<li>从 <code>options</code> 中获取 <code>viewController</code>，没有则创建一个空白的。</li>
+<li>调用 <code>WXApi.sendAuthReq(_:viewController:delegate:completion:)</code> 拉起微信登录。</li>
+</ol>
+<h2 id="OpenURLHandlerType"><a href="#OpenURLHandlerType" class="headerlink" title="OpenURLHandlerType"></a>OpenURLHandlerType</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">extension</span> <span class="title">WechatSDKHandler</span>: <span class="title">OpenURLHandlerType</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">func</span> <span class="title">openURL</span><span class="params">(<span class="number">_</span> url: URL)</span></span> &#123;</span><br><span class="line">        <span class="type">WXApi</span>.handleOpen(url, delegate: helper)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>调用 <code>WXApi.handleOpen(_:delegate:)</code> 处理 <code>URL Scheme</code> 回调。</p>
+<h2 id="OpenUserActivityHandlerType"><a href="#OpenUserActivityHandlerType" class="headerlink" title="OpenUserActivityHandlerType"></a>OpenUserActivityHandlerType</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">extension</span> <span class="title">WechatSDKHandler</span>: <span class="title">OpenUserActivityHandlerType</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">func</span> <span class="title">openUserActivity</span><span class="params">(<span class="number">_</span> userActivity: NSUserActivity)</span></span> &#123;</span><br><span class="line">        <span class="type">WXApi</span>.handleOpenUniversalLink(userActivity, delegate: helper)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>调用 <code>WXApi.handleOpenUniversalLink(_:delegate:)</code> 处理 <code>NSUserActivity</code> 回调。</p>
+<h2 id="Helper"><a href="#Helper" class="headerlink" title="Helper"></a>Helper</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">extension</span> <span class="title">WechatSDKHandler</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">fileprivate</span> <span class="class"><span class="keyword">class</span> <span class="title">Helper</span>: <span class="title">NSObject</span>, <span class="title">WXApiDelegate</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">weak</span> <span class="keyword">var</span> master: <span class="type">WechatSDKHandler?</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">required</span> <span class="keyword">init</span>(master: <span class="type">WechatSDKHandler</span>) &#123;</span><br><span class="line">            <span class="keyword">self</span>.master = master</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">func</span> <span class="title">onReq</span><span class="params">(<span class="number">_</span> req: BaseReq)</span></span> &#123;</span><br><span class="line">            <span class="built_in">assertionFailure</span>(<span class="string">&quot;\(req)&quot;</span>)</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">func</span> <span class="title">onResp</span><span class="params">(<span class="number">_</span> resp: BaseResp)</span></span> &#123;</span><br><span class="line">            <span class="keyword">switch</span> resp &#123;</span><br><span class="line">            <span class="keyword">case</span> <span class="keyword">let</span> response <span class="keyword">as</span> <span class="type">SendMessageToWXResp</span>:</span><br><span class="line">                <span class="keyword">switch</span> response.errCode &#123;</span><br><span class="line">                <span class="keyword">case</span> <span class="type">WXSuccess</span>.rawValue:</span><br><span class="line">                    master?.shareCompletionHandler?(.success(()))</span><br><span class="line">                <span class="keyword">default</span>:</span><br><span class="line">                    master?.shareCompletionHandler?(.failure(.unknown))</span><br><span class="line">                &#125;</span><br><span class="line">            <span class="keyword">case</span> <span class="keyword">let</span> response <span class="keyword">as</span> <span class="type">SendAuthResp</span>:</span><br><span class="line">                <span class="keyword">switch</span> (response.errCode, response.code) &#123;</span><br><span class="line">                <span class="keyword">case</span> <span class="keyword">let</span> (<span class="type">WXSuccess</span>.rawValue, code):</span><br><span class="line">                    <span class="keyword">let</span> parameters = [</span><br><span class="line">                        <span class="type">OauthInfoKeys</span>.code: code,</span><br><span class="line">                    ]</span><br><span class="line">                    .compactMapContent()</span><br><span class="line"></span><br><span class="line">                    <span class="keyword">if</span> !parameters.isEmpty &#123;</span><br><span class="line">                        master?.oauthCompletionHandler?(.success(parameters))</span><br><span class="line">                    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                        master?.oauthCompletionHandler?(.failure(.unknown))</span><br><span class="line">                    &#125;</span><br><span class="line">                <span class="keyword">default</span>:</span><br><span class="line">                    master?.oauthCompletionHandler?(.failure(.unknown))</span><br><span class="line">                &#125;</span><br><span class="line">            <span class="keyword">default</span>:</span><br><span class="line">                <span class="built_in">assertionFailure</span>(<span class="string">&quot;\(resp)&quot;</span>)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">extension</span> <span class="title">WechatSDKHandler</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">enum</span> <span class="title">OauthInfoKeys</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">let</span> code = <span class="type">Bus</span>.<span class="type">OauthInfoKey</span>(rawValue: <span class="string">&quot;com.nuomi1.bus.wechatSDKHandler.code&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>创建 <code>Helper</code> 处理微信的回调：</p>
+<ol>
+<li><code>WechatSDKHandler</code> 强持有 <code>Helper</code>，所以 <code>Helper</code> 的 <code>master</code> 声明为 <code>weak</code> 避免循环引用。</li>
+<li>处理分享回调时，返回 <code>SendMessageToWXResp</code>，调用 <code>response.errCode</code> 判断是否为 <code>WXSuccess.rawValue</code>，调用 <code>master?.shareCompletionHandler?(.success(()))</code> 完成分享回调。</li>
+<li>处理登录回调时，返回 <code>SendAuthResp</code>，调用 <code>response.errCode</code> 和 <code>response.code</code> 判断成功且 <code>code</code> 不为空时，调用 <code>master?.oauthCompletionHandler?(.success(parameters))</code> 完成登录回调。</li>
+</ol>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>本文通过封装微信 SDK 做出 <code>WechatSDKHandler</code>，实现微信的登录和分享功能。同时使用了独立的内部类 <code>Helper</code> 来处理微信的回调，保持 <code>WechatSDKHandler</code> 的整洁。</p>
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div>如果文章对你有用，可以打赏小钱钱哦~</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.png" alt="nuomi1 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.png" alt="nuomi1 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>nuomi1
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://nuomi1.github.io/archives/2020/12/nbus-wechatsdkhandler.html" title="NBus 之 WechatSDKHandler">https://nuomi1.github.io/archives/2020/12/nbus-wechatsdkhandler.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc/4.0/deed.zh" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Swift/" rel="tag"># Swift</a>
+              <a href="/tags/NBus/" rel="tag"># NBus</a>
+              <a href="/tags/iOS/" rel="tag"># iOS</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/archives/2020/10/userdefaults-codable.html" rel="prev" title="UserDefaults 与 Codable">
+      <i class="fa fa-chevron-left"></i> UserDefaults 与 Codable
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#General"><span class="nav-number">1.</span> <span class="nav-text">General</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LogHandlerProxyType"><span class="nav-number">2.</span> <span class="nav-text">LogHandlerProxyType</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ShareHandlerType"><span class="nav-number">3.</span> <span class="nav-text">ShareHandlerType</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#OauthHandlerType"><span class="nav-number">4.</span> <span class="nav-text">OauthHandlerType</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#OpenURLHandlerType"><span class="nav-number">5.</span> <span class="nav-text">OpenURLHandlerType</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#OpenUserActivityHandlerType"><span class="nav-number">6.</span> <span class="nav-text">OpenUserActivityHandlerType</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Helper"><span class="nav-number">7.</span> <span class="nav-text">Helper</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">8.</span> <span class="nav-text">总结</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="nuomi1"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">nuomi1</p>
+  <div class="site-description" itemprop="description">nuomi1's blog</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">16</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/nuomi1/" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;nuomi1&#x2F;" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/nuomi1/" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;nuomi1&#x2F;" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://telegram.me/nuomi1/" title="Telegram → https:&#x2F;&#x2F;telegram.me&#x2F;nuomi1&#x2F;" rel="noopener" target="_blank"><i class="fa fa-fw fa-telegram"></i>Telegram</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/nuomi1/" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;nuomi1&#x2F;" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:nuomi1@qq.com" title="E-Mail → mailto:nuomi1@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="RSS → &#x2F;atom.xml"><i class="fa fa-fw fa-rss"></i>RSS</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title">
+      <i class="fa fa-fw fa-link"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://www.tuccuay.com/" title="https:&#x2F;&#x2F;www.tuccuay.com&#x2F;" rel="noopener" target="_blank">Tuccuay</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://kemchenj.github.io/" title="https:&#x2F;&#x2F;kemchenj.github.io&#x2F;" rel="noopener" target="_blank">四娘</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://happysooner.com/" title="https:&#x2F;&#x2F;happysooner.com&#x2F;" rel="noopener" target="_blank">远浅</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2015 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">nuomi1</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+        
+
+
+  <div style="display: none;">
+    <script src="//s95.cnzz.com/z_stat.php?id=1259937120&web_id=1259937120"></script>
+  </div>
+
+
+
+
+<script>
+  (function() {
+    function leancloudSelector(url) {
+      url = encodeURI(url);
+      return document.getElementById(url).querySelector('.leancloud-visitors-count');
+    }
+
+    function addCount(Counter) {
+      var visitors = document.querySelector('.leancloud_visitors');
+      var url = decodeURI(visitors.id);
+      var title = visitors.dataset.flagTitle;
+
+      Counter('get', '/classes/Counter?where=' + encodeURIComponent(JSON.stringify({ url })))
+        .then(response => response.json())
+        .then(({ results }) => {
+          if (results.length > 0) {
+            var counter = results[0];
+            leancloudSelector(url).innerText = counter.time + 1;
+            Counter('put', '/classes/Counter/' + counter.objectId, { time: { '__op': 'Increment', 'amount': 1 } })
+              .catch(error => {
+                console.error('Failed to save visitor count', error);
+              });
+          } else {
+              Counter('post', '/classes/Counter', { title, url, time: 1 })
+                .then(response => response.json())
+                .then(() => {
+                  leancloudSelector(url).innerText = 1;
+                })
+                .catch(error => {
+                  console.error('Failed to create', error);
+                });
+          }
+        })
+        .catch(error => {
+          console.error('LeanCloud Counter Error', error);
+        });
+    }
+
+    function showTime(Counter) {
+      var visitors = document.querySelectorAll('.leancloud_visitors');
+      var entries = [...visitors].map(element => {
+        return decodeURI(element.id);
+      });
+
+      Counter('get', '/classes/Counter?where=' + encodeURIComponent(JSON.stringify({ url: { '$in': entries } })))
+        .then(response => response.json())
+        .then(({ results }) => {
+          for (let url of entries) {
+            let target = results.find(item => item.url === url);
+            leancloudSelector(url).innerText = target ? target.time : 0;
+          }
+        })
+        .catch(error => {
+          console.error('LeanCloud Counter Error', error);
+        });
+    }
+
+    let { app_id, app_key, server_url } = {"enable":true,"app_id":"ehvmFwB3BLTvYf4JORInQRRn-gzGzoHsz","app_key":"6zj1q563yNhGInbB9zQHlJIs","server_url":null,"security":false};
+    function fetchData(api_server) {
+      var Counter = (method, url, data) => {
+        return fetch(`${api_server}/1.1${url}`, {
+          method,
+          headers: {
+            'X-LC-Id'     : app_id,
+            'X-LC-Key'    : app_key,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        });
+      };
+      if (CONFIG.page.isPost) {
+        if (CONFIG.hostname !== location.hostname) return;
+        addCount(Counter);
+      } else if (document.querySelectorAll('.post-title-link').length >= 1) {
+        showTime(Counter);
+      }
+    }
+
+    let api_server = app_id.slice(-9) !== '-MdYXbMMI' ? server_url : `https://${app_id.slice(0, 8).toLowerCase()}.api.lncldglobal.com`;
+
+    if (api_server) {
+      fetchData(api_server);
+    } else {
+      fetch('https://app-router.leancloud.cn/2/route?appId=' + app_id)
+        .then(response => response.json())
+        .then(({ api_server }) => {
+          fetchData('https://' + api_server);
+        });
+    }
+  })();
+</script>
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : true,
+      notify     : false,
+      appId      : 'ehvmFwB3BLTvYf4JORInQRRn-gzGzoHsz',
+      appKey     : '6zj1q563yNhGInbB9zQHlJIs',
+      placeholder: "Just go go",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : false,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>
