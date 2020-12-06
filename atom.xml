@@ -6,7 +6,7 @@
   <link href="https://nuomi1.github.io/atom.xml" rel="self"/>
   
   <link href="https://nuomi1.github.io/"/>
-  <updated>2020-12-04T16:00:00.000Z</updated>
+  <updated>2020-12-05T16:00:00.000Z</updated>
   <id>https://nuomi1.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>NBus 之 QQSDKHandler</title>
+    <link href="https://nuomi1.github.io/archives/2020/12/nbus-qqsdkhandler.html"/>
+    <id>https://nuomi1.github.io/archives/2020/12/nbus-qqsdkhandler.html</id>
+    <published>2020-12-05T16:00:00.000Z</published>
+    <updated>2020-12-05T16:00:00.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;QQ SDK 的接入问题不少，本 Handler 基于 QQ SDK 3.3.9 实现。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="program" scheme="https://nuomi1.github.io/categories/program/"/>
+    
+    
+    <category term="Swift" scheme="https://nuomi1.github.io/tags/Swift/"/>
+    
+    <category term="NBus" scheme="https://nuomi1.github.io/tags/NBus/"/>
+    
+    <category term="iOS" scheme="https://nuomi1.github.io/tags/iOS/"/>
+    
+  </entry>
   
   <entry>
     <title>NBus 之 WechatSDKHandler</title>
@@ -54,9 +77,9 @@
     <category term="program" scheme="https://nuomi1.github.io/categories/program/"/>
     
     
-    <category term="Swift" scheme="https://nuomi1.github.io/tags/Swift/"/>
-    
     <category term="Codable" scheme="https://nuomi1.github.io/tags/Codable/"/>
+    
+    <category term="Swift" scheme="https://nuomi1.github.io/tags/Swift/"/>
     
     <category term="UserDefaults" scheme="https://nuomi1.github.io/tags/UserDefaults/"/>
     
@@ -124,9 +147,9 @@
     <category term="program" scheme="https://nuomi1.github.io/categories/program/"/>
     
     
-    <category term="Swift" scheme="https://nuomi1.github.io/tags/Swift/"/>
-    
     <category term="Codable" scheme="https://nuomi1.github.io/tags/Codable/"/>
+    
+    <category term="Swift" scheme="https://nuomi1.github.io/tags/Swift/"/>
     
   </entry>
   
@@ -145,9 +168,9 @@
     <category term="program" scheme="https://nuomi1.github.io/categories/program/"/>
     
     
-    <category term="DateFormatter" scheme="https://nuomi1.github.io/tags/DateFormatter/"/>
-    
     <category term="Swift" scheme="https://nuomi1.github.io/tags/Swift/"/>
+    
+    <category term="DateFormatter" scheme="https://nuomi1.github.io/tags/DateFormatter/"/>
     
   </entry>
   
