@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>nuomi1&#39;s blog</title>
-  <icon>https://nuomi1.github.io/icon.png</icon>
+  <icon>https://blog.nuomi1.com/icon.png</icon>
   <subtitle>nuomi1&#39;s blog</subtitle>
-  <link href="https://nuomi1.github.io/atom.xml" rel="self"/>
+  <link href="https://blog.nuomi1.com/atom.xml" rel="self"/>
   
-  <link href="https://nuomi1.github.io/"/>
-  <updated>2020-12-19T16:00:00.000Z</updated>
-  <id>https://nuomi1.github.io/</id>
+  <link href="https://blog.nuomi1.com/"/>
+  <updated>2021-01-07T16:00:00.000Z</updated>
+  <id>https://blog.nuomi1.com/</id>
   
   <author>
     <name>nuomi1</name>
@@ -17,9 +17,32 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>NBus 之 QQHandler</title>
+    <link href="https://blog.nuomi1.com/archives/2021/01/nbus-qqhandler.html"/>
+    <id>https://blog.nuomi1.com/archives/2021/01/nbus-qqhandler.html</id>
+    <published>2021-01-07T16:00:00.000Z</published>
+    <updated>2021-01-07T16:00:00.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;QQ SDK 分析，基于 QQ SDK 3.5.1 和 QQ 8.5.0。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="program" scheme="https://blog.nuomi1.com/categories/program/"/>
+    
+    
+    <category term="Swift" scheme="https://blog.nuomi1.com/tags/Swift/"/>
+    
+    <category term="NBus" scheme="https://blog.nuomi1.com/tags/NBus/"/>
+    
+    <category term="iOS" scheme="https://blog.nuomi1.com/tags/iOS/"/>
+    
+  </entry>
+  
+  <entry>
     <title>NBus 之 SystemHandler</title>
-    <link href="https://nuomi1.github.io/archives/2020/12/nbus-systemhandler.html"/>
-    <id>https://nuomi1.github.io/archives/2020/12/nbus-systemhandler.html</id>
+    <link href="https://blog.nuomi1.com/archives/2020/12/nbus-systemhandler.html"/>
+    <id>https://blog.nuomi1.com/archives/2020/12/nbus-systemhandler.html</id>
     <published>2020-12-19T16:00:00.000Z</published>
     <updated>2020-12-19T16:00:00.000Z</updated>
     
@@ -28,21 +51,21 @@
     
     
     
-    <category term="program" scheme="https://nuomi1.github.io/categories/program/"/>
+    <category term="program" scheme="https://blog.nuomi1.com/categories/program/"/>
     
     
-    <category term="Swift" scheme="https://nuomi1.github.io/tags/Swift/"/>
+    <category term="Swift" scheme="https://blog.nuomi1.com/tags/Swift/"/>
     
-    <category term="NBus" scheme="https://nuomi1.github.io/tags/NBus/"/>
+    <category term="NBus" scheme="https://blog.nuomi1.com/tags/NBus/"/>
     
-    <category term="iOS" scheme="https://nuomi1.github.io/tags/iOS/"/>
+    <category term="iOS" scheme="https://blog.nuomi1.com/tags/iOS/"/>
     
   </entry>
   
   <entry>
     <title>NBus 之 WeiboSDKHandler</title>
-    <link href="https://nuomi1.github.io/archives/2020/12/nbus-weibosdkhandler.html"/>
-    <id>https://nuomi1.github.io/archives/2020/12/nbus-weibosdkhandler.html</id>
+    <link href="https://blog.nuomi1.com/archives/2020/12/nbus-weibosdkhandler.html"/>
+    <id>https://blog.nuomi1.com/archives/2020/12/nbus-weibosdkhandler.html</id>
     <published>2020-12-13T16:00:00.000Z</published>
     <updated>2020-12-13T16:00:00.000Z</updated>
     
@@ -51,44 +74,44 @@
     
     
     
-    <category term="program" scheme="https://nuomi1.github.io/categories/program/"/>
+    <category term="program" scheme="https://blog.nuomi1.com/categories/program/"/>
     
     
-    <category term="Swift" scheme="https://nuomi1.github.io/tags/Swift/"/>
+    <category term="Swift" scheme="https://blog.nuomi1.com/tags/Swift/"/>
     
-    <category term="NBus" scheme="https://nuomi1.github.io/tags/NBus/"/>
+    <category term="NBus" scheme="https://blog.nuomi1.com/tags/NBus/"/>
     
-    <category term="iOS" scheme="https://nuomi1.github.io/tags/iOS/"/>
+    <category term="iOS" scheme="https://blog.nuomi1.com/tags/iOS/"/>
     
   </entry>
   
   <entry>
     <title>NBus 之 QQSDKHandler</title>
-    <link href="https://nuomi1.github.io/archives/2020/12/nbus-qqsdkhandler.html"/>
-    <id>https://nuomi1.github.io/archives/2020/12/nbus-qqsdkhandler.html</id>
+    <link href="https://blog.nuomi1.com/archives/2020/12/nbus-qqsdkhandler.html"/>
+    <id>https://blog.nuomi1.com/archives/2020/12/nbus-qqsdkhandler.html</id>
     <published>2020-12-05T16:00:00.000Z</published>
-    <updated>2020-12-05T16:00:00.000Z</updated>
+    <updated>2021-01-08T16:00:00.000Z</updated>
     
     
     <summary type="html">&lt;p&gt;QQ SDK 的接入问题不少，本 Handler 基于 QQ SDK 3.3.9 实现。&lt;/p&gt;</summary>
     
     
     
-    <category term="program" scheme="https://nuomi1.github.io/categories/program/"/>
+    <category term="program" scheme="https://blog.nuomi1.com/categories/program/"/>
     
     
-    <category term="Swift" scheme="https://nuomi1.github.io/tags/Swift/"/>
+    <category term="Swift" scheme="https://blog.nuomi1.com/tags/Swift/"/>
     
-    <category term="NBus" scheme="https://nuomi1.github.io/tags/NBus/"/>
+    <category term="NBus" scheme="https://blog.nuomi1.com/tags/NBus/"/>
     
-    <category term="iOS" scheme="https://nuomi1.github.io/tags/iOS/"/>
+    <category term="iOS" scheme="https://blog.nuomi1.com/tags/iOS/"/>
     
   </entry>
   
   <entry>
     <title>NBus 之 WechatSDKHandler</title>
-    <link href="https://nuomi1.github.io/archives/2020/12/nbus-wechatsdkhandler.html"/>
-    <id>https://nuomi1.github.io/archives/2020/12/nbus-wechatsdkhandler.html</id>
+    <link href="https://blog.nuomi1.com/archives/2020/12/nbus-wechatsdkhandler.html"/>
+    <id>https://blog.nuomi1.com/archives/2020/12/nbus-wechatsdkhandler.html</id>
     <published>2020-12-04T16:00:00.000Z</published>
     <updated>2020-12-04T16:00:00.000Z</updated>
     
@@ -97,21 +120,21 @@
     
     
     
-    <category term="program" scheme="https://nuomi1.github.io/categories/program/"/>
+    <category term="program" scheme="https://blog.nuomi1.com/categories/program/"/>
     
     
-    <category term="Swift" scheme="https://nuomi1.github.io/tags/Swift/"/>
+    <category term="Swift" scheme="https://blog.nuomi1.com/tags/Swift/"/>
     
-    <category term="NBus" scheme="https://nuomi1.github.io/tags/NBus/"/>
+    <category term="NBus" scheme="https://blog.nuomi1.com/tags/NBus/"/>
     
-    <category term="iOS" scheme="https://nuomi1.github.io/tags/iOS/"/>
+    <category term="iOS" scheme="https://blog.nuomi1.com/tags/iOS/"/>
     
   </entry>
   
   <entry>
     <title>UserDefaults 与 Codable</title>
-    <link href="https://nuomi1.github.io/archives/2020/10/userdefaults-codable.html"/>
-    <id>https://nuomi1.github.io/archives/2020/10/userdefaults-codable.html</id>
+    <link href="https://blog.nuomi1.com/archives/2020/10/userdefaults-codable.html"/>
+    <id>https://blog.nuomi1.com/archives/2020/10/userdefaults-codable.html</id>
     <published>2020-10-30T16:00:00.000Z</published>
     <updated>2020-11-16T16:00:00.000Z</updated>
     
@@ -120,21 +143,21 @@
     
     
     
-    <category term="program" scheme="https://nuomi1.github.io/categories/program/"/>
+    <category term="program" scheme="https://blog.nuomi1.com/categories/program/"/>
     
     
-    <category term="Swift" scheme="https://nuomi1.github.io/tags/Swift/"/>
+    <category term="Swift" scheme="https://blog.nuomi1.com/tags/Swift/"/>
     
-    <category term="Codable" scheme="https://nuomi1.github.io/tags/Codable/"/>
+    <category term="Codable" scheme="https://blog.nuomi1.com/tags/Codable/"/>
     
-    <category term="UserDefaults" scheme="https://nuomi1.github.io/tags/UserDefaults/"/>
+    <category term="UserDefaults" scheme="https://blog.nuomi1.com/tags/UserDefaults/"/>
     
   </entry>
   
   <entry>
     <title>Enum 与 Decodable</title>
-    <link href="https://nuomi1.github.io/archives/2020/10/enum-decodable.html"/>
-    <id>https://nuomi1.github.io/archives/2020/10/enum-decodable.html</id>
+    <link href="https://blog.nuomi1.com/archives/2020/10/enum-decodable.html"/>
+    <id>https://blog.nuomi1.com/archives/2020/10/enum-decodable.html</id>
     <published>2020-10-24T16:00:00.000Z</published>
     <updated>2020-10-24T16:00:00.000Z</updated>
     
@@ -143,21 +166,21 @@
     
     
     
-    <category term="program" scheme="https://nuomi1.github.io/categories/program/"/>
+    <category term="program" scheme="https://blog.nuomi1.com/categories/program/"/>
     
     
-    <category term="Swift" scheme="https://nuomi1.github.io/tags/Swift/"/>
+    <category term="Swift" scheme="https://blog.nuomi1.com/tags/Swift/"/>
     
-    <category term="Decodable" scheme="https://nuomi1.github.io/tags/Decodable/"/>
+    <category term="Decodable" scheme="https://blog.nuomi1.com/tags/Decodable/"/>
     
-    <category term="Enum" scheme="https://nuomi1.github.io/tags/Enum/"/>
+    <category term="Enum" scheme="https://blog.nuomi1.com/tags/Enum/"/>
     
   </entry>
   
   <entry>
     <title>NBus 的由来</title>
-    <link href="https://nuomi1.github.io/archives/2020/09/nbus-comes-from.html"/>
-    <id>https://nuomi1.github.io/archives/2020/09/nbus-comes-from.html</id>
+    <link href="https://blog.nuomi1.com/archives/2020/09/nbus-comes-from.html"/>
+    <id>https://blog.nuomi1.com/archives/2020/09/nbus-comes-from.html</id>
     <published>2020-09-19T16:00:00.000Z</published>
     <updated>2020-10-17T16:00:00.000Z</updated>
     
@@ -167,21 +190,21 @@
     
     
     
-    <category term="program" scheme="https://nuomi1.github.io/categories/program/"/>
+    <category term="program" scheme="https://blog.nuomi1.com/categories/program/"/>
     
     
-    <category term="Swift" scheme="https://nuomi1.github.io/tags/Swift/"/>
+    <category term="Swift" scheme="https://blog.nuomi1.com/tags/Swift/"/>
     
-    <category term="NBus" scheme="https://nuomi1.github.io/tags/NBus/"/>
+    <category term="NBus" scheme="https://blog.nuomi1.com/tags/NBus/"/>
     
-    <category term="iOS" scheme="https://nuomi1.github.io/tags/iOS/"/>
+    <category term="iOS" scheme="https://blog.nuomi1.com/tags/iOS/"/>
     
   </entry>
   
   <entry>
     <title>WebAPI 与 Codable</title>
-    <link href="https://nuomi1.github.io/archives/2019/09/webapi-codable.html"/>
-    <id>https://nuomi1.github.io/archives/2019/09/webapi-codable.html</id>
+    <link href="https://blog.nuomi1.com/archives/2019/09/webapi-codable.html"/>
+    <id>https://blog.nuomi1.com/archives/2019/09/webapi-codable.html</id>
     <published>2019-09-28T16:00:00.000Z</published>
     <updated>2019-09-28T16:00:00.000Z</updated>
     
@@ -190,19 +213,19 @@
     
     
     
-    <category term="program" scheme="https://nuomi1.github.io/categories/program/"/>
+    <category term="program" scheme="https://blog.nuomi1.com/categories/program/"/>
     
     
-    <category term="Swift" scheme="https://nuomi1.github.io/tags/Swift/"/>
+    <category term="Swift" scheme="https://blog.nuomi1.com/tags/Swift/"/>
     
-    <category term="Codable" scheme="https://nuomi1.github.io/tags/Codable/"/>
+    <category term="Codable" scheme="https://blog.nuomi1.com/tags/Codable/"/>
     
   </entry>
   
   <entry>
     <title>时间格式化</title>
-    <link href="https://nuomi1.github.io/archives/2019/07/dateformatter.html"/>
-    <id>https://nuomi1.github.io/archives/2019/07/dateformatter.html</id>
+    <link href="https://blog.nuomi1.com/archives/2019/07/dateformatter.html"/>
+    <id>https://blog.nuomi1.com/archives/2019/07/dateformatter.html</id>
     <published>2019-07-06T16:00:00.000Z</published>
     <updated>2019-07-13T16:00:00.000Z</updated>
     
@@ -211,19 +234,19 @@
     
     
     
-    <category term="program" scheme="https://nuomi1.github.io/categories/program/"/>
+    <category term="program" scheme="https://blog.nuomi1.com/categories/program/"/>
     
     
-    <category term="DateFormatter" scheme="https://nuomi1.github.io/tags/DateFormatter/"/>
+    <category term="DateFormatter" scheme="https://blog.nuomi1.com/tags/DateFormatter/"/>
     
-    <category term="Swift" scheme="https://nuomi1.github.io/tags/Swift/"/>
+    <category term="Swift" scheme="https://blog.nuomi1.com/tags/Swift/"/>
     
   </entry>
   
   <entry>
     <title>ClashX 搭配 ShadowsocksX-NG-R 支持 SSR 协议</title>
-    <link href="https://nuomi1.github.io/archives/2019/04/clashx-shadowsocksx-ng-r.html"/>
-    <id>https://nuomi1.github.io/archives/2019/04/clashx-shadowsocksx-ng-r.html</id>
+    <link href="https://blog.nuomi1.com/archives/2019/04/clashx-shadowsocksx-ng-r.html"/>
+    <id>https://blog.nuomi1.com/archives/2019/04/clashx-shadowsocksx-ng-r.html</id>
     <published>2019-04-28T16:00:00.000Z</published>
     <updated>2019-04-28T16:00:00.000Z</updated>
     
@@ -232,21 +255,21 @@
     
     
     
-    <category term="proxy" scheme="https://nuomi1.github.io/categories/proxy/"/>
+    <category term="proxy" scheme="https://blog.nuomi1.com/categories/proxy/"/>
     
     
-    <category term="ClashX" scheme="https://nuomi1.github.io/tags/ClashX/"/>
+    <category term="ClashX" scheme="https://blog.nuomi1.com/tags/ClashX/"/>
     
-    <category term="ShadowsocksX-NG-R" scheme="https://nuomi1.github.io/tags/ShadowsocksX-NG-R/"/>
+    <category term="ShadowsocksX-NG-R" scheme="https://blog.nuomi1.com/tags/ShadowsocksX-NG-R/"/>
     
-    <category term="SSR" scheme="https://nuomi1.github.io/tags/SSR/"/>
+    <category term="SSR" scheme="https://blog.nuomi1.com/tags/SSR/"/>
     
   </entry>
   
   <entry>
     <title>LeetCode 初级算法 Swift 练习</title>
-    <link href="https://nuomi1.github.io/archives/2018/12/leetcode-top-interview-questions-easy-swift-exercises.html"/>
-    <id>https://nuomi1.github.io/archives/2018/12/leetcode-top-interview-questions-easy-swift-exercises.html</id>
+    <link href="https://blog.nuomi1.com/archives/2018/12/leetcode-top-interview-questions-easy-swift-exercises.html"/>
+    <id>https://blog.nuomi1.com/archives/2018/12/leetcode-top-interview-questions-easy-swift-exercises.html</id>
     <published>2018-12-16T16:00:00.000Z</published>
     <updated>2019-01-15T16:00:00.000Z</updated>
     
@@ -255,19 +278,19 @@
     
     
     
-    <category term="program" scheme="https://nuomi1.github.io/categories/program/"/>
+    <category term="program" scheme="https://blog.nuomi1.com/categories/program/"/>
     
     
-    <category term="Swift" scheme="https://nuomi1.github.io/tags/Swift/"/>
+    <category term="Swift" scheme="https://blog.nuomi1.com/tags/Swift/"/>
     
-    <category term="LeetCode" scheme="https://nuomi1.github.io/tags/LeetCode/"/>
+    <category term="LeetCode" scheme="https://blog.nuomi1.com/tags/LeetCode/"/>
     
   </entry>
   
   <entry>
     <title>工作总结</title>
-    <link href="https://nuomi1.github.io/archives/2018/07/work-summary.html"/>
-    <id>https://nuomi1.github.io/archives/2018/07/work-summary.html</id>
+    <link href="https://blog.nuomi1.com/archives/2018/07/work-summary.html"/>
+    <id>https://blog.nuomi1.com/archives/2018/07/work-summary.html</id>
     <published>2018-07-28T16:00:00.000Z</published>
     <updated>2018-07-28T16:00:00.000Z</updated>
     
@@ -276,19 +299,19 @@
     
     
     
-    <category term="work" scheme="https://nuomi1.github.io/categories/work/"/>
+    <category term="work" scheme="https://blog.nuomi1.com/categories/work/"/>
     
     
-    <category term="XLPagerTabStrip" scheme="https://nuomi1.github.io/tags/XLPagerTabStrip/"/>
+    <category term="XLPagerTabStrip" scheme="https://blog.nuomi1.com/tags/XLPagerTabStrip/"/>
     
-    <category term="Fabric" scheme="https://nuomi1.github.io/tags/Fabric/"/>
+    <category term="Fabric" scheme="https://blog.nuomi1.com/tags/Fabric/"/>
     
   </entry>
   
   <entry>
     <title>深圳游记</title>
-    <link href="https://nuomi1.github.io/archives/2018/06/shenzhen-travel.html"/>
-    <id>https://nuomi1.github.io/archives/2018/06/shenzhen-travel.html</id>
+    <link href="https://blog.nuomi1.com/archives/2018/06/shenzhen-travel.html"/>
+    <id>https://blog.nuomi1.com/archives/2018/06/shenzhen-travel.html</id>
     <published>2018-06-02T16:00:00.000Z</published>
     <updated>2018-06-18T16:00:00.000Z</updated>
     
@@ -299,17 +322,17 @@
     
     
     
-    <category term="travel" scheme="https://nuomi1.github.io/categories/travel/"/>
+    <category term="travel" scheme="https://blog.nuomi1.com/categories/travel/"/>
     
     
-    <category term="深圳" scheme="https://nuomi1.github.io/tags/%E6%B7%B1%E5%9C%B3/"/>
+    <category term="深圳" scheme="https://blog.nuomi1.com/tags/%E6%B7%B1%E5%9C%B3/"/>
     
   </entry>
   
   <entry>
     <title>天猫精灵方糖体验</title>
-    <link href="https://nuomi1.github.io/archives/2018/05/tmall-genie-surge-experience.html"/>
-    <id>https://nuomi1.github.io/archives/2018/05/tmall-genie-surge-experience.html</id>
+    <link href="https://blog.nuomi1.com/archives/2018/05/tmall-genie-surge-experience.html"/>
+    <id>https://blog.nuomi1.com/archives/2018/05/tmall-genie-surge-experience.html</id>
     <published>2018-05-19T16:00:00.000Z</published>
     <updated>2018-05-19T16:00:00.000Z</updated>
     
@@ -318,17 +341,17 @@
     
     
     
-    <category term="iot" scheme="https://nuomi1.github.io/categories/iot/"/>
+    <category term="iot" scheme="https://blog.nuomi1.com/categories/iot/"/>
     
     
-    <category term="天猫精灵" scheme="https://nuomi1.github.io/tags/%E5%A4%A9%E7%8C%AB%E7%B2%BE%E7%81%B5/"/>
+    <category term="天猫精灵" scheme="https://blog.nuomi1.com/tags/%E5%A4%A9%E7%8C%AB%E7%B2%BE%E7%81%B5/"/>
     
   </entry>
   
   <entry>
     <title>使用 docker-compose 搭建 Home Assistant</title>
-    <link href="https://nuomi1.github.io/archives/2018/05/docker-compose-home-assistant.html"/>
-    <id>https://nuomi1.github.io/archives/2018/05/docker-compose-home-assistant.html</id>
+    <link href="https://blog.nuomi1.com/archives/2018/05/docker-compose-home-assistant.html"/>
+    <id>https://blog.nuomi1.com/archives/2018/05/docker-compose-home-assistant.html</id>
     <published>2018-05-18T16:00:00.000Z</published>
     <updated>2018-05-18T16:00:00.000Z</updated>
     
@@ -337,19 +360,19 @@
     
     
     
-    <category term="iot" scheme="https://nuomi1.github.io/categories/iot/"/>
+    <category term="iot" scheme="https://blog.nuomi1.com/categories/iot/"/>
     
     
-    <category term="Docker" scheme="https://nuomi1.github.io/tags/Docker/"/>
+    <category term="Docker" scheme="https://blog.nuomi1.com/tags/Docker/"/>
     
-    <category term="Home-Assistant" scheme="https://nuomi1.github.io/tags/Home-Assistant/"/>
+    <category term="Home-Assistant" scheme="https://blog.nuomi1.com/tags/Home-Assistant/"/>
     
   </entry>
   
   <entry>
     <title>使用 docker-compose 搭建 Hexo</title>
-    <link href="https://nuomi1.github.io/archives/2018/05/docker-compose-hexo.html"/>
-    <id>https://nuomi1.github.io/archives/2018/05/docker-compose-hexo.html</id>
+    <link href="https://blog.nuomi1.com/archives/2018/05/docker-compose-hexo.html"/>
+    <id>https://blog.nuomi1.com/archives/2018/05/docker-compose-hexo.html</id>
     <published>2018-05-17T16:00:00.000Z</published>
     <updated>2018-05-17T16:00:00.000Z</updated>
     
@@ -358,19 +381,19 @@
     
     
     
-    <category term="blog" scheme="https://nuomi1.github.io/categories/blog/"/>
+    <category term="blog" scheme="https://blog.nuomi1.com/categories/blog/"/>
     
     
-    <category term="Docker" scheme="https://nuomi1.github.io/tags/Docker/"/>
+    <category term="Docker" scheme="https://blog.nuomi1.com/tags/Docker/"/>
     
-    <category term="Hexo" scheme="https://nuomi1.github.io/tags/Hexo/"/>
+    <category term="Hexo" scheme="https://blog.nuomi1.com/tags/Hexo/"/>
     
   </entry>
   
   <entry>
     <title>在 Docker 中安装 Hexo</title>
-    <link href="https://nuomi1.github.io/archives/2016/08/docker-hexo.html"/>
-    <id>https://nuomi1.github.io/archives/2016/08/docker-hexo.html</id>
+    <link href="https://blog.nuomi1.com/archives/2016/08/docker-hexo.html"/>
+    <id>https://blog.nuomi1.com/archives/2016/08/docker-hexo.html</id>
     <published>2016-08-11T16:00:00.000Z</published>
     <updated>2016-08-11T16:00:00.000Z</updated>
     
@@ -379,19 +402,19 @@
     
     
     
-    <category term="blog" scheme="https://nuomi1.github.io/categories/blog/"/>
+    <category term="blog" scheme="https://blog.nuomi1.com/categories/blog/"/>
     
     
-    <category term="Docker" scheme="https://nuomi1.github.io/tags/Docker/"/>
+    <category term="Docker" scheme="https://blog.nuomi1.com/tags/Docker/"/>
     
-    <category term="Hexo" scheme="https://nuomi1.github.io/tags/Hexo/"/>
+    <category term="Hexo" scheme="https://blog.nuomi1.com/tags/Hexo/"/>
     
   </entry>
   
   <entry>
     <title>大学 C 练习</title>
-    <link href="https://nuomi1.github.io/archives/2015/11/university-c-exercises.html"/>
-    <id>https://nuomi1.github.io/archives/2015/11/university-c-exercises.html</id>
+    <link href="https://blog.nuomi1.com/archives/2015/11/university-c-exercises.html"/>
+    <id>https://blog.nuomi1.com/archives/2015/11/university-c-exercises.html</id>
     <published>2015-11-23T16:00:00.000Z</published>
     <updated>2015-11-23T16:00:00.000Z</updated>
     
@@ -400,17 +423,17 @@
     
     
     
-    <category term="program" scheme="https://nuomi1.github.io/categories/program/"/>
+    <category term="program" scheme="https://blog.nuomi1.com/categories/program/"/>
     
     
-    <category term="C" scheme="https://nuomi1.github.io/tags/C/"/>
+    <category term="C" scheme="https://blog.nuomi1.com/tags/C/"/>
     
   </entry>
   
   <entry>
     <title>廖雪峰 Python3 练习</title>
-    <link href="https://nuomi1.github.io/archives/2015/09/liaoxuefeng-python3-exercises.html"/>
-    <id>https://nuomi1.github.io/archives/2015/09/liaoxuefeng-python3-exercises.html</id>
+    <link href="https://blog.nuomi1.com/archives/2015/09/liaoxuefeng-python3-exercises.html"/>
+    <id>https://blog.nuomi1.com/archives/2015/09/liaoxuefeng-python3-exercises.html</id>
     <published>2015-09-06T16:00:00.000Z</published>
     <updated>2016-02-08T16:00:00.000Z</updated>
     
@@ -419,10 +442,10 @@
     
     
     
-    <category term="program" scheme="https://nuomi1.github.io/categories/program/"/>
+    <category term="program" scheme="https://blog.nuomi1.com/categories/program/"/>
     
     
-    <category term="Python" scheme="https://nuomi1.github.io/tags/Python/"/>
+    <category term="Python" scheme="https://blog.nuomi1.com/tags/Python/"/>
     
   </entry>
   
