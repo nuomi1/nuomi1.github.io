@@ -6,7 +6,7 @@
   <link href="https://blog.nuomi1.com/atom.xml" rel="self"/>
   
   <link href="https://blog.nuomi1.com/"/>
-  <updated>2021-01-19T16:00:00.000Z</updated>
+  <updated>2021-01-23T16:00:00.000Z</updated>
   <id>https://blog.nuomi1.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>NBus 之 WeiboHandler</title>
+    <link href="https://blog.nuomi1.com/archives/2021/01/nbus-weibohandler.html"/>
+    <id>https://blog.nuomi1.com/archives/2021/01/nbus-weibohandler.html</id>
+    <published>2021-01-23T16:00:00.000Z</published>
+    <updated>2021-01-23T16:00:00.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;Weibo SDK 分析，基于 Weibo SDK 3.3.0 和微博 11.1.1。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="program" scheme="https://blog.nuomi1.com/categories/program/"/>
+    
+    
+    <category term="Swift" scheme="https://blog.nuomi1.com/tags/Swift/"/>
+    
+    <category term="NBus" scheme="https://blog.nuomi1.com/tags/NBus/"/>
+    
+    <category term="iOS" scheme="https://blog.nuomi1.com/tags/iOS/"/>
+    
+  </entry>
   
   <entry>
     <title>NBus 之 QQHandler</title>
@@ -67,7 +90,7 @@
     <link href="https://blog.nuomi1.com/archives/2020/12/nbus-weibosdkhandler.html"/>
     <id>https://blog.nuomi1.com/archives/2020/12/nbus-weibosdkhandler.html</id>
     <published>2020-12-13T16:00:00.000Z</published>
-    <updated>2020-12-13T16:00:00.000Z</updated>
+    <updated>2021-01-23T16:00:00.000Z</updated>
     
     
     <summary type="html">&lt;p&gt;微博 SDK 的接入不难，本 Handler 基于微博 SDK 3.2.7 实现。&lt;/p&gt;</summary>
@@ -146,9 +169,9 @@
     <category term="program" scheme="https://blog.nuomi1.com/categories/program/"/>
     
     
-    <category term="Swift" scheme="https://blog.nuomi1.com/tags/Swift/"/>
-    
     <category term="Codable" scheme="https://blog.nuomi1.com/tags/Codable/"/>
+    
+    <category term="Swift" scheme="https://blog.nuomi1.com/tags/Swift/"/>
     
     <category term="UserDefaults" scheme="https://blog.nuomi1.com/tags/UserDefaults/"/>
     
@@ -216,9 +239,9 @@
     <category term="program" scheme="https://blog.nuomi1.com/categories/program/"/>
     
     
-    <category term="Swift" scheme="https://blog.nuomi1.com/tags/Swift/"/>
-    
     <category term="Codable" scheme="https://blog.nuomi1.com/tags/Codable/"/>
+    
+    <category term="Swift" scheme="https://blog.nuomi1.com/tags/Swift/"/>
     
   </entry>
   
@@ -237,9 +260,9 @@
     <category term="program" scheme="https://blog.nuomi1.com/categories/program/"/>
     
     
-    <category term="DateFormatter" scheme="https://blog.nuomi1.com/tags/DateFormatter/"/>
-    
     <category term="Swift" scheme="https://blog.nuomi1.com/tags/Swift/"/>
+    
+    <category term="DateFormatter" scheme="https://blog.nuomi1.com/tags/DateFormatter/"/>
     
   </entry>
   
@@ -427,25 +450,6 @@
     
     
     <category term="C" scheme="https://blog.nuomi1.com/tags/C/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>廖雪峰 Python3 练习</title>
-    <link href="https://blog.nuomi1.com/archives/2015/09/liaoxuefeng-python3-exercises.html"/>
-    <id>https://blog.nuomi1.com/archives/2015/09/liaoxuefeng-python3-exercises.html</id>
-    <published>2015-09-06T16:00:00.000Z</published>
-    <updated>2016-02-08T16:00:00.000Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;随着学习的深入，才知道 Python 的厉害之处，居然可以写得这么简洁。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="program" scheme="https://blog.nuomi1.com/categories/program/"/>
-    
-    
-    <category term="Python" scheme="https://blog.nuomi1.com/tags/Python/"/>
     
   </entry>
   
