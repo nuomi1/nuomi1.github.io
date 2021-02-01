@@ -6,7 +6,7 @@
   <link href="https://blog.nuomi1.com/atom.xml" rel="self"/>
   
   <link href="https://blog.nuomi1.com/"/>
-  <updated>2021-01-23T16:00:00.000Z</updated>
+  <updated>2021-01-31T16:00:00.000Z</updated>
   <id>https://blog.nuomi1.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>NBus 之 WechatHandler</title>
+    <link href="https://blog.nuomi1.com/archives/2021/01/nbus-wechathandler.html"/>
+    <id>https://blog.nuomi1.com/archives/2021/01/nbus-wechathandler.html</id>
+    <published>2021-01-31T16:00:00.000Z</published>
+    <updated>2021-01-31T16:00:00.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;Wechat SDK 分析，基于 Wechat SDK 1.8.7.1 和微信 8.0.1。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="program" scheme="https://blog.nuomi1.com/categories/program/"/>
+    
+    
+    <category term="Swift" scheme="https://blog.nuomi1.com/tags/Swift/"/>
+    
+    <category term="NBus" scheme="https://blog.nuomi1.com/tags/NBus/"/>
+    
+    <category term="iOS" scheme="https://blog.nuomi1.com/tags/iOS/"/>
+    
+  </entry>
   
   <entry>
     <title>NBus 之 WeiboHandler</title>
@@ -431,25 +454,6 @@
     <category term="Docker" scheme="https://blog.nuomi1.com/tags/Docker/"/>
     
     <category term="Hexo" scheme="https://blog.nuomi1.com/tags/Hexo/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>大学 C 练习</title>
-    <link href="https://blog.nuomi1.com/archives/2015/11/university-c-exercises.html"/>
-    <id>https://blog.nuomi1.com/archives/2015/11/university-c-exercises.html</id>
-    <published>2015-11-23T16:00:00.000Z</published>
-    <updated>2015-11-23T16:00:00.000Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;大一《程序设计基础（C 语言）》课后作业。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="program" scheme="https://blog.nuomi1.com/categories/program/"/>
-    
-    
-    <category term="C" scheme="https://blog.nuomi1.com/tags/C/"/>
     
   </entry>
   
