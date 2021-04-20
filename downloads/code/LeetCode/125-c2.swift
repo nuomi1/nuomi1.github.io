@@ -20,27 +20,27 @@ func isPalindrome(_ s: String) -> Bool {
         return true
     }
 
-    var i = s.startIndex
-    var j = s.index(before: s.endIndex)
+    var leftIndex = s.startIndex
+    var rightIndex = s.index(before: s.endIndex)
 
-    // i 下标从开到尾，j 下标从尾到头，直到 i 与 j 相遇
-    while i < j {
-        guard s[i].isNumber || s[i].isLetter else {
-            s.formIndex(after: &i)
+    // leftIndex 下标从开到尾，rightIndex 下标从尾到头，直到 leftIndex 与 rightIndex 相遇
+    while leftIndex < rightIndex {
+        guard s[leftIndex].isNumber || s[leftIndex].isLetter else {
+            s.formIndex(after: &leftIndex)
             continue
         }
 
-        guard s[j].isNumber || s[j].isLetter else {
-            s.formIndex(before: &j)
+        guard s[rightIndex].isNumber || s[rightIndex].isLetter else {
+            s.formIndex(before: &rightIndex)
             continue
         }
 
-        guard s[i].lowercased() == s[j].lowercased() else {
+        guard s[leftIndex].lowercased() == s[rightIndex].lowercased() else {
             return false
         }
 
-        s.formIndex(after: &i)
-        s.formIndex(before: &j)
+        s.formIndex(after: &leftIndex)
+        s.formIndex(before: &rightIndex)
     }
 
     return true

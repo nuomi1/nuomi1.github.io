@@ -16,25 +16,23 @@
 // MARK: Vertical scanning
 
 func longestCommonPrefix(_ strs: [String]) -> String {
-    guard !strs.isEmpty else {
+    // 第 1 个当做前缀
+    guard let prefixString = strs.first else {
         return ""
     }
 
-    // 第 1 个当做前缀
-    let prefix = strs.first!
-
     // 遍历前缀
-    for i in prefix.indices {
-        let prefixCount = i.utf16Offset(in: prefix)
-        let character = prefix[i]
+    for prefixStringIndex in prefixString.indices {
+        let prefixCount = prefixStringIndex.utf16Offset(in: prefixString)
+        let character = prefixString[prefixStringIndex]
 
         // 遍历剩余字符串
-        for j in strs.indices.dropFirst() {
-            if prefixCount == strs[j].count || strs[j][i] != character {
-                return String(prefix[..<i])
+        for strsIndex in strs.indices.dropFirst() {
+            if prefixCount == strs[strsIndex].count || strs[strsIndex][prefixStringIndex] != character {
+                return String(prefixString[..<prefixStringIndex])
             }
         }
     }
 
-    return prefix
+    return prefixString
 }

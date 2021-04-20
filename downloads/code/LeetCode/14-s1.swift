@@ -16,16 +16,16 @@
 func longestCommonPrefix(_ strs: [String]) -> String {
     var prefix = ""
 
-    guard !strs.isEmpty else {
+    guard let prefixString = strs.first else {
         return prefix
     }
 
     // 第一个字符串与剩下所有字符串逐一对比前缀，前缀逐渐加一
-    for index in strs.first!.indices {
-        let tempPrefix = strs.first![...index]
+    for index in prefixString.indices {
+        let tempPrefix = prefixString[...index]
 
-        for str in strs.dropFirst() {
-            if !str.hasPrefix(tempPrefix) {
+        for string in strs.dropFirst() {
+            if !string.hasPrefix(tempPrefix) {
                 return prefix
             }
         }
