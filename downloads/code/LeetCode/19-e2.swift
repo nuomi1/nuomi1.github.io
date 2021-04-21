@@ -16,22 +16,22 @@
 // MARK: One pass algorithm
 
 func removeNthFromEnd(_ head: ListNode?, _ n: Int) -> ListNode? {
-    var i = head
-    var j = head
+    var fastNode = head
+    var slowNode = head
 
     for _ in 0 ..< n {
-        i = i?.next
+        fastNode = fastNode?.next
     }
 
-    guard i != nil else {
+    guard fastNode != nil else {
         return head?.next
     }
 
-    while i?.next != nil {
-        i = i?.next
-        j = j?.next
+    while fastNode?.next != nil {
+        fastNode = fastNode?.next
+        slowNode = slowNode?.next
     }
 
-    j?.next = j?.next?.next
+    slowNode?.next = slowNode?.next?.next
     return head
 }

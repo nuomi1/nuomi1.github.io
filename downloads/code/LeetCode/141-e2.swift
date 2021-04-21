@@ -16,14 +16,14 @@
 // MARK: Floyd's Cycle Finding Algorithm
 
 func hasCycle(_ head: ListNode?) -> Bool {
-    var slow = head
-    var fast = head
+    var slowNode = head
+    var fastNode = head
 
-    while slow != nil, fast != nil, fast?.next != nil {
-        slow = slow?.next
-        fast = fast?.next?.next
+    while slowNode != nil, fastNode != nil, fastNode?.next != nil {
+        slowNode = slowNode?.next
+        fastNode = fastNode?.next?.next
 
-        if slow === fast {
+        if slowNode === fastNode {
             return true
         }
     }

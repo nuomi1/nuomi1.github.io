@@ -14,25 +14,25 @@
 // https://leetcode-cn.com/problems/remove-nth-node-from-end-of-list/
 
 func removeNthFromEnd(_ head: ListNode?, _ n: Int) -> ListNode? {
-    var i = head
-    var j: ListNode?
+    var fastNode = head
+    var slowNode: ListNode?
 
     var count = n
 
-    while i != nil {
+    while fastNode != nil {
         if count <= 0 {
-            j = j == nil ? head : j?.next
+            slowNode = slowNode == nil ? head : slowNode?.next
         }
 
-        i = i?.next
+        fastNode = fastNode?.next
 
         count -= 1
     }
 
-    guard j != nil else {
+    guard slowNode != nil else {
         return head?.next
     }
 
-    j?.next = j?.next?.next
+    slowNode?.next = slowNode?.next?.next
     return head
 }

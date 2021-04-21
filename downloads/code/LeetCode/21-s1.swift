@@ -14,40 +14,40 @@
 // https://leetcode-cn.com/problems/merge-two-sorted-lists/
 
 func mergeTwoLists(_ l1: ListNode?, _ l2: ListNode?) -> ListNode? {
-    guard l1 != nil, l2 != nil else {
+    guard let list1 = l1, let list2 = l2 else {
         return l1 ?? l2
     }
 
-    var l3: ListNode?
+    var list3: ListNode?
 
-    var p1: ListNode? = l1
-    var p2: ListNode? = l2
-    var p3: ListNode? = ListNode(0)
+    var node1: ListNode? = list1
+    var node2: ListNode? = list2
+    var node3: ListNode? = ListNode(0)
 
-    while p1 != nil, p2 != nil {
-        if p1!.val > p2!.val {
-            p3?.next = p2
-            p2 = p2?.next
+    while node1 != nil, node2 != nil {
+        if node1!.val > node2!.val {
+            node3?.next = node2
+            node2 = node2?.next
         } else {
-            p3?.next = p1
-            p1 = p1?.next
+            node3?.next = node1
+            node1 = node1?.next
         }
 
         // 跳过第一个无用结点
-        if l3 == nil {
-            l3 = p3?.next
+        if list3 == nil {
+            list3 = node3?.next
         }
 
-        p3 = p3?.next
+        node3 = node3?.next
     }
 
-    if p1 != nil {
-        p3?.next = p1
+    if node1 != nil {
+        node3?.next = node1
     }
 
-    if p2 != nil {
-        p3?.next = p2
+    if node2 != nil {
+        node3?.next = node2
     }
 
-    return l3
+    return list3
 }

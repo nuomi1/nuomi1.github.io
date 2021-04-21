@@ -16,19 +16,19 @@
 // MARK: 递归
 
 func mergeTwoLists(_ l1: ListNode?, _ l2: ListNode?) -> ListNode? {
-    guard let l1 = l1, let l2 = l2 else {
+    guard let list1 = l1, let list2 = l2 else {
         return l1 ?? l2
     }
 
-    let l3: ListNode?
+    let list3: ListNode?
 
-    if l1.val > l2.val {
-        l3 = l2
-        l3?.next = mergeTwoLists(l1, l2.next)
+    if list1.val > list2.val {
+        list3 = list2
+        list3?.next = mergeTwoLists(list1, list2.next)
     } else {
-        l3 = l1
-        l3?.next = mergeTwoLists(l1.next, l2)
+        list3 = list1
+        list3?.next = mergeTwoLists(list1.next, list2)
     }
 
-    return l3
+    return list3
 }

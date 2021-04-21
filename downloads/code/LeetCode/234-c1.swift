@@ -16,28 +16,28 @@
 // MARK: 将值复制到数组中后用双指针法
 
 func isPalindrome(_ head: ListNode?) -> Bool {
-    var p = head
-    var list = [ListNode]()
+    var node = head
+    var nodes = [ListNode]()
 
-    while p != nil {
-        list.append(p!)
-        p = p?.next
+    while node != nil {
+        nodes.append(node!)
+        node = node?.next
     }
 
-    guard !list.isEmpty else {
+    guard !nodes.isEmpty else {
         return true
     }
 
-    var i = list.indices.first!
-    var j = list.indices.last!
+    var leftIndex = nodes.startIndex
+    var rightIndex = nodes.index(before: nodes.endIndex)
 
-    while i < j {
-        guard list[i].val == list[j].val else {
+    while leftIndex < rightIndex {
+        guard nodes[leftIndex].val == nodes[rightIndex].val else {
             return false
         }
 
-        i += 1
-        j -= 1
+        nodes.formIndex(after: &leftIndex)
+        nodes.formIndex(before: &rightIndex)
     }
 
     return true

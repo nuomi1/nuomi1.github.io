@@ -17,13 +17,13 @@
 
 func reverseList(_ head: ListNode?) -> ListNode? {
     var newHead: ListNode?
-    var p = head
+    var currentNode = head
 
-    while p != nil {
-        let temp = p?.next
-        p?.next = newHead
-        newHead = p
-        p = temp
+    while currentNode != nil {
+        let tempNode = currentNode?.next
+        currentNode?.next = newHead
+        newHead = currentNode
+        currentNode = tempNode
     }
 
     return newHead
