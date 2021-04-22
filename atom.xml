@@ -283,9 +283,9 @@
     <category term="program" scheme="https://blog.nuomi1.com/categories/program/"/>
     
     
-    <category term="DateFormatter" scheme="https://blog.nuomi1.com/tags/DateFormatter/"/>
-    
     <category term="Swift" scheme="https://blog.nuomi1.com/tags/Swift/"/>
+    
+    <category term="DateFormatter" scheme="https://blog.nuomi1.com/tags/DateFormatter/"/>
     
   </entry>
   
@@ -327,9 +327,9 @@
     <category term="program" scheme="https://blog.nuomi1.com/categories/program/"/>
     
     
-    <category term="Swift" scheme="https://blog.nuomi1.com/tags/Swift/"/>
-    
     <category term="LeetCode" scheme="https://blog.nuomi1.com/tags/LeetCode/"/>
+    
+    <category term="Swift" scheme="https://blog.nuomi1.com/tags/Swift/"/>
     
   </entry>
   

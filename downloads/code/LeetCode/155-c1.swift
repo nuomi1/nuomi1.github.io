@@ -20,8 +20,8 @@ class MinStack {
     var minStack: [Int]
 
     init() {
-        normalStack = .init()
-        minStack = .init()
+        normalStack = []
+        minStack = []
     }
 
     func push(_ x: Int) {
