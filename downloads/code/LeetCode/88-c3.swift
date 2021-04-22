@@ -17,17 +17,19 @@
 
 func merge(_ nums1: inout [Int], _ m: Int, _ nums2: [Int], _ n: Int) {
     // nums1 扫描下标
-    var i = m - 1
+    var indexI = m - 1
     // nums2 扫描下标
-    var j = n - 1
+    var indexJ = n - 1
 
-    while i >= 0 || j >= 0 {
-        if j < 0 || (i >= 0 && nums1[i] > nums2[j]) {
-            nums1[i + j + 1] = nums1[i]
-            i -= 1
+    while indexI >= nums1.startIndex || indexJ >= nums2.startIndex {
+        let distance = nums2.distance(from: nums2.startIndex, to: indexJ)
+        let currentIndex = nums1.index(indexI, offsetBy: distance + 1)
+        if indexJ < nums2.startIndex || (indexI >= nums1.startIndex && nums1[indexI] > nums2[indexJ]) {
+            nums1[currentIndex] = nums1[indexI]
+            nums1.formIndex(before: &indexI)
         } else {
-            nums1[i + j + 1] = nums2[j]
-            j -= 1
+            nums1[currentIndex] = nums2[indexJ]
+            nums2.formIndex(before: &indexJ)
         }
     }
 }
