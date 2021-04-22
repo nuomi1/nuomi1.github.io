@@ -16,19 +16,17 @@
 // MARK: Fibonacci Number
 
 func climbStairs(_ n: Int) -> Int {
-    guard n > 2 else {
-        return n
+    // 滑动数组
+    var first = 0
+    var second = 0
+
+    var result = 1
+
+    for _ in 1 ... n {
+        first = second
+        second = result
+        result = first + second
     }
 
-    var i = 1
-    var j = 1
-    var count = 0
-
-    for _ in 2 ... n {
-        count = i + j
-        j = i
-        i = count
-    }
-
-    return count
+    return result
 }

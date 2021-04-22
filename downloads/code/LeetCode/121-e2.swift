@@ -18,11 +18,9 @@
 func maxProfit(_ prices: [Int]) -> Int {
     var profit = 0
 
-    guard prices.count > 1 else {
+    guard var minBuy = prices.first else {
         return profit
     }
-
-    var minBuy = prices.first!
 
     for price in prices {
         profit = max(profit, price - minBuy)
