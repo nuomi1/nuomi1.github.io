@@ -33,16 +33,16 @@ func romanToInt(_ s: String) -> Int {
         "CM": 900,
     ]
 
-    var s = s
+    var string = s
     var result = 0
 
-    while !s.isEmpty {
-        if let r = table2[s.prefix(2)] {
-            result += r
-            s.removeFirst(2)
-        } else if let r = table1[s.prefix(1)] {
-            result += r
-            s.removeFirst(1)
+    while !string.isEmpty {
+        if let number = table2[string.prefix(2)] {
+            result += number
+            string.removeFirst(2)
+        } else if let number = table1[string.prefix(1)] {
+            result += number
+            string.removeFirst(1)
         }
     }
 

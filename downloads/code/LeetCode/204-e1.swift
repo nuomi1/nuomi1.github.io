@@ -19,11 +19,11 @@ func countPrimes(_ n: Int) -> Int {
     var primes = [Bool?](repeating: nil, count: n + 1)
     var count = 0
 
-    for i in stride(from: 2, to: n, by: 1) where primes[i] == nil {
-        primes[i] = true
+    for prime in stride(from: 2, to: n, by: 1) where primes[prime] == nil {
+        primes[prime] = true
         count += 1
-        for j in stride(from: 2 * i, through: n, by: i) {
-            primes[j] = false
+        for composite in stride(from: 2 * prime, through: n, by: prime) {
+            primes[composite] = false
         }
     }
 
