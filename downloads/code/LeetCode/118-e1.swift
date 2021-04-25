@@ -18,16 +18,16 @@
 func generate(_ numRows: Int) -> [[Int]] {
     var result: [[Int]] = Array(repeating: [], count: numRows)
 
-    for i in 0 ..< numRows {
-        for j in 0 ..< numRows {
-            if j - i > 0 {
+    for rowIndex in 0 ..< numRows {
+        for columnIndex in 0 ..< numRows {
+            if columnIndex - rowIndex > 0 {
                 continue
             }
 
-            let lhs = result[safe: i - 1]?[safe: j - 1] ?? 0
-            let rhs = result[safe: i - 1]?[safe: j] ?? 0
+            let lhs = result[safe: rowIndex - 1]?[safe: columnIndex - 1] ?? 0
+            let rhs = result[safe: rowIndex - 1]?[safe: columnIndex] ?? 0
 
-            result[i].append(max(lhs + rhs, 1))
+            result[rowIndex].append(max(lhs + rhs, 1))
         }
     }
 
