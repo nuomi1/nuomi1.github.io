@@ -6,7 +6,7 @@
   <link href="https://blog.nuomi1.com/atom.xml" rel="self"/>
   
   <link href="https://blog.nuomi1.com/"/>
-  <updated>2021-01-31T16:00:00.000Z</updated>
+  <updated>2021-05-02T16:00:00.000Z</updated>
   <id>https://blog.nuomi1.com/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>LeetCode 数组 101 Swift 练习</title>
+    <link href="https://blog.nuomi1.com/archives/2021/04/leetcode-fun-with-arrays-swift-exercises.html"/>
+    <id>https://blog.nuomi1.com/archives/2021/04/leetcode-fun-with-arrays-swift-exercises.html</id>
+    <published>2021-04-30T16:00:00.000Z</published>
+    <updated>2021-05-02T16:00:00.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;上一次刷算法已经是两年前了，今年四月份的时候把之前刷的重新过一遍，但毕竟只是 easy 题集，还得按着各个数据结构逐一复习，今天先开始 &lt;a href=&quot;https://leetcode.com/explore/learn/card/fun-with-arrays/&quot;&gt;LeetCode 数组 101&lt;/a&gt;。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="program" scheme="https://blog.nuomi1.com/categories/program/"/>
+    
+    
+    <category term="LeetCode" scheme="https://blog.nuomi1.com/tags/LeetCode/"/>
+    
+    <category term="Swift" scheme="https://blog.nuomi1.com/tags/Swift/"/>
+    
+  </entry>
   
   <entry>
     <title>NBus 之 WechatHandler</title>
@@ -424,27 +445,6 @@
     
     
     <summary type="html">&lt;p&gt;距离上次写博客差不多两年了。大三了，不仅要准备实习和秋招的事，也该考虑将来的事了。现在打算不定期更新博客，起码将来有个能拿得出手的技术博客。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="blog" scheme="https://blog.nuomi1.com/categories/blog/"/>
-    
-    
-    <category term="Docker" scheme="https://blog.nuomi1.com/tags/Docker/"/>
-    
-    <category term="Hexo" scheme="https://blog.nuomi1.com/tags/Hexo/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>在 Docker 中安装 Hexo</title>
-    <link href="https://blog.nuomi1.com/archives/2016/08/docker-hexo.html"/>
-    <id>https://blog.nuomi1.com/archives/2016/08/docker-hexo.html</id>
-    <published>2016-08-11T16:00:00.000Z</published>
-    <updated>2016-08-11T16:00:00.000Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;为了不污染本地环境，尝试在 &lt;a href=&quot;https://www.docker.com/&quot;&gt;Docker&lt;/a&gt; 中安装 &lt;a href=&quot;https://hexo.io/zh-cn/&quot;&gt;Hexo&lt;/a&gt;，结果遇到不少坑。&lt;/p&gt;</summary>
     
     
     
