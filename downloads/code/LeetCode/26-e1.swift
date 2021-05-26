@@ -3,10 +3,12 @@
 //  LeetCode
 //
 //  Created by nuomi1 on 2018/12/17.
+//  Updated by nuomi1 on 2021/5/7.
 //
 
 // Remove Duplicates from Sorted Array
 // https://leetcode.com/explore/interview/card/top-interview-questions-easy/92/array/727/
+// https://leetcode.com/explore/learn/card/fun-with-arrays/526/deleting-items-from-an-array/3248/
 // https://leetcode.com/problems/remove-duplicates-from-sorted-array/
 
 // 删除排序数组中的重复项
@@ -34,6 +36,6 @@ func removeDuplicates(_ nums: inout [Int]) -> Int {
     }
 
     // 返回个数为扫描下标加一
-    let distance = nums.distance(from: nums.startIndex, to: nums.index(after: leftIndex))
-    return distance
+    let distance = nums.distance(from: nums.startIndex, to: leftIndex)
+    return distance + 1
 }

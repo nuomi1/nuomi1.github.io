@@ -1,5 +1,5 @@
 //
-//  1295-c1.swift
+//  1295-c2.swift
 //  LeetCode
 //
 //  Created by nuomi1 on 2021/5/2.
