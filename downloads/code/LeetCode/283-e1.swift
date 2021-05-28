@@ -3,10 +3,12 @@
 //  LeetCode
 //
 //  Created by nuomi1 on 2018/12/24.
+//  Updated by nuomi1 on 2021/5/12.
 //
 
 // Move Zeroes
 // https://leetcode.com/explore/interview/card/top-interview-questions-easy/92/array/567/
+// https://leetcode.com/explore/learn/card/fun-with-arrays/511/in-place-operations/3157/
 // https://leetcode.com/problems/move-zeroes/
 
 // 移动零
