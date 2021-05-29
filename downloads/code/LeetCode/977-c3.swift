@@ -3,10 +3,12 @@
 //  LeetCode
 //
 //  Created by nuomi1 on 2021/5/3.
+//  Updated by nuomi1 on 2021/5/18.
 //
 
 // Squares of a Sorted Array
 // https://leetcode.com/explore/learn/card/fun-with-arrays/521/introduction/3240/
+// https://leetcode.com/explore/learn/card/fun-with-arrays/523/conclusion/3574/
 // https://leetcode.com/problems/squares-of-a-sorted-array/
 
 // 有序数组的平方
