@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{&quot;hostname&quot;:&quot;blog.nuomi1.com&quot;,&quot;root&quot;:&quot;&#x2F;&quot;,&quot;images&quot;:&quot;&#x2F;images&quot;,&quot;scheme&quot;:&quot;Mist&quot;,&quot;version&quot;:&quot;8.5.0&quot;,&quot;exturl&quot;:false,&quot;sidebar&quot;:{&quot;position&quot;:&quot;right&quot;,&quot;display&quot;:&quot;hide&quot;,&quot;padding&quot;:18,&quot;offset&quot;:12},&quot;copycode&quot;:true,&quot;bookmark&quot;:{&quot;enable&quot;:false,&quot;color&quot;:&quot;#222&quot;,&quot;save&quot;:&quot;auto&quot;},&quot;fancybox&quot;:false,&quot;mediumzoom&quot;:false,&quot;lazyload&quot;:false,&quot;pangu&quot;:false,&quot;comments&quot;:{&quot;style&quot;:&quot;tabs&quot;,&quot;active&quot;:&quot;utterances&quot;,&quot;storage&quot;:true,&quot;lazyload&quot;:false,&quot;nav&quot;:null,&quot;activeClass&quot;:&quot;utterances&quot;},&quot;motion&quot;:{&quot;enable&quot;:true,&quot;async&quot;:false,&quot;transition&quot;:{&quot;post_block&quot;:&quot;fadeIn&quot;,&quot;post_header&quot;:&quot;fadeInDown&quot;,&quot;post_body&quot;:&quot;fadeInDown&quot;,&quot;coll_header&quot;:&quot;fadeInLeft&quot;,&quot;sidebar&quot;:&quot;fadeInUp&quot;}},&quot;prism&quot;:false,&quot;i18n&quot;:{&quot;placeholder&quot;:&quot;搜索...&quot;,&quot;empty&quot;:&quot;没有找到任何搜索结果：${query}&quot;,&quot;hits_time&quot;:&quot;找到 ${hits} 个搜索结果（用时 ${time} 毫秒）&quot;,&quot;hits&quot;:&quot;找到 ${hits} 个搜索结果&quot;}}</script><script src="/js/config.js"></script>
+<meta name="description" content="今天开始 LeetCode 二叉树。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LeetCode 二叉树 Swift 练习">
+<meta property="og:url" content="https://blog.nuomi1.com/archives/2021/06/leetcode-binary-tree-swift-exercises.html">
+<meta property="og:site_name" content="nuomi1&#39;s blog">
+<meta property="og:description" content="今天开始 LeetCode 二叉树。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-06-02T16:00:00.000Z">
+<meta property="article:modified_time" content="2021-06-05T16:00:00.000Z">
+<meta property="article:author" content="nuomi1">
+<meta property="article:tag" content="LeetCode">
+<meta property="article:tag" content="Swift">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://blog.nuomi1.com/archives/2021/06/leetcode-binary-tree-swift-exercises.html">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{&quot;sidebar&quot;:&quot;&quot;,&quot;isHome&quot;:false,&quot;isPost&quot;:true,&quot;lang&quot;:&quot;zh-CN&quot;,&quot;comments&quot;:true,&quot;permalink&quot;:&quot;https:&#x2F;&#x2F;blog.nuomi1.com&#x2F;archives&#x2F;2021&#x2F;06&#x2F;leetcode-binary-tree-swift-exercises.html&quot;,&quot;path&quot;:&quot;archives&#x2F;2021&#x2F;06&#x2F;leetcode-binary-tree-swift-exercises.html&quot;,&quot;title&quot;:&quot;LeetCode 二叉树 Swift 练习&quot;}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">&quot;&quot;</script>
+<title>LeetCode 二叉树 Swift 练习 | nuomi1's blog</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=69846247-2"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{&quot;tracking_id&quot;:&quot;69846247-2&quot;,&quot;only_pageview&quot;:false}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+  <script src="/js/third-party/analytics/baidu-analytics.js"></script>
+  <script async src="https://hm.baidu.com/hm.js?e9c5b894b94da4954f8cc9ee9f6adcb8"></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="nuomi1's blog" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">nuomi1's blog</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">nuomi1's blog</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Traverse-A-Tree"><span class="nav-number">1.</span> <span class="nav-text">Traverse A Tree</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Binary-Tree-Preorder-Traversal"><span class="nav-number">1.1.</span> <span class="nav-text">Binary Tree Preorder Traversal</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Binary-Tree-Inorder-Traversal"><span class="nav-number">1.2.</span> <span class="nav-text">Binary Tree Inorder Traversal</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Binary-Tree-Postorder-Traversal"><span class="nav-number">1.3.</span> <span class="nav-text">Binary Tree Postorder Traversal</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Binary-Tree-Level-Order-Traversal"><span class="nav-number">1.4.</span> <span class="nav-text">Binary Tree Level Order Traversal</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="nuomi1"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">nuomi1</p>
+  <div class="site-description" itemprop="description">nuomi1's blog</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">25</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/nuomi1/" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;nuomi1&#x2F;" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/nuomi1/" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;nuomi1&#x2F;" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://telegram.me/nuomi1/" title="Telegram → https:&#x2F;&#x2F;telegram.me&#x2F;nuomi1&#x2F;" rel="noopener" target="_blank"><i class="fab fa-telegram fa-fw"></i>Telegram</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/nuomi1/" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;nuomi1&#x2F;" rel="noopener" target="_blank"><i class="fab fa-weibo fa-fw"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:nuomi1@qq.com" title="E-Mail → mailto:nuomi1@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="RSS → &#x2F;atom.xml"><i class="fa fa-rss fa-fw"></i>RSS</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll site-overview-item animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://www.tuccuay.com/" title="https:&#x2F;&#x2F;www.tuccuay.com&#x2F;" rel="noopener" target="_blank">Tuccuay</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://kemchenj.github.io/" title="https:&#x2F;&#x2F;kemchenj.github.io&#x2F;" rel="noopener" target="_blank">四娘</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://happysooner.com/" title="https:&#x2F;&#x2F;happysooner.com&#x2F;" rel="noopener" target="_blank">远浅</a>
+        </li>
+    </ul>
+  </div>
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.nuomi1.com/archives/2021/06/leetcode-binary-tree-swift-exercises.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="nuomi1">
+      <meta itemprop="description" content="nuomi1's blog">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="nuomi1's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          LeetCode 二叉树 Swift 练习
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-06-03 00:00:00" itemprop="dateCreated datePublished" datetime="2021-06-03T00:00:00+08:00">2021-06-03</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-06-06 00:00:00" itemprop="dateModified" datetime="2021-06-06T00:00:00+08:00">2021-06-06</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/program/" itemprop="url" rel="index"><span itemprop="name">program</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/archives/2021/06/leetcode-binary-tree-swift-exercises.html" class="post-meta-item leancloud_visitors" data-flag-title="LeetCode 二叉树 Swift 练习" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>今天开始 <a target="_blank" rel="noopener" href="https://leetcode.com/explore/learn/card/data-structure-tree/">LeetCode 二叉树</a>。</p>
+<span id="more"></span>
+
+<hr>
+<h2 id="Traverse-A-Tree"><a href="#Traverse-A-Tree" class="headerlink" title="Traverse A Tree"></a><a target="_blank" rel="noopener" href="https://leetcode.com/explore/learn/card/data-structure-tree/134/traverse-a-tree/">Traverse A Tree</a></h2><h3 id="Binary-Tree-Preorder-Traversal"><a href="#Binary-Tree-Preorder-Traversal" class="headerlink" title="Binary Tree Preorder Traversal"></a><a target="_blank" rel="noopener" href="https://leetcode.com/explore/learn/card/data-structure-tree/134/traverse-a-tree/928/">Binary Tree Preorder Traversal</a></h3><figure class="highlight swift"><figcaption><span>144-c1.swift</span><a href="/downloads/code/LeetCode/144-c1.swift">view raw</a></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  144-c1.swift</span></span><br><span class="line"><span class="comment">//  LeetCode</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by nuomi1 on 2021/6/3.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Binary Tree Preorder Traversal</span></span><br><span class="line"><span class="comment">// https://leetcode.com/explore/learn/card/data-structure-tree/134/traverse-a-tree/928/</span></span><br><span class="line"><span class="comment">// https://leetcode.com/problems/binary-tree-preorder-traversal/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 二叉树的前序遍历</span></span><br><span class="line"><span class="comment">// https://leetcode-cn.com/leetbook/read/data-structure-binary-tree/xeywh5/</span></span><br><span class="line"><span class="comment">// https://leetcode-cn.com/problems/binary-tree-preorder-traversal/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// MARK: 递归</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">preorderTraversal</span>(<span class="keyword">_</span> <span class="params">root</span>: <span class="type">TreeNode</span>?)</span> -&gt; [<span class="type">Int</span>] {</span><br><span class="line">    <span class="keyword">var</span> result: [<span class="type">Int</span>] <span class="operator">=</span> []</span><br><span class="line"></span><br><span class="line">    preorderTraversalHelper(root, <span class="operator">&amp;</span>result)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="function"><span class="keyword">func</span> <span class="title">preorderTraversalHelper</span>(<span class="keyword">_</span> <span class="params">root</span>: <span class="type">TreeNode</span>?, <span class="keyword">_</span> <span class="params">result</span>: <span class="keyword">inout</span> [<span class="type">Int</span>])</span> {</span><br><span class="line">    <span class="keyword">guard</span> <span class="keyword">let</span> root <span class="operator">=</span> root <span class="keyword">else</span> {</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    result.append(root.val)</span><br><span class="line">    preorderTraversalHelper(root.left, <span class="operator">&amp;</span>result)</span><br><span class="line">    preorderTraversalHelper(root.right, <span class="operator">&amp;</span>result)</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight swift"><figcaption><span>144-c2.swift</span><a href="/downloads/code/LeetCode/144-c2.swift">view raw</a></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  144-c2.swift</span></span><br><span class="line"><span class="comment">//  LeetCode</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by nuomi1 on 2021/6/3.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Binary Tree Preorder Traversal</span></span><br><span class="line"><span class="comment">// https://leetcode.com/explore/learn/card/data-structure-tree/134/traverse-a-tree/928/</span></span><br><span class="line"><span class="comment">// https://leetcode.com/problems/binary-tree-preorder-traversal/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 二叉树的前序遍历</span></span><br><span class="line"><span class="comment">// https://leetcode-cn.com/leetbook/read/data-structure-binary-tree/xeywh5/</span></span><br><span class="line"><span class="comment">// https://leetcode-cn.com/problems/binary-tree-preorder-traversal/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// MARK: 迭代</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">preorderTraversal</span>(<span class="keyword">_</span> <span class="params">root</span>: <span class="type">TreeNode</span>?)</span> -&gt; [<span class="type">Int</span>] {</span><br><span class="line">    <span class="keyword">var</span> result: [<span class="type">Int</span>] <span class="operator">=</span> []</span><br><span class="line">    <span class="keyword">var</span> stack: [<span class="type">TreeNode</span>] <span class="operator">=</span> []</span><br><span class="line">    <span class="keyword">var</span> node <span class="operator">=</span> root</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> <span class="operator">!</span>stack.isEmpty <span class="operator">||</span> node <span class="operator">!=</span> <span class="literal">nil</span> {</span><br><span class="line">        <span class="keyword">while</span> node <span class="operator">!=</span> <span class="literal">nil</span> {</span><br><span class="line">            result.append(node<span class="operator">!</span>.val)</span><br><span class="line">            stack.append(node<span class="operator">!</span>)</span><br><span class="line">            node <span class="operator">=</span> node<span class="operator">?</span>.left</span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">        node <span class="operator">=</span> stack.removeLast()</span><br><span class="line">        node <span class="operator">=</span> node<span class="operator">?</span>.right</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight swift"><figcaption><span>144-s1.swift</span><a href="/downloads/code/LeetCode/144-s1.swift">view raw</a></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  144-s1.swift</span></span><br><span class="line"><span class="comment">//  LeetCode</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by nuomi1 on 2021/6/3.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Binary Tree Preorder Traversal</span></span><br><span class="line"><span class="comment">// https://leetcode.com/explore/learn/card/data-structure-tree/134/traverse-a-tree/928/</span></span><br><span class="line"><span class="comment">// https://leetcode.com/problems/binary-tree-preorder-traversal/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 二叉树的前序遍历</span></span><br><span class="line"><span class="comment">// https://leetcode-cn.com/leetbook/read/data-structure-binary-tree/xeywh5/</span></span><br><span class="line"><span class="comment">// https://leetcode-cn.com/problems/binary-tree-preorder-traversal/</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">preorderTraversal</span>(<span class="keyword">_</span> <span class="params">root</span>: <span class="type">TreeNode</span>?)</span> -&gt; [<span class="type">Int</span>] {</span><br><span class="line">    <span class="keyword">guard</span> <span class="keyword">let</span> root <span class="operator">=</span> root <span class="keyword">else</span> {</span><br><span class="line">        <span class="keyword">return</span> []</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> result: [<span class="type">Int</span>] <span class="operator">=</span> []</span><br><span class="line">    <span class="keyword">var</span> stack: [<span class="keyword">Any</span>] <span class="operator">=</span> [root]</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> <span class="operator">!</span>stack.isEmpty {</span><br><span class="line">        <span class="keyword">let</span> node <span class="operator">=</span> stack.removeLast()</span><br><span class="line"></span><br><span class="line">        <span class="keyword">switch</span> node {</span><br><span class="line">        <span class="keyword">case</span> <span class="keyword">let</span> value <span class="keyword">as</span> <span class="type">Int</span>:</span><br><span class="line">            result.append(value)</span><br><span class="line">        <span class="keyword">case</span> <span class="keyword">let</span> node <span class="keyword">as</span> <span class="type">TreeNode</span>:</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">let</span> rightNode <span class="operator">=</span> node.right {</span><br><span class="line">                stack.append(rightNode)</span><br><span class="line">            }</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">let</span> leftNode <span class="operator">=</span> node.left {</span><br><span class="line">                stack.append(leftNode)</span><br><span class="line">            }</span><br><span class="line"></span><br><span class="line">            stack.append(node.val)</span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">            <span class="built_in">assertionFailure</span>()</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
+<h3 id="Binary-Tree-Inorder-Traversal"><a href="#Binary-Tree-Inorder-Traversal" class="headerlink" title="Binary Tree Inorder Traversal"></a><a target="_blank" rel="noopener" href="https://leetcode.com/explore/learn/card/data-structure-tree/134/traverse-a-tree/929/">Binary Tree Inorder Traversal</a></h3><figure class="highlight swift"><figcaption><span>94-c1.swift</span><a href="/downloads/code/LeetCode/94-c1.swift">view raw</a></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  94-c1.swift</span></span><br><span class="line"><span class="comment">//  LeetCode</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by nuomi1 on 2021/6/4.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Binary Tree Inorder Traversal</span></span><br><span class="line"><span class="comment">// https://leetcode.com/explore/learn/card/data-structure-tree/134/traverse-a-tree/929/</span></span><br><span class="line"><span class="comment">// https://leetcode.com/problems/binary-tree-inorder-traversal/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 二叉树的中序遍历</span></span><br><span class="line"><span class="comment">// https://leetcode-cn.com/leetbook/read/data-structure-binary-tree/xecaj6/</span></span><br><span class="line"><span class="comment">// https://leetcode-cn.com/problems/binary-tree-inorder-traversal/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// MARK: 递归</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">inorderTraversal</span>(<span class="keyword">_</span> <span class="params">root</span>: <span class="type">TreeNode</span>?)</span> -&gt; [<span class="type">Int</span>] {</span><br><span class="line">    <span class="keyword">var</span> result: [<span class="type">Int</span>] <span class="operator">=</span> []</span><br><span class="line"></span><br><span class="line">    inorderTraversalHelper(root, <span class="operator">&amp;</span>result)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="function"><span class="keyword">func</span> <span class="title">inorderTraversalHelper</span>(<span class="keyword">_</span> <span class="params">root</span>: <span class="type">TreeNode</span>?, <span class="keyword">_</span> <span class="params">result</span>: <span class="keyword">inout</span> [<span class="type">Int</span>])</span> {</span><br><span class="line">    <span class="keyword">guard</span> <span class="keyword">let</span> root <span class="operator">=</span> root <span class="keyword">else</span> {</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    inorderTraversalHelper(root.left, <span class="operator">&amp;</span>result)</span><br><span class="line">    result.append(root.val)</span><br><span class="line">    inorderTraversalHelper(root.right, <span class="operator">&amp;</span>result)</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight swift"><figcaption><span>94-c2.swift</span><a href="/downloads/code/LeetCode/94-c2.swift">view raw</a></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  94-c2.swift</span></span><br><span class="line"><span class="comment">//  LeetCode</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by nuomi1 on 2021/6/4.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Binary Tree Inorder Traversal</span></span><br><span class="line"><span class="comment">// https://leetcode.com/explore/learn/card/data-structure-tree/134/traverse-a-tree/929/</span></span><br><span class="line"><span class="comment">// https://leetcode.com/problems/binary-tree-inorder-traversal/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 二叉树的中序遍历</span></span><br><span class="line"><span class="comment">// https://leetcode-cn.com/leetbook/read/data-structure-binary-tree/xecaj6/</span></span><br><span class="line"><span class="comment">// https://leetcode-cn.com/problems/binary-tree-inorder-traversal/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// MARK: 迭代</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">inorderTraversal</span>(<span class="keyword">_</span> <span class="params">root</span>: <span class="type">TreeNode</span>?)</span> -&gt; [<span class="type">Int</span>] {</span><br><span class="line">    <span class="keyword">var</span> result: [<span class="type">Int</span>] <span class="operator">=</span> []</span><br><span class="line">    <span class="keyword">var</span> stack: [<span class="type">TreeNode</span>] <span class="operator">=</span> []</span><br><span class="line">    <span class="keyword">var</span> node <span class="operator">=</span> root</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> <span class="operator">!</span>stack.isEmpty <span class="operator">||</span> node <span class="operator">!=</span> <span class="literal">nil</span> {</span><br><span class="line">        <span class="keyword">while</span> node <span class="operator">!=</span> <span class="literal">nil</span> {</span><br><span class="line">            stack.append(node<span class="operator">!</span>)</span><br><span class="line">            node <span class="operator">=</span> node<span class="operator">?</span>.left</span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">        node <span class="operator">=</span> stack.removeLast()</span><br><span class="line">        result.append(node<span class="operator">!</span>.val)</span><br><span class="line">        node <span class="operator">=</span> node<span class="operator">?</span>.right</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight swift"><figcaption><span>94-s1.swift</span><a href="/downloads/code/LeetCode/94-s1.swift">view raw</a></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  94-s1.swift</span></span><br><span class="line"><span class="comment">//  LeetCode</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by nuomi1 on 2021/6/4.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Binary Tree Inorder Traversal</span></span><br><span class="line"><span class="comment">// https://leetcode.com/explore/learn/card/data-structure-tree/134/traverse-a-tree/929/</span></span><br><span class="line"><span class="comment">// https://leetcode.com/problems/binary-tree-inorder-traversal/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 二叉树的中序遍历</span></span><br><span class="line"><span class="comment">// https://leetcode-cn.com/leetbook/read/data-structure-binary-tree/xecaj6/</span></span><br><span class="line"><span class="comment">// https://leetcode-cn.com/problems/binary-tree-inorder-traversal/</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">inorderTraversal</span>(<span class="keyword">_</span> <span class="params">root</span>: <span class="type">TreeNode</span>?)</span> -&gt; [<span class="type">Int</span>] {</span><br><span class="line">    <span class="keyword">guard</span> <span class="keyword">let</span> root <span class="operator">=</span> root <span class="keyword">else</span> {</span><br><span class="line">        <span class="keyword">return</span> []</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> result: [<span class="type">Int</span>] <span class="operator">=</span> []</span><br><span class="line">    <span class="keyword">var</span> stack: [<span class="keyword">Any</span>] <span class="operator">=</span> [root]</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> <span class="operator">!</span>stack.isEmpty {</span><br><span class="line">        <span class="keyword">let</span> node <span class="operator">=</span> stack.removeLast()</span><br><span class="line"></span><br><span class="line">        <span class="keyword">switch</span> node {</span><br><span class="line">        <span class="keyword">case</span> <span class="keyword">let</span> value <span class="keyword">as</span> <span class="type">Int</span>:</span><br><span class="line">            result.append(value)</span><br><span class="line">        <span class="keyword">case</span> <span class="keyword">let</span> node <span class="keyword">as</span> <span class="type">TreeNode</span>:</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">let</span> rightNode <span class="operator">=</span> node.right {</span><br><span class="line">                stack.append(rightNode)</span><br><span class="line">            }</span><br><span class="line"></span><br><span class="line">            stack.append(node.val)</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">let</span> leftNode <span class="operator">=</span> node.left {</span><br><span class="line">                stack.append(leftNode)</span><br><span class="line">            }</span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">            <span class="built_in">assertionFailure</span>()</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
+<h3 id="Binary-Tree-Postorder-Traversal"><a href="#Binary-Tree-Postorder-Traversal" class="headerlink" title="Binary Tree Postorder Traversal"></a><a target="_blank" rel="noopener" href="https://leetcode.com/explore/learn/card/data-structure-tree/134/traverse-a-tree/930/">Binary Tree Postorder Traversal</a></h3><figure class="highlight swift"><figcaption><span>145-c1.swift</span><a href="/downloads/code/LeetCode/145-c1.swift">view raw</a></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  145-c2.swift</span></span><br><span class="line"><span class="comment">//  LeetCode</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by nuomi1 on 2021/6/5.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Binary Tree Postorder Traversal</span></span><br><span class="line"><span class="comment">// https://leetcode.com/explore/learn/card/data-structure-tree/134/traverse-a-tree/930/</span></span><br><span class="line"><span class="comment">// https://leetcode.com/problems/binary-tree-postorder-traversal/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 二叉树的后序遍历</span></span><br><span class="line"><span class="comment">// https://leetcode-cn.com/leetbook/read/data-structure-binary-tree/xebrb2/</span></span><br><span class="line"><span class="comment">// https://leetcode-cn.com/problems/binary-tree-postorder-traversal/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// MARK: 递归</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">postorderTraversal</span>(<span class="keyword">_</span> <span class="params">root</span>: <span class="type">TreeNode</span>?)</span> -&gt; [<span class="type">Int</span>] {</span><br><span class="line">    <span class="keyword">var</span> result: [<span class="type">Int</span>] <span class="operator">=</span> []</span><br><span class="line"></span><br><span class="line">    postorderTraversalHelper(root, <span class="operator">&amp;</span>result)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="function"><span class="keyword">func</span> <span class="title">postorderTraversalHelper</span>(<span class="keyword">_</span> <span class="params">root</span>: <span class="type">TreeNode</span>?, <span class="keyword">_</span> <span class="params">result</span>: <span class="keyword">inout</span> [<span class="type">Int</span>])</span> {</span><br><span class="line">    <span class="keyword">guard</span> <span class="keyword">let</span> root <span class="operator">=</span> root <span class="keyword">else</span> {</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    postorderTraversalHelper(root.left, <span class="operator">&amp;</span>result)</span><br><span class="line">    postorderTraversalHelper(root.right, <span class="operator">&amp;</span>result)</span><br><span class="line">    result.append(root.val)</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight swift"><figcaption><span>145-c2.swift</span><a href="/downloads/code/LeetCode/145-c2.swift">view raw</a></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  145-c2.swift</span></span><br><span class="line"><span class="comment">//  LeetCode</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by nuomi1 on 2021/6/5.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Binary Tree Postorder Traversal</span></span><br><span class="line"><span class="comment">// https://leetcode.com/explore/learn/card/data-structure-tree/134/traverse-a-tree/930/</span></span><br><span class="line"><span class="comment">// https://leetcode.com/problems/binary-tree-postorder-traversal/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 二叉树的后序遍历</span></span><br><span class="line"><span class="comment">// https://leetcode-cn.com/leetbook/read/data-structure-binary-tree/xebrb2/</span></span><br><span class="line"><span class="comment">// https://leetcode-cn.com/problems/binary-tree-postorder-traversal/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// MARK: 迭代</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">postorderTraversal</span>(<span class="keyword">_</span> <span class="params">root</span>: <span class="type">TreeNode</span>?)</span> -&gt; [<span class="type">Int</span>] {</span><br><span class="line">    <span class="keyword">var</span> result: [<span class="type">Int</span>] <span class="operator">=</span> []</span><br><span class="line">    <span class="keyword">var</span> stack: [<span class="type">TreeNode</span>] <span class="operator">=</span> []</span><br><span class="line">    <span class="keyword">var</span> node <span class="operator">=</span> root</span><br><span class="line">    <span class="keyword">var</span> prev: <span class="type">TreeNode</span>?</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> <span class="operator">!</span>stack.isEmpty <span class="operator">||</span> node <span class="operator">!=</span> <span class="literal">nil</span> {</span><br><span class="line">        <span class="keyword">while</span> node <span class="operator">!=</span> <span class="literal">nil</span> {</span><br><span class="line">            stack.append(node<span class="operator">!</span>)</span><br><span class="line">            node <span class="operator">=</span> node<span class="operator">?</span>.left</span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">        node <span class="operator">=</span> stack.removeLast()</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> node<span class="operator">?</span>.right <span class="operator">==</span> <span class="literal">nil</span> <span class="operator">||</span> node<span class="operator">?</span>.right <span class="operator">===</span> prev {</span><br><span class="line">            result.append(node<span class="operator">!</span>.val)</span><br><span class="line">            prev <span class="operator">=</span> node</span><br><span class="line">            node <span class="operator">=</span> <span class="literal">nil</span></span><br><span class="line">        } <span class="keyword">else</span> {</span><br><span class="line">            stack.append(node<span class="operator">!</span>)</span><br><span class="line">            node <span class="operator">=</span> node<span class="operator">?</span>.right</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight swift"><figcaption><span>145-s1.swift</span><a href="/downloads/code/LeetCode/145-s1.swift">view raw</a></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  145-s1.swift</span></span><br><span class="line"><span class="comment">//  LeetCode</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by nuomi1 on 2021/6/5.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Binary Tree Postorder Traversal</span></span><br><span class="line"><span class="comment">// https://leetcode.com/explore/learn/card/data-structure-tree/134/traverse-a-tree/930/</span></span><br><span class="line"><span class="comment">// https://leetcode.com/problems/binary-tree-postorder-traversal/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 二叉树的后序遍历</span></span><br><span class="line"><span class="comment">// https://leetcode-cn.com/leetbook/read/data-structure-binary-tree/xebrb2/</span></span><br><span class="line"><span class="comment">// https://leetcode-cn.com/problems/binary-tree-postorder-traversal/</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">postorderTraversal2</span>(<span class="keyword">_</span> <span class="params">root</span>: <span class="type">TreeNode</span>?)</span> -&gt; [<span class="type">Int</span>] {</span><br><span class="line">    <span class="keyword">guard</span> <span class="keyword">let</span> root <span class="operator">=</span> root <span class="keyword">else</span> {</span><br><span class="line">        <span class="keyword">return</span> []</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> result: [<span class="type">Int</span>] <span class="operator">=</span> []</span><br><span class="line">    <span class="keyword">var</span> stack: [<span class="keyword">Any</span>] <span class="operator">=</span> [root]</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> <span class="operator">!</span>stack.isEmpty {</span><br><span class="line">        <span class="keyword">let</span> node <span class="operator">=</span> stack.removeLast()</span><br><span class="line"></span><br><span class="line">        <span class="keyword">switch</span> node {</span><br><span class="line">        <span class="keyword">case</span> <span class="keyword">let</span> value <span class="keyword">as</span> <span class="type">Int</span>:</span><br><span class="line">            result.append(value)</span><br><span class="line">        <span class="keyword">case</span> <span class="keyword">let</span> node <span class="keyword">as</span> <span class="type">TreeNode</span>:</span><br><span class="line">            stack.append(node.val)</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">let</span> rightNode <span class="operator">=</span> node.right {</span><br><span class="line">                stack.append(rightNode)</span><br><span class="line">            }</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">let</span> leftNode <span class="operator">=</span> node.left {</span><br><span class="line">                stack.append(leftNode)</span><br><span class="line">            }</span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">            <span class="built_in">assertionFailure</span>()</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
+<h3 id="Binary-Tree-Level-Order-Traversal"><a href="#Binary-Tree-Level-Order-Traversal" class="headerlink" title="Binary Tree Level Order Traversal"></a><a target="_blank" rel="noopener" href="https://leetcode.com/explore/learn/card/data-structure-tree/134/traverse-a-tree/931/">Binary Tree Level Order Traversal</a></h3><figure class="highlight swift"><figcaption><span>102-c1.swift</span><a href="/downloads/code/LeetCode/102-c1.swift">view raw</a></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  102-c1.swift</span></span><br><span class="line"><span class="comment">//  LeetCode</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by nuomi1 on 2019/1/15.</span></span><br><span class="line"><span class="comment">//  Updated by nuomi1 on 2021/6/6.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Binary Tree Level Order Traversal</span></span><br><span class="line"><span class="comment">// https://leetcode.com/explore/interview/card/top-interview-questions-easy/94/trees/628/</span></span><br><span class="line"><span class="comment">// https://leetcode.com/explore/learn/card/data-structure-tree/134/traverse-a-tree/931/</span></span><br><span class="line"><span class="comment">// https://leetcode.com/problems/binary-tree-level-order-traversal/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 二叉树的层序遍历</span></span><br><span class="line"><span class="comment">// https://leetcode-cn.com/leetbook/read/top-interview-questions-easy/xnldjj/</span></span><br><span class="line"><span class="comment">// https://leetcode-cn.com/leetbook/read/data-structure-binary-tree/xefh1i/</span></span><br><span class="line"><span class="comment">// https://leetcode-cn.com/problems/binary-tree-level-order-traversal/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// MARK: 广度优先搜索</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">levelOrder</span>(<span class="keyword">_</span> <span class="params">root</span>: <span class="type">TreeNode</span>?)</span> -&gt; [[<span class="type">Int</span>]] {</span><br><span class="line">    <span class="keyword">guard</span> <span class="keyword">let</span> root <span class="operator">=</span> root <span class="keyword">else</span> {</span><br><span class="line">        <span class="keyword">return</span> []</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> queue <span class="operator">=</span> [root]</span><br><span class="line">    <span class="keyword">var</span> result <span class="operator">=</span> [[<span class="type">Int</span>]]()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> <span class="operator">!</span>queue.isEmpty {</span><br><span class="line">        <span class="keyword">var</span> level <span class="operator">=</span> [<span class="type">Int</span>]()</span><br><span class="line">        <span class="keyword">let</span> count <span class="operator">=</span> queue.count</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 不能使用 queue.indices 因为 queue 被修改</span></span><br><span class="line">        <span class="keyword">for</span> <span class="keyword">_</span> <span class="keyword">in</span> <span class="number">0</span> <span class="operator">..&lt;</span> count {</span><br><span class="line">            <span class="keyword">let</span> node <span class="operator">=</span> queue.removeFirst()</span><br><span class="line">            level.append(node.val)</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">let</span> left <span class="operator">=</span> node.left {</span><br><span class="line">                queue.append(left)</span><br><span class="line">            }</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">let</span> right <span class="operator">=</span> node.right {</span><br><span class="line">                queue.append(right)</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">        result.append(level)</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight swift"><figcaption><span>102-s1.swift</span><a href="/downloads/code/LeetCode/102-s1.swift">view raw</a></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  102-s1.swift</span></span><br><span class="line"><span class="comment">//  LeetCode</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by nuomi1 on 2019/1/15.</span></span><br><span class="line"><span class="comment">//  Updated by nuomi1 on 2021/6/6.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Binary Tree Level Order Traversal</span></span><br><span class="line"><span class="comment">// https://leetcode.com/explore/interview/card/top-interview-questions-easy/94/trees/628/</span></span><br><span class="line"><span class="comment">// https://leetcode.com/explore/learn/card/data-structure-tree/134/traverse-a-tree/931/</span></span><br><span class="line"><span class="comment">// https://leetcode.com/problems/binary-tree-level-order-traversal/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 二叉树的层序遍历</span></span><br><span class="line"><span class="comment">// https://leetcode-cn.com/leetbook/read/top-interview-questions-easy/xnldjj/</span></span><br><span class="line"><span class="comment">// https://leetcode-cn.com/leetbook/read/data-structure-binary-tree/xefh1i/</span></span><br><span class="line"><span class="comment">// https://leetcode-cn.com/problems/binary-tree-level-order-traversal/</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">levelOrder</span>(<span class="keyword">_</span> <span class="params">root</span>: <span class="type">TreeNode</span>?)</span> -&gt; [[<span class="type">Int</span>]] {</span><br><span class="line">    <span class="keyword">var</span> result <span class="operator">=</span> [[<span class="type">Int</span>]]()</span><br><span class="line"></span><br><span class="line">    levelOrderHelper(root, <span class="number">0</span>, <span class="operator">&amp;</span>result)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="function"><span class="keyword">func</span> <span class="title">levelOrderHelper</span>(<span class="keyword">_</span> <span class="params">root</span>: <span class="type">TreeNode</span>?, <span class="keyword">_</span> <span class="params">depth</span>: <span class="type">Int</span>, <span class="keyword">_</span> <span class="params">result</span>: <span class="keyword">inout</span> [[<span class="type">Int</span>]])</span> {</span><br><span class="line">    <span class="keyword">guard</span> <span class="keyword">let</span> root <span class="operator">=</span> root <span class="keyword">else</span> {</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 里层数组不存在时插入空数组</span></span><br><span class="line">    <span class="keyword">if</span> <span class="operator">!</span>result.indices.contains(depth) {</span><br><span class="line">        result.insert([], at: depth)</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    result[depth].append(root.val)</span><br><span class="line">    levelOrderHelper(root.left, depth <span class="operator">+</span> <span class="number">1</span>, <span class="operator">&amp;</span>result)</span><br><span class="line">    levelOrderHelper(root.right, depth <span class="operator">+</span> <span class="number">1</span>, <span class="operator">&amp;</span>result)</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>如果文章对你有用，可以打赏小钱钱哦~</div>
+  <button onclick="document.querySelector('.post-reward').classList.toggle('active');">
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.png" alt="nuomi1 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/images/alipay.png" alt="nuomi1 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>nuomi1
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://blog.nuomi1.com/archives/2021/06/leetcode-binary-tree-swift-exercises.html" title="LeetCode 二叉树 Swift 练习">https://blog.nuomi1.com/archives/2021/06/leetcode-binary-tree-swift-exercises.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc/4.0/deed.zh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/LeetCode/" rel="tag"># LeetCode</a>
+              <a href="/tags/Swift/" rel="tag"># Swift</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/archives/2021/05/leetcode-linked-list-swift-exercises.html" rel="prev" title="LeetCode 链表 Swift 练习">
+                  <i class="fa fa-chevron-left"></i> LeetCode 链表 Swift 练习
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments utterances-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2015 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">nuomi1</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+  <script class="next-config" data-name="leancloud_visitors" type="application/json">{&quot;enable&quot;:true,&quot;app_id&quot;:&quot;ehvmFwB3BLTvYf4JORInQRRn-gzGzoHsz&quot;,&quot;app_key&quot;:&quot;6zj1q563yNhGInbB9zQHlJIs&quot;,&quot;server_url&quot;:null,&quot;security&quot;:false}</script>
+  <script src="/js/third-party/statistics/lean-analytics.js"></script>
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{&quot;enable&quot;:true,&quot;tags&quot;:&quot;none&quot;,&quot;js&quot;:{&quot;url&quot;:&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;mathjax@3.1.4&#x2F;es5&#x2F;tex-mml-chtml.js&quot;,&quot;integrity&quot;:&quot;sha256-ncNI9OXOS5Ek4tzVYiOMmN&#x2F;KKCPZ6V0Cpv2P&#x2F;zHntiA&#x3D;&quot;}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<script class="next-config" data-name="utterances" type="application/json">{&quot;enable&quot;:true,&quot;repo&quot;:&quot;nuomi1&#x2F;nuomi1.github.io&quot;,&quot;issue_term&quot;:&quot;pathname&quot;,&quot;theme&quot;:&quot;github-light&quot;}</script>
+<script src="/js/third-party/comments/utterances.js"></script>
+
+</body>
+</html>
