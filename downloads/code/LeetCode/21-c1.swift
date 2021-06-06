@@ -3,14 +3,17 @@
 //  LeetCode
 //
 //  Created by nuomi1 on 2019/1/9.
+//  Updated by nuomi1 on 2021/5/29.
 //
 
 // Merge Two Sorted Lists
 // https://leetcode.com/explore/interview/card/top-interview-questions-easy/93/linked-list/771/
+// https://leetcode.com/explore/learn/card/linked-list/213/conclusion/1227/
 // https://leetcode.com/problems/merge-two-sorted-lists/
 
 // 合并两个有序链表
 // https://leetcode-cn.com/leetbook/read/top-interview-questions-easy/xnnbp2/
+// https://leetcode-cn.com/leetbook/read/linked-list/fnzd1/
 // https://leetcode-cn.com/problems/merge-two-sorted-lists/
 
 // MARK: 递归
