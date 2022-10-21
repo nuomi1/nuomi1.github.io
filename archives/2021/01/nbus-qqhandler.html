@@ -2,9 +2,8 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.4.0">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
@@ -16,11 +15,12 @@
 
 
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{&quot;hostname&quot;:&quot;blog.nuomi1.com&quot;,&quot;root&quot;:&quot;&#x2F;&quot;,&quot;images&quot;:&quot;&#x2F;images&quot;,&quot;scheme&quot;:&quot;Mist&quot;,&quot;version&quot;:&quot;8.5.0&quot;,&quot;exturl&quot;:false,&quot;sidebar&quot;:{&quot;position&quot;:&quot;right&quot;,&quot;display&quot;:&quot;hide&quot;,&quot;padding&quot;:18,&quot;offset&quot;:12},&quot;copycode&quot;:true,&quot;bookmark&quot;:{&quot;enable&quot;:false,&quot;color&quot;:&quot;#222&quot;,&quot;save&quot;:&quot;auto&quot;},&quot;fancybox&quot;:false,&quot;mediumzoom&quot;:false,&quot;lazyload&quot;:false,&quot;pangu&quot;:false,&quot;comments&quot;:{&quot;style&quot;:&quot;tabs&quot;,&quot;active&quot;:&quot;utterances&quot;,&quot;storage&quot;:true,&quot;lazyload&quot;:false,&quot;nav&quot;:null,&quot;activeClass&quot;:&quot;utterances&quot;},&quot;motion&quot;:{&quot;enable&quot;:true,&quot;async&quot;:false,&quot;transition&quot;:{&quot;post_block&quot;:&quot;fadeIn&quot;,&quot;post_header&quot;:&quot;fadeInDown&quot;,&quot;post_body&quot;:&quot;fadeInDown&quot;,&quot;coll_header&quot;:&quot;fadeInLeft&quot;,&quot;sidebar&quot;:&quot;fadeInUp&quot;}},&quot;prism&quot;:false,&quot;i18n&quot;:{&quot;placeholder&quot;:&quot;搜索...&quot;,&quot;empty&quot;:&quot;没有找到任何搜索结果：${query}&quot;,&quot;hits_time&quot;:&quot;找到 ${hits} 个搜索结果（用时 ${time} 毫秒）&quot;,&quot;hits&quot;:&quot;找到 ${hits} 个搜索结果&quot;}}</script><script src="/js/config.js"></script>
-<meta name="description" content="QQ SDK 分析，基于 QQ SDK 3.5.1 和 QQ 8.5.0。">
+<script class="next-config" data-name="main" type="application/json">{"hostname":"blog.nuomi1.com","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.13.1","exturl":false,"sidebar":{"position":"right","display":"hide","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"utterances","storage":true,"lazyload":false,"nav":null,"activeClass":"utterances"},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="QQ SDK 分析，基于 QQ SDK 3.5.1 和 QQ 8.5.0。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="NBus 之 QQHandler">
 <meta property="og:url" content="https://blog.nuomi1.com/archives/2021/01/nbus-qqhandler.html">
@@ -30,9 +30,9 @@
 <meta property="article:published_time" content="2021-01-15T16:00:00.000Z">
 <meta property="article:modified_time" content="2021-01-19T16:00:00.000Z">
 <meta property="article:author" content="nuomi1">
-<meta property="article:tag" content="Swift">
 <meta property="article:tag" content="NBus">
 <meta property="article:tag" content="iOS">
+<meta property="article:tag" content="Swift">
 <meta name="twitter:card" content="summary">
 
 
@@ -40,17 +40,19 @@
 
 
 
-<script class="next-config" data-name="page" type="application/json">{&quot;sidebar&quot;:&quot;&quot;,&quot;isHome&quot;:false,&quot;isPost&quot;:true,&quot;lang&quot;:&quot;zh-CN&quot;,&quot;comments&quot;:true,&quot;permalink&quot;:&quot;https:&#x2F;&#x2F;blog.nuomi1.com&#x2F;archives&#x2F;2021&#x2F;01&#x2F;nbus-qqhandler.html&quot;,&quot;path&quot;:&quot;archives&#x2F;2021&#x2F;01&#x2F;nbus-qqhandler.html&quot;,&quot;title&quot;:&quot;NBus 之 QQHandler&quot;}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://blog.nuomi1.com/archives/2021/01/nbus-qqhandler.html","path":"archives/2021/01/nbus-qqhandler.html","title":"NBus 之 QQHandler"}</script>
 
-<script class="next-config" data-name="calendar" type="application/json">&quot;&quot;</script>
+<script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>NBus 之 QQHandler | nuomi1's blog</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=69846247-2"></script>
-  <script class="next-config" data-name="google_analytics" type="application/json">{&quot;tracking_id&quot;:&quot;69846247-2&quot;,&quot;only_pageview&quot;:false}</script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"69846247-2","only_pageview":false}</script>
   <script src="/js/third-party/analytics/google-analytics.js"></script>
 
   <script src="/js/third-party/analytics/baidu-analytics.js"></script>
   <script async src="https://hm.baidu.com/hm.js?e9c5b894b94da4954f8cc9ee9f6adcb8"></script>
+
+
 
 
 
@@ -78,7 +80,7 @@
 
     <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
-      <h1 class="site-title">nuomi1's blog</h1>
+      <p class="site-title">nuomi1's blog</p>
       <i class="logo-line"></i>
     </a>
       <p class="site-subtitle" itemprop="description">nuomi1's blog</p>
@@ -93,12 +95,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu">
-        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
-        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
-        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
-        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
   </ul>
 </nav>
 
@@ -143,21 +140,18 @@
 <div class="site-state-wrap site-overview-item animated">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
-          <a href="/archives/">
-        
+        <a href="/archives/">
           <span class="site-state-item-count">25</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-            <a href="/categories/">
-          
+          <a href="/categories/">
         <span class="site-state-item-count">6</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-            <a href="/tags/">
-          
+          <a href="/tags/">
         <span class="site-state-item-count">21</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
@@ -239,11 +233,16 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
       <meta itemprop="name" content="nuomi1">
-      <meta itemprop="description" content="nuomi1's blog">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="nuomi1's blog">
+      <meta itemprop="description" content="nuomi1's blog">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="NBus 之 QQHandler | nuomi1's blog">
+      <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
@@ -260,13 +259,13 @@
 
       <time title="创建时间：2021-01-16 00:00:00" itemprop="dateCreated datePublished" datetime="2021-01-16T00:00:00+08:00">2021-01-16</time>
     </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-01-20 00:00:00" itemprop="dateModified" datetime="2021-01-20T00:00:00+08:00">2021-01-20</time>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
       </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2021-01-20 00:00:00" itemprop="dateModified" datetime="2021-01-20T00:00:00+08:00">2021-01-20</time>
+    </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
@@ -392,7 +391,7 @@
 <h4 id="初次-8"><a href="#初次-8" class="headerlink" title="初次"></a>初次</h4><p>当 App 初次分享到 QQ 时，调用 <code>https://qm.qq.com/opensdkul/mqqapi/share/to_fri</code> 拉起 QQ，URL 匹配 <code>&#123;qqUniversalLink&#125;/mqqapi/share/to_fri</code>。</p>
 <h4 id="校验-2"><a href="#校验-2" class="headerlink" title="校验"></a>校验</h4><p>此时需要进行 Universal Link 校验，调用 <code>https://mock.bus.nuomi1.com/qq_conn/1110603370/com.nuomi1.bus.mock/mqqsignapp</code> 返回 App，URL 匹配 <code>$&#123;universalLink&#125;/$&#123;bundleID&#125;/mqqsignapp</code>，数据从 <code>appsign_extrainfo</code> 获取。</p>
 <p><code>decodeBase64</code> 之后，发现格式为 <code>json</code>：</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;appsign_redirect_pasteboard&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;appsign_redirect&quot;</span>: <span class="string">&quot;mqqapi://share/to_fri?appsign_txid=QQ4232766A&amp;bundleid=Y29tLm51b21pMS5idXMubW9jaw==&amp;callback_name=QQ4232766A&amp;callback_type=scheme&amp;cflag=2&amp;file_data=6YKj5LmI77yMIOW4puedgOi/meS6m+mXrumimO+8jOaIkeS7rOadpeWuoeinhuS4gOS4i0JVU+OAgiDlj6/mmK/vvIzljbPkvb/mmK/ov5nmoLfvvIxCVVPnmoTlh7rnjrDku43nhLbku6PooajkuobkuIDlrprnmoTmhI/kuYnjgIIgQlVT55qE5Y+R55Sf77yM5Yiw5bqV6ZyA6KaB5aaC5L2V5YGa5Yiw77yM5LiNQlVT55qE5Y+R55Sf77yM5Y+I5Lya5aaC5L2V5Lqn55Sf44CCIOeUn+a0u+S4re+8jOiLpUJVU+WHuueOsOS6hu+8jOaIkeS7rOWwseS4jeW+l+S4jeiAg+iZkeWug+WHuueOsOS6hueahOS6i+WunuOAgiDnu4/ov4fkuIrov7DorqjorrrvvIwg6YKj5LmI77yMIOaXoueEtuWmguS9le+8jCDnjrDlnKjvvIzop6PlhrNCVVPnmoTpl67popjvvIzmmK/pnZ7luLjpnZ7luLjph43opoHnmoTjgIIg5omA5Lul77yMIOaIkeS7rOmDveefpemBk++8jOWPquimgeacieaEj+S5ie+8jOmCo+S5iOWwseW/hemhu+aFjumHjeiAg+iZkeOAgiDov5nnp43kuovlrp7lr7nmnKzkurrmnaXor7TmhI/kuYnph43lpKfvvIznm7jkv6Hlr7nov5nkuKrkuJbnlYzkuZ/mmK/mnInkuIDlrprmhI/kuYnnmoTjgIIg5bq35b635pu+57uP5o+Q5Yiw6L+H77yM5pei54S25oiR5bey57uP6LiP5LiK6L+Z5p2h6YGT6Lev77yM6YKj5LmI77yM5Lu75L2V5Lic6KW/6YO95LiN5bqU5aao56KN5oiR5rK/552A6L+Z5p2h6Lev6LWw5LiL5Y6744CC6L+Z5Ly85LmO6Kej562U5LqG5oiR55qE55aR5oOR44CC&amp;file_type=text&amp;generalpastboard=1&amp;sdkv=3.5.1&amp;shareType=0&amp;src_type=app&amp;thirdAppDisplayName=QnVzTW9jaw==&amp;version=1&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;appsign_retcode&quot;</span>: <span class="string">&quot;25105&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;appsign_token&quot;</span>: <span class="string">&quot;6c784232766a288122df5fee8f16fc38&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;appsign_bundlenull&quot;</span>: <span class="string">&quot;2&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;appsign_redirect_pasteboard&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;appsign_redirect&quot;</span><span class="punctuation">:</span> <span class="string">&quot;mqqapi://share/to_fri?appsign_txid=QQ4232766A&amp;bundleid=Y29tLm51b21pMS5idXMubW9jaw==&amp;callback_name=QQ4232766A&amp;callback_type=scheme&amp;cflag=2&amp;file_data=6YKj5LmI77yMIOW4puedgOi/meS6m+mXrumimO+8jOaIkeS7rOadpeWuoeinhuS4gOS4i0JVU+OAgiDlj6/mmK/vvIzljbPkvb/mmK/ov5nmoLfvvIxCVVPnmoTlh7rnjrDku43nhLbku6PooajkuobkuIDlrprnmoTmhI/kuYnjgIIgQlVT55qE5Y+R55Sf77yM5Yiw5bqV6ZyA6KaB5aaC5L2V5YGa5Yiw77yM5LiNQlVT55qE5Y+R55Sf77yM5Y+I5Lya5aaC5L2V5Lqn55Sf44CCIOeUn+a0u+S4re+8jOiLpUJVU+WHuueOsOS6hu+8jOaIkeS7rOWwseS4jeW+l+S4jeiAg+iZkeWug+WHuueOsOS6hueahOS6i+WunuOAgiDnu4/ov4fkuIrov7DorqjorrrvvIwg6YKj5LmI77yMIOaXoueEtuWmguS9le+8jCDnjrDlnKjvvIzop6PlhrNCVVPnmoTpl67popjvvIzmmK/pnZ7luLjpnZ7luLjph43opoHnmoTjgIIg5omA5Lul77yMIOaIkeS7rOmDveefpemBk++8jOWPquimgeacieaEj+S5ie+8jOmCo+S5iOWwseW/hemhu+aFjumHjeiAg+iZkeOAgiDov5nnp43kuovlrp7lr7nmnKzkurrmnaXor7TmhI/kuYnph43lpKfvvIznm7jkv6Hlr7nov5nkuKrkuJbnlYzkuZ/mmK/mnInkuIDlrprmhI/kuYnnmoTjgIIg5bq35b635pu+57uP5o+Q5Yiw6L+H77yM5pei54S25oiR5bey57uP6LiP5LiK6L+Z5p2h6YGT6Lev77yM6YKj5LmI77yM5Lu75L2V5Lic6KW/6YO95LiN5bqU5aao56KN5oiR5rK/552A6L+Z5p2h6Lev6LWw5LiL5Y6744CC6L+Z5Ly85LmO6Kej562U5LqG5oiR55qE55aR5oOR44CC&amp;file_type=text&amp;generalpastboard=1&amp;sdkv=3.5.1&amp;shareType=0&amp;src_type=app&amp;thirdAppDisplayName=QnVzTW9jaw==&amp;version=1&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;appsign_retcode&quot;</span><span class="punctuation">:</span> <span class="string">&quot;25105&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;appsign_token&quot;</span><span class="punctuation">:</span> <span class="string">&quot;6c784232766a288122df5fee8f16fc38&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;appsign_bundlenull&quot;</span><span class="punctuation">:</span> <span class="string">&quot;2&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
 
 <p>如果 <code>appsign_extrainfo</code> 没有数据，可以从剪切板 <code>pasteboardType = com.tencent.$&#123;appID&#125;</code> 获取数据。</p>
 <p>格式为 <code>archivedData</code>：</p>
@@ -406,15 +405,15 @@
 <li><code>appsign_retcode</code> 表示返回代码</li>
 <li><code>appsign_token</code> 表示分享 token</li>
 </ol>
-<h4 id="二次-1"><a href="#二次-1" class="headerlink" title="二次"></a>二次</h4><p>拿到 token 之后，进行第二次分享，此时 URL 比初次多了 <code>appsign_token</code> / <code>openredirect = 1</code>，并且 <code>appsign_txid</code> 重复了一次，应该是 BUG？</p>
+<h4 id="二次-1"><a href="#二次-1" class="headerlink" title="二次"></a>二次</h4><p>拿到 token 之后，进行第二次分享，此时 URL 比初次多了 <code>appsign_token</code> &#x2F; <code>openredirect = 1</code>，并且 <code>appsign_txid</code> 重复了一次，应该是 BUG？</p>
 <h4 id="三次-1"><a href="#三次-1" class="headerlink" title="三次"></a>三次</h4><p>进行第三次分享时，<code>openredirect</code> 没有了，重复的 <code>appsign_txid</code> 也变回了一个。</p>
 <h4 id="成功-2"><a href="#成功-2" class="headerlink" title="成功"></a>成功</h4><p>分享成功时，调用 <code>https://mock.bus.nuomi1.com/qq_conn/1110603370/com.nuomi1.bus.mock</code> 返回 App，URL 匹配 <code>$&#123;universalLink&#125;/$&#123;bundleID&#125;</code>，注意没有额外的 <code>path</code>，数据从 <code>sdkactioninfo</code> 获取。</p>
 <p><code>decodeBase64</code> 之后，发现格式为 <code>json</code>：</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;sdk_action_query&quot;</span>: <span class="string">&quot;appsign_bundlenull=2&amp;source=qq&amp;source_scheme=mqqapi&amp;error=0&amp;version=1&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;sdk_action_path&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;sdk_action_sheme&quot;</span>: <span class="string">&quot;tencent1110603370&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;sdk_action_host&quot;</span>: <span class="string">&quot;response_from_qq&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;sdk_action_query&quot;</span><span class="punctuation">:</span> <span class="string">&quot;appsign_bundlenull=2&amp;source=qq&amp;source_scheme=mqqapi&amp;error=0&amp;version=1&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;sdk_action_path&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;sdk_action_sheme&quot;</span><span class="punctuation">:</span> <span class="string">&quot;tencent1110603370&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;sdk_action_host&quot;</span><span class="punctuation">:</span> <span class="string">&quot;response_from_qq&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
 
 <p>我们可以看到，用这些数据拼接成 URL 后，与通过 URL Scheme 返回时调用的 URL 一致，URL 匹配 <code>$&#123;appID&#125;://response_from_qq</code>，注意没有 <code>path</code>。</p>
 <h4 id="取消-2"><a href="#取消-2" class="headerlink" title="取消"></a>取消</h4><p>取消分享与分享成功的处理流程一致，只不过返回数据略有不同：</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;sdk_action_query&quot;</span>: <span class="string">&quot;error_description=dGhlIHVzZXIgZ2l2ZSB1cCB0aGUgY3VycmVudCBvcGVyYXRpb24=&amp;appsign_bundlenull=2&amp;source=qq&amp;source_scheme=mqqapi&amp;error=-4&amp;version=1&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;sdk_action_path&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;sdk_action_sheme&quot;</span>: <span class="string">&quot;tencent1110603370&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;sdk_action_host&quot;</span>: <span class="string">&quot;response_from_qq&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;sdk_action_query&quot;</span><span class="punctuation">:</span> <span class="string">&quot;error_description=dGhlIHVzZXIgZ2l2ZSB1cCB0aGUgY3VycmVudCBvcGVyYXRpb24=&amp;appsign_bundlenull=2&amp;source=qq&amp;source_scheme=mqqapi&amp;error=-4&amp;version=1&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;sdk_action_path&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;sdk_action_sheme&quot;</span><span class="punctuation">:</span> <span class="string">&quot;tencent1110603370&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;sdk_action_host&quot;</span><span class="punctuation">:</span> <span class="string">&quot;response_from_qq&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
 
 <p>我们可以看到：</p>
 <ol>
@@ -439,7 +438,7 @@
 <li><code>file_type</code> 为 <code>img</code></li>
 <li><code>objectlocation</code> 为 <code>pasteboard</code>，表示通过剪切板进行传递</li>
 </ol>
-<p>同时使用剪切板设置 <code>file_data</code> / <code>previewimagedata</code>。</p>
+<p>同时使用剪切板设置 <code>file_data</code> &#x2F; <code>previewimagedata</code>。</p>
 <h4 id="AudioMessage-1"><a href="#AudioMessage-1" class="headerlink" title="AudioMessage"></a>AudioMessage</h4><p>我们可以看到：</p>
 <ol>
 <li><code>file_type</code> 为 <code>audio</code></li>
@@ -478,7 +477,7 @@
 <li><code>objectlocation</code> 为 <code>url</code></li>
 <li><code>pasteboard</code> 为空</li>
 </ol>
-<p>QQ 的小程序分享需要关联一个 <code>AudioMessage</code> / <code>VideoMessage</code> / <code>WebPageMessage</code>，这里选择了 <code>WebPageMessage</code>，因此部分数据与 <code>WebPageMessage</code> 相同。</p>
+<p>QQ 的小程序分享需要关联一个 <code>AudioMessage</code> &#x2F; <code>VideoMessage</code> &#x2F; <code>WebPageMessage</code>，这里选择了 <code>WebPageMessage</code>，因此部分数据与 <code>WebPageMessage</code> 相同。</p>
 <h4 id="cflag"><a href="#cflag" class="headerlink" title="cflag"></a>cflag</h4><p>这个控制标记受分享行为与分享类型影响：</p>
 <ol>
 <li><code>2</code> 表示 <code>qqapiCtrlFlagQZoneShareForbid</code> <em>屏蔽好友选择器上的空间入口</em></li>
@@ -486,7 +485,7 @@
 <li><code>64</code> 表示 <code>kQQAPICtrlFlagQQShareEnableMiniProgram</code> <em>小程序</em> ，<code>MiniProgramMessage</code> 需要设置此项</li>
 </ol>
 <p><code>cflag</code> 属于 <code>OptionSet</code>，通过位运算声明支持一种或多种特性。</p>
-<h4 id="shareType"><a href="#shareType" class="headerlink" title="shareType"></a>shareType</h4><p>大多数情况下把 <code>shareType</code> 改为 <code>1</code> 即可分享到 QQ 空间。但是 <code>TextMessage</code> / <code>ImageMessage</code> 不支持直接分享到 QQ 空间，因此需要把 <code>shareType</code> 改为 <code>0</code> 且 <code>cflag</code> 改为 <code>0</code> 从好友选择器里选择 QQ 空间进行分享。同时 <code>FileMessage</code> / <code>MiniProgramMessage</code> 不支持分享到 QQ 空间。</p>
+<h4 id="shareType"><a href="#shareType" class="headerlink" title="shareType"></a>shareType</h4><p>大多数情况下把 <code>shareType</code> 改为 <code>1</code> 即可分享到 QQ 空间。但是 <code>TextMessage</code> &#x2F; <code>ImageMessage</code> 不支持直接分享到 QQ 空间，因此需要把 <code>shareType</code> 改为 <code>0</code> 且 <code>cflag</code> 改为 <code>0</code> 从好友选择器里选择 QQ 空间进行分享。同时 <code>FileMessage</code> &#x2F; <code>MiniProgramMessage</code> 不支持分享到 QQ 空间。</p>
 <h3 id="登录-1"><a href="#登录-1" class="headerlink" title="登录"></a>登录</h3><p>当 App 使用 QQ 登录时，调用 <code>https://qm.qq.com/opensdkul/mqqOpensdkSSoLogin/SSoLogin/tencent1110603370</code> 打开 QQ，URL 匹配 <code>$&#123;qqUniversalLink&#125;/mqqOpensdkSSoLogin/SSoLogin/$&#123;appID&#125;</code>，数据从 <code>pasteboard</code> 获取。</p>
 <p><code>decodeBase64</code> 之后，发现格式为 <code>archivedData</code>：</p>
 <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;app_id&quot; = 1110603370;</span><br><span class="line">    &quot;app_name&quot; = BusMock;</span><br><span class="line">    &quot;appsign_token&quot; = &quot;&quot;;</span><br><span class="line">    bundleid = &quot;com.nuomi1.bus.mock&quot;;</span><br><span class="line">    &quot;client_id&quot; = 1110603370;</span><br><span class="line">    refUniversallink = &quot;https://mock.bus.nuomi1.com/qq_conn/1110603370/&quot;;</span><br><span class="line">    &quot;response_type&quot; = token;</span><br><span class="line">    scope = &quot;get_user_info&quot;;</span><br><span class="line">    sdkp = i;</span><br><span class="line">    sdkv = &quot;3.5.1_lite&quot;;</span><br><span class="line">    &quot;status_machine&quot; = &quot;iPhone12,1&quot;;</span><br><span class="line">    &quot;status_os&quot; = &quot;14.3&quot;;</span><br><span class="line">    &quot;status_version&quot; = 14;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -509,7 +508,7 @@
 </ol>
 <h4 id="成功-3"><a href="#成功-3" class="headerlink" title="成功"></a>成功</h4><p>登录成功时，调用 <code>https://mock.bus.nuomi1.com/qq_conn/1110603370/com.nuomi1.bus.mock</code> 返回 App，URL 匹配 <code>$&#123;universalLink&#125;/$&#123;bundleID&#125;</code>，没有 <code>path</code>，数据从 <code>sdkactioninfo</code> 获取。</p>
 <p><code>decodeBase64</code> 之后，发现格式为 <code>json</code>：</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;sdk_action_query&quot;</span>: <span class="string">&quot;objectlocation=url&amp;pasteboard=YnBsaXN0MDDUAQIDBAUGBwpYJHZlcnNpb25ZJGFyY2hpdmVyVCR0b3BYJG9iamVjdHMSAAGGoF8QD05TS2V5ZWRBcmNoaXZlctEICVRyb290gAGvEBwLDCssLS4vMDEyMzQ1Njc4OTo7PkVGR0hJSktMVSRudWxs0w0ODxAdKldOUy5rZXlzWk5TLm9iamVjdHNWJGNsYXNzrBESExQVFhcYGRobHIACgAOABIAFgAaAB4AIgAmACoALgAyADaweHyAhIiMkJSYnKCmADoAPgBCAEYASgBSAFYAWgBeAGIAZgBqAG1pleHBpcmVzX2luXxASYXBwc2lnbl9idW5kbGVudWxsWmVuY3J5dG9rZW5TcmV0XHBhc3NEYXRhUmVzcFZvcGVuaWRScGZedXNlcl9jYW5jZWxsZWRVcGZrZXlZcGF5X3Rva2VuU21zZ1xhY2Nlc3NfdG9rZW4SAHanAFEyXxAgNmI5YTBjNDFkZmVlOGFhZWI1MjY5YzYyZTg0NzQ1ZGYQANIODzw9oIAT0j9AQUJaJGNsYXNzbmFtZVgkY2xhc3Nlc15OU011dGFibGVBcnJheaNBQ0RXTlNBcnJheVhOU09iamVjdF8QIEM3MTY5MDg2MUYyOTIzNDIzOEFCMkYzRDk0NTBDRDkwXm9wZW5tb2JpbGVfaW9zUk5PXxAgYzk5MjkwZGRiOTNmYTY3ZTMyMzFjZTU3MjBkNjkzMjlfECBERTIzN0U5RjNGMkI5NENEMzIwRkExRTEyMDE4MjAyQlBfECAyNzMyNkVCOURBODk4NjAzODEwMzE0NENDQTVEMzlBRdI/QE1OXxATTlNNdXRhYmxlRGljdGlvbmFyeaNNT0RcTlNEaWN0aW9uYXJ5AAgAEQAaACQAKQAyADcASQBMAFEAUwByAHgAfwCHAJIAmQCmAKgAqgCsAK4AsACyALQAtgC4ALoAvAC+AMsAzQDPANEA0wDVANcA2QDbAN0A3wDhAOMA5QDwAQUBEAEUASEBKAErAToBQAFKAU4BWwFgAWIBhQGHAYwBjQGPAZQBnwGoAbcBuwHDAcwB7wH+AgECJAJHAkgCawJwAoYCigAAAAAAAAIBAAAAAAAAAFAAAAAAAAAAAAAAAAAAAAKX&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;sdk_action_path&quot;</span>: <span class="string">&quot;/mqzone/0&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;sdk_action_sheme&quot;</span>: <span class="string">&quot;tencent1110603370&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;sdk_action_host&quot;</span>: <span class="string">&quot;qzapp&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;sdk_action_query&quot;</span><span class="punctuation">:</span> <span class="string">&quot;objectlocation=url&amp;pasteboard=YnBsaXN0MDDUAQIDBAUGBwpYJHZlcnNpb25ZJGFyY2hpdmVyVCR0b3BYJG9iamVjdHMSAAGGoF8QD05TS2V5ZWRBcmNoaXZlctEICVRyb290gAGvEBwLDCssLS4vMDEyMzQ1Njc4OTo7PkVGR0hJSktMVSRudWxs0w0ODxAdKldOUy5rZXlzWk5TLm9iamVjdHNWJGNsYXNzrBESExQVFhcYGRobHIACgAOABIAFgAaAB4AIgAmACoALgAyADaweHyAhIiMkJSYnKCmADoAPgBCAEYASgBSAFYAWgBeAGIAZgBqAG1pleHBpcmVzX2luXxASYXBwc2lnbl9idW5kbGVudWxsWmVuY3J5dG9rZW5TcmV0XHBhc3NEYXRhUmVzcFZvcGVuaWRScGZedXNlcl9jYW5jZWxsZWRVcGZrZXlZcGF5X3Rva2VuU21zZ1xhY2Nlc3NfdG9rZW4SAHanAFEyXxAgNmI5YTBjNDFkZmVlOGFhZWI1MjY5YzYyZTg0NzQ1ZGYQANIODzw9oIAT0j9AQUJaJGNsYXNzbmFtZVgkY2xhc3Nlc15OU011dGFibGVBcnJheaNBQ0RXTlNBcnJheVhOU09iamVjdF8QIEM3MTY5MDg2MUYyOTIzNDIzOEFCMkYzRDk0NTBDRDkwXm9wZW5tb2JpbGVfaW9zUk5PXxAgYzk5MjkwZGRiOTNmYTY3ZTMyMzFjZTU3MjBkNjkzMjlfECBERTIzN0U5RjNGMkI5NENEMzIwRkExRTEyMDE4MjAyQlBfECAyNzMyNkVCOURBODk4NjAzODEwMzE0NENDQTVEMzlBRdI/QE1OXxATTlNNdXRhYmxlRGljdGlvbmFyeaNNT0RcTlNEaWN0aW9uYXJ5AAgAEQAaACQAKQAyADcASQBMAFEAUwByAHgAfwCHAJIAmQCmAKgAqgCsAK4AsACyALQAtgC4ALoAvAC+AMsAzQDPANEA0wDVANcA2QDbAN0A3wDhAOMA5QDwAQUBEAEUASEBKAErAToBQAFKAU4BWwFgAWIBhQGHAYwBjQGPAZQBnwGoAbcBuwHDAcwB7wH+AgECJAJHAkgCawJwAoYCigAAAAAAAAIBAAAAAAAAAFAAAAAAAAAAAAAAAAAAAAKX&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;sdk_action_path&quot;</span><span class="punctuation">:</span> <span class="string">&quot;/mqzone/0&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;sdk_action_sheme&quot;</span><span class="punctuation">:</span> <span class="string">&quot;tencent1110603370&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;sdk_action_host&quot;</span><span class="punctuation">:</span> <span class="string">&quot;qzapp&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
 
 <p>与分享回调一样，拼接成 URL 后进行处理，URL 匹配 <code>$&#123;appID&#125;://qzapp/mqzone/0</code>，数据从 <code>pasteboard</code> 获取。</p>
 <p><code>decodeBase64</code> 之后，发现格式为 <code>archivedData</code>：</p>
@@ -536,7 +535,7 @@
 <ol>
 <li><code>user_cancelled</code> 为 <code>YES</code>，表示用户取消</li>
 </ol>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>本文通过记录和分析 QQ SDK 的行为，厘清了 QQ 分享和登录的流程。传递数据主要靠 URL，大文件则使用剪切板。但可能是历史原因，QQ 在处理数据使用了多种方式，pure URL query / json in URL query / data in pasteboard / data in URL query。URL query 的命名也是五花八门。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>本文通过记录和分析 QQ SDK 的行为，厘清了 QQ 分享和登录的流程。传递数据主要靠 URL，大文件则使用剪切板。但可能是历史原因，QQ 在处理数据使用了多种方式，pure URL query &#x2F; json in URL query &#x2F; data in pasteboard &#x2F; data in URL query。URL query 的命名也是五花八门。</p>
 <p>还有一个可能是 BUG 的问题，在 App 支持 Universal Link 的情况下，取消登录返回 App 时 QQ 使用 URL Scheme 进行回调，而不是 Universal Link，但其他的操作都是 Universal Link。</p>
 <p>完整代码实现请参考来源。</p>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
@@ -552,7 +551,7 @@
     <footer class="post-footer">
           <div class="reward-container">
   <div>如果文章对你有用，可以打赏小钱钱哦~</div>
-  <button onclick="document.querySelector('.post-reward').classList.toggle('active');">
+  <button>
     赞赏
   </button>
   <div class="post-reward">
@@ -586,9 +585,9 @@
 </div>
 
           <div class="post-tags">
-              <a href="/tags/Swift/" rel="tag"># Swift</a>
               <a href="/tags/NBus/" rel="tag"># NBus</a>
               <a href="/tags/iOS/" rel="tag"># iOS</a>
+              <a href="/tags/Swift/" rel="tag"># Swift</a>
           </div>
 
         
@@ -624,7 +623,7 @@
 
 <div class="copyright">
   &copy; 2015 – 
-  <span itemprop="copyrightYear">2021</span>
+  <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -637,7 +636,7 @@
   </footer>
 
   
-  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
 <script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
 
   
@@ -646,21 +645,20 @@
 
 
 
-
   
 
 
-  <script class="next-config" data-name="leancloud_visitors" type="application/json">{&quot;enable&quot;:true,&quot;app_id&quot;:&quot;ehvmFwB3BLTvYf4JORInQRRn-gzGzoHsz&quot;,&quot;app_key&quot;:&quot;6zj1q563yNhGInbB9zQHlJIs&quot;,&quot;server_url&quot;:null,&quot;security&quot;:false}</script>
+  <script class="next-config" data-name="leancloud_visitors" type="application/json">{"enable":true,"app_id":"ehvmFwB3BLTvYf4JORInQRRn-gzGzoHsz","app_key":"6zj1q563yNhGInbB9zQHlJIs","server_url":null,"security":false}</script>
   <script src="/js/third-party/statistics/lean-analytics.js"></script>
 
 
   
 
-  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{&quot;enable&quot;:true,&quot;tags&quot;:&quot;none&quot;,&quot;js&quot;:{&quot;url&quot;:&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;mathjax@3.1.4&#x2F;es5&#x2F;tex-mml-chtml.js&quot;,&quot;integrity&quot;:&quot;sha256-ncNI9OXOS5Ek4tzVYiOMmN&#x2F;KKCPZ6V0Cpv2P&#x2F;zHntiA&#x3D;&quot;}}</script>
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
 <script src="/js/third-party/math/mathjax.js"></script>
 
 
-<script class="next-config" data-name="utterances" type="application/json">{&quot;enable&quot;:true,&quot;repo&quot;:&quot;nuomi1&#x2F;nuomi1.github.io&quot;,&quot;issue_term&quot;:&quot;pathname&quot;,&quot;theme&quot;:&quot;github-light&quot;}</script>
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"nuomi1/nuomi1.github.io","issue_term":"pathname","theme":"github-light"}</script>
 <script src="/js/third-party/comments/utterances.js"></script>
 
 </body>
