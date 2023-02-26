@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha256-Z1K5uhUaJXA7Ll0XrZ/0JhX4lAtZFpT6jkKrEDT0drU=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"blog.nuomi1.com","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.14.2","exturl":false,"sidebar":{"position":"right","display":"hide","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"utterances","storage":true,"lazyload":false,"nav":null,"activeClass":"utterances"},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="本文于 2021-07-10 初次发表在 WWDC21 内参 - 小专栏，为付费订阅专栏。而后于 2022-01-20 发表在老司机技术 - 微信公众号，为免费文章。现转载到本人博客，章节顺序有所编辑。   作者：作者：nuomi1，目前就职于格隆汇，Swift with iOS，果粉 &#x2F; 米家粉。 审核： 四娘，iOS 开发，老司机技术周报成员。目前就职于格隆汇，对 Swift 和编译">
+<meta property="og:type" content="article">
+<meta property="og:title" content="认识 Swift 中的异步与并发">
+<meta property="og:url" content="https://blog.nuomi1.com/archives/2023/02/wwdc21-meet-async-await-in-swift.html">
+<meta property="og:site_name" content="nuomi1&#39;s blog">
+<meta property="og:description" content="本文于 2021-07-10 初次发表在 WWDC21 内参 - 小专栏，为付费订阅专栏。而后于 2022-01-20 发表在老司机技术 - 微信公众号，为免费文章。现转载到本人博客，章节顺序有所编辑。   作者：作者：nuomi1，目前就职于格隆汇，Swift with iOS，果粉 &#x2F; 米家粉。 审核： 四娘，iOS 开发，老司机技术周报成员。目前就职于格隆汇，对 Swift 和编译">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://images.xiaozhuanlan.com/photo/2021/1843711b998e370aed21c6faf4d26330.png">
+<meta property="og:image" content="https://images.xiaozhuanlan.com/photo/2021/33a708f4237ec970b790a49a90fee1dc.png">
+<meta property="og:image" content="https://images.xiaozhuanlan.com/photo/2021/a373d3ca1b7207290147ee126875fe1b.png">
+<meta property="og:image" content="https://images.xiaozhuanlan.com/photo/2021/71326704716a5f65a020bfcc08f409a3.">
+<meta property="article:published_time" content="2023-02-23T16:00:00.000Z">
+<meta property="article:modified_time" content="2023-02-23T16:00:00.000Z">
+<meta property="article:author" content="nuomi1">
+<meta property="article:tag" content="Swift">
+<meta property="article:tag" content="老司机技术">
+<meta property="article:tag" content="WWDC21">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://images.xiaozhuanlan.com/photo/2021/1843711b998e370aed21c6faf4d26330.png">
+
+
+<link rel="canonical" href="https://blog.nuomi1.com/archives/2023/02/wwdc21-meet-async-await-in-swift.html">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://blog.nuomi1.com/archives/2023/02/wwdc21-meet-async-await-in-swift.html","path":"archives/2023/02/wwdc21-meet-async-await-in-swift.html","title":"认识 Swift 中的异步与并发"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>认识 Swift 中的异步与并发 | nuomi1's blog</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=69846247-2"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"69846247-2","only_pageview":false}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+  <script src="/js/third-party/analytics/baidu-analytics.js"></script>
+  <script async src="https://hm.baidu.com/hm.js?e9c5b894b94da4954f8cc9ee9f6adcb8"></script>
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="nuomi1's blog" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">nuomi1's blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">nuomi1's blog</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#WWDC21-%E8%AE%A4%E8%AF%86-Swift-%E4%B8%AD%E7%9A%84%E5%BC%82%E6%AD%A5%E4%B8%8E%E5%B9%B6%E5%8F%91"><span class="nav-number">1.</span> <span class="nav-text">WWDC21 - 认识 Swift 中的异步与并发</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%82%E6%AD%A5"><span class="nav-number">1.1.</span> <span class="nav-text">异步</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#completion-%E5%9B%9E%E8%B0%83"><span class="nav-number">1.1.1.</span> <span class="nav-text">completion 回调</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-async-%E5%92%8C-await-%E9%87%8D%E6%9E%84%E5%87%BD%E6%95%B0"><span class="nav-number">1.1.2.</span> <span class="nav-text">使用 async 和 await 重构函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%83%E4%BB%AC%E6%98%AF%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C%E7%9A%84"><span class="nav-number">1.1.3.</span> <span class="nav-text">它们是如何工作的</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93"><span class="nav-number">1.1.4.</span> <span class="nav-text">小结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B9%B6%E5%8F%91"><span class="nav-number">1.2.</span> <span class="nav-text">并发</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#completion-%E5%9B%9E%E8%B0%83%E5%A4%84%E7%90%86%E5%A4%9A%E4%B8%AA%E7%BC%A9%E7%95%A5%E5%9B%BE"><span class="nav-number">1.2.1.</span> <span class="nav-text">completion 回调处理多个缩略图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-async-%E5%92%8C-await-%E5%A4%84%E7%90%86%E5%A4%9A%E4%B8%AA%E7%BC%A9%E7%95%A5%E5%9B%BE"><span class="nav-number">1.2.2.</span> <span class="nav-text">使用 async 和 await 处理多个缩略图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-async-let-%E5%A4%84%E7%90%86%E7%BB%93%E6%9E%84%E5%8C%96%E5%B9%B6%E5%8F%91"><span class="nav-number">1.2.3.</span> <span class="nav-text">使用 async-let 处理结构化并发</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B0%83%E7%94%A8%E5%BC%82%E6%AD%A5%E5%87%BD%E6%95%B0%E5%A4%84%E7%90%86%E5%A4%9A%E4%B8%AA%E7%BC%A9%E7%95%A5%E5%9B%BE"><span class="nav-number">1.2.4.</span> <span class="nav-text">调用异步函数处理多个缩略图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E4%BB%BB%E5%8A%A1%E7%BB%84%E8%BF%9B%E8%A1%8C%E5%A4%84%E7%90%86"><span class="nav-number">1.2.5.</span> <span class="nav-text">使用任务组进行处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#async-let-%E4%B8%8E%E4%BB%BB%E5%8A%A1%E7%BB%84%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="nav-number">1.2.6.</span> <span class="nav-text">async-let 与任务组的关系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93-1"><span class="nav-number">1.2.7.</span> <span class="nav-text">小结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Actor"><span class="nav-number">1.3.</span> <span class="nav-text">Actor</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%AB%9E%E4%BA%89"><span class="nav-number">1.3.1.</span> <span class="nav-text">数据竞争</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Actor-%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.3.2.</span> <span class="nav-text">Actor 模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-actor-%E5%AE%9E%E7%8E%B0-Counter"><span class="nav-number">1.3.3.</span> <span class="nav-text">使用 actor 实现 Counter</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-actor-%E5%A4%84%E7%90%86%E5%9B%BE%E7%89%87%E4%B8%8B%E8%BD%BD"><span class="nav-number">1.3.4.</span> <span class="nav-text">使用 actor 处理图片下载</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93-2"><span class="nav-number">1.3.5.</span> <span class="nav-text">小结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">1.4.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E6%B3%A8%E6%88%91%E4%BB%AC"><span class="nav-number">1.5.</span> <span class="nav-text">关注我们</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="nuomi1"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">nuomi1</p>
+  <div class="site-description" itemprop="description">nuomi1's blog</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">27</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/nuomi1/" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;nuomi1&#x2F;" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/nuomi1/" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;nuomi1&#x2F;" rel="noopener me" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://telegram.me/nuomi1/" title="Telegram → https:&#x2F;&#x2F;telegram.me&#x2F;nuomi1&#x2F;" rel="noopener me" target="_blank"><i class="fab fa-telegram fa-fw"></i>Telegram</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/nuomi1/" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;nuomi1&#x2F;" rel="noopener me" target="_blank"><i class="fab fa-weibo fa-fw"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:nuomi1@qq.com" title="E-Mail → mailto:nuomi1@qq.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="RSS → &#x2F;atom.xml" rel="noopener me"><i class="fa fa-rss fa-fw"></i>RSS</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          链接
+        </div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <a href="https://www.tuccuay.com/" title="https:&#x2F;&#x2F;www.tuccuay.com&#x2F;" rel="noopener" target="_blank">Tuccuay</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://kemchenj.github.io/" title="https:&#x2F;&#x2F;kemchenj.github.io&#x2F;" rel="noopener" target="_blank">四娘</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://happysooner.com/" title="https:&#x2F;&#x2F;happysooner.com&#x2F;" rel="noopener" target="_blank">远浅</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://blog.rakuyoo.top/" title="https:&#x2F;&#x2F;blog.rakuyoo.top&#x2F;" rel="noopener" target="_blank">鸡翅</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.nuomi1.com/archives/2023/02/wwdc21-meet-async-await-in-swift.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="nuomi1">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="nuomi1's blog">
+      <meta itemprop="description" content="nuomi1's blog">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="认识 Swift 中的异步与并发 | nuomi1's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          认识 Swift 中的异步与并发
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-02-24 00:00:00" itemprop="dateCreated datePublished" datetime="2023-02-24T00:00:00+08:00">2023-02-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/program/" itemprop="url" rel="index"><span itemprop="name">program</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/archives/2023/02/wwdc21-meet-async-await-in-swift.html" class="post-meta-item leancloud_visitors" data-flag-title="认识 Swift 中的异步与并发" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>本文于 2021-07-10 初次发表在 <a target="_blank" rel="noopener" href="https://xiaozhuanlan.com/topic/8627905413">WWDC21 内参 - 小专栏</a>，为付费订阅专栏。而后于 2022-01-20 发表在<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/45J58DWWGBCbGnPycVFp_Q">老司机技术 - 微信公众号</a>，为免费文章。现转载到本人博客，章节顺序有所编辑。</p>
+<hr>
+<blockquote>
+<p>作者：作者：nuomi1，目前就职于格隆汇，Swift with iOS，果粉 &#x2F; 米家粉。</p>
+<p>审核：</p>
+<p>四娘，iOS 开发，老司机技术周报成员。目前就职于格隆汇，对 Swift 和编译器相关领域感兴趣</p>
+<p>Damonwong，iOS 开发，老司机技术周报编辑，就职于淘系技术部</p>
+</blockquote>
+<p>本文基于 Session <a target="_blank" rel="noopener" href="https://developer.apple.com/videos/play/wwdc2021/10132/">10132</a> &#x2F; <a target="_blank" rel="noopener" href="https://developer.apple.com/videos/play/wwdc2021/10134/">10134</a> &#x2F; <a target="_blank" rel="noopener" href="https://developer.apple.com/videos/play/wwdc2021/10133/">10133</a> 梳理，使用「获取缩略图」的例子对 Swift 5.5 新增的异步与并发编程进行讲解，如需了解更多，欢迎查看其它 Session。</p>
+<span id="more"></span>
+
+<h1 id="WWDC21-认识-Swift-中的异步与并发"><a href="#WWDC21-认识-Swift-中的异步与并发" class="headerlink" title="WWDC21 - 认识 Swift 中的异步与并发"></a>WWDC21 - 认识 Swift 中的异步与并发</h1><h2 id="异步"><a href="#异步" class="headerlink" title="异步"></a>异步</h2><p>异步编程在 iOS 开发里是一个常见的操作，例如我们经常需要在网络请求回来之后更新数据模型和视图。但是当异步操作嵌套时，不仅容易出现逻辑错误，还可能会陷入回调地狱。</p>
+<h3 id="completion-回调"><a href="#completion-回调" class="headerlink" title="completion 回调"></a><code>completion</code> 回调</h3><p>我们用「获取缩略图」来举例，先看下下面这段代码，找下有哪些逻辑问题：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">func</span> <span class="title function_">fetchThumbnail</span>(<span class="params">for</span> <span class="params">id</span>: <span class="type">String</span>, <span class="params">completion</span>: <span class="keyword">@escaping</span> (<span class="type">UIImage</span>?, <span class="type">Error</span>?) -&gt; <span class="type">Void</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> request <span class="operator">=</span> thumbnailURLRequest(for: id)</span><br><span class="line">    <span class="keyword">let</span> task <span class="operator">=</span> <span class="type">URLSession</span>.shared.dataTask(with: request) &#123; data, response, error <span class="keyword">in</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">let</span> error <span class="operator">=</span> error &#123;</span><br><span class="line">            completion(<span class="literal">nil</span>, error)</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (response <span class="keyword">as?</span> <span class="type">HTTPURLResponse</span>)<span class="operator">?</span>.statusCode <span class="operator">!=</span> <span class="number">200</span> &#123;</span><br><span class="line">            completion(<span class="literal">nil</span>, <span class="type">FetchError</span>.badID)</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">guard</span> <span class="keyword">let</span> image <span class="operator">=</span> <span class="type">UIImage</span>(data: data<span class="operator">!</span>) <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">return</span></span><br><span class="line">            &#125;</span><br><span class="line">            image.prepareThumbnail(of: <span class="type">CGSize</span>(width: <span class="number">40</span>, height: <span class="number">40</span>)) &#123; thumbnail <span class="keyword">in</span></span><br><span class="line">                <span class="keyword">guard</span> <span class="keyword">let</span> thumbnail <span class="operator">=</span> thumbnail <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="keyword">return</span></span><br><span class="line">                &#125;</span><br><span class="line">                completion(thumbnail, <span class="literal">nil</span>)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    task.resume()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>是的，少部分人可以发现，以上代码有两处错误，都是在 <code>guard</code> 语句之后直接退出，没有调用 <code>completion</code>，这样外部调用就无法处理所有可能的情况。而且不调用 <code>completion</code> 是一个合法（但不符合预期）的行为，编译器不会产生错误。</p>
+<p>把遗留的两个 <code>completion</code> 补全后，代码如下：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">func</span> <span class="title function_">fetchThumbnail</span>(<span class="params">for</span> <span class="params">id</span>: <span class="type">String</span>, <span class="params">completion</span>: <span class="keyword">@escaping</span> (<span class="type">UIImage</span>?, <span class="type">Error</span>?) -&gt; <span class="type">Void</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> request <span class="operator">=</span> thumbnailURLRequest(for: id)</span><br><span class="line">    <span class="keyword">let</span> task <span class="operator">=</span> <span class="type">URLSession</span>.shared.dataTask(with: request) &#123; data, response, error <span class="keyword">in</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">let</span> error <span class="operator">=</span> error &#123;</span><br><span class="line">            completion(<span class="literal">nil</span>, error)</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (response <span class="keyword">as?</span> <span class="type">HTTPURLResponse</span>)<span class="operator">?</span>.statusCode <span class="operator">!=</span> <span class="number">200</span> &#123;</span><br><span class="line">            completion(<span class="literal">nil</span>, <span class="type">FetchError</span>.badID)</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">guard</span> <span class="keyword">let</span> image <span class="operator">=</span> <span class="type">UIImage</span>(data: data<span class="operator">!</span>) <span class="keyword">else</span> &#123;</span><br><span class="line">                completion(<span class="literal">nil</span>, <span class="type">FetchError</span>.badImage)</span><br><span class="line">                <span class="keyword">return</span></span><br><span class="line">            &#125;</span><br><span class="line">            image.prepareThumbnail(of: <span class="type">CGSize</span>(width: <span class="number">40</span>, height: <span class="number">40</span>)) &#123; thumbnail <span class="keyword">in</span></span><br><span class="line">                <span class="keyword">guard</span> <span class="keyword">let</span> thumbnail <span class="operator">=</span> thumbnail <span class="keyword">else</span> &#123;</span><br><span class="line">                    completion(<span class="literal">nil</span>, <span class="type">FetchError</span>.badImage)</span><br><span class="line">                    <span class="keyword">return</span></span><br><span class="line">                &#125;</span><br><span class="line">                completion(thumbnail, <span class="literal">nil</span>)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    task.resume()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>为了处理这些异步函数的结果，需要使用五个 <code>completion</code> 来通知调用方，并且调用方需要判断 <code>UIImage?</code> 和 <code>Error?</code> 的 4 种组合结果，但实际上有效的只有 2 种。</p>
+<p>我们先用 Swift 标准库里面的 <code>Result</code> 来解决这个问题，代码如下：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">func</span> <span class="title function_">fetchThumbnail</span>(<span class="params">for</span> <span class="params">id</span>: <span class="type">String</span>, <span class="params">completion</span>: <span class="keyword">@escaping</span> (<span class="type">Result</span>&lt;<span class="type">UIImage</span>, <span class="type">Error</span>&gt;) -&gt; <span class="type">Void</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> request <span class="operator">=</span> thumbnailURLRequest(for: id)</span><br><span class="line">    <span class="keyword">let</span> task <span class="operator">=</span> <span class="type">URLSession</span>.shared.dataTask(with: request) &#123; data, response, error <span class="keyword">in</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">let</span> error <span class="operator">=</span> error &#123;</span><br><span class="line">            completion(.failure(error))</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (response <span class="keyword">as?</span> <span class="type">HTTPURLResponse</span>)<span class="operator">?</span>.statusCode <span class="operator">!=</span> <span class="number">200</span> &#123;</span><br><span class="line">            completion(.failure(<span class="type">FetchError</span>.badID))</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">guard</span> <span class="keyword">let</span> image <span class="operator">=</span> <span class="type">UIImage</span>(data: data<span class="operator">!</span>) <span class="keyword">else</span> &#123;</span><br><span class="line">                completion(.failure(<span class="type">FetchError</span>.badImage))</span><br><span class="line">                <span class="keyword">return</span></span><br><span class="line">            &#125;</span><br><span class="line">            image.prepareThumbnail(of: <span class="type">CGSize</span>(width: <span class="number">40</span>, height: <span class="number">40</span>)) &#123; thumbnail <span class="keyword">in</span></span><br><span class="line">                <span class="keyword">guard</span> <span class="keyword">let</span> thumbnail <span class="operator">=</span> thumbnail <span class="keyword">else</span> &#123;</span><br><span class="line">                    completion(.failure(<span class="type">FetchError</span>.badImage))</span><br><span class="line">                    <span class="keyword">return</span></span><br><span class="line">                &#125;</span><br><span class="line">                completion(.success(thumbnail))</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    task.resume()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>只要调用方可以知道结果，那么结果一定只有 2 种，要么成功，要么失败，不需要判断其他情况，更加符合使用习惯，但是这样仍然无法避免 <code>completion</code> 被忽略调用的情况。</p>
+<h3 id="使用-async-和-await-重构函数"><a href="#使用-async-和-await-重构函数" class="headerlink" title="使用 async 和 await 重构函数"></a>使用 <code>async</code> 和 <code>await</code> 重构函数</h3><p>为了解决 <code>completion</code> 被忽略调用的情况，我们可以尝试使用 Swift 5.5 新增的 <code>async</code> 和 <code>await</code> 来解决这个问题，代码如下：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">func</span> <span class="title function_">fetchThumbnail</span>(<span class="params">for</span> <span class="params">id</span>: <span class="type">String</span>) <span class="keyword">async</span> <span class="keyword">throws</span> -&gt; <span class="type">UIImage</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> request <span class="operator">=</span> thumbnailURLRequest(for: id)</span><br><span class="line">    <span class="keyword">let</span> (data, response) <span class="operator">=</span> <span class="keyword">try</span> <span class="keyword">await</span> <span class="type">URLSession</span>.shared.data(for: request)</span><br><span class="line">    <span class="keyword">guard</span> (response <span class="keyword">as?</span> <span class="type">HTTPURLResponse</span>)<span class="operator">?</span>.statusCode <span class="operator">==</span> <span class="number">200</span> <span class="keyword">else</span> &#123; <span class="keyword">throw</span> <span class="type">FetchError</span>.badID &#125;</span><br><span class="line">    <span class="keyword">let</span> maybeImage <span class="operator">=</span> <span class="type">UIImage</span>(data: data)</span><br><span class="line">    <span class="keyword">guard</span> <span class="keyword">let</span> thumbnail <span class="operator">=</span> <span class="keyword">await</span> maybeImage<span class="operator">?</span>.thumbnail <span class="keyword">else</span> &#123; <span class="keyword">throw</span> <span class="type">FetchError</span>.badImage &#125;</span><br><span class="line">    <span class="keyword">return</span> thumbnail</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>步骤非常简单：</p>
+<ol>
+<li>生成 <code>request</code> 请求，这是一个同步操作；</li>
+<li>请求数据，<code>try</code> 标记可能抛出错误，<code>await</code> 标记潜在暂停点，这是一个异步操作；</li>
+<li>判断返回状态码是否 200，不是则抛出错误；</li>
+<li>生成原始图片，这是一个同步操作；</li>
+<li>生成缩略图，<code>await</code> 标记潜在暂停点，无法生成则抛出错误，这是一个异步操作；</li>
+<li>返回成功生成的缩略图。</li>
+</ol>
+<p>相较于前面 <code>completion</code> 版本的 23 行，这里 <code>async</code> 版本仅需要 8 行，没有函数的层层嵌套，都是一步接一步线性的，易读性大大提升，同时编译器也可以检查错误。</p>
+<h3 id="它们是如何工作的"><a href="#它们是如何工作的" class="headerlink" title="它们是如何工作的"></a>它们是如何工作的</h3><p><img src="https://images.xiaozhuanlan.com/photo/2021/1843711b998e370aed21c6faf4d26330.png" alt="a normal function call"></p>
+<p>上图是一个普通函数调用，当 <code>thumbnailURLRequest</code> 完成之后，返回 <code>fetchThumbnail</code> 继续执行后续代码，如果这个函数是一个耗时任务，那么当前线程就会持续等待，直到完成。</p>
+<p><img src="https://images.xiaozhuanlan.com/photo/2021/33a708f4237ec970b790a49a90fee1dc.png" alt="an asynchronous function call"></p>
+<p>上图是一个异步函数调用，当 <code>data(for:)</code> 调用后，函数被挂起进行等待，当任务完成后，系统恢复 <code>data(for:)</code> 的调用，返回 <code>fetchThumbnail</code> 继续执行后续代码。</p>
+<p><img src="https://images.xiaozhuanlan.com/photo/2021/a373d3ca1b7207290147ee126875fe1b.png" alt="async / await facts"></p>
+<p><code>async</code> &#x2F; <code>await</code> 实际上的意思：</p>
+<ol>
+<li><code>async</code> 允许一个函数被挂起；</li>
+<li><code>await</code> 标记一个异步函数的潜在暂停点；</li>
+<li>在挂起期间可能会进行其他工作；</li>
+<li>一旦等待的异步调用完成，在 <code>await</code> 之后恢复执行。</li>
+</ol>
+<p>也就是说，我们用 <code>async</code> 标记一个函数是异步函数，这仅仅是一个标记，并不意味着函数一定是异步操作，函数内可以是一个简单的加法（例如 <code>1 + 1</code>），也可以是一个异步的网络请求。当我们调用 <code>async</code> 函数时，需要使用 <code>await</code> 关键字进行调用，<code>await</code> 标记一个潜在暂停点。异步函数在执行同步代码时，不能放弃自己的线程，当执行到潜在暂停点时，会放弃自己的线程，挂起并等待被调用的异步函数的结果。当被调用的异步函数完成时，控制返回原来的异步函数的潜在暂停点（需要注意这时的线程不一定和之前的相同），继续执行之后的代码。这些线程切换的工作不需要我们手动处理，由 Swift 自动管理，极大地提高了编程效率。</p>
+<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><p><code>async</code> &#x2F; <code>await</code> 的加入让我们得以使用与同步编程类似的控制流来进行异步编程，不仅可以解决 <code>completion</code> 容易被忽略的问题，还可以更好地进行错误处理。与此同时，线性的控制流也避免了回调地狱的问题，大大提高代码的可读性。</p>
+<h2 id="并发"><a href="#并发" class="headerlink" title="并发"></a>并发</h2><p>上个章节我们介绍了如何获取单张图片的缩略图，但在我们日常开发中更多的是展示列表，这就需要同时处理多张缩略图。</p>
+<h3 id="completion-回调处理多个缩略图"><a href="#completion-回调处理多个缩略图" class="headerlink" title="completion 回调处理多个缩略图"></a><code>completion</code> 回调处理多个缩略图</h3><p>如果我们一个接着一个地处理多个缩略图，可能会写出以下代码：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">func</span> <span class="title function_">fetchThumbnails</span>(</span><br><span class="line">    <span class="params">for</span> <span class="params">ids</span>: [<span class="type">String</span>],</span><br><span class="line">    <span class="params">completion</span> <span class="params">handler</span>: <span class="keyword">@escaping</span> ([String: <span class="type">UIImage</span>]<span class="operator">?</span>, <span class="type">Error</span>?) -&gt; <span class="type">Void</span></span><br><span class="line">) &#123;</span><br><span class="line">    <span class="keyword">guard</span> <span class="keyword">let</span> id <span class="operator">=</span> ids.first <span class="keyword">else</span> &#123; <span class="keyword">return</span> handler([:], <span class="literal">nil</span>) &#125;</span><br><span class="line">    <span class="keyword">let</span> request <span class="operator">=</span> thumbnailURLRequest(for: id)</span><br><span class="line">    <span class="keyword">let</span> dataTask <span class="operator">=</span> <span class="type">URLSession</span>.shared.dataTask(with: request) &#123; data, response, error <span class="keyword">in</span></span><br><span class="line">        <span class="keyword">guard</span> <span class="keyword">let</span> response <span class="operator">=</span> response,</span><br><span class="line">              <span class="keyword">let</span> data <span class="operator">=</span> data</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> handler(<span class="literal">nil</span>, error)</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">UIImage</span>(data: data)<span class="operator">?</span>.prepareThumbnail(of: thumbSize) &#123; image <span class="keyword">in</span></span><br><span class="line">            <span class="keyword">guard</span> <span class="keyword">let</span> image <span class="operator">=</span> image <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> handler(<span class="literal">nil</span>, <span class="type">ThumbnailFailedError</span>())</span><br><span class="line">            &#125;</span><br><span class="line">            fetchThumbnails(for: <span class="type">Array</span>(ids.dropFirst())) &#123; thumbnails, error <span class="keyword">in</span></span><br><span class="line">                <span class="comment">// 添加图片到 thumbnails</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    dataTask.resume()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>代码非常糟糕，递归调用依次获取缩略图，并且难以整合这些缩略图。除此之外，代码可读性也很低。</p>
+<h3 id="使用-async-和-await-处理多个缩略图"><a href="#使用-async-和-await-处理多个缩略图" class="headerlink" title="使用 async 和 await 处理多个缩略图"></a>使用 <code>async</code> 和 <code>await</code> 处理多个缩略图</h3><p>我们参考上个章节对单张缩略图的处理，试着使用 <code>async</code> 和 <code>await</code> 进行重构，代码如下：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">func</span> <span class="title function_">fetchThumbnails</span>(<span class="params">for</span> <span class="params">ids</span>: [<span class="type">String</span>]) <span class="keyword">async</span> <span class="keyword">throws</span> -&gt; [<span class="type">String</span>: <span class="type">UIImage</span>] &#123;</span><br><span class="line">    <span class="keyword">var</span> thumbnails: [<span class="type">String</span>: <span class="type">UIImage</span>] <span class="operator">=</span> [:]</span><br><span class="line">    <span class="keyword">for</span> id <span class="keyword">in</span> ids &#123;</span><br><span class="line">        <span class="keyword">let</span> request <span class="operator">=</span> thumbnailURLRequest(for: id)</span><br><span class="line">        <span class="keyword">let</span> (data, response) <span class="operator">=</span> <span class="keyword">try</span> <span class="keyword">await</span> <span class="type">URLSession</span>.shared.data(for: request)</span><br><span class="line">        <span class="keyword">try</span> validateResponse(response)</span><br><span class="line">        <span class="keyword">guard</span> <span class="keyword">let</span> image <span class="operator">=</span> <span class="keyword">await</span> <span class="type">UIImage</span>(data: data)<span class="operator">?</span>.byPreparingThumbnail(ofSize: thumbSize) <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="type">ThumbnailFailedError</span>()</span><br><span class="line">        &#125;</span><br><span class="line">        thumbnails[id] <span class="operator">=</span> image</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> thumbnails</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>步骤非常简单：</p>
+<ol>
+<li>声明 <code>thumbnails</code> 保存返回值；</li>
+<li>使用 <code>for-in</code> 循环创建任务；<ol>
+<li>创建请求；</li>
+<li>下载图片；</li>
+<li>检查资源合法性；</li>
+<li>生成缩略图；</li>
+<li>保存缩略图。</li>
+</ol>
+</li>
+<li>返回 <code>thumbnails</code>。</li>
+</ol>
+<p>可以发现，仅仅是增加了 <code>for-in</code> 循环，就可以非常方便地顺序处理多张缩略图。</p>
+<h3 id="使用-async-let-处理结构化并发"><a href="#使用-async-let-处理结构化并发" class="headerlink" title="使用 async-let 处理结构化并发"></a>使用 <code>async-let</code> 处理结构化并发</h3><p>上面例子的 <code>thumbSize</code> 是本地提供的，处理起来比较简单。假设 <code>thumbSize</code> 也要从网络接口获取，那么在生成缩略图的过程中会有两个网络请求，代码如下：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">func</span> <span class="title function_">fetchOneThumbnail</span>(<span class="params">withID</span> <span class="params">id</span>: <span class="type">String</span>) <span class="keyword">async</span> <span class="keyword">throws</span> -&gt; <span class="type">UIImage</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> imageReq <span class="operator">=</span> imageRequest(for: id), metadataReq <span class="operator">=</span> metadataRequest(for: id)</span><br><span class="line">    <span class="keyword">let</span> (data, <span class="keyword">_</span>) <span class="operator">=</span> <span class="keyword">try</span> <span class="keyword">await</span> <span class="type">URLSession</span>.shared.data(for: imageReq)</span><br><span class="line">    <span class="keyword">let</span> (metadata, <span class="keyword">_</span>) <span class="operator">=</span> <span class="keyword">try</span> <span class="keyword">await</span> <span class="type">URLSession</span>.shared.data(for: metadataReq)</span><br><span class="line">    <span class="keyword">guard</span> <span class="keyword">let</span> size <span class="operator">=</span> parseSize(from: metadata),</span><br><span class="line">          <span class="keyword">let</span> image <span class="operator">=</span> <span class="keyword">await</span> <span class="type">UIImage</span>(data: data)<span class="operator">?</span>.byPreparingThumbnail(ofSize: size)</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="type">ThumbnailFailedError</span>()</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> image</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>可以看到，在 <code>imageReq</code> 请求完成之后，才发起 <code>metadataReq</code> 请求，只有两个请求都完成之后，才能执行之后的代码。我们能不能让这两个请求同时进行呢？另外如果在两个请求和使用他们的返回结果之间有其他的无关任务，无关任务的执行必须等到两个请求完成之后，这无疑是一种浪费。</p>
+<p>我们可以用 <code>async-let</code> 来解决这个问题，代码如下：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">func</span> <span class="title function_">fetchOneThumbnail</span>(<span class="params">withID</span> <span class="params">id</span>: <span class="type">String</span>) <span class="keyword">async</span> <span class="keyword">throws</span> -&gt; <span class="type">UIImage</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> imageReq <span class="operator">=</span> imageRequest(for: id), metadataReq <span class="operator">=</span> metadataRequest(for: id)</span><br><span class="line">    <span class="keyword">async</span> <span class="keyword">let</span> (data, <span class="keyword">_</span>) <span class="operator">=</span> <span class="type">URLSession</span>.shared.data(for: imageReq)</span><br><span class="line">    <span class="keyword">async</span> <span class="keyword">let</span> (metadata, <span class="keyword">_</span>) <span class="operator">=</span> <span class="type">URLSession</span>.shared.data(for: metadataReq)</span><br><span class="line">    <span class="keyword">guard</span> <span class="keyword">let</span> size <span class="operator">=</span> parseSize(from: <span class="keyword">try</span> <span class="keyword">await</span> metadata),</span><br><span class="line">          <span class="keyword">let</span> image <span class="operator">=</span> <span class="keyword">try</span> <span class="keyword">await</span> <span class="type">UIImage</span>(data: data)<span class="operator">?</span>.byPreparingThumbnail(ofSize: size)</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="type">ThumbnailFailedError</span>()</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> image</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>使用 <code>async let</code> 标记 <code>data</code> 和 <code>metadata</code>，使用 <code>await</code> 进行访问，如果函数可以抛出错误，那么还需要使用 <code>try</code> 关键字。两个网络请求会同时进行，并且执行后续代码，即上文提到的无关任务。当需要访问结果的时候，系统会进行等待直到完成或者抛出错误。这样便能更高效地完成整个任务。</p>
+<p>需要注意的是，这两个网络请求是并发的，假如第一个获取图片的任务失败了抛出错误需要退出函数，Swift 会自动将未等待的任务标记取消，然后等待它完成再退出函数。任务被标记取消并不意味着停止任务，只是通知不需要该任务的返回值。</p>
+<h3 id="调用异步函数处理多个缩略图"><a href="#调用异步函数处理多个缩略图" class="headerlink" title="调用异步函数处理多个缩略图"></a>调用异步函数处理多个缩略图</h3><p>既然 <code>for-in</code> 内部的逻辑就是处理单个缩略图的逻辑，自然而然我们就会想到直接调用封装好的异步函数，代码如下：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">func</span> <span class="title function_">fetchThumbnails</span>(<span class="params">for</span> <span class="params">ids</span>: [<span class="type">String</span>]) <span class="keyword">async</span> <span class="keyword">throws</span> -&gt; [<span class="type">String</span>: <span class="type">UIImage</span>] &#123;</span><br><span class="line">    <span class="keyword">var</span> thumbnails: [<span class="type">String</span>: <span class="type">UIImage</span>] <span class="operator">=</span> [:]</span><br><span class="line">    <span class="keyword">for</span> id <span class="keyword">in</span> ids &#123;</span><br><span class="line">        <span class="keyword">try</span> <span class="type">Task</span>.checkCancellation()</span><br><span class="line">        thumbnails[id] <span class="operator">=</span> <span class="keyword">try</span> <span class="keyword">await</span> fetchOneThumbnail(withID: id)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> thumbnails</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>你应该发现了，在获取缩略图之前，调用了 <code>checkCancellation</code> 来进行任务检查。如上文所述，子任务被标记取消并不会停止任务，我们可以尽可能地检查任务是否被取消，提前退出，不再请求后续的缩略图。</p>
+<p>如果希望任务取消后返回之前已经处理的缩略图，可以使用 <code>isCancelled</code> 进行判断，代码如下：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">func</span> <span class="title function_">fetchThumbnails</span>(<span class="params">for</span> <span class="params">ids</span>: [<span class="type">String</span>]) <span class="keyword">async</span> <span class="keyword">throws</span> -&gt; [<span class="type">String</span>: <span class="type">UIImage</span>] &#123;</span><br><span class="line">    <span class="keyword">var</span> thumbnails: [<span class="type">String</span>: <span class="type">UIImage</span>] <span class="operator">=</span> [:]</span><br><span class="line">    <span class="keyword">for</span> id <span class="keyword">in</span> ids &#123;</span><br><span class="line">        <span class="keyword">if</span> <span class="type">Task</span>.isCancelled &#123; <span class="keyword">break</span> &#125;</span><br><span class="line">        thumbnails[id] <span class="operator">=</span> <span class="keyword">try</span> <span class="keyword">await</span> fetchOneThumbnail(withID: id)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> thumbnails</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="使用任务组进行处理"><a href="#使用任务组进行处理" class="headerlink" title="使用任务组进行处理"></a>使用任务组进行处理</h3><p>即使图片数据和元数据已经可以同时请求了，但是对于整个获取缩略图这个任务而言，仍然是一个接一个进行的，如果我们想要同时进行多个任务，就需要引入任务组进行并发编程，代码如下：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">func</span> <span class="title function_">fetchThumbnails</span>(<span class="params">for</span> <span class="params">ids</span>: [<span class="type">String</span>]) <span class="keyword">async</span> <span class="keyword">throws</span> -&gt; [<span class="type">String</span>: <span class="type">UIImage</span>] &#123;</span><br><span class="line">    <span class="keyword">var</span> thumbnails: [<span class="type">String</span>: <span class="type">UIImage</span>] <span class="operator">=</span> [:]</span><br><span class="line">    <span class="keyword">try</span> <span class="keyword">await</span> withThrowingTaskGroup(of: (<span class="type">String</span>, <span class="type">UIImage</span>).<span class="keyword">self</span>) &#123; group <span class="keyword">in</span></span><br><span class="line">        <span class="keyword">for</span> id <span class="keyword">in</span> ids &#123;</span><br><span class="line">            group.async &#123;</span><br><span class="line">                <span class="keyword">return</span> (id, <span class="keyword">try</span> <span class="keyword">await</span> fetchOneThumbnail(withID: id))</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> <span class="keyword">try</span> <span class="keyword">await</span> (id, thumbnail) <span class="keyword">in</span> group &#123;</span><br><span class="line">            thumbnails[id] <span class="operator">=</span> thumbnail</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> thumbnails</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>步骤如下：</p>
+<ol>
+<li>声明 <code>thumbnails</code> 保存返回值；</li>
+<li>调用 <code>withThrowingTaskGroup</code> 创建任务组；<ol>
+<li>使用 <code>for-in</code> 循环依次把任务放到任务组，任务被添加时会立刻执行，到达最大并发数量后进行等待；</li>
+<li>使用 <code>for-await-in</code> 循环依次取回已处理的缩略图，如果任务还没完成，等待直到完成，或者抛出错误。</li>
+</ol>
+</li>
+<li>返回 <code>thumbnails</code>。</li>
+</ol>
+<p>使用任务组可以非常方便地执行并发任务，线程切换和派发任务都由 Swift 进行管理，不需要我们编写复杂的控制逻辑。</p>
+<h3 id="async-let-与任务组的关系"><a href="#async-let-与任务组的关系" class="headerlink" title="async-let 与任务组的关系"></a><code>async-let</code> 与任务组的关系</h3><p>事实上，<code>async-let</code> 和任务组都有任务依赖树的概念，即一个父任务有一个或多个子任务，而这个父任务又是它的父任务的子任务。当一个子任务因为错误而导致父任务需要抛出错误退出时，这个子任务的兄弟任务会被标记取消，父任务需要等待这些任务完成或者抛出错误（但会忽略这些任务的返回值或者错误），才能真正退出。</p>
+<p><code>async-let</code> 可以看做简化版的任务组（实际上并不是任务组的语法糖），非常适合处理不同返回类型的异步任务，等待这些异步任务的返回结果，然后组合它们再继续后面的任务。</p>
+<p>而任务组更适合处理数量不定的相同返回类型的异步任务，在遍历任务组的返回结果时可以使用一个或者多个返回结果。例如两个相同返回类型的任务，只需要处理第一个返回的结果，任务组非常方便，但 <code>async-let</code> 难以实现。</p>
+<h3 id="小结-1"><a href="#小结-1" class="headerlink" title="小结"></a>小结</h3><p>只有 <code>async</code> &#x2F; <code>await</code> 的代码是不具备并发能力的，结构化并发的加入让我们得以用少量的代码在 <code>async</code> &#x2F; <code>await</code> 的基础上实现并发编程，同时能够继续使用错误处理和线性控制流。</p>
+<h2 id="Actor"><a href="#Actor" class="headerlink" title="Actor"></a>Actor</h2><p>上两个章节我们介绍了异步与并发，语法简洁的同时功能强大。并发虽然高效，但是如果没有采取手段加以控制，很容易产生数据竞争的问题。</p>
+<h3 id="数据竞争"><a href="#数据竞争" class="headerlink" title="数据竞争"></a>数据竞争</h3><p>想象一下，下面代码的输出结果是什么：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Counter</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> value <span class="operator">=</span> <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">func</span> <span class="title function_">increment</span>() -&gt; <span class="type">Int</span> &#123;</span><br><span class="line">        value <span class="operator">=</span> value <span class="operator">+</span> <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> value</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> counter <span class="operator">=</span> <span class="type">Counter</span>()</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> queue1 <span class="operator">=</span> <span class="type">DispatchQueue</span>(label: <span class="string">&quot;queue_1&quot;</span>)</span><br><span class="line"><span class="keyword">let</span> queue2 <span class="operator">=</span> <span class="type">DispatchQueue</span>(label: <span class="string">&quot;queue_2&quot;</span>)</span><br><span class="line"></span><br><span class="line">queue1.async &#123;</span><br><span class="line">    <span class="built_in">print</span>(counter.increment())</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">queue2.async &#123;</span><br><span class="line">    <span class="built_in">print</span>(counter.increment())</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>1,1</code>、<code>1,2</code>、<code>2,1</code>、<code>2,2</code>，都有可能，取决于 <code>value</code> 的写入和读取时机。</p>
+<p>共享的可变状态会引发数据竞争，通常我们使用锁来解决数据竞争，但是锁的粒度不好控制，处理得不好还会引发死锁。</p>
+<h3 id="Actor-模型"><a href="#Actor-模型" class="headerlink" title="Actor 模型"></a>Actor 模型</h3><p>锁的粒度不好控制，也容易造成死锁，我们可以使用 Swift 5.5 新增的 <code>actor</code> 来解决数据竞争的问题。</p>
+<p>那什么是 <code>Actor</code> 呢？（摘自 <a target="_blank" rel="noopener" href="https://www.jianshu.com/p/d803e2a7de8e">这里</a>）</p>
+<p><code>Actor</code> 是一种并发模型，由状态（State）、行为（Behavior）、邮箱（Mailbox）三者组成。</p>
+<ol>
+<li>状态：<code>actor</code> 持有的变量，由自身管理，避免并发环境下的锁问题；</li>
+<li>行为：<code>actor</code> 中的计算逻辑，通过 <code>actor</code> 接收到的消息来改变自身的状态；</li>
+<li>邮箱：<code>actor</code> 之间通讯的桥梁，内部使用 <code>FIFO</code> 队列来存储和处理消息，接收方从邮箱中获取消息。</li>
+</ol>
+<p><code>Actor</code> 模型描述了一组为避免并发编程问题的公理。</p>
+<ol>
+<li>所有 <code>actor</code> 状态都是本地的，外部无法访问；</li>
+<li><code>actor</code> 之间必须通过消息传递进行通讯；</li>
+<li>一个 <code>actor</code> 可以响应消息、退出新的 <code>actor</code>、改变内部状态、把消息发送给一个或多个 <code>actor</code>；</li>
+<li><code>actor</code> 可能会阻塞自己但是不应该阻塞运行的线程。</li>
+</ol>
+<p>在 Swift 中，<code>actor</code> 是一种引用类型，并且不可以被继承。<code>actor</code> 内定义的变量和方法都是隔离的，在内部使用可以直接访问，而在外部需要使用 <code>await</code> 进行异步访问。对 <code>actor</code> 的变量访问和方法调用都是消息，在同一时刻只有一条消息可以被处理，多条消息按照顺序依次被处理。当某一条消息需要 <code>await</code> 等待其他异步任务时，消息会被挂起进行等待，<code>actor</code> 得以处理邮箱中的后续消息，表现为 <code>actor</code> 是可重入的。这就需要我们使用额外的机制来处理重复的请求，避免资源的浪费。</p>
+<h3 id="使用-actor-实现-Counter"><a href="#使用-actor-实现-Counter" class="headerlink" title="使用 actor 实现 Counter"></a>使用 actor 实现 Counter</h3><p>我们使用 <code>actor</code> 来解决 <code>Counter</code> 的数据竞争问题，代码如下：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">actor</span> <span class="title class_">Counter</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> value <span class="operator">=</span> <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">func</span> <span class="title function_">increment</span>() -&gt; <span class="type">Int</span> &#123;</span><br><span class="line">        value <span class="operator">=</span> value <span class="operator">+</span> <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> value</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> counter <span class="operator">=</span> <span class="type">Counter</span>()</span><br><span class="line"></span><br><span class="line">asyncDetached &#123;</span><br><span class="line">    <span class="built_in">print</span>(<span class="keyword">await</span> counter.increment())</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">asyncDetached &#123;</span><br><span class="line">    <span class="built_in">print</span>(<span class="keyword">await</span> counter.increment())</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>结果要么是 <code>1,2</code>，要么是 <code>2,1</code>，不会存在 <code>1,1</code> 和 <code>2,2</code> 的情况。</p>
+<h3 id="使用-actor-处理图片下载"><a href="#使用-actor-处理图片下载" class="headerlink" title="使用 actor 处理图片下载"></a>使用 actor 处理图片下载</h3><p>我们试着使用 <code>actor</code> 实现一个图片下载器，代码如下：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">actor</span> <span class="title class_">ImageDownloader</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">var</span> cache: [<span class="type">URL</span>: <span class="type">Image</span>] <span class="operator">=</span> [:]</span><br><span class="line"></span><br><span class="line">    <span class="keyword">func</span> <span class="title function_">image</span>(<span class="params">from</span> <span class="params">url</span>: <span class="type">URL</span>) <span class="keyword">async</span> <span class="keyword">throws</span> -&gt; <span class="type">Image</span>? &#123;</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">let</span> cached <span class="operator">=</span> cache[url] &#123;</span><br><span class="line">            <span class="keyword">return</span> cached</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">let</span> image <span class="operator">=</span> <span class="keyword">try</span> <span class="keyword">await</span> downloadImage(from: url)</span><br><span class="line"></span><br><span class="line">        cache[url] <span class="operator">=</span> image</span><br><span class="line">        <span class="keyword">return</span> image</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>当我们同时获取两种相同的图片时，图片下载器会先发起一个异步任务，当进行到 <code>await</code> 等待下载结果时，函数被挂起，从而发起第二个异步任务。假如先取回的图片是正确的，后取回的却是错误的，那么最终缓存下来的会是坏的。我们需要解决这类问题，一种解决方案是把先取回的当做正确的，后取回的忽略，代码如下：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">actor</span> <span class="title class_">ImageDownloader</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">var</span> cache: [<span class="type">URL</span>: <span class="type">Image</span>] <span class="operator">=</span> [:]</span><br><span class="line"></span><br><span class="line">    <span class="keyword">func</span> <span class="title function_">image</span>(<span class="params">from</span> <span class="params">url</span>: <span class="type">URL</span>) <span class="keyword">async</span> <span class="keyword">throws</span> -&gt; <span class="type">Image</span>? &#123;</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">let</span> cached <span class="operator">=</span> cache[url] &#123;</span><br><span class="line">            <span class="keyword">return</span> cached</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">let</span> image <span class="operator">=</span> <span class="keyword">try</span> <span class="keyword">await</span> downloadImage(from: url)</span><br><span class="line"></span><br><span class="line">        cache[url] <span class="operator">=</span> cache[url, <span class="keyword">default</span>: image]</span><br><span class="line">        <span class="keyword">return</span> cache[url]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>更好的解决方案是把下载任务保存起来，先发起第一个异步任务并保存，如果在返回结果之前触发了第二次请求，那么就把上面保存的任务取出，并等待它完成。由于任务是同一个，所以只会发出一个网络请求，代码如下：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">actor</span> <span class="title class_">ImageDownloader</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">enum</span> <span class="title class_">CacheEntry</span> &#123;</span><br><span class="line">        <span class="keyword">case</span> inProgress(<span class="type">Task</span>.<span class="type">Handle</span>&lt;<span class="type">Image</span>, <span class="type">Error</span>&gt;)</span><br><span class="line">        <span class="keyword">case</span> ready(<span class="type">Image</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">var</span> cache: [<span class="type">URL</span>: <span class="type">CacheEntry</span>] <span class="operator">=</span> [:]</span><br><span class="line"></span><br><span class="line">    <span class="keyword">func</span> <span class="title function_">image</span>(<span class="params">from</span> <span class="params">url</span>: <span class="type">URL</span>) <span class="keyword">async</span> <span class="keyword">throws</span> -&gt; <span class="type">Image</span>? &#123;</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">let</span> cached <span class="operator">=</span> cache[url] &#123;</span><br><span class="line">            <span class="keyword">switch</span> cached &#123;</span><br><span class="line">            <span class="keyword">case</span> .ready(<span class="keyword">let</span> image):</span><br><span class="line">                <span class="keyword">return</span> image</span><br><span class="line">            <span class="keyword">case</span> .inProgress(<span class="keyword">let</span> handle):</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">try</span> <span class="keyword">await</span> handle.get()</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">let</span> handle <span class="operator">=</span> <span class="keyword">async</span> &#123;</span><br><span class="line">            <span class="keyword">try</span> <span class="keyword">await</span> downloadImage(from: url)</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        cache[url] <span class="operator">=</span> .inProgress(handle)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">do</span> &#123;</span><br><span class="line">            <span class="keyword">let</span> image <span class="operator">=</span> <span class="keyword">try</span> <span class="keyword">await</span> handle.get()</span><br><span class="line">            cache[url] <span class="operator">=</span> .ready(image)</span><br><span class="line">            <span class="keyword">return</span> image</span><br><span class="line">        &#125; <span class="keyword">catch</span> &#123;</span><br><span class="line">            cache[url] <span class="operator">=</span> <span class="literal">nil</span></span><br><span class="line">            <span class="keyword">throw</span> error</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="小结-2"><a href="#小结-2" class="headerlink" title="小结"></a>小结</h3><p><code>actor</code> 的加入，让我们得以用一种新的方式来进行异步与并发编程，同时不需要处理数据竞争的问题。在 <code>actor</code> 内访问自有属性和方法都是同步逻辑，对外则表现为异步逻辑，同一时刻只能处理一条消息，多条消息顺序处理，这些规则为 <code>actor</code> 的高并发性提供了保证。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ol>
+<li>异步代码的控制流难以编写，难以阅读，Swift 引入 <code>async</code> &#x2F; <code>await</code> 解决异步编程的问题；</li>
+<li>异步不代表并发，只用 <code>async</code> &#x2F; <code>await</code> 编写的代码不具有并发性，Swift 引入结构化并发让 <code>async</code> &#x2F; <code>await</code> 编写的代码执行并发任务，同时解决一些控制流上的问题；</li>
+<li>异步与并发虽好，随之而来的是数据竞争，Swift 引入 <code>actor</code> 来解决共享可变状态的问题，状态被隔离在 <code>actor</code> 内部，修改只能通过向 <code>actor</code> 发送信息并等待结果，消息被 <code>actor</code> 以同步的方式进行处理，避免同一时间对数据进行修改。</li>
+</ol>
+<h2 id="关注我们"><a href="#关注我们" class="headerlink" title="关注我们"></a>关注我们</h2><p>我们是「老司机技术周报」，一个持续追求精品 iOS 内容的技术公众号。欢迎关注。</p>
+<p><img src="https://images.xiaozhuanlan.com/photo/2021/71326704716a5f65a020bfcc08f409a3."></p>
+<p><strong>关注有礼，关注【老司机技术周报】，回复「WWDC」，领取 《WWDC20 内参》</strong></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>Buy me a coffee</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.png" alt="nuomi1 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/images/alipay.png" alt="nuomi1 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>nuomi1
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://blog.nuomi1.com/archives/2023/02/wwdc21-meet-async-await-in-swift.html" title="认识 Swift 中的异步与并发">https://blog.nuomi1.com/archives/2023/02/wwdc21-meet-async-await-in-swift.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc/4.0/deed.zh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Swift/" rel="tag"># Swift</a>
+              <a href="/tags/%E8%80%81%E5%8F%B8%E6%9C%BA%E6%8A%80%E6%9C%AF/" rel="tag"># 老司机技术</a>
+              <a href="/tags/WWDC21/" rel="tag"># WWDC21</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/archives/2021/06/leetcode-binary-tree-swift-exercises.html" rel="prev" title="LeetCode 二叉树 Swift 练习">
+                  <i class="fa fa-chevron-left"></i> LeetCode 二叉树 Swift 练习
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/archives/2023/02/mvi-with-jetpack-compose.html" rel="next" title="MVI 范式在 Jetpack Compose 上的应用">
+                  MVI 范式在 Jetpack Compose 上的应用 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments utterances-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2015 – 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">nuomi1</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/9.3.0/mermaid.min.js","integrity":"sha256-QdTG1YTLLTwD3b95jLqFxpQX9uYuJMNAtVZgwKX4oYU="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+
+
+  
+
+
+  <script class="next-config" data-name="leancloud_visitors" type="application/json">{"enable":true,"app_id":"ehvmFwB3BLTvYf4JORInQRRn-gzGzoHsz","app_key":"6zj1q563yNhGInbB9zQHlJIs","server_url":null,"security":false}</script>
+  <script src="/js/third-party/statistics/lean-analytics.js"></script>
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"nuomi1/nuomi1.github.io","issue_term":"pathname","theme":"github-light"}</script>
+<script src="/js/third-party/comments/utterances.js"></script>
+
+</body>
+</html>

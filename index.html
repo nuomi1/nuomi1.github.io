@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width">
 <meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
 
-
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -15,10 +14,10 @@
 
 
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha256-Z1K5uhUaJXA7Ll0XrZ/0JhX4lAtZFpT6jkKrEDT0drU=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"blog.nuomi1.com","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.13.1","exturl":false,"sidebar":{"position":"right","display":"hide","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"utterances","storage":true,"lazyload":false,"nav":null,"activeClass":"utterances"},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"blog.nuomi1.com","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.14.2","exturl":false,"sidebar":{"position":"right","display":"hide","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"utterances","storage":true,"lazyload":false,"nav":null,"activeClass":"utterances"},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
 
     <meta name="description" content="nuomi1&#39;s blog">
 <meta property="og:type" content="website">
@@ -53,6 +52,8 @@
 
 
 
+
+
   <noscript>
     <link rel="stylesheet" href="/css/noscript.css">
   </noscript>
@@ -63,8 +64,8 @@
   <div class="headband"></div>
 
   <main class="main">
-    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-container">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
   <div class="site-nav-toggle">
     <div class="toggle" aria-label="切换导航栏" role="button">
         <span class="toggle-line"></span>
@@ -84,7 +85,7 @@
   </div>
 
   <div class="site-nav-right">
-    <div class="toggle popup-trigger">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
     </div>
   </div>
 </div>
@@ -99,15 +100,9 @@
 
 
 
-</div>
+</header>
         
   
-  <div class="toggle sidebar-toggle" role="button">
-    <span class="toggle-line"></span>
-    <span class="toggle-line"></span>
-    <span class="toggle-line"></span>
-  </div>
-
   <aside class="sidebar">
 
     <div class="sidebar-inner sidebar-overview-active">
@@ -127,17 +122,17 @@
         <!--/noindex-->
 
         <div class="site-overview-wrap sidebar-panel">
-          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <img class="site-author-image" itemprop="image" alt="nuomi1"
       src="/images/avatar.jpg">
   <p class="site-author-name" itemprop="name">nuomi1</p>
   <div class="site-description" itemprop="description">nuomi1's blog</div>
 </div>
-<div class="site-state-wrap site-overview-item animated">
+<div class="site-state-wrap animated">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">25</span>
+          <span class="site-state-item-count">27</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -148,72 +143,262 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-count">25</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
 </div>
-  <div class="links-of-author site-overview-item animated">
+  <div class="links-of-author animated">
       <span class="links-of-author-item">
-        <a href="https://github.com/nuomi1/" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;nuomi1&#x2F;" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+        <a href="https://github.com/nuomi1/" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;nuomi1&#x2F;" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
       </span>
       <span class="links-of-author-item">
-        <a href="https://twitter.com/nuomi1/" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;nuomi1&#x2F;" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+        <a href="https://twitter.com/nuomi1/" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;nuomi1&#x2F;" rel="noopener me" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
       </span>
       <span class="links-of-author-item">
-        <a href="https://telegram.me/nuomi1/" title="Telegram → https:&#x2F;&#x2F;telegram.me&#x2F;nuomi1&#x2F;" rel="noopener" target="_blank"><i class="fab fa-telegram fa-fw"></i>Telegram</a>
+        <a href="https://telegram.me/nuomi1/" title="Telegram → https:&#x2F;&#x2F;telegram.me&#x2F;nuomi1&#x2F;" rel="noopener me" target="_blank"><i class="fab fa-telegram fa-fw"></i>Telegram</a>
       </span>
       <span class="links-of-author-item">
-        <a href="https://weibo.com/nuomi1/" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;nuomi1&#x2F;" rel="noopener" target="_blank"><i class="fab fa-weibo fa-fw"></i>Weibo</a>
+        <a href="https://weibo.com/nuomi1/" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;nuomi1&#x2F;" rel="noopener me" target="_blank"><i class="fab fa-weibo fa-fw"></i>Weibo</a>
       </span>
       <span class="links-of-author-item">
-        <a href="mailto:nuomi1@qq.com" title="E-Mail → mailto:nuomi1@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+        <a href="mailto:nuomi1@qq.com" title="E-Mail → mailto:nuomi1@qq.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
       </span>
       <span class="links-of-author-item">
-        <a href="/atom.xml" title="RSS → &#x2F;atom.xml"><i class="fa fa-rss fa-fw"></i>RSS</a>
+        <a href="/atom.xml" title="RSS → &#x2F;atom.xml" rel="noopener me"><i class="fa fa-rss fa-fw"></i>RSS</a>
       </span>
-  </div>
-
-
-  <div class="links-of-blogroll site-overview-item animated">
-    <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
-      Links
-    </div>
-    <ul class="links-of-blogroll-list">
-        <li class="links-of-blogroll-item">
-          <a href="https://www.tuccuay.com/" title="https:&#x2F;&#x2F;www.tuccuay.com&#x2F;" rel="noopener" target="_blank">Tuccuay</a>
-        </li>
-        <li class="links-of-blogroll-item">
-          <a href="https://kemchenj.github.io/" title="https:&#x2F;&#x2F;kemchenj.github.io&#x2F;" rel="noopener" target="_blank">四娘</a>
-        </li>
-        <li class="links-of-blogroll-item">
-          <a href="https://happysooner.com/" title="https:&#x2F;&#x2F;happysooner.com&#x2F;" rel="noopener" target="_blank">远浅</a>
-        </li>
-    </ul>
   </div>
 
         </div>
       </div>
     </div>
-  </aside>
-  <div class="sidebar-dimmer"></div>
-
-
-    </header>
 
     
-  <div class="back-to-top" role="button" aria-label="返回顶部">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
-  </div>
-  <div class="reading-progress-bar"></div>
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          链接
+        </div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <a href="https://www.tuccuay.com/" title="https:&#x2F;&#x2F;www.tuccuay.com&#x2F;" rel="noopener" target="_blank">Tuccuay</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://kemchenj.github.io/" title="https:&#x2F;&#x2F;kemchenj.github.io&#x2F;" rel="noopener" target="_blank">四娘</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://happysooner.com/" title="https:&#x2F;&#x2F;happysooner.com&#x2F;" rel="noopener" target="_blank">远浅</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://blog.rakuyoo.top/" title="https:&#x2F;&#x2F;blog.rakuyoo.top&#x2F;" rel="noopener" target="_blank">鸡翅</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+  </aside>
 
-<noscript>
-  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
-</noscript>
 
+    </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://blog.nuomi1.com/archives/2023/02/mvi-with-jetpack-compose.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="nuomi1">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="nuomi1's blog">
+      <meta itemprop="description" content="nuomi1's blog">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | nuomi1's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/archives/2023/02/mvi-with-jetpack-compose.html" class="post-title-link" itemprop="url">MVI 范式在 Jetpack Compose 上的应用</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-02-25 00:00:00" itemprop="dateCreated datePublished" datetime="2023-02-25T00:00:00+08:00">2023-02-25</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/program/" itemprop="url" rel="index"><span itemprop="name">program</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/archives/2023/02/mvi-with-jetpack-compose.html" class="post-meta-item leancloud_visitors" data-flag-title="MVI 范式在 Jetpack Compose 上的应用" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>本文于 2022-04-20 发表在<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/1GiafKMZXrpzZDSqpGtpfQ">老司机技术 - 微信公众号</a>，为免费文章。现转载到本人博客，章节顺序有所编辑。</p>
+<hr>
+<blockquote>
+<p>讲师简介: 林永坚（Jake Lin），超过十年移动开发经验，曾经是微软 Window Phone MVP，熟悉 iOS、Android 等平台。目前在 REA Group 担任 Mobile Tech Lead，负责公司 Customer 产品部所有移动产品的开发。并负责移动 App 的架构，以及项目自动化与工程化建设。开发 IBAnimatable 和 SwiftWeather 等开源项目，并编写了iOS开发进阶课程</p>
+<p>编辑简介：nuomi1，Swift with iOS，果粉 &#x2F; 米家粉</p>
+</blockquote>
+<p>老司机技术周报与 T 沙龙联合举办了今年 2 月底的一次线下沙龙活动。林永坚 受邀为大家分享【MVI 范式在 Jetpack Compose 上的应用】，nuomi1 基于这次分享视频为大家整理此文，感谢二位！并整理成文字版分享给大家！(ps. 阅读原文，获取 PPT！)</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/archives/2023/02/mvi-with-jetpack-compose.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://blog.nuomi1.com/archives/2023/02/wwdc21-meet-async-await-in-swift.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="nuomi1">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="nuomi1's blog">
+      <meta itemprop="description" content="nuomi1's blog">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | nuomi1's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/archives/2023/02/wwdc21-meet-async-await-in-swift.html" class="post-title-link" itemprop="url">认识 Swift 中的异步与并发</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-02-24 00:00:00" itemprop="dateCreated datePublished" datetime="2023-02-24T00:00:00+08:00">2023-02-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/program/" itemprop="url" rel="index"><span itemprop="name">program</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/archives/2023/02/wwdc21-meet-async-await-in-swift.html" class="post-meta-item leancloud_visitors" data-flag-title="认识 Swift 中的异步与并发" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>本文于 2021-07-10 初次发表在 <a target="_blank" rel="noopener" href="https://xiaozhuanlan.com/topic/8627905413">WWDC21 内参 - 小专栏</a>，为付费订阅专栏。而后于 2022-01-20 发表在<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/45J58DWWGBCbGnPycVFp_Q">老司机技术 - 微信公众号</a>，为免费文章。现转载到本人博客，章节顺序有所编辑。</p>
+<hr>
+<blockquote>
+<p>作者：作者：nuomi1，目前就职于格隆汇，Swift with iOS，果粉 &#x2F; 米家粉。</p>
+<p>审核：</p>
+<p>四娘，iOS 开发，老司机技术周报成员。目前就职于格隆汇，对 Swift 和编译器相关领域感兴趣</p>
+<p>Damonwong，iOS 开发，老司机技术周报编辑，就职于淘系技术部</p>
+</blockquote>
+<p>本文基于 Session <a target="_blank" rel="noopener" href="https://developer.apple.com/videos/play/wwdc2021/10132/">10132</a> &#x2F; <a target="_blank" rel="noopener" href="https://developer.apple.com/videos/play/wwdc2021/10134/">10134</a> &#x2F; <a target="_blank" rel="noopener" href="https://developer.apple.com/videos/play/wwdc2021/10133/">10133</a> 梳理，使用「获取缩略图」的例子对 Swift 5.5 新增的异步与并发编程进行讲解，如需了解更多，欢迎查看其它 Session。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/archives/2023/02/wwdc21-meet-async-await-in-swift.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -986,199 +1171,8 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://blog.nuomi1.com/archives/2020/12/nbus-qqsdkhandler.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="nuomi1">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="nuomi1's blog">
-      <meta itemprop="description" content="nuomi1's blog">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | nuomi1's blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/archives/2020/12/nbus-qqsdkhandler.html" class="post-title-link" itemprop="url">NBus 之 QQSDKHandler</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2020-12-06 00:00:00" itemprop="dateCreated datePublished" datetime="2020-12-06T00:00:00+08:00">2020-12-06</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2021-01-16 00:00:00" itemprop="dateModified" datetime="2021-01-16T00:00:00+08:00">2021-01-16</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/program/" itemprop="url" rel="index"><span itemprop="name">program</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/archives/2020/12/nbus-qqsdkhandler.html" class="post-meta-item leancloud_visitors" data-flag-title="NBus 之 QQSDKHandler" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>QQ SDK 的接入问题不少，本 Handler 基于 QQ SDK 3.3.9 实现。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/archives/2020/12/nbus-qqsdkhandler.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://blog.nuomi1.com/archives/2020/12/nbus-wechatsdkhandler.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="nuomi1">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="nuomi1's blog">
-      <meta itemprop="description" content="nuomi1's blog">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | nuomi1's blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/archives/2020/12/nbus-wechatsdkhandler.html" class="post-title-link" itemprop="url">NBus 之 WechatSDKHandler</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2020-12-05 00:00:00" itemprop="dateCreated datePublished" datetime="2020-12-05T00:00:00+08:00">2020-12-05</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/program/" itemprop="url" rel="index"><span itemprop="name">program</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/archives/2020/12/nbus-wechatsdkhandler.html" class="post-meta-item leancloud_visitors" data-flag-title="NBus 之 WechatSDKHandler" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>微信 SDK 的接入是最简单的，本 Handler 基于微信 SDK 1.8.7.1 实现。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/archives/2020/12/nbus-wechatsdkhandler.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 </div>
@@ -1190,7 +1184,7 @@
 
 <div class="copyright">
   &copy; 2015 – 
-  <span itemprop="copyrightYear">2022</span>
+  <span itemprop="copyrightYear">2023</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -1203,12 +1197,31 @@
   </footer>
 
   
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
 <script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
 
   
 
-
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/9.3.0/mermaid.min.js","integrity":"sha256-QdTG1YTLLTwD3b95jLqFxpQX9uYuJMNAtVZgwKX4oYU="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
 
 
 

@@ -6,7 +6,7 @@
   <link href="https://blog.nuomi1.com/atom.xml" rel="self"/>
   
   <link href="https://blog.nuomi1.com/"/>
-  <updated>2021-06-05T16:00:00.000Z</updated>
+  <updated>2023-02-24T16:00:00.000Z</updated>
   <id>https://blog.nuomi1.com/</id>
   
   <author>
@@ -15,6 +15,68 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>MVI 范式在 Jetpack Compose 上的应用</title>
+    <link href="https://blog.nuomi1.com/archives/2023/02/mvi-with-jetpack-compose.html"/>
+    <id>https://blog.nuomi1.com/archives/2023/02/mvi-with-jetpack-compose.html</id>
+    <published>2023-02-24T16:00:00.000Z</published>
+    <updated>2023-02-24T16:00:00.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;本文于 2022-04-20 发表在&lt;a href=&quot;https://mp.weixin.qq.com/s/1GiafKMZXrpzZDSqpGtpfQ&quot;&gt;老司机技术 - 微信公众号&lt;/a&gt;，为免费文章。现转载到本人博客，章节顺序有所编辑。&lt;/p&gt;
+&lt;hr&gt;
+&lt;blockquote&gt;
+&lt;p&gt;讲师简介: 林永坚（Jake Lin），超过十年移动开发经验，曾经是微软 Window Phone MVP，熟悉 iOS、Android 等平台。目前在 REA Group 担任 Mobile Tech Lead，负责公司 Customer 产品部所有移动产品的开发。并负责移动 App 的架构，以及项目自动化与工程化建设。开发 IBAnimatable 和 SwiftWeather 等开源项目，并编写了iOS开发进阶课程&lt;/p&gt;
+&lt;p&gt;编辑简介：nuomi1，Swift with iOS，果粉 &amp;#x2F; 米家粉&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;老司机技术周报与 T 沙龙联合举办了今年 2 月底的一次线下沙龙活动。林永坚 受邀为大家分享【MVI 范式在 Jetpack Compose 上的应用】，nuomi1 基于这次分享视频为大家整理此文，感谢二位！并整理成文字版分享给大家！(ps. 阅读原文，获取 PPT！)&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="program" scheme="https://blog.nuomi1.com/categories/program/"/>
+    
+    
+    <category term="Swift" scheme="https://blog.nuomi1.com/tags/Swift/"/>
+    
+    <category term="老司机技术" scheme="https://blog.nuomi1.com/tags/%E8%80%81%E5%8F%B8%E6%9C%BA%E6%8A%80%E6%9C%AF/"/>
+    
+    <category term="T 沙龙" scheme="https://blog.nuomi1.com/tags/T-%E6%B2%99%E9%BE%99/"/>
+    
+    <category term="Kotlin" scheme="https://blog.nuomi1.com/tags/Kotlin/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>认识 Swift 中的异步与并发</title>
+    <link href="https://blog.nuomi1.com/archives/2023/02/wwdc21-meet-async-await-in-swift.html"/>
+    <id>https://blog.nuomi1.com/archives/2023/02/wwdc21-meet-async-await-in-swift.html</id>
+    <published>2023-02-23T16:00:00.000Z</published>
+    <updated>2023-02-23T16:00:00.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;本文于 2021-07-10 初次发表在 &lt;a href=&quot;https://xiaozhuanlan.com/topic/8627905413&quot;&gt;WWDC21 内参 - 小专栏&lt;/a&gt;，为付费订阅专栏。而后于 2022-01-20 发表在&lt;a href=&quot;https://mp.weixin.qq.com/s/45J58DWWGBCbGnPycVFp_Q&quot;&gt;老司机技术 - 微信公众号&lt;/a&gt;，为免费文章。现转载到本人博客，章节顺序有所编辑。&lt;/p&gt;
+&lt;hr&gt;
+&lt;blockquote&gt;
+&lt;p&gt;作者：作者：nuomi1，目前就职于格隆汇，Swift with iOS，果粉 &amp;#x2F; 米家粉。&lt;/p&gt;
+&lt;p&gt;审核：&lt;/p&gt;
+&lt;p&gt;四娘，iOS 开发，老司机技术周报成员。目前就职于格隆汇，对 Swift 和编译器相关领域感兴趣&lt;/p&gt;
+&lt;p&gt;Damonwong，iOS 开发，老司机技术周报编辑，就职于淘系技术部&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;本文基于 Session &lt;a href=&quot;https://developer.apple.com/videos/play/wwdc2021/10132/&quot;&gt;10132&lt;/a&gt; &amp;#x2F; &lt;a href=&quot;https://developer.apple.com/videos/play/wwdc2021/10134/&quot;&gt;10134&lt;/a&gt; &amp;#x2F; &lt;a href=&quot;https://developer.apple.com/videos/play/wwdc2021/10133/&quot;&gt;10133&lt;/a&gt; 梳理，使用「获取缩略图」的例子对 Swift 5.5 新增的异步与并发编程进行讲解，如需了解更多，欢迎查看其它 Session。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="program" scheme="https://blog.nuomi1.com/categories/program/"/>
+    
+    
+    <category term="Swift" scheme="https://blog.nuomi1.com/tags/Swift/"/>
+    
+    <category term="老司机技术" scheme="https://blog.nuomi1.com/tags/%E8%80%81%E5%8F%B8%E6%9C%BA%E6%8A%80%E6%9C%AF/"/>
+    
+    <category term="WWDC21" scheme="https://blog.nuomi1.com/tags/WWDC21/"/>
+    
+  </entry>
   
   <entry>
     <title>LeetCode 二叉树 Swift 练习</title>
@@ -31,9 +93,9 @@
     <category term="program" scheme="https://blog.nuomi1.com/categories/program/"/>
     
     
-    <category term="Swift" scheme="https://blog.nuomi1.com/tags/Swift/"/>
-    
     <category term="LeetCode" scheme="https://blog.nuomi1.com/tags/LeetCode/"/>
+    
+    <category term="Swift" scheme="https://blog.nuomi1.com/tags/Swift/"/>
     
   </entry>
   
@@ -52,9 +114,9 @@
     <category term="program" scheme="https://blog.nuomi1.com/categories/program/"/>
     
     
-    <category term="Swift" scheme="https://blog.nuomi1.com/tags/Swift/"/>
-    
     <category term="LeetCode" scheme="https://blog.nuomi1.com/tags/LeetCode/"/>
+    
+    <category term="Swift" scheme="https://blog.nuomi1.com/tags/Swift/"/>
     
   </entry>
   
@@ -73,9 +135,9 @@
     <category term="program" scheme="https://blog.nuomi1.com/categories/program/"/>
     
     
-    <category term="Swift" scheme="https://blog.nuomi1.com/tags/Swift/"/>
-    
     <category term="LeetCode" scheme="https://blog.nuomi1.com/tags/LeetCode/"/>
+    
+    <category term="Swift" scheme="https://blog.nuomi1.com/tags/Swift/"/>
     
   </entry>
   
@@ -94,11 +156,11 @@
     <category term="program" scheme="https://blog.nuomi1.com/categories/program/"/>
     
     
+    <category term="Swift" scheme="https://blog.nuomi1.com/tags/Swift/"/>
+    
     <category term="NBus" scheme="https://blog.nuomi1.com/tags/NBus/"/>
     
     <category term="iOS" scheme="https://blog.nuomi1.com/tags/iOS/"/>
-    
-    <category term="Swift" scheme="https://blog.nuomi1.com/tags/Swift/"/>
     
   </entry>
   
@@ -117,11 +179,11 @@
     <category term="program" scheme="https://blog.nuomi1.com/categories/program/"/>
     
     
+    <category term="Swift" scheme="https://blog.nuomi1.com/tags/Swift/"/>
+    
     <category term="NBus" scheme="https://blog.nuomi1.com/tags/NBus/"/>
     
     <category term="iOS" scheme="https://blog.nuomi1.com/tags/iOS/"/>
-    
-    <category term="Swift" scheme="https://blog.nuomi1.com/tags/Swift/"/>
     
   </entry>
   
@@ -140,11 +202,11 @@
     <category term="program" scheme="https://blog.nuomi1.com/categories/program/"/>
     
     
+    <category term="Swift" scheme="https://blog.nuomi1.com/tags/Swift/"/>
+    
     <category term="NBus" scheme="https://blog.nuomi1.com/tags/NBus/"/>
     
     <category term="iOS" scheme="https://blog.nuomi1.com/tags/iOS/"/>
-    
-    <category term="Swift" scheme="https://blog.nuomi1.com/tags/Swift/"/>
     
   </entry>
   
@@ -163,11 +225,11 @@
     <category term="program" scheme="https://blog.nuomi1.com/categories/program/"/>
     
     
+    <category term="Swift" scheme="https://blog.nuomi1.com/tags/Swift/"/>
+    
     <category term="NBus" scheme="https://blog.nuomi1.com/tags/NBus/"/>
     
     <category term="iOS" scheme="https://blog.nuomi1.com/tags/iOS/"/>
-    
-    <category term="Swift" scheme="https://blog.nuomi1.com/tags/Swift/"/>
     
   </entry>
   
@@ -186,11 +248,11 @@
     <category term="program" scheme="https://blog.nuomi1.com/categories/program/"/>
     
     
+    <category term="Swift" scheme="https://blog.nuomi1.com/tags/Swift/"/>
+    
     <category term="NBus" scheme="https://blog.nuomi1.com/tags/NBus/"/>
     
     <category term="iOS" scheme="https://blog.nuomi1.com/tags/iOS/"/>
-    
-    <category term="Swift" scheme="https://blog.nuomi1.com/tags/Swift/"/>
     
   </entry>
   
@@ -209,11 +271,11 @@
     <category term="program" scheme="https://blog.nuomi1.com/categories/program/"/>
     
     
+    <category term="Swift" scheme="https://blog.nuomi1.com/tags/Swift/"/>
+    
     <category term="NBus" scheme="https://blog.nuomi1.com/tags/NBus/"/>
     
     <category term="iOS" scheme="https://blog.nuomi1.com/tags/iOS/"/>
-    
-    <category term="Swift" scheme="https://blog.nuomi1.com/tags/Swift/"/>
     
   </entry>
   
@@ -232,11 +294,11 @@
     <category term="program" scheme="https://blog.nuomi1.com/categories/program/"/>
     
     
+    <category term="Swift" scheme="https://blog.nuomi1.com/tags/Swift/"/>
+    
     <category term="NBus" scheme="https://blog.nuomi1.com/tags/NBus/"/>
     
     <category term="iOS" scheme="https://blog.nuomi1.com/tags/iOS/"/>
-    
-    <category term="Swift" scheme="https://blog.nuomi1.com/tags/Swift/"/>
     
   </entry>
   
@@ -257,9 +319,9 @@
     
     <category term="Swift" scheme="https://blog.nuomi1.com/tags/Swift/"/>
     
-    <category term="UserDefaults" scheme="https://blog.nuomi1.com/tags/UserDefaults/"/>
-    
     <category term="Codable" scheme="https://blog.nuomi1.com/tags/Codable/"/>
+    
+    <category term="UserDefaults" scheme="https://blog.nuomi1.com/tags/UserDefaults/"/>
     
   </entry>
   
@@ -302,11 +364,11 @@
     <category term="program" scheme="https://blog.nuomi1.com/categories/program/"/>
     
     
+    <category term="Swift" scheme="https://blog.nuomi1.com/tags/Swift/"/>
+    
     <category term="NBus" scheme="https://blog.nuomi1.com/tags/NBus/"/>
     
     <category term="iOS" scheme="https://blog.nuomi1.com/tags/iOS/"/>
-    
-    <category term="Swift" scheme="https://blog.nuomi1.com/tags/Swift/"/>
     
   </entry>
   
@@ -390,9 +452,9 @@
     <category term="program" scheme="https://blog.nuomi1.com/categories/program/"/>
     
     
-    <category term="Swift" scheme="https://blog.nuomi1.com/tags/Swift/"/>
-    
     <category term="LeetCode" scheme="https://blog.nuomi1.com/tags/LeetCode/"/>
+    
+    <category term="Swift" scheme="https://blog.nuomi1.com/tags/Swift/"/>
     
   </entry>
   
@@ -414,46 +476,6 @@
     <category term="XLPagerTabStrip" scheme="https://blog.nuomi1.com/tags/XLPagerTabStrip/"/>
     
     <category term="Fabric" scheme="https://blog.nuomi1.com/tags/Fabric/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>深圳游记</title>
-    <link href="https://blog.nuomi1.com/archives/2018/06/shenzhen-travel.html"/>
-    <id>https://blog.nuomi1.com/archives/2018/06/shenzhen-travel.html</id>
-    <published>2018-06-02T16:00:00.000Z</published>
-    <updated>2018-06-18T16:00:00.000Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;&lt;a href=&quot;https://weibo.com/swiftguide&quot;&gt;SwiftGG 翻译组&lt;/a&gt; 发起了 &lt;a href=&quot;https://www.thoughtworks.com/cn/radar&quot;&gt;ThoughtWorks 技术雷达&lt;/a&gt;峰会的&lt;a href=&quot;https://weibo.com/1625897081/GfYMK4Ef5&quot;&gt;门票抽奖&lt;/a&gt;，虽然&lt;a href=&quot;https://weibo.com/5174822990/GgAcy6q3Q&quot;&gt;没中奖&lt;/a&gt;，但是 &lt;a href=&quot;https://weibo.com/u/1791223913&quot;&gt;FenngMr&lt;/a&gt; 赠送了门票，&lt;a href=&quot;https://weibo.com/1625897081/GhGqZ7V7s&quot;&gt;表示感谢&lt;/a&gt;。&lt;/p&gt;
-&lt;p&gt;在&lt;a href=&quot;https://youpin.mi.com/&quot;&gt;小米有品&lt;/a&gt;的捉虫活动中，获得了&lt;a href=&quot;https://weibo.com/1771925961/Gi106eREZ&quot;&gt;小米年度旗舰发布会&lt;/a&gt;的抽奖资格，最后以 50% 的概率抽中了门票。&lt;/p&gt;
-&lt;p&gt;小米年度旗舰发布会在 5 月 31 日，ThoughtWorks 技术雷达峰会在 6 月 2 日，中间的 6 月 1 日也约了&lt;a href=&quot;https://www.zhihu.com/people/yang-jing-42-57/activities&quot;&gt;伊文哥&lt;/a&gt;参观迅雷，所以定了 5 月 30 日到 6 月 3 日为期五天的深圳行程。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="travel" scheme="https://blog.nuomi1.com/categories/travel/"/>
-    
-    
-    <category term="深圳" scheme="https://blog.nuomi1.com/tags/%E6%B7%B1%E5%9C%B3/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>天猫精灵方糖体验</title>
-    <link href="https://blog.nuomi1.com/archives/2018/05/tmall-genie-surge-experience.html"/>
-    <id>https://blog.nuomi1.com/archives/2018/05/tmall-genie-surge-experience.html</id>
-    <published>2018-05-19T16:00:00.000Z</published>
-    <updated>2018-05-19T16:00:00.000Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;昨天买了&lt;a href=&quot;https://detail.tmall.com/item.htm?id=567925396518&quot;&gt;天猫精灵方糖&lt;/a&gt;，来个体验。有些语音指令，会使用&lt;a href=&quot;https://www.mi.com/aispeaker/&quot;&gt;小爱同学&lt;/a&gt;进行比较。小爱同学使用红米手机 4 高配版 MIUI 9 8.4.26 内置版。为什么？没钱（抢不到）。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="iot" scheme="https://blog.nuomi1.com/categories/iot/"/>
-    
-    
-    <category term="天猫精灵" scheme="https://blog.nuomi1.com/tags/%E5%A4%A9%E7%8C%AB%E7%B2%BE%E7%81%B5/"/>
     
   </entry>
   
