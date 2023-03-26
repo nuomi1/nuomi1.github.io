@@ -6,7 +6,7 @@
   <link href="https://blog.nuomi1.com/atom.xml" rel="self"/>
   
   <link href="https://blog.nuomi1.com/"/>
-  <updated>2023-02-24T16:00:00.000Z</updated>
+  <updated>2023-03-25T16:00:00.000Z</updated>
   <id>https://blog.nuomi1.com/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>豆瓣年度电影榜单 2014 - 2022</title>
+    <link href="https://blog.nuomi1.com/archives/2023/03/douban-movie-annual.html"/>
+    <id>https://blog.nuomi1.com/archives/2023/03/douban-movie-annual.html</id>
+    <published>2023-03-25T16:00:00.000Z</published>
+    <updated>2023-03-25T16:00:00.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;收录豆瓣历年电影年度榜单对应的官方豆列。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="sheet" scheme="https://blog.nuomi1.com/categories/sheet/"/>
+    
+    
+    <category term="豆瓣" scheme="https://blog.nuomi1.com/tags/%E8%B1%86%E7%93%A3/"/>
+    
+    <category term="电影" scheme="https://blog.nuomi1.com/tags/%E7%94%B5%E5%BD%B1/"/>
+    
+  </entry>
   
   <entry>
     <title>MVI 范式在 Jetpack Compose 上的应用</title>
@@ -93,9 +114,9 @@
     <category term="program" scheme="https://blog.nuomi1.com/categories/program/"/>
     
     
-    <category term="LeetCode" scheme="https://blog.nuomi1.com/tags/LeetCode/"/>
-    
     <category term="Swift" scheme="https://blog.nuomi1.com/tags/Swift/"/>
+    
+    <category term="LeetCode" scheme="https://blog.nuomi1.com/tags/LeetCode/"/>
     
   </entry>
   
@@ -114,9 +135,9 @@
     <category term="program" scheme="https://blog.nuomi1.com/categories/program/"/>
     
     
-    <category term="LeetCode" scheme="https://blog.nuomi1.com/tags/LeetCode/"/>
-    
     <category term="Swift" scheme="https://blog.nuomi1.com/tags/Swift/"/>
+    
+    <category term="LeetCode" scheme="https://blog.nuomi1.com/tags/LeetCode/"/>
     
   </entry>
   
@@ -135,9 +156,9 @@
     <category term="program" scheme="https://blog.nuomi1.com/categories/program/"/>
     
     
-    <category term="LeetCode" scheme="https://blog.nuomi1.com/tags/LeetCode/"/>
-    
     <category term="Swift" scheme="https://blog.nuomi1.com/tags/Swift/"/>
+    
+    <category term="LeetCode" scheme="https://blog.nuomi1.com/tags/LeetCode/"/>
     
   </entry>
   
@@ -408,9 +429,9 @@
     <category term="program" scheme="https://blog.nuomi1.com/categories/program/"/>
     
     
-    <category term="Swift" scheme="https://blog.nuomi1.com/tags/Swift/"/>
-    
     <category term="DateFormatter" scheme="https://blog.nuomi1.com/tags/DateFormatter/"/>
+    
+    <category term="Swift" scheme="https://blog.nuomi1.com/tags/Swift/"/>
     
   </entry>
   
@@ -452,30 +473,9 @@
     <category term="program" scheme="https://blog.nuomi1.com/categories/program/"/>
     
     
-    <category term="LeetCode" scheme="https://blog.nuomi1.com/tags/LeetCode/"/>
-    
     <category term="Swift" scheme="https://blog.nuomi1.com/tags/Swift/"/>
     
-  </entry>
-  
-  <entry>
-    <title>工作总结</title>
-    <link href="https://blog.nuomi1.com/archives/2018/07/work-summary.html"/>
-    <id>https://blog.nuomi1.com/archives/2018/07/work-summary.html</id>
-    <published>2018-07-28T16:00:00.000Z</published>
-    <updated>2018-07-28T16:00:00.000Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;距离上次发博文快两个月了，本想着七月初发一篇，结果还是鸽了……&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="work" scheme="https://blog.nuomi1.com/categories/work/"/>
-    
-    
-    <category term="XLPagerTabStrip" scheme="https://blog.nuomi1.com/tags/XLPagerTabStrip/"/>
-    
-    <category term="Fabric" scheme="https://blog.nuomi1.com/tags/Fabric/"/>
+    <category term="LeetCode" scheme="https://blog.nuomi1.com/tags/LeetCode/"/>
     
   </entry>
   
